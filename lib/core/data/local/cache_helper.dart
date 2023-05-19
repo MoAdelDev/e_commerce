@@ -1,5 +1,6 @@
-import 'package:e_commerce_app/authentication/domain/entities/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../modules/authentication/domain/entities/user.dart';
 
 late User user;
 

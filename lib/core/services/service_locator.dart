@@ -1,12 +1,11 @@
-import 'package:e_commerce_app/authentication/data/datasource/auth_datasource.dart';
-import 'package:e_commerce_app/authentication/domain/repository/authentication_base_repository.dart';
-import 'package:e_commerce_app/authentication/domain/usecases/login_usecase.dart';
-import 'package:e_commerce_app/authentication/domain/usecases/register_usecase.dart';
-import 'package:e_commerce_app/authentication/presentation/controller/login/login_bloc.dart';
-import 'package:e_commerce_app/authentication/presentation/controller/register/register_bloc.dart';
 import 'package:get_it/get_it.dart';
-
-import '../../authentication/data/repository/auth_repository.dart';
+import '../../modules/authentication/data/datasource/auth_datasource.dart';
+import '../../modules/authentication/data/repository/auth_repository.dart';
+import '../../modules/authentication/domain/repository/authentication_base_repository.dart';
+import '../../modules/authentication/domain/usecases/login_usecase.dart';
+import '../../modules/authentication/domain/usecases/register_usecase.dart';
+import '../../modules/authentication/presentation/controller/login/login_bloc.dart';
+import '../../modules/authentication/presentation/controller/register/register_bloc.dart';
 
 final sl = GetIt.instance;
 

@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/authentication/presentation/screens/login_screen.dart';
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/theme/theme_data/theme_data_light.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'bloc_observer.dart';
 import 'core/route/app_route.dart';
 import 'core/services/service_locator.dart';
+import 'modules/authentication/presentation/screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
