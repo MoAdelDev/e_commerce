@@ -7,7 +7,7 @@ late User user;
 class CacheHelper {
   static late final SharedPreferences sharedPreferences;
 
-  init() async {
+  static init() async {
     sharedPreferences = await SharedPreferences.getInstance();
     if (!sharedPreferences.containsKey('token')) {
       saveData(key: 'token', value: '');

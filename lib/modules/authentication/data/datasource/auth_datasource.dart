@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
 import 'package:e_commerce_app/core/network/api_constance.dart';
 import 'package:e_commerce_app/core/network/error_message_model.dart';
@@ -14,17 +14,12 @@ abstract class AuthBaseRemoteDataSource {
 }
 
 class AuthRemoteDataSource extends AuthBaseRemoteDataSource {
-  late Dio dio;
-
-  AuthRemoteDataSource() {
-    BaseOptions baseOptions = BaseOptions(
-        headers: {'Content-Type': 'application/json', 'lang': 'en'});
-    dio = Dio(baseOptions);
-  }
-
   @override
   Future<UserModel> loginUser(Login login) async {
-    final result = await dio.post(ApiConstance.loginUrl, data: login.toMap());
+    final result = await DioHelper.postData(
+      path: ApiConstance.loginUrl,
+      data: login.toJson(),
+    );
     if (result.data['status']) {
       return UserModel.fromJson(result.data['data']);
     } else {
@@ -34,8 +29,8 @@ class AuthRemoteDataSource extends AuthBaseRemoteDataSource {
 
   @override
   Future<UserModel> registerUser(Register register) async {
-    final result = await dio.post(
-      ApiConstance.registerUrl,
+    final result = await DioHelper.postData(
+      path: ApiConstance.registerUrl,
       data: register.toJson(),
     );
     if (result.data['status']) {

@@ -1,5 +1,8 @@
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
+import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/theme/theme_data/theme_data_light.dart';
+import 'package:e_commerce_app/modules/home/presentation/controller/home_bloc.dart';
+import 'package:e_commerce_app/modules/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +16,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
 
-  await CacheHelper().init();
+  await CacheHelper.init();
+  await DioHelper.init();
 
   ServiceLocator().init();
 
@@ -27,17 +31,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'E Commerce',
-        theme: getThemeDataLight(),
-        home: LoginScreen(),
-        onGenerateRoute: (settings) =>
-            AppRoute.getInstance().generateRouter(settings),
-      ),
-    );
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => MultiBlocProvider(
+              providers: [
+                BlocProvider<HomeBloc>(
+                  create: (context) => sl()
+                    ..add(HomeGetProductsEvent())
+                    ..add(HomeGetUserEvent()),
+                ),
+              ],
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'E Commerce',
+                theme: getThemeDataLight(),
+                home: CacheHelper.getData(key: 'token').toString() == ''
+                    ? LoginScreen()
+                    : const HomeScreen(),
+                onGenerateRoute: (settings) =>
+                    AppRoute.getInstance().generateRouter(settings),
+              ),
+            ));
   }
 }

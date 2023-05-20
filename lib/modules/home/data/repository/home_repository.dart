@@ -1,0 +1,37 @@
+import 'package:dartz/dartz.dart';
+import 'package:e_commerce_app/core/error/failure.dart';
+import 'package:e_commerce_app/core/error/server_exception.dart';
+import 'package:e_commerce_app/modules/authentication/domain/entities/user.dart';
+import 'package:e_commerce_app/modules/home/data/datasource/home_datasource.dart';
+import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
+import 'package:e_commerce_app/modules/home/domain/repository/home_base_repository.dart';
+
+class HomeRepository implements HomeBaseRepository {
+  final HomeBaseDataSource homeBaseDataSource;
+
+  HomeRepository(this.homeBaseDataSource);
+
+  @override
+  Future<Either<Failure, List<Product>>> getProducts() async {
+    try {
+      return Right(await homeBaseDataSource.getProducts());
+    } on ServerException catch (e) {
+      return Left(
+        ServerFailure(e.errorMessageModel.errorMessage),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, User>> getUser() async {
+    try {
+      return Right(
+        await homeBaseDataSource.getUser(),
+      );
+    } on ServerException catch (error) {
+      return Left(
+        ServerFailure(error.errorMessageModel.errorMessage),
+      );
+    }
+  }
+}

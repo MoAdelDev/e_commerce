@@ -6,7 +6,7 @@ class Login extends Equatable {
 
   const Login(this.email, this.password);
 
-  Map<String, dynamic> toMap() => {'email': email, 'password': password};
+  Map<String, dynamic> toJson() => {'email': email, 'password': password};
 
 
   @override
