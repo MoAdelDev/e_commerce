@@ -23,8 +23,8 @@ class BannersWidget extends StatelessWidget {
             child: const DefaultShimmer(),
           );
         }
-        return FadeIn(
-          duration: const Duration(milliseconds: 800),
+        return FadeInDownBig(
+          duration: const Duration(milliseconds: 2000),
           child: CarouselSlider(
             items: state.banners
                 .map(

@@ -3,23 +3,24 @@ import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/theme/theme_data/theme_data_light.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home_bloc.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'bloc_observer.dart';
 import 'core/route/app_route.dart';
 import 'core/services/service_locator.dart';
 import 'modules/authentication/presentation/screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = MyBlocObserver();
-
   await CacheHelper.init();
   await DioHelper.init();
 
   ServiceLocator().init();
+
+  if (kDebugMode) {
+    print('token: ${await CacheHelper.getData(key: 'token')}');
+  }
 
   runApp(const MyApp());
 }

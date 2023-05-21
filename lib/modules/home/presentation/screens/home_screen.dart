@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Shop',
+          'Softagi',
         ),
       ),
       body: SingleChildScrollView(
