@@ -10,6 +10,7 @@ class ProductModel extends Product {
     super.name,
     super.inFavorites,
     super.inCart,
+    super.images, super.description,
   );
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
@@ -21,5 +22,7 @@ class ProductModel extends Product {
         json['name'],
         json['in_favorites'],
         json['in_cart'],
+        json['images'],
+        json['description'],
       );
 }

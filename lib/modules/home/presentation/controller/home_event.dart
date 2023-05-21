@@ -14,3 +14,9 @@ class HomeGetBannersEvent extends HomeBaseEvent {}
 class HomeGetCategoriesEvent extends HomeBaseEvent {}
 
 class HomeGetUserEvent extends HomeBaseEvent {}
+
+class HomeChangeFavoriteEvent extends HomeBaseEvent{
+  final int productId;
+
+  const HomeChangeFavoriteEvent(this.productId);
+}

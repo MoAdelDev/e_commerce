@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/theme/app_color/app_color_light.dart';
 import 'package:e_commerce_app/core/theme/components/default_animation.dart';
@@ -127,10 +126,17 @@ class ProductsWidget extends StatelessWidget {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        // TODO : change favorites
+                                        context.read<HomeBloc>().add(
+                                              HomeChangeFavoriteEvent(
+                                                  state.products[index].id),
+                                            );
                                       },
-                                      icon: const Icon(
-                                        Icons.favorite_border,
+                                      icon: Icon(
+                                        state.favoriteMap[
+                                                    state.products[index].id] ??
+                                                false
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
                                         color: Colors.red,
                                       )),
                                 ],

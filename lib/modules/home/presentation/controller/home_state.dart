@@ -5,6 +5,12 @@ class HomeState extends Equatable {
   final List<Product> products;
   final RequestState productsState;
   final String productsError;
+  final Map<int, bool> favoriteMap;
+
+  /// Change Favorite
+  final Favorite favorite;
+  final RequestState favoriteState;
+  final String favoriteError;
 
   /// Banners
   final List<Banner> banners;
@@ -25,6 +31,10 @@ class HomeState extends Equatable {
     this.products = const [],
     this.productsState = RequestState.loading,
     this.productsError = '',
+    this.favoriteMap = const {},
+    this.favorite = const Favorite(0, 0),
+    this.favoriteState = RequestState.nothing,
+    this.favoriteError = '',
     this.banners = const [],
     this.bannersState = RequestState.loading,
     this.bannersError = '',
@@ -40,6 +50,10 @@ class HomeState extends Equatable {
     List<Product>? products,
     RequestState? productsState,
     String? productsError,
+    Map<int, bool>? favoriteMap,
+    Favorite? favorite,
+    RequestState? favoriteState,
+    String? favoriteError,
     List<Banner>? banners,
     RequestState? bannersState,
     String? bannersError,
@@ -54,6 +68,10 @@ class HomeState extends Equatable {
         products: products ?? this.products,
         productsState: productsState ?? this.productsState,
         productsError: productsError ?? this.productsError,
+        favorite: favorite ?? this.favorite,
+        favoriteState: favoriteState ?? this.favoriteState,
+        favoriteError: favoriteError ?? this.favoriteError,
+        favoriteMap: favoriteMap ?? this.favoriteMap,
         banners: banners ?? this.banners,
         bannersState: bannersState ?? this.bannersState,
         bannersError: bannersError ?? this.bannersError,
@@ -70,6 +88,10 @@ class HomeState extends Equatable {
         products,
         productsState,
         productsError,
+        favoriteMap,
+        favorite,
+        favoriteState,
+        favoriteError,
         user,
         userState,
         userError,
