@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/theme/app_color/app_color_light.dart';
+import 'package:e_commerce_app/core/theme/components/default_animation.dart';
 import 'package:e_commerce_app/core/theme/components/default_shimmer.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:flutter/material.dart';
@@ -30,8 +31,8 @@ class ProductsWidget extends StatelessWidget {
             ],
           );
         }
-        return FadeInUpBig(
-          duration: const Duration(milliseconds: 2000),
+        return DefaultAnimation(
+          animationDirection: AnimationDirection.up,
           child: Container(
             color: Colors.grey[300],
             child: GridView.count(
@@ -69,9 +70,9 @@ class ProductsWidget extends StatelessWidget {
                               if (state.products[index].discount != 0)
                                 Container(
                                   color: Colors.red,
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 5.0)
-                                          .r,
+                                  padding: const EdgeInsets.symmetric(
+                                          horizontal: 5.0)
+                                      .r,
                                   child: Text(
                                     'DISCOUNT',
                                     style: TextStyle(
@@ -115,9 +116,10 @@ class ProductsWidget extends StatelessWidget {
                                               style: const TextStyle(
                                                   fontSize: 10,
                                                   color: Colors.grey,
-                                                  overflow: TextOverflow.ellipsis,
-                                                  decoration:
-                                                      TextDecoration.lineThrough),
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  decoration: TextDecoration
+                                                      .lineThrough),
                                             ),
                                           ),
                                       ],

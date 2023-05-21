@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:e_commerce_app/core/theme/components/default_animation.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home_bloc.dart';
 import 'package:flutter/material.dart';
@@ -23,35 +24,34 @@ class BannersWidget extends StatelessWidget {
             child: const DefaultShimmer(),
           );
         }
-        return FadeInDownBig(
-          duration: const Duration(milliseconds: 2000),
-          child: CarouselSlider(
-            items: state.banners
-                .map(
-                  (e) => CachedNetworkImage(
-                    imageUrl: e.image,
-                    height: bannerHeight,
-                    fit: BoxFit.fill,
-                    placeholder: (context, url) => const DefaultShimmer(),
-                    errorWidget: (context, url, error) =>
-                        const DefaultShimmer(),
-                  ),
-                )
-                .toList(),
-            options: CarouselOptions(
-              height: bannerHeight,
-              initialPage: 0,
-              reverse: false,
-              autoPlay: true,
-              viewportFraction: 1.0,
-              enableInfiniteScroll: true,
-              autoPlayInterval: const Duration(seconds: 5),
-              autoPlayAnimationDuration: const Duration(seconds: 2),
-              autoPlayCurve: Curves.fastOutSlowIn,
-              scrollDirection: Axis.horizontal,
-            ),
-          ),
-        );
+        return DefaultAnimation(
+            animationDirection: AnimationDirection.down,
+            child: CarouselSlider(
+              items: state.banners
+                  .map(
+                    (e) => CachedNetworkImage(
+                      imageUrl: e.image,
+                      height: bannerHeight,
+                      fit: BoxFit.fill,
+                      placeholder: (context, url) => const DefaultShimmer(),
+                      errorWidget: (context, url, error) =>
+                          const DefaultShimmer(),
+                    ),
+                  )
+                  .toList(),
+              options: CarouselOptions(
+                height: bannerHeight,
+                initialPage: 0,
+                reverse: false,
+                autoPlay: true,
+                viewportFraction: 1.0,
+                enableInfiniteScroll: true,
+                autoPlayInterval: const Duration(seconds: 5),
+                autoPlayAnimationDuration: const Duration(seconds: 2),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                scrollDirection: Axis.horizontal,
+              ),
+            ));
       },
     );
   }

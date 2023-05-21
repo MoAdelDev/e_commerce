@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/theme/app_string/app_string_en.dart';
@@ -39,9 +40,12 @@ class LoginScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        AppStringEn.loginTitleText,
-                        style: Theme.of(context).textTheme.titleMedium,
+                      FadeInDownBig(
+                        duration: const Duration(),
+                        child: Text(
+                          AppStringEn.loginTitleText,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
                       ),
                       SizedBox(
                         height: 30.0.h,

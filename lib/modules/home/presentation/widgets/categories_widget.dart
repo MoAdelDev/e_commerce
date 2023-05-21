@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_app/core/theme/components/default_animation.dart';
 import 'package:e_commerce_app/core/theme/components/default_shimmer.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/category.dart';
@@ -32,8 +33,8 @@ class CategoriesWidget extends StatelessWidget {
             ),
           );
         }
-        return FadeInLeftBig(
-          duration: const Duration(milliseconds: 2000),
+        return DefaultAnimation(
+          animationDirection: AnimationDirection.left,
           child: SizedBox(
             height: 100.0.h,
             child: ListView.separated(
