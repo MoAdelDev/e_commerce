@@ -8,6 +8,6 @@ class HomeGetUserUseCase {
 
   HomeGetUserUseCase(this.homeBaseRepository);
 
-  Future<Either<Failure, User>> getUser() async =>
+  Future<Either<Failure, User>> call() async =>
       await homeBaseRepository.getUser();
 }

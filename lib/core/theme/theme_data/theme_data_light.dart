@@ -12,9 +12,9 @@ ThemeData getThemeDataLight() => ThemeData(
             color: AppColorLight.appBarIconColor,
           ),
           titleTextStyle: TextStyle(
-            fontSize: 20.0.sp,
+            fontSize: 24.0.sp,
             color: AppColorLight.primaryColor,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.bold,
           )),
       textTheme: getTextThemeData(),
       fontFamily: 'OpenSans',
@@ -33,12 +33,24 @@ ThemeData getThemeDataLight() => ThemeData(
     );
 
 getTextThemeData() => TextTheme(
-      bodyMedium: TextStyle(
-        fontSize: 16.0.sp,
+      headlineSmall: TextStyle(
+        fontSize: 8.0.sp,
+        color: AppColorLight.textBodyColor,
+      ),
+      headlineMedium: TextStyle(
+        fontSize: 10.0.sp,
+        color: AppColorLight.textBodyColor,
+      ),
+      headlineLarge: TextStyle(
+        fontSize: 12.0.sp,
         color: AppColorLight.textBodyColor,
       ),
       bodySmall: TextStyle(
         fontSize: 14.0.sp,
+        color: AppColorLight.textBodyColor,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 16.0.sp,
         color: AppColorLight.textBodyColor,
       ),
       bodyLarge: TextStyle(
@@ -46,15 +58,15 @@ getTextThemeData() => TextTheme(
         color: AppColorLight.textBodyColor,
       ),
       titleSmall: TextStyle(
-        fontSize: 16.0.sp,
-        color: AppColorLight.primaryColor,
-      ),
+          fontSize: 16.0.sp,
+          color: AppColorLight.primaryColor,
+          fontWeight: FontWeight.w600),
       titleMedium: TextStyle(
-        fontSize: 18.0.sp,
-        color: AppColorLight.primaryColor,
-      ),
+          fontSize: 18.0.sp,
+          color: AppColorLight.primaryColor,
+          fontWeight: FontWeight.w600),
       titleLarge: TextStyle(
-        fontSize: 20.0.sp,
-        color: AppColorLight.primaryColor,
-      ),
+          fontSize: 20.0.sp,
+          color: AppColorLight.primaryColor,
+          fontWeight: FontWeight.w600),
     );

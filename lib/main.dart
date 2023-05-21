@@ -31,27 +31,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) => MultiBlocProvider(
-              providers: [
-                BlocProvider<HomeBloc>(
-                  create: (context) => sl()
-                    ..add(HomeGetProductsEvent())
-                    ..add(HomeGetUserEvent()),
-                ),
-              ],
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: 'E Commerce',
-                theme: getThemeDataLight(),
-                home: CacheHelper.getData(key: 'token').toString() == ''
-                    ? LoginScreen()
-                    : const HomeScreen(),
-                onGenerateRoute: (settings) =>
-                    AppRoute.getInstance().generateRouter(settings),
-              ),
-            ));
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) => MultiBlocProvider(
+        providers: [
+          BlocProvider<HomeBloc>(
+            create: (context) => sl()
+              ..add(HomeGetProductsEvent())
+              ..add(HomeGetUserEvent())
+              ..add(HomeGetCategoriesEvent())
+              ..add(HomeGetBannersEvent()),
+          ),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'E Commerce',
+          theme: getThemeDataLight(),
+          home: CacheHelper.getData(key: 'token').toString() == ''
+              ? LoginScreen()
+              : const HomeScreen(),
+          onGenerateRoute: (settings) =>
+              AppRoute.getInstance().generateRouter(settings),
+        ),
+      ),
+    );
   }
 }

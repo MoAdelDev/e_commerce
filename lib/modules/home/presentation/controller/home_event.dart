@@ -9,4 +9,8 @@ abstract class HomeBaseEvent extends Equatable {
 
 class HomeGetProductsEvent extends HomeBaseEvent {}
 
+class HomeGetBannersEvent extends HomeBaseEvent {}
+
+class HomeGetCategoriesEvent extends HomeBaseEvent {}
+
 class HomeGetUserEvent extends HomeBaseEvent {}

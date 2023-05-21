@@ -4,10 +4,16 @@ import 'package:e_commerce_app/core/error/server_exception.dart';
 import 'package:e_commerce_app/core/network/api_constance.dart';
 import 'package:e_commerce_app/core/network/error_message_model.dart';
 import 'package:e_commerce_app/modules/authentication/data/models/user_model.dart';
+import 'package:e_commerce_app/modules/home/data/models/banner_model.dart';
+import 'package:e_commerce_app/modules/home/data/models/category_model.dart';
 import 'package:e_commerce_app/modules/home/data/models/product_model.dart';
 
 abstract class HomeBaseDataSource {
   Future<List<ProductModel>> getProducts();
+
+  Future<List<BannerModel>> getBanners();
+
+  Future<List<CategoryModel>> getCategories();
 
   Future<UserModel> getUser();
 }
@@ -31,6 +37,40 @@ class HomeDataSource extends HomeBaseDataSource {
     }
     throw ServerException(
       ErrorMessageModel.fromJson(result.data['message']),
+    );
+  }
+
+  @override
+  Future<List<BannerModel>> getBanners() async {
+    final result = await DioHelper.getData(path: ApiConstance.bannersUrl);
+    if (result.data['status']) {
+      return List.from(
+        (result.data['data'] as List).map(
+          (e) => BannerModel.fromJson(e),
+        ),
+      );
+    }
+    throw ServerException(
+      ErrorMessageModel.fromJson(
+        result.data['message'],
+      ),
+    );
+  }
+
+  @override
+  Future<List<CategoryModel>> getCategories() async {
+    final result = await DioHelper.getData(path: ApiConstance.categoriesUrl);
+    if (result.data['status']) {
+      return List.from(
+        (result.data['data']['data'] as List).map(
+          (e) => CategoryModel.fomJson(e),
+        ),
+      );
+    }
+    throw ServerException(
+      ErrorMessageModel.fromJson(
+        result.data['message'],
+      ),
     );
   }
 

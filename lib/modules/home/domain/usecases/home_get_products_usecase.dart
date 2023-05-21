@@ -8,6 +8,6 @@ class HomeGetProductsUseCase {
 
   HomeGetProductsUseCase(this.homeBaseRepository);
 
-  Future<Either<Failure, List<Product>>> getProducts() async =>
+  Future<Either<Failure, List<Product>>> call() async =>
       await homeBaseRepository.getProducts();
 }

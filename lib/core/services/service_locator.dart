@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/modules/home/data/datasource/home_datasource.dart';
 import 'package:e_commerce_app/modules/home/data/repository/home_repository.dart';
 import 'package:e_commerce_app/modules/home/domain/repository/home_base_repository.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/home_get_banners_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/home_get_categories_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/home_get_products_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/home_get_user_usecase.dart';
 import 'package:get_it/get_it.dart';
@@ -20,7 +22,7 @@ class ServiceLocator {
     /// BLOC
     sl.registerFactory<LoginBloc>(() => LoginBloc(sl()));
     sl.registerFactory<RegisterBloc>(() => RegisterBloc(sl()));
-    sl.registerFactory<HomeBloc>(() => HomeBloc(sl(), sl()));
+    sl.registerFactory<HomeBloc>(() => HomeBloc(sl(), sl(), sl(), sl()));
 
     /// DATA SOURCE
     sl.registerLazySingleton<AuthBaseRemoteDataSource>(
@@ -41,5 +43,9 @@ class ServiceLocator {
         () => HomeGetProductsUseCase(sl()));
     sl.registerLazySingleton<HomeGetUserUseCase>(
         () => HomeGetUserUseCase(sl()));
+    sl.registerLazySingleton<HomeGetBannersUseCase>(
+        () => HomeGetBannersUseCase(sl()));
+    sl.registerLazySingleton<HomeGetCategoriesUseCase>(
+        () => HomeGetCategoriesUseCase(sl()));
   }
 }
