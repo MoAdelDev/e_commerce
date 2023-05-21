@@ -39,7 +39,7 @@ class HomeRepository extends HomeBaseRepository {
   }
 
   @override
-  Future<Either<Failure, List<Banner>>> getBanners() async {
+  Future<Either<Failure, List<BannerEntity>>> getBanners() async {
     try {
       final result = await homeBaseDataSource.getBanners();
       return Right(result);

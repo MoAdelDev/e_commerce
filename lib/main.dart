@@ -1,7 +1,9 @@
+import 'package:e_commerce_app/bloc_observer.dart';
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/theme/theme_data/theme_data_light.dart';
-import 'package:e_commerce_app/modules/home/presentation/controller/home_bloc.dart';
+import 'package:e_commerce_app/modules/home/presentation/controller/favorites/favorites_bloc.dart';
+import 'package:e_commerce_app/modules/home/presentation/controller/products/products_bloc.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/route/app_route.dart';
 import 'core/services/service_locator.dart';
 import 'modules/authentication/presentation/screens/login_screen.dart';
+import 'modules/home/presentation/controller/favorites/favorites_event.dart';
+import 'modules/home/presentation/controller/products/products_event.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,12 +41,15 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) => MultiBlocProvider(
         providers: [
-          BlocProvider<HomeBloc>(
+          BlocProvider<ProductsBloc>(
             create: (context) => sl()
               ..add(HomeGetProductsEvent())
               ..add(HomeGetUserEvent())
               ..add(HomeGetCategoriesEvent())
               ..add(HomeGetBannersEvent()),
+          ),
+          BlocProvider<FavoritesBloc>(
+            create: (context) => sl()..add(FavoritesGetEvent()),
           ),
         ],
         child: MaterialApp(
@@ -51,7 +58,7 @@ class MyApp extends StatelessWidget {
           theme: getThemeDataLight(),
           home: CacheHelper.getData(key: 'token').toString() == ''
               ? LoginScreen()
-              : const HomeScreen(),
+              : HomeScreen(),
           onGenerateRoute: (settings) =>
               AppRoute.getInstance().generateRouter(settings),
         ),

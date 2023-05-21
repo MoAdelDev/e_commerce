@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
 import 'package:e_commerce_app/core/network/api_constance.dart';
-import 'package:e_commerce_app/core/network/error_message_model.dart';
+import 'package:e_commerce_app/core/error/error_message_model.dart';
 import 'package:e_commerce_app/modules/authentication/data/models/user_model.dart';
 import 'package:e_commerce_app/modules/home/data/models/banner_model.dart';
 import 'package:e_commerce_app/modules/home/data/models/category_model.dart';
@@ -125,6 +126,7 @@ class HomeDataSource extends HomeBaseDataSource {
       data: {'product_id': productId},
       token: token,
     );
+
     if (result.data['status']) {
       return FavoriteModel.fromJson(
         result.data['data'],

@@ -1,21 +1,21 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce_app/core/theme/components/default_animation.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
-import 'package:e_commerce_app/modules/home/presentation/controller/home_bloc.dart';
+import 'package:e_commerce_app/modules/home/presentation/controller/products/products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../../core/theme/components/default_shimmer.dart';
+import '../controller/products/products_state.dart';
 
 class BannersWidget extends StatelessWidget {
   const BannersWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
         double bannerHeight = MediaQuery.of(context).size.height * 1 / 3.h;
         if (state.bannersState != RequestState.success) {

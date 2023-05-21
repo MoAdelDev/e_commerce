@@ -1,7 +1,7 @@
 import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
 import 'package:e_commerce_app/core/network/api_constance.dart';
-import 'package:e_commerce_app/core/network/error_message_model.dart';
+import 'package:e_commerce_app/core/error/error_message_model.dart';
 
 import '../../domain/entities/login.dart';
 import '../../domain/entities/register.dart';

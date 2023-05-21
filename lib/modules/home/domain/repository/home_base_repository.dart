@@ -9,7 +9,7 @@ import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
 abstract class HomeBaseRepository {
   Future<Either<Failure, List<Product>>> getProducts();
 
-  Future<Either<Failure, List<Banner>>> getBanners();
+  Future<Either<Failure, List<BannerEntity>>> getBanners();
 
   Future<Either<Failure, List<Category>>> getCategories();
 

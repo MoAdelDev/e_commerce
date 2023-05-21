@@ -1,12 +1,13 @@
 import 'package:e_commerce_app/modules/home/data/datasource/home_datasource.dart';
 import 'package:e_commerce_app/modules/home/data/repository/home_repository.dart';
 import 'package:e_commerce_app/modules/home/domain/repository/home_base_repository.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/home_change_favorite_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/home_get_banners_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/home_get_categories_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/home_get_favorites_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/home_get_products_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/home_get_user_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/change_favorite_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/get_banners_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/get_categories_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/get_favorites_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/get_products_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/get_user_usecase.dart';
+import 'package:e_commerce_app/modules/home/presentation/controller/favorites/favorites_bloc.dart';
 import 'package:get_it/get_it.dart';
 import '../../modules/authentication/data/datasource/auth_datasource.dart';
 import '../../modules/authentication/data/repository/auth_repository.dart';
@@ -15,7 +16,7 @@ import '../../modules/authentication/domain/usecases/login_usecase.dart';
 import '../../modules/authentication/domain/usecases/register_usecase.dart';
 import '../../modules/authentication/presentation/controller/login/login_bloc.dart';
 import '../../modules/authentication/presentation/controller/register/register_bloc.dart';
-import '../../modules/home/presentation/controller/home_bloc.dart';
+import '../../modules/home/presentation/controller/products/products_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -24,13 +25,15 @@ class ServiceLocator {
     /// BLOC
     sl.registerFactory<LoginBloc>(() => LoginBloc(sl()));
     sl.registerFactory<RegisterBloc>(() => RegisterBloc(sl()));
-    sl.registerFactory<HomeBloc>(() => HomeBloc(
+    sl.registerFactory<ProductsBloc>(() => ProductsBloc(
           sl(),
           sl(),
           sl(),
           sl(),
           sl(),
         ));
+    sl.registerFactory<FavoritesBloc>(() => FavoritesBloc(sl()));
+
 
     /// DATA SOURCE
     sl.registerLazySingleton<AuthBaseRemoteDataSource>(
@@ -47,17 +50,17 @@ class ServiceLocator {
     ///  USE CASES
     sl.registerLazySingleton<LoginUseCase>(() => LoginUseCase(sl()));
     sl.registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(sl()));
-    sl.registerLazySingleton<HomeGetProductsUseCase>(
-        () => HomeGetProductsUseCase(sl()));
-    sl.registerLazySingleton<HomeGetUserUseCase>(
-        () => HomeGetUserUseCase(sl()));
-    sl.registerLazySingleton<HomeGetBannersUseCase>(
-        () => HomeGetBannersUseCase(sl()));
-    sl.registerLazySingleton<HomeGetCategoriesUseCase>(
-        () => HomeGetCategoriesUseCase(sl()));
-    sl.registerLazySingleton<HomeChangeFavoriteUseCase>(
-        () => HomeChangeFavoriteUseCase(sl()));
-    sl.registerLazySingleton<HomeGetFavoritesUseCase>(
-        () => HomeGetFavoritesUseCase(sl()));
+    sl.registerLazySingleton<GetProductsUseCase>(
+        () => GetProductsUseCase(sl()));
+    sl.registerLazySingleton<GetUserUseCase>(
+        () => GetUserUseCase(sl()));
+    sl.registerLazySingleton<GetBannersUseCase>(
+        () => GetBannersUseCase(sl()));
+    sl.registerLazySingleton<GetCategoriesUseCase>(
+        () => GetCategoriesUseCase(sl()));
+    sl.registerLazySingleton<ChangeFavoriteUseCase>(
+        () => ChangeFavoriteUseCase(sl()));
+    sl.registerLazySingleton<GetFavoritesUseCase>(
+        () => GetFavoritesUseCase(sl()));
   }
 }

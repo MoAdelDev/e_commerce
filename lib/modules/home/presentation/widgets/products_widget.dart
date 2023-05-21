@@ -7,15 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../controller/home_bloc.dart';
+import '../controller/products/products_bloc.dart';
+import '../controller/products/products_event.dart';
+import '../controller/products/products_state.dart';
 
 class ProductsWidget extends StatelessWidget {
   const ProductsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
+        context.read<ProductsBloc>().add(HomeGetProductsEvent());
         if (state.productsState != RequestState.success) {
           return GridView.count(
             crossAxisCount: 2,
@@ -126,7 +129,7 @@ class ProductsWidget extends StatelessWidget {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        context.read<HomeBloc>().add(
+                                        context.read<ProductsBloc>().add(
                                               HomeChangeFavoriteEvent(
                                                   state.products[index].id),
                                             );
