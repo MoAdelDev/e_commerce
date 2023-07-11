@@ -8,7 +8,6 @@ class ErrorMessageModel extends Equatable {
 
   factory ErrorMessageModel.fromJson(Map<String, dynamic> json) =>
       ErrorMessageModel(json['message'], json['status']);
-
   @override
   List<Object> get props => [errorMessage];
 }

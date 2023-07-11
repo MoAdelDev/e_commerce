@@ -43,10 +43,6 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<ProductsBloc>(
             create: (context) => sl()
-              ..add(HomeGetProductsEvent())
-              ..add(HomeGetUserEvent())
-              ..add(HomeGetCategoriesEvent())
-              ..add(HomeGetBannersEvent()),
           ),
           BlocProvider<FavoritesBloc>(
             create: (context) => sl()..add(FavoritesGetEvent()),

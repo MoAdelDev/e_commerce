@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
