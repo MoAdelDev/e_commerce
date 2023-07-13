@@ -1,14 +1,14 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/services/service_locator.dart';
-import '../../../../core/theme/app_string/app_string_en.dart';
-import '../../../../core/theme/components/default_material_button.dart';
-import '../../../../core/theme/components/default_progress_indicator.dart';
-import '../../../../core/theme/components/default_text_form_field.dart';
+import '../../../../core/style/app_string_en.dart';
+import '../../../../core/style/components/default_material_button.dart';
+import '../../../../core/style/components/default_progress_indicator.dart';
+import '../../../../core/style/components/default_text_form_field.dart';
 import '../controller/register/register_bloc.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -27,8 +27,10 @@ class RegisterScreen extends StatelessWidget {
       child: BlocBuilder<RegisterBloc, RegisterState>(
         builder: (context, state) {
           return Scaffold(
+            resizeToAvoidBottomInset: false,
             appBar: AppBar(),
             body: SingleChildScrollView(
+              reverse: true,
               physics: const NeverScrollableScrollPhysics(),
               child: Padding(
                 padding: EdgeInsets.symmetric(
@@ -40,9 +42,9 @@ class RegisterScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        AppStringEn.registerTitleText,
-                        style: Theme.of(context).textTheme.titleMedium,
+                      DefaultAnimatedText(
+                        text: AppStringEn.registerTitleText,
+                        textStyle: Theme.of(context).textTheme.titleMedium,
                       ),
                       SizedBox(
                         height: 30.0.h,
@@ -110,31 +112,36 @@ class RegisterScreen extends StatelessWidget {
                       SizedBox(
                         height: 10.0.h,
                       ),
-                      ConditionalBuilder(
-                        condition: state.registerState != RequestState.loading,
-                        builder: (context) => DefaultButton(
-                            onPressed: () {
-                              // to dismiss keyboard
-                              FocusManager.instance.primaryFocus?.unfocus();
-                              // validate and login user
-                              if (_formKey.currentState!.validate()) {
-                                context.read<RegisterBloc>().add(
-                                      RegisterEvent(
-                                        _nameController.text,
-                                        _emailController.text,
-                                        _phoneController.text,
-                                        _passwordController.text,
-                                      ),
-                                    );
-                              }
-                            },
-                            text: AppStringEn.registerButtonText),
-                        fallback: (context) => Padding(
-                          padding: const EdgeInsets.only(
-                            top: 8.0,
-                          ).r,
-                          child: const Center(
-                            child: DefaultSpinKit(),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom),
+                        child: ConditionalBuilder(
+                          condition:
+                              state.registerState != RequestState.loading,
+                          builder: (context) => DefaultButton(
+                              onPressed: () {
+                                // to dismiss keyboard
+                                FocusManager.instance.primaryFocus?.unfocus();
+                                // validate and login user
+                                if (_formKey.currentState!.validate()) {
+                                  context.read<RegisterBloc>().add(
+                                        RegisterEvent(
+                                          _nameController.text,
+                                          _emailController.text,
+                                          _phoneController.text,
+                                          _passwordController.text,
+                                        ),
+                                      );
+                                }
+                              },
+                              text: AppStringEn.registerButtonText),
+                          fallback: (context) => Padding(
+                            padding: const EdgeInsets.only(
+                              top: 8.0,
+                            ).r,
+                            child: const Center(
+                              child: DefaultSpinKit(),
+                            ),
                           ),
                         ),
                       ),

@@ -51,6 +51,7 @@ dependencies:
   carousel_slider: ^4.2.1
   shimmer: ^2.0.0
   curved_navigation_bar: ^1.0.3
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
@@ -93,7 +94,14 @@ flutter:
     - family: OpenSans
       fonts:
         - asset: assets/fonts/OpenSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/OpenSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/OpenSans-Bold.ttf
           weight: 700
-
-  # For details regarding fonts from package dependencies,
+        - asset: assets/fonts/OpenSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/OpenSans-Italic.ttf
+          weight: 400
+    # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

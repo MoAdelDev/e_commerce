@@ -1,15 +1,18 @@
-import 'package:e_commerce_app/modules/home/data/datasource/home_datasource.dart';
-import 'package:e_commerce_app/modules/home/data/repository/home_repository.dart';
-import 'package:e_commerce_app/modules/home/domain/repository/home_base_repository.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/change_favorite_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/get_banners_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/get_categories_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/get_favorites_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/get_products_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/get_user_usecase.dart';
-import 'package:e_commerce_app/modules/home/domain/usecases/remove_favorite_usecase.dart';
-import 'package:e_commerce_app/modules/home/presentation/controller/favorites/favorites_bloc.dart';
+import 'package:e_commerce_app/modules/shop/data/datasource/home_datasource.dart';
+import 'package:e_commerce_app/modules/shop/data/repository/home_repository.dart';
+import 'package:e_commerce_app/modules/shop/domain/repository/home_base_repository.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/change_favorite_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/get_banners_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/get_categories_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/get_favorites_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/get_product_details_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/get_products_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/get_user_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/remove_favorite_usecase.dart';
+import 'package:e_commerce_app/modules/shop/presentation/controller/favorites/favorites_bloc.dart';
+import 'package:e_commerce_app/modules/shop/presentation/controller/product_details/product_details_bloc.dart';
 import 'package:get_it/get_it.dart';
+
 import '../../modules/authentication/data/datasource/auth_datasource.dart';
 import '../../modules/authentication/data/repository/auth_repository.dart';
 import '../../modules/authentication/domain/repository/authentication_base_repository.dart';
@@ -17,7 +20,7 @@ import '../../modules/authentication/domain/usecases/login_usecase.dart';
 import '../../modules/authentication/domain/usecases/register_usecase.dart';
 import '../../modules/authentication/presentation/controller/login/login_bloc.dart';
 import '../../modules/authentication/presentation/controller/register/register_bloc.dart';
-import '../../modules/home/presentation/controller/products/products_bloc.dart';
+import '../../modules/shop/presentation/controller/products/products_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -39,6 +42,12 @@ class ServiceLocator {
     sl.registerFactory<FavoritesBloc>(
       () => FavoritesBloc(
         sl(),
+        sl(),
+      ),
+    );
+
+    sl.registerFactory<ProductDetailsBloc>(
+      () => ProductDetailsBloc(
         sl(),
       ),
     );
@@ -70,5 +79,7 @@ class ServiceLocator {
         () => GetFavoritesUseCase(sl()));
     sl.registerLazySingleton<RemoveFavoriteUseCase>(
         () => RemoveFavoriteUseCase(sl()));
+    sl.registerLazySingleton<GetProductDetailsUseCase>(
+        () => GetProductDetailsUseCase(sl()));
   }
 }
