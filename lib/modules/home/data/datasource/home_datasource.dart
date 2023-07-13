@@ -22,6 +22,8 @@ abstract class HomeBaseDataSource {
   Future<List<FavoriteModel>> getFavorites();
 
   Future<FavoriteModel> changeFavorite({required productId});
+
+  Future<String> removeFavorites({required favoriteId});
 }
 
 class HomeDataSource extends HomeBaseDataSource {
@@ -134,6 +136,22 @@ class HomeDataSource extends HomeBaseDataSource {
     throw ServerException(
       ErrorMessageModel.fromJson(
         result.data['message'],
+      ),
+    );
+  }
+
+  @override
+  Future<String> removeFavorites({required favoriteId}) async{
+    String? token = await CacheHelper.getData(key: 'token');
+
+    final result = await DioHelper.deleteData(path: '${ApiConstance.favoritesUrl}/$favoriteId', token: token);
+
+    if (result.data['status']) {
+      return result.data['message'].toString();
+    }
+    throw ServerException(
+      ErrorMessageModel.fromJson(
+        result.data,
       ),
     );
   }

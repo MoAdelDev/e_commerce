@@ -6,7 +6,6 @@ import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/theme/components/default_material_button.dart';
 import '../../../../core/theme/components/default_progress_indicator.dart';
@@ -27,6 +26,12 @@ class LoginScreen extends StatelessWidget {
       create: (context) => sl<LoginBloc>(),
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (state.loginState == RequestState.success) {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, homeScreen, (route) => false);
+            }
+          });
           return Scaffold(
             body: SingleChildScrollView(
               physics: const NeverScrollableScrollPhysics(),
@@ -97,7 +102,7 @@ class LoginScreen extends StatelessWidget {
                                 onPressed: () {
                                   // to dismiss keyboard
                                   FocusManager.instance.primaryFocus?.unfocus();
-                                  // validate and login user
+                                  // validate and user login
                                   if (_formKey.currentState!.validate()) {
                                     context.read<LoginBloc>().add(LoginEvent(
                                         _emailController.text,

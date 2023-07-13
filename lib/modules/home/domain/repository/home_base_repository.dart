@@ -18,4 +18,6 @@ abstract class HomeBaseRepository {
   Future<Either<Failure, List<Favorite>>> getFavorites();
 
   Future<Either<Failure, Favorite>> changeFavorite({required productId});
+
+  Future<Either<Failure, String>> removeFavorite({required favoriteId});
 }

@@ -7,6 +7,7 @@ import 'package:e_commerce_app/core/utils/toasts.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../main.dart';
 import '../../../domain/entities/register.dart';
 import '../../../domain/entities/user.dart';
 import '../../../domain/usecases/register_usecase.dart';
@@ -47,7 +48,7 @@ class RegisterBloc extends Bloc<RegisterBaseEvent, RegisterState> {
         registerState: RequestState.error,
       ));
     }, (userData) {
-      user = userData;
+      MyApp.user = userData;
       CacheHelper.saveData(
         key: 'token',
         value: userData.token,

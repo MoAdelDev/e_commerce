@@ -89,4 +89,15 @@ class HomeRepository extends HomeBaseRepository {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, String>> removeFavorite({required favoriteId}) async {
+    try {
+      final result =
+          await homeBaseDataSource.removeFavorites(favoriteId: favoriteId);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
+    }
+  }
 }

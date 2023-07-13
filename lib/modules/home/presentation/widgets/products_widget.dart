@@ -3,6 +3,8 @@ import 'package:e_commerce_app/core/theme/app_color/app_color_light.dart';
 import 'package:e_commerce_app/core/theme/components/default_animation.dart';
 import 'package:e_commerce_app/core/theme/components/default_shimmer.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
+import 'package:e_commerce_app/core/utils/toasts.dart';
+import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -129,13 +131,21 @@ class ProductsWidget extends StatelessWidget {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        context.read<ProductsBloc>().add(
-                                              HomeChangeFavoriteEvent(
-                                                  state.products[index].id),
-                                            );
+                                        if (state.favoriteState ==
+                                            RequestState.loading) {
+                                          showToast(
+                                              msg: 'Please wait...',
+                                              requestState:
+                                                  RequestState.success);
+                                        } else {
+                                          context.read<ProductsBloc>().add(
+                                                HomeChangeFavoriteEvent(
+                                                    state.products[index].id),
+                                              );
+                                        }
                                       },
                                       icon: Icon(
-                                        state.favoriteMap[
+                                        MyApp.favoriteMap[
                                                     state.products[index].id] ??
                                                 false
                                             ? Icons.favorite

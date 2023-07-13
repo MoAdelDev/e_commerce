@@ -7,6 +7,7 @@ import 'package:e_commerce_app/modules/home/domain/usecases/get_categories_useca
 import 'package:e_commerce_app/modules/home/domain/usecases/get_favorites_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/get_products_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/get_user_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/remove_favorite_usecase.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/favorites/favorites_bloc.dart';
 import 'package:get_it/get_it.dart';
 import '../../modules/authentication/data/datasource/auth_datasource.dart';
@@ -25,15 +26,22 @@ class ServiceLocator {
     /// BLOC
     sl.registerFactory<LoginBloc>(() => LoginBloc(sl()));
     sl.registerFactory<RegisterBloc>(() => RegisterBloc(sl()));
-    sl.registerFactory<ProductsBloc>(() => ProductsBloc(
-          sl(),
-          sl(),
-          sl(),
-          sl(),
-          sl(),
-        ));
-    sl.registerFactory<FavoritesBloc>(() => FavoritesBloc(sl()));
-
+    sl.registerFactory<ProductsBloc>(
+      () => ProductsBloc(
+        sl(),
+        sl(),
+        sl(),
+        sl(),
+        sl(),
+        sl(),
+      ),
+    );
+    sl.registerFactory<FavoritesBloc>(
+      () => FavoritesBloc(
+        sl(),
+        sl(),
+      ),
+    );
 
     /// DATA SOURCE
     sl.registerLazySingleton<AuthBaseRemoteDataSource>(
@@ -52,15 +60,15 @@ class ServiceLocator {
     sl.registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(sl()));
     sl.registerLazySingleton<GetProductsUseCase>(
         () => GetProductsUseCase(sl()));
-    sl.registerLazySingleton<GetUserUseCase>(
-        () => GetUserUseCase(sl()));
-    sl.registerLazySingleton<GetBannersUseCase>(
-        () => GetBannersUseCase(sl()));
+    sl.registerLazySingleton<GetUserUseCase>(() => GetUserUseCase(sl()));
+    sl.registerLazySingleton<GetBannersUseCase>(() => GetBannersUseCase(sl()));
     sl.registerLazySingleton<GetCategoriesUseCase>(
         () => GetCategoriesUseCase(sl()));
     sl.registerLazySingleton<ChangeFavoriteUseCase>(
         () => ChangeFavoriteUseCase(sl()));
     sl.registerLazySingleton<GetFavoritesUseCase>(
         () => GetFavoritesUseCase(sl()));
+    sl.registerLazySingleton<RemoveFavoriteUseCase>(
+        () => RemoveFavoriteUseCase(sl()));
   }
 }

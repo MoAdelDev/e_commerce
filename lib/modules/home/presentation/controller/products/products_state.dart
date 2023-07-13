@@ -23,17 +23,12 @@ class ProductsState extends Equatable {
   final List<Product> products;
   final RequestState productsState;
   final String productsError;
-  final Map<int, bool> favoriteMap;
-
-  /// Favorites
-  final List<Favorite> favorites;
-  final RequestState favoritesState;
-  final String favoritesError;
 
   /// Change Favorite
   final Favorite favorite;
   final RequestState favoriteState;
   final String favoriteError;
+  final Map<int, bool> favoriteMap;
 
   /// Banners
   final List<BannerEntity> banners;
@@ -58,6 +53,7 @@ class ProductsState extends Equatable {
       CartsScreen(),
       SettingsScreen(),
     ],
+    this.favoriteMap = const {},
     this.items = const [
       Icon(
         Icons.home,
@@ -72,10 +68,6 @@ class ProductsState extends Equatable {
     this.products = const [],
     this.productsState = RequestState.loading,
     this.productsError = '',
-    this.favoriteMap = const {},
-    this.favorites = const [],
-    this.favoritesState = RequestState.loading,
-    this.favoritesError = '',
     this.favorite = const Favorite(0, 0, 0, 0, 0, '', ''),
     this.favoriteState = RequestState.nothing,
     this.favoriteError = '',
@@ -117,13 +109,9 @@ class ProductsState extends Equatable {
         products: products ?? this.products,
         productsState: productsState ?? this.productsState,
         productsError: productsError ?? this.productsError,
-        favorites: favorites ?? this.favorites,
-        favoritesState: favoritesState ?? this.favoritesState,
-        favoritesError: favoritesError ?? this.favoritesError,
         favorite: favorite ?? this.favorite,
         favoriteState: favoriteState ?? this.favoriteState,
         favoriteError: favoriteError ?? this.favoriteError,
-        favoriteMap: favoriteMap ?? this.favoriteMap,
         banners: banners ?? this.banners,
         bannersState: bannersState ?? this.bannersState,
         bannersError: bannersError ?? this.bannersError,
@@ -133,28 +121,29 @@ class ProductsState extends Equatable {
         user: user ?? this.user,
         userState: userState ?? this.userState,
         userError: userError ?? this.userError,
+        favoriteMap: favoriteMap ?? this.favoriteMap,
       );
 
   @override
   List<Object> get props => [
+        currentIndex,
         screens,
         items,
-        currentIndex,
         products,
         productsState,
         productsError,
-        favoriteMap,
         favorite,
         favoriteState,
         favoriteError,
-        user,
-        userState,
-        userError,
         banners,
         bannersState,
         bannersError,
         categories,
         categoriesState,
         categoriesError,
+        user,
+        favoriteMap,
+        userState,
+        userError,
       ];
 }

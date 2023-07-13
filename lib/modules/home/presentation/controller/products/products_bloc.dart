@@ -1,12 +1,13 @@
 import 'dart:async';
-import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/get_banners_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/get_categories_usecase.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/products/products_event.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/products/products_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../main.dart';
 import '../../../domain/usecases/change_favorite_usecase.dart';
+import '../../../domain/usecases/get_favorites_usecase.dart';
 import '../../../domain/usecases/get_products_usecase.dart';
 import '../../../domain/usecases/get_user_usecase.dart';
 
@@ -16,6 +17,7 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
   final GetBannersUseCase homeGetBannersUseCase;
   final GetCategoriesUseCase homeGetCategoriesUseCase;
   final ChangeFavoriteUseCase homeChangeFavoriteUseCase;
+  final GetFavoritesUseCase getFavoritesUseCase;
 
   ProductsBloc(
     this.homeGetProductsUseCase,
@@ -23,6 +25,7 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
     this.homeGetBannersUseCase,
     this.homeGetCategoriesUseCase,
     this.homeChangeFavoriteUseCase,
+    this.getFavoritesUseCase,
   ) : super(const ProductsState()) {
     on<HomeChangeBottomNavIndexEvent>(_changeCurrentIndex);
     on<HomeGetProductsEvent>(_getProducts);
@@ -32,6 +35,7 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
     on<HomeChangeFavoriteEvent>(_changeFavorite);
   }
 
+  /// Products - Banners - Categories
   FutureOr<void> _getProducts(
       HomeGetProductsEvent event, Emitter<ProductsState> emit) async {
     final result = await homeGetProductsUseCase();
@@ -50,6 +54,8 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
           {product.id: product.inFavorites},
         );
       }
+      MyApp.favoriteMap = favoritesData;
+
       emit(
         state.copyWith(
           products: products,
@@ -70,7 +76,7 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
                 userError: error.message,
               ),
             ), (userData) {
-      user = userData;
+      MyApp.user = userData;
       emit(
         state.copyWith(
           user: userData,
@@ -120,27 +126,29 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
 
   FutureOr<void> _changeFavorite(
       HomeChangeFavoriteEvent event, Emitter<ProductsState> emit) async {
-    state.favoriteMap[event.productId] = !state.favoriteMap[event.productId]!;
-    emit(state.copyWith(favoriteState: RequestState.loading));
+    MyApp.favoriteMap[event.productId] = !MyApp.favoriteMap[event.productId]!;
+    emit(
+      state.copyWith(
+        favoriteState: RequestState.loading,
+      ),
+    );
     final result = await homeChangeFavoriteUseCase(productId: event.productId);
-    result.fold(
-      (error) {
-        state.favoriteMap[event.productId] =
-            !state.favoriteMap[event.productId]!;
-        emit(
-          state.copyWith(
-            favoriteState: RequestState.error,
-            favoriteError: error.message,
-          ),
-        );
-      },
-      (favorite) => emit(
+    result.fold((error) {
+      emit(
+        state.copyWith(
+          favoriteState: RequestState.error,
+          favoriteError: error.message,
+        ),
+      );
+    },
+            (favorite) {
+      emit(
         state.copyWith(
           favorite: favorite,
           favoriteState: RequestState.success,
         ),
-      ),
-    );
+      );
+    });
   }
 
   FutureOr<void> _changeCurrentIndex(
