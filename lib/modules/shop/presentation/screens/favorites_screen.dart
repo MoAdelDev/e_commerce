@@ -22,9 +22,11 @@ class FavoritesScreen extends StatelessWidget {
         create: (context) => sl()..add(FavoritesGetEvent()),
         child: BlocBuilder<FavoritesBloc, FavoritesState>(
           builder: (context, state) {
-            if (state.favoritesState != RequestState.success) {
+            if (state.favoritesState != RequestState.success)
+            {
               return Container();
-            } else {
+            }
+            else {
               if (state.favorites.isEmpty) {
                 return Center(
                     child: DefaultAnimatedText(

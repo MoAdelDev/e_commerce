@@ -18,7 +18,6 @@ class SettingsScreen extends StatelessWidget {
           CacheHelper.saveData(key: 'token', value: '');
           Navigator.pushNamedAndRemoveUntil(context, loginScreen, (route) => false);
         }, text: 'Log out'),
-
       ),
     );
   }

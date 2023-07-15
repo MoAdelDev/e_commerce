@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/product.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../../domain/usecases/get_product_details_usecase.dart';
 
@@ -18,6 +19,7 @@ class ProductDetailsBloc
   ProductDetailsBloc(this.getProductDetailsUseCase)
       : super(const ProductDetailsState()) {
     on<ProductDetailsGetEvent>(_getProduct);
+    on<ProductDetailsChangeTopConstraintEvent>(_changeTopContsraint);
   }
 
   FutureOr<void> _getProduct(
@@ -27,12 +29,19 @@ class ProductDetailsBloc
       (error) => emit(
         state.copyWith(productState: RequestState.error),
       ),
-      (product) => emit(
-        state.copyWith(
-          product: product,
-          productState: RequestState.success,
-        ),
-      ),
+          (product) =>
+          emit(
+            state.copyWith(
+              product: product,
+              productState: RequestState.success,
+            ),
+          ),
     );
+  }
+
+  FutureOr<void> _changeTopContsraint(
+      ProductDetailsChangeTopConstraintEvent event,
+      Emitter<ProductDetailsState> emit) {
+    emit(state.copyWith(top: event.constraints.biggest.height));
   }
 }

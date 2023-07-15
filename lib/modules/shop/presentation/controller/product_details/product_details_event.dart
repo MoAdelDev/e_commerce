@@ -13,3 +13,9 @@ class ProductDetailsGetEvent extends ProductDetailsBaseEvent{
   const ProductDetailsGetEvent(this.productId);
 
 }
+
+class ProductDetailsChangeTopConstraintEvent extends ProductDetailsBaseEvent{
+  final BoxConstraints constraints;
+
+  const ProductDetailsChangeTopConstraintEvent(this.constraints);
+}
