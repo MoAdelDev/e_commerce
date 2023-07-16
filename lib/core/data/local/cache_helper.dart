@@ -1,8 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../modules/authentication/domain/entities/user.dart';
-
-
 class CacheHelper {
   static late final SharedPreferences sharedPreferences;
 
