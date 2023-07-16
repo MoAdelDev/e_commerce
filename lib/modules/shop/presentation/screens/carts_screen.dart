@@ -38,7 +38,7 @@ class CartsScreen extends StatelessWidget {
               );
             }
             return Padding(
-              padding: EdgeInsets.only(bottom: 5.0.r),
+              padding: EdgeInsets.only(bottom: 10.0.r),
               child: ListView.separated(
                 physics: const BouncingScrollPhysics(),
                 itemCount: state.productsCart.length,
@@ -152,8 +152,6 @@ class CartsScreen extends StatelessWidget {
                                               isLoading(state)
                                           ? null
                                           : () {
-                                              print(
-                                                  'Quantity : ${cart.quantity}');
                                               context.read<CartBloc>().add(
                                                     CartUpdateProductsCartEvent(
                                                         cart.id,
@@ -174,7 +172,9 @@ class CartsScreen extends StatelessWidget {
                                     height: 30.h,
                                     child: Center(
                                       child: isLoading(state)
-                                          ? const DefaultSpinKit()
+                                          ? const DefaultSpinKit(
+                                              size: 25,
+                                            )
                                           : Text(
                                               '${MyApp.productCartQuantity[cart.productId]}',
                                               style: Theme.of(context)
@@ -198,8 +198,6 @@ class CartsScreen extends StatelessWidget {
                                       onPressed: isLoading(state)
                                           ? null
                                           : () {
-                                              print(
-                                                  'Quantity : ${cart.quantity}');
                                               context.read<CartBloc>().add(
                                                     CartUpdateProductsCartEvent(
                                                         cart.id,
@@ -223,7 +221,12 @@ class CartsScreen extends StatelessWidget {
                               width: 100.0.w,
                               height: 30.0.h,
                               child: DefaultButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  context.read<CartBloc>().add(
+                                        CartDeleteProductFromCartEvent(
+                                            cart.id, cart.productId),
+                                      );
+                                },
                                 text: 'Remove',
                               ),
                             )
@@ -254,7 +257,8 @@ class CartsScreen extends StatelessWidget {
   }
 
   bool isLoading(CartState state) {
-    if (state.updateState == RequestState.loading) {
+    if (state.updateState == RequestState.loading ||
+        state.deleteState == RequestState.loading) {
       return true;
     }
     return false;

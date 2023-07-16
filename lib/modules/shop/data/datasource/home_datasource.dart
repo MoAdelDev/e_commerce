@@ -33,6 +33,8 @@ abstract class HomeBaseDataSource {
   Future<List<CartModel>> getCarts();
 
   Future<String> updateCart({required int cartId, required int quantity});
+
+  Future<String> deleteProductFromCart({required int cartId});
 }
 
 class HomeDataSource extends HomeBaseDataSource {
@@ -217,6 +219,20 @@ class HomeDataSource extends HomeBaseDataSource {
         path: '${ApiConstance.cartUrl}/$cartId',
         data: {'quantity': quantity},
         token: token);
+
+    if (result.data['status']) {
+      return result.data['message'];
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
+
+  @override
+  Future<String> deleteProductFromCart({
+    required int cartId,
+  }) async {
+    String? token = await CacheHelper.getData(key: 'token');
+    final result = await DioHelper.deleteData(
+        path: '${ApiConstance.cartUrl}/$cartId', token: token);
 
     if (result.data['status']) {
       return result.data['message'];

@@ -150,4 +150,17 @@ class HomeRepository extends HomeBaseRepository {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> deleteProductFromCart(
+      {required int cartId}) async {
+    try {
+      final result = await homeBaseDataSource.deleteProductFromCart(
+        cartId: cartId,
+      );
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
+    }
+  }
 }

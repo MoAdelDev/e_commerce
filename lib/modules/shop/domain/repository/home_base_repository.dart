@@ -30,4 +30,6 @@ abstract class HomeBaseRepository {
 
   Future<Either<Failure, String>> updateCart(
       {required int cartId, required int quantity});
+
+  Future<Either<Failure, String>> deleteProductFromCart({required int cartId});
 }

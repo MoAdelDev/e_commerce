@@ -4,6 +4,7 @@ import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
 import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/cart.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/delete_product_from_carts_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_carts_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/update_cart_usecase.dart';
 import 'package:equatable/equatable.dart';
@@ -15,10 +16,15 @@ part 'cart_state.dart';
 class CartBloc extends Bloc<CartBaseEvent, CartState> {
   final GetProductsCartUseCase getProductsCartUseCase;
   final UpdateCartUseCase updateCartUseCase;
-  CartBloc(this.getProductsCartUseCase, this.updateCartUseCase)
-      : super(const CartState()) {
+  final DeleteProductFromCartUseCase deleteProductFromCartUseCase;
+  CartBloc(
+    this.getProductsCartUseCase,
+    this.updateCartUseCase,
+    this.deleteProductFromCartUseCase,
+  ) : super(const CartState()) {
     on<CartGetProductsCartEvent>(_getProductsCart);
     on<CartUpdateProductsCartEvent>(_updateCart);
+    on<CartDeleteProductFromCartEvent>(_deleteProductFromCart);
   }
 
   FutureOr<void> _getProductsCart(
@@ -70,6 +76,25 @@ class CartBloc extends Bloc<CartBaseEvent, CartState> {
         updateState: RequestState.success,
       ));
       showToast(msg: cartMessage, requestState: RequestState.success);
+    });
+  }
+
+  FutureOr<void> _deleteProductFromCart(
+      CartDeleteProductFromCartEvent event, Emitter<CartState> emit) async {
+    emit(state.copyWith(
+      deleteState: RequestState.loading,
+    ));
+    final result = await deleteProductFromCartUseCase(cartId: event.cartId);
+    result.fold((e) {
+      emit(state.copyWith(
+          deleteState: RequestState.error, deleteError: e.message));
+      showToast(msg: e.message, requestState: RequestState.error);
+    }, (deleteMEssage) {
+      add(CartGetProductsCartEvent());
+      MyApp.productCartQuantity[event.productId] = 0;
+      emit(state.copyWith(
+          deleteState: RequestState.error, deleteCartState: deleteMEssage));
+      showToast(msg: deleteMEssage, requestState: RequestState.success);
     });
   }
 }

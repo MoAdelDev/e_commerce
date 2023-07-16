@@ -9,6 +9,10 @@ class CartState extends Equatable {
   final RequestState updateState;
   final String updateError;
 
+  final String deleteCartState;
+  final RequestState deleteState;
+  final String deleteError;
+
   const CartState({
     this.productsCart = const [],
     this.productsCartState = RequestState.loading,
@@ -16,6 +20,9 @@ class CartState extends Equatable {
     this.updateCartState = '',
     this.updateState = RequestState.nothing,
     this.updateError = '',
+    this.deleteCartState = '',
+    this.deleteState = RequestState.nothing,
+    this.deleteError = '',
   });
 
   CartState copyWith(
@@ -24,7 +31,10 @@ class CartState extends Equatable {
           String? cartError,
           String? updateCartState,
           RequestState? updateState,
-          String? updateError}) =>
+          String? updateError,
+          String? deleteCartState,
+          RequestState? deleteState,
+          String? deleteError}) =>
       CartState(
         productsCart: productsCart ?? this.productsCart,
         productsCartState: productsCartState ?? this.productsCartState,
@@ -32,6 +42,9 @@ class CartState extends Equatable {
         updateCartState: updateCartState ?? this.updateCartState,
         updateState: updateState ?? this.updateState,
         updateError: updateError ?? this.updateError,
+        deleteCartState: deleteCartState ?? this.deleteCartState,
+        deleteState: deleteState ?? this.deleteState,
+        deleteError: deleteError ?? this.deleteError,
       );
 
   @override
@@ -42,5 +55,8 @@ class CartState extends Equatable {
         updateCartState,
         updateState,
         updateError,
+        deleteCartState,
+        deleteError,
+        deleteState
       ];
 }

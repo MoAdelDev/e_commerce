@@ -3,6 +3,7 @@ import 'package:e_commerce_app/modules/shop/data/repository/home_repository.dart
 import 'package:e_commerce_app/modules/shop/domain/repository/home_base_repository.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/add_product_to_cart_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/change_favorite_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/delete_product_from_carts_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_banners_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_carts_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_categories_usecase.dart';
@@ -62,6 +63,7 @@ class ServiceLocator {
       () => CartBloc(
         sl(),
         sl(),
+        sl(),
       ),
     );
 
@@ -99,5 +101,7 @@ class ServiceLocator {
     sl.registerLazySingleton<GetProductsCartUseCase>(
         () => GetProductsCartUseCase(sl()));
     sl.registerLazySingleton<UpdateCartUseCase>(() => UpdateCartUseCase(sl()));
+    sl.registerLazySingleton<DeleteProductFromCartUseCase>(
+        () => DeleteProductFromCartUseCase(sl()));
   }
 }

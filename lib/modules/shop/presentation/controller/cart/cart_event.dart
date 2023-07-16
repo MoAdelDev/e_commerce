@@ -16,3 +16,10 @@ class CartUpdateProductsCartEvent extends CartBaseEvent {
 
   const CartUpdateProductsCartEvent(this.cartId, this.quantity, this.productId);
 }
+
+class CartDeleteProductFromCartEvent extends CartBaseEvent {
+  final int cartId;
+  final int productId;
+
+  const CartDeleteProductFromCartEvent(this.cartId, this.productId);
+}
