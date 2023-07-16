@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../main.dart';
 import '../../../domain/usecases/change_favorite_usecase.dart';
+import '../../../domain/usecases/get_carts_usecase.dart';
 import '../../../domain/usecases/get_favorites_usecase.dart';
 import '../../../domain/usecases/get_products_usecase.dart';
 import '../../../domain/usecases/get_user_usecase.dart';
@@ -20,6 +21,7 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
   final GetCategoriesUseCase homeGetCategoriesUseCase;
   final ChangeFavoriteUseCase homeChangeFavoriteUseCase;
   final GetFavoritesUseCase getFavoritesUseCase;
+  final GetCartsUseCase getCartsUseCase;
 
   ProductsBloc(
     this.homeGetProductsUseCase,
@@ -28,6 +30,7 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
     this.homeGetCategoriesUseCase,
     this.homeChangeFavoriteUseCase,
     this.getFavoritesUseCase,
+    this.getCartsUseCase,
   ) : super(const ProductsState()) {
     on<HomeChangeBottomNavIndexEvent>(_changeCurrentIndex);
     on<HomeGetProductsEvent>(_getProducts);
@@ -35,6 +38,7 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
     on<HomeGetCategoriesEvent>(_getCategories);
     on<HomeGetUserEvent>(_getUser);
     on<HomeChangeFavoriteEvent>(_changeFavorite);
+    on<HomeGetCartsEvent>(_getCarts);
   }
 
   /// Products - Banners - Categories
@@ -43,21 +47,22 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
     final result = await homeGetProductsUseCase();
 
     result.fold(
-        (error) => emit(
+            (error) => emit(
               state.copyWith(
                 productsState: RequestState.error,
                 productsError: error.message,
               ),
-            ), (products) {
-      // fill favorite map
+            ), (products) async {
+      // fill favorite map and cart map
       Map<int, bool> favoritesData = {};
       for (var product in products) {
         favoritesData.addAll(
           {product.id: product.inFavorites},
         );
+        MyApp.productCartQuantity.addAll({product.id : 0});
       }
       MyApp.favoriteMap = favoritesData;
-
+      add(HomeGetCartsEvent());
       emit(
         state.copyWith(
           products: products,
@@ -155,5 +160,18 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
         currentIndex: event.index,
       ),
     );
+  }
+
+  FutureOr<void> _getCarts(
+      HomeGetCartsEvent event, Emitter<ProductsState> emit) async {
+    final result = await getCartsUseCase();
+    result.fold(
+        (e) => emit(state.copyWith(
+            cartsState: RequestState.error, cartsError: e.message)), (carts) {
+      for (var cart in carts) {
+        MyApp.productCartQuantity.addAll({cart.productId: cart.quantity});
+      }
+      emit(state.copyWith(carts: carts, cartsState: RequestState.success));
+    });
   }
 }

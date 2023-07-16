@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/core/error/failure.dart';
 import 'package:e_commerce_app/modules/authentication/domain/entities/user.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/banner.dart';
+import 'package:e_commerce_app/modules/shop/domain/entities/cart.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/category.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/favorite.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/product.dart';
@@ -22,5 +23,11 @@ abstract class HomeBaseRepository {
   Future<Either<Failure, String>> removeFavorite({required favoriteId});
 
   Future<Either<Failure, Product>> getProductDetails({required productId});
+
+  Future<Either<Failure, String>> addProductToCart({required productId});
+
+  Future<Either<Failure, List<Cart>>> getCarts();
+
+
 
 }

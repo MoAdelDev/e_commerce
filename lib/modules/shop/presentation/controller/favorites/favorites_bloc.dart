@@ -1,10 +1,8 @@
 import 'dart:async';
-
-import 'package:bloc/bloc.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
 import 'package:e_commerce_app/main.dart';
 import 'package:equatable/equatable.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/enums.dart';
 import '../../../domain/entities/favorite.dart';
 import '../../../domain/usecases/get_favorites_usecase.dart';

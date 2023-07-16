@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/enums.dart';
 import '../../../../authentication/domain/entities/user.dart';
 import '../../../domain/entities/banner.dart';
+import '../../../domain/entities/cart.dart';
 import '../../../domain/entities/category.dart';
 import '../../../domain/entities/favorite.dart';
 import '../../../domain/entities/product.dart';
@@ -44,6 +45,11 @@ class ProductsState extends Equatable {
   final RequestState userState;
   final String userError;
 
+  /// Carts
+  final List<Cart> carts;
+  final RequestState cartsState;
+  final String cartsError;
+
   const ProductsState({
     this.screens = const [
       ProductsScreen(),
@@ -78,6 +84,9 @@ class ProductsState extends Equatable {
     this.user = const User(0, '', '', '', '', ''),
     this.userState = RequestState.loading,
     this.userError = '',
+    this.carts = const [],
+    this.cartsState = RequestState.loading,
+    this.cartsError = '',
   });
 
   ProductsState copyWith({
@@ -100,6 +109,9 @@ class ProductsState extends Equatable {
     User? user,
     RequestState? userState,
     String? userError,
+    List<Cart>? carts,
+    RequestState? cartsState,
+    String? cartsError,
   }) =>
       ProductsState(
         currentIndex: currentIndex ?? this.currentIndex,
@@ -118,6 +130,9 @@ class ProductsState extends Equatable {
         user: user ?? this.user,
         userState: userState ?? this.userState,
         userError: userError ?? this.userError,
+        carts: carts ?? this.carts,
+        cartsState: cartsState ?? this.cartsState,
+        cartsError: cartsError ?? this.cartsError,
       );
 
   @override
@@ -140,5 +155,8 @@ class ProductsState extends Equatable {
         user,
         userState,
         userError,
+        carts,
+        cartsState,
+        cartsError,
       ];
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'colors.dart';
 import 'fonts.dart';
@@ -66,14 +67,18 @@ ThemeData lightTheme(context) => ThemeData(
           color: AppColorLight.onPrimaryColor,
         ),
       ),
-      appBarTheme: const AppBarTheme(
-        titleTextStyle: TextStyle(
+      appBarTheme: AppBarTheme(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: AppColorLight.primaryColor,
+          statusBarIconBrightness: Brightness.dark,
+        ),
+        titleTextStyle: const TextStyle(
           fontSize: 25.0,
           color: AppColorLight.onPrimaryColor,
           fontFamily: AppFonts.regularFont,
         ),
         elevation: 3.0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: AppColorLight.onPrimaryColor,
         ),
         titleSpacing: 5.0,

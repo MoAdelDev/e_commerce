@@ -19,3 +19,9 @@ class ProductDetailsChangeTopConstraintEvent extends ProductDetailsBaseEvent{
 
   const ProductDetailsChangeTopConstraintEvent(this.constraints);
 }
+
+class ProductDetailsAddProductToCartEvent extends ProductDetailsBaseEvent{
+  final int productId;
+
+  const ProductDetailsAddProductToCartEvent(this.productId);
+}

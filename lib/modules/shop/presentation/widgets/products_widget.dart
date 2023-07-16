@@ -20,7 +20,7 @@ class ProductsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
-        if (state.productsState != RequestState.success) {
+        if (state.productsState != RequestState.success && state.cartsState != RequestState.success) {
           return GridView.count(
             crossAxisCount: 2,
             mainAxisSpacing: 1.0,
@@ -75,14 +75,19 @@ class ProductsWidget extends StatelessWidget {
                               ),
                               if (state.products[index].discount != 0)
                                 Container(
-                                  color: Colors.red,
+                                  color: Theme.of(context).colorScheme.primary,
                                   padding: const EdgeInsets.symmetric(
-                                          horizontal: 5.0)
+                                          horizontal: 5.0, vertical: 3.0)
                                       .r,
                                   child: Text(
                                     'DISCOUNT',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12.0.sp),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary)
                                   ),
                                 )
                             ],

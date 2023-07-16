@@ -18,16 +18,9 @@ class DefaultButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0).r),
       child: MaterialButton(
         onPressed: onPressed,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0).r,
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 18.0.sp,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+        child: Text(
+          text,
+          style: Theme.of(context).textTheme.labelLarge,
         ),
       ),
     );

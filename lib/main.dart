@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget {
   final String? token;
   static late User user;
   static Map<int, bool> favoriteMap = {};
+  static Map<int, int> productCartQuantity = {};
+
   const MyApp({super.key, required this.token});
 
   // This widget is the root of your application.

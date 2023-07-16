@@ -27,3 +27,6 @@ class HomeChangeFavoriteEvent extends ProductsBaseEvent {
 
   const HomeChangeFavoriteEvent(this.productId);
 }
+
+class HomeGetCartsEvent extends ProductsBaseEvent {}
+

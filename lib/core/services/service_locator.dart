@@ -1,8 +1,10 @@
 import 'package:e_commerce_app/modules/shop/data/datasource/home_datasource.dart';
 import 'package:e_commerce_app/modules/shop/data/repository/home_repository.dart';
 import 'package:e_commerce_app/modules/shop/domain/repository/home_base_repository.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/add_product_to_cart_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/change_favorite_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_banners_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/get_carts_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_categories_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_favorites_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_product_details_usecase.dart';
@@ -10,7 +12,6 @@ import 'package:e_commerce_app/modules/shop/domain/usecases/get_products_usecase
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_user_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/remove_favorite_usecase.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/favorites/favorites_bloc.dart';
-import 'package:e_commerce_app/modules/shop/presentation/controller/product_details/product_details_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../modules/authentication/data/datasource/auth_datasource.dart';
@@ -20,6 +21,7 @@ import '../../modules/authentication/domain/usecases/login_usecase.dart';
 import '../../modules/authentication/domain/usecases/register_usecase.dart';
 import '../../modules/authentication/presentation/controller/login/login_bloc.dart';
 import '../../modules/authentication/presentation/controller/register/register_bloc.dart';
+import '../../modules/shop/presentation/controller/product_details/product_details_bloc.dart';
 import '../../modules/shop/presentation/controller/products/products_bloc.dart';
 
 final sl = GetIt.instance;
@@ -37,6 +39,7 @@ class ServiceLocator {
         sl(),
         sl(),
         sl(),
+        sl(),
       ),
     );
     sl.registerFactory<FavoritesBloc>(
@@ -48,6 +51,7 @@ class ServiceLocator {
 
     sl.registerFactory<ProductDetailsBloc>(
       () => ProductDetailsBloc(
+        sl(),
         sl(),
       ),
     );
@@ -81,5 +85,8 @@ class ServiceLocator {
         () => RemoveFavoriteUseCase(sl()));
     sl.registerLazySingleton<GetProductDetailsUseCase>(
         () => GetProductDetailsUseCase(sl()));
+    sl.registerLazySingleton<AddProductToCartUseCase>(
+        () => AddProductToCartUseCase(sl()));
+    sl.registerLazySingleton<GetCartsUseCase>(() => GetCartsUseCase(sl()));
   }
 }

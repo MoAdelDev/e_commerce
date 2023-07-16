@@ -8,6 +8,7 @@ import 'package:e_commerce_app/modules/shop/data/models/banner_model.dart';
 import 'package:e_commerce_app/modules/shop/data/models/category_model.dart';
 import 'package:e_commerce_app/modules/shop/data/models/product_model.dart';
 
+import '../models/cart_model.dart';
 import '../models/favorite_model.dart';
 
 abstract class HomeBaseDataSource {
@@ -26,6 +27,10 @@ abstract class HomeBaseDataSource {
   Future<String> removeFavorites({required favoriteId});
 
   Future<ProductModel> getProductDetails({required productId});
+
+  Future<String> addProductToCart({required productId});
+
+  Future<List<CartModel>> getCarts();
 }
 
 class HomeDataSource extends HomeBaseDataSource {
@@ -164,9 +169,40 @@ class HomeDataSource extends HomeBaseDataSource {
     final result = await DioHelper.getData(
         path: '${ApiConstance.productsUrl}/$productId', token: token);
 
-    if(result.data['status']){
+    if (result.data['status']) {
       return ProductModel.fromJson(result.data['data']);
     }
     throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
+
+  @override
+  Future<String> addProductToCart({required productId}) async {
+    String? token = await CacheHelper.getData(key: 'token');
+    final result = await DioHelper.postData(
+      path: ApiConstance.cartUrl,
+      data: {'product_id': productId},
+      token: token,
+    );
+    if (result.data['status']) {
+      return result.data['message'];
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
+
+  @override
+  Future<List<CartModel>> getCarts() async {
+    String? token = await CacheHelper.getData(key: 'token');
+    final result =
+        await DioHelper.getData(path: ApiConstance.cartUrl, token: token);
+    if (result.data['status']) {
+      return List<CartModel>.from(
+        (result.data['data']['cart_items'] as List).map(
+          (e) => CartModel.fromJson(e),
+        ),
+      );
+    }
+    throw ServerException(
+      ErrorMessageModel.fromJson(result.data['message']),
+    );
   }
 }
