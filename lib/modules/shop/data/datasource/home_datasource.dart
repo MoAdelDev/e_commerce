@@ -30,7 +30,7 @@ abstract class HomeBaseDataSource {
 
   Future<String> addProductToCart({required productId});
 
-  Future<List<CartModel>> getCarts();
+  Future<CartModel> getCarts();
 
   Future<String> updateCart({required int cartId, required int quantity});
 
@@ -195,16 +195,12 @@ class HomeDataSource extends HomeBaseDataSource {
   }
 
   @override
-  Future<List<CartModel>> getCarts() async {
+  Future<CartModel> getCarts() async {
     String? token = await CacheHelper.getData(key: 'token');
     final result =
         await DioHelper.getData(path: ApiConstance.cartUrl, token: token);
     if (result.data['status']) {
-      return List<CartModel>.from(
-        (result.data['data']['cart_items'] as List).map(
-          (e) => CartModel.fromJson(e),
-        ),
-      );
+      return CartModel.fromJson(result.data['data']);
     }
     throw ServerException(
       ErrorMessageModel.fromJson(result.data['message']),

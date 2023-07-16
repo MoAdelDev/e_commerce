@@ -46,7 +46,7 @@ class ProductsState extends Equatable {
   final String userError;
 
   /// Carts
-  final List<Cart> carts;
+  final List<ProductCart> carts;
   final RequestState cartsState;
   final String cartsError;
 
@@ -109,7 +109,7 @@ class ProductsState extends Equatable {
     User? user,
     RequestState? userState,
     String? userError,
-    List<Cart>? carts,
+    List<ProductCart>? carts,
     RequestState? cartsState,
     String? cartsError,
   }) =>

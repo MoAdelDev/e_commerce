@@ -1,7 +1,7 @@
 part of 'cart_bloc.dart';
 
 class CartState extends Equatable {
-  final List<Cart> productsCart;
+  final Cart cart;
   final RequestState productsCartState;
   final String cartError;
 
@@ -14,7 +14,7 @@ class CartState extends Equatable {
   final String deleteError;
 
   const CartState({
-    this.productsCart = const [],
+    this.cart = const Cart([], 0.0),
     this.productsCartState = RequestState.loading,
     this.cartError = '',
     this.updateCartState = '',
@@ -26,7 +26,7 @@ class CartState extends Equatable {
   });
 
   CartState copyWith(
-          {List<Cart>? productsCart,
+          {Cart? cart,
           RequestState? productsCartState,
           String? cartError,
           String? updateCartState,
@@ -36,7 +36,7 @@ class CartState extends Equatable {
           RequestState? deleteState,
           String? deleteError}) =>
       CartState(
-        productsCart: productsCart ?? this.productsCart,
+        cart: cart ?? this.cart,
         productsCartState: productsCartState ?? this.productsCartState,
         cartError: cartError ?? this.cartError,
         updateCartState: updateCartState ?? this.updateCartState,
@@ -49,7 +49,7 @@ class CartState extends Equatable {
 
   @override
   List<Object?> get props => [
-        productsCart,
+        cart,
         productsCartState,
         cartError,
         updateCartState,

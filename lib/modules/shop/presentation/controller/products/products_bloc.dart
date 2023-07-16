@@ -168,10 +168,11 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
     result.fold(
         (e) => emit(state.copyWith(
             cartsState: RequestState.error, cartsError: e.message)), (carts) {
-      for (var cart in carts) {
+      for (var cart in carts.products) {
         MyApp.productCartQuantity.addAll({cart.productId: cart.quantity});
       }
-      emit(state.copyWith(carts: carts, cartsState: RequestState.success));
+      emit(state.copyWith(
+          carts: carts.products, cartsState: RequestState.success));
     });
   }
 }

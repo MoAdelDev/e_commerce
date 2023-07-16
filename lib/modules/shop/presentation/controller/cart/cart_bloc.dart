@@ -42,10 +42,8 @@ class CartBloc extends Bloc<CartBaseEvent, CartState> {
           productsCartState: RequestState.error,
         ),
       ),
-      (productsCart) => emit(
-        state.copyWith(
-            productsCartState: RequestState.success,
-            productsCart: productsCart),
+      (cart) => emit(
+        state.copyWith(productsCartState: RequestState.success, cart: cart),
       ),
     );
     emit(

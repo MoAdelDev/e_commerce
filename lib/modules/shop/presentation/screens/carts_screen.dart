@@ -30,7 +30,7 @@ class CartsScreen extends StatelessWidget {
             if (state.productsCartState != RequestState.success) {
               return const Center(child: DefaultSpinKit());
             }
-            if (state.productsCart.isEmpty) {
+            if (state.cart.products.isEmpty) {
               return Center(
                 child: DefaultAnimatedText(
                     text: 'Not Products Cart yet',
@@ -38,216 +38,231 @@ class CartsScreen extends StatelessWidget {
               );
             }
             return Padding(
-              padding: EdgeInsets.only(bottom: 10.0.r),
-              child: ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemCount: state.productsCart.length,
-                itemBuilder: (context, index) {
-                  Cart cart = state.productsCart[index];
-                  return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0.r),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+              padding:
+                  EdgeInsets.symmetric(horizontal: 20.0.r, vertical: 10.0.r),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.separated(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: state.cart.products.length,
+                      itemBuilder: (context, index) {
+                        ProductCart cart = state.cart.products[index];
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              height: 100.0.h,
-                              width: 100.0.w,
-                              child: CachedNetworkImage(
-                                imageUrl: cart.image,
-                                errorWidget: (context, url, error) =>
-                                    const DefaultShimmer(),
-                                placeholder: (context, url) =>
-                                    const DefaultShimmer(),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5.0.w,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                        vertical: 8.0, horizontal: 8.0)
-                                    .r,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      cart.name,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                    ),
-                                    SizedBox(
-                                      height: 8.0.h,
-                                    ),
-                                    Row(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 100.0.h,
+                                  width: 100.0.w,
+                                  child: CachedNetworkImage(
+                                    imageUrl: cart.image,
+                                    errorWidget: (context, url, error) =>
+                                        const DefaultShimmer(),
+                                    placeholder: (context, url) =>
+                                        const DefaultShimmer(),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5.0.w,
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                            vertical: 8.0, horizontal: 8.0)
+                                        .r,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'EGP ${cart.price.toString()}',
+                                          cart.name,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .bodySmall
-                                              ?.copyWith(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .primary,
-                                              ),
+                                              .bodyMedium,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
                                         ),
                                         SizedBox(
-                                          width: 5.0.w,
+                                          height: 8.0.h,
                                         ),
-                                        if (cart.discount != 0)
-                                          Text(
-                                            'EGP ${cart.oldPrice.toString()}',
-                                            style: TextStyle(
-                                                fontSize: 12.sp,
-                                                color: Colors.grey,
-                                                decoration:
-                                                    TextDecoration.lineThrough),
-                                          ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 3.0.h,
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              width: 123.6.w,
-                              height: 30.0.h,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0).r,
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 40.0.w,
-                                    height: 30.0.h,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10.0.r),
-                                        bottomLeft: Radius.circular(10.0.r),
-                                      ),
-                                    ),
-                                    child: MaterialButton(
-                                      onPressed: MyApp.productCartQuantity[
-                                                      cart.productId] ==
-                                                  1 ||
-                                              isLoading(state)
-                                          ? null
-                                          : () {
-                                              context.read<CartBloc>().add(
-                                                    CartUpdateProductsCartEvent(
-                                                        cart.id,
-                                                        cart.quantity - 1,
-                                                        cart.productId),
-                                                  );
-                                            },
-                                      child: Text(
-                                        '-',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelLarge,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 40.0.h,
-                                    height: 30.h,
-                                    child: Center(
-                                      child: isLoading(state)
-                                          ? const DefaultSpinKit(
-                                              size: 25,
-                                            )
-                                          : Text(
-                                              '${MyApp.productCartQuantity[cart.productId]}',
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'EGP ${cart.price.toString()}',
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .bodyMedium,
+                                                  .bodySmall
+                                                  ?.copyWith(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .primary,
+                                                  ),
                                             ),
+                                            SizedBox(
+                                              width: 5.0.w,
+                                            ),
+                                            if (cart.discount != 0)
+                                              Text(
+                                                'EGP ${cart.oldPrice.toString()}',
+                                                style: TextStyle(
+                                                    fontSize: 12.sp,
+                                                    color: Colors.grey,
+                                                    decoration: TextDecoration
+                                                        .lineThrough),
+                                              ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  Container(
-                                    width: 40.0.w,
-                                    height: 30.0.h,
-                                    decoration: BoxDecoration(
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 3.0.h,
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 123.6.w,
+                                  height: 30.0.h,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
                                       color:
                                           Theme.of(context).colorScheme.primary,
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(10.0.r),
-                                        bottomRight: Radius.circular(10.0.r),
-                                      ),
                                     ),
-                                    child: MaterialButton(
-                                      onPressed: isLoading(state)
-                                          ? null
-                                          : () {
-                                              context.read<CartBloc>().add(
-                                                    CartUpdateProductsCartEvent(
-                                                        cart.id,
-                                                        cart.quantity + 1,
-                                                        cart.productId),
-                                                  );
-                                            },
-                                      child: Text(
-                                        '+',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelLarge,
-                                      ),
-                                    ),
+                                    borderRadius: BorderRadius.circular(12.0).r,
                                   ),
-                                ],
-                              ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 40.0.w,
+                                        height: 30.0.h,
+                                        decoration: BoxDecoration(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10.0.r),
+                                            bottomLeft: Radius.circular(10.0.r),
+                                          ),
+                                        ),
+                                        child: MaterialButton(
+                                          onPressed: MyApp.productCartQuantity[
+                                                          cart.productId] ==
+                                                      1 ||
+                                                  isLoading(state)
+                                              ? null
+                                              : () {
+                                                  context.read<CartBloc>().add(
+                                                        CartUpdateProductsCartEvent(
+                                                            cart.id,
+                                                            cart.quantity - 1,
+                                                            cart.productId),
+                                                      );
+                                                },
+                                          child: Text(
+                                            '-',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .labelLarge,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 40.0.h,
+                                        height: 30.h,
+                                        child: Center(
+                                          child: isLoading(state)
+                                              ? const DefaultSpinKit(
+                                                  size: 25,
+                                                )
+                                              : Text(
+                                                  '${MyApp.productCartQuantity[cart.productId]}',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyMedium,
+                                                ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 40.0.w,
+                                        height: 30.0.h,
+                                        decoration: BoxDecoration(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                          borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(10.0.r),
+                                            bottomRight:
+                                                Radius.circular(10.0.r),
+                                          ),
+                                        ),
+                                        child: MaterialButton(
+                                          onPressed: isLoading(state)
+                                              ? null
+                                              : () {
+                                                  context.read<CartBloc>().add(
+                                                        CartUpdateProductsCartEvent(
+                                                            cart.id,
+                                                            cart.quantity + 1,
+                                                            cart.productId),
+                                                      );
+                                                },
+                                          child: Text(
+                                            '+',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .labelLarge,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const Spacer(),
+                                SizedBox(
+                                  width: 100.0.w,
+                                  height: 30.0.h,
+                                  child: DefaultButton(
+                                    onPressed: () {
+                                      context.read<CartBloc>().add(
+                                            CartDeleteProductFromCartEvent(
+                                                cart.id, cart.productId),
+                                          );
+                                    },
+                                    text: 'Remove',
+                                  ),
+                                )
+                              ],
                             ),
-                            const Spacer(),
-                            SizedBox(
-                              width: 100.0.w,
-                              height: 30.0.h,
-                              child: DefaultButton(
-                                onPressed: () {
-                                  context.read<CartBloc>().add(
-                                        CartDeleteProductFromCartEvent(
-                                            cart.id, cart.productId),
-                                      );
-                                },
-                                text: 'Remove',
-                              ),
-                            )
                           ],
-                        ),
-                      ],
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0).r,
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Divider(
+                              color: Colors.grey[400],
+                              height: 1,
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0).r,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Divider(
-                        color: Colors.grey[400],
-                        height: 1,
-                      ),
-                    ),
-                  );
-                },
+                  ),
+                  SizedBox(
+                    height: 10.0.h,
+                  ),
+                  DefaultButton(
+                      onPressed: () {},
+                      text: 'Checkout (EGP ${state.cart.totalPrice})')
+                ],
               ),
             );
           },

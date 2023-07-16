@@ -3,8 +3,8 @@ import 'package:e_commerce_app/core/error/failure.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
 import 'package:e_commerce_app/modules/authentication/domain/entities/user.dart';
 import 'package:e_commerce_app/modules/shop/data/datasource/home_datasource.dart';
+import 'package:e_commerce_app/modules/shop/data/models/cart_model.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/banner.dart';
-import 'package:e_commerce_app/modules/shop/domain/entities/cart.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/category.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/favorite.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/product.dart';
@@ -128,7 +128,7 @@ class HomeRepository extends HomeBaseRepository {
   }
 
   @override
-  Future<Either<Failure, List<Cart>>> getCart() async {
+  Future<Either<Failure, CartModel>> getCart() async {
     try {
       final result = await homeBaseDataSource.getCarts();
       return Right(result);

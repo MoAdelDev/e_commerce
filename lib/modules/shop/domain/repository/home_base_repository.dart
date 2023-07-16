@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/core/error/failure.dart';
 import 'package:e_commerce_app/modules/authentication/domain/entities/user.dart';
+import 'package:e_commerce_app/modules/shop/data/models/cart_model.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/banner.dart';
-import 'package:e_commerce_app/modules/shop/domain/entities/cart.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/category.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/favorite.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/product.dart';
@@ -26,7 +26,7 @@ abstract class HomeBaseRepository {
 
   Future<Either<Failure, String>> addProductToCart({required productId});
 
-  Future<Either<Failure, List<Cart>>> getCart();
+  Future<Either<Failure, CartModel>> getCart();
 
   Future<Either<Failure, String>> updateCart(
       {required int cartId, required int quantity});
