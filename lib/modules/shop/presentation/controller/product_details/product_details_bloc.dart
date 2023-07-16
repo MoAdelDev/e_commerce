@@ -22,7 +22,7 @@ class ProductDetailsBloc
     this.addProductToCartUseCase,
   ) : super(const ProductDetailsState()) {
     on<ProductDetailsGetEvent>(_getProduct);
-    on<ProductDetailsAddProductToCartEvent>(_addProductToCart);
+    on<ProductDetailsAddOrRemoveProductToCartEvent>(_addOrRemoveProductToCart);
     on<ProductDetailsChangeTopConstraintEvent>(_changeTopContsraint);
   }
 
@@ -48,13 +48,14 @@ class ProductDetailsBloc
     emit(state.copyWith(top: event.constraints.biggest.height));
   }
 
-  FutureOr<void> _addProductToCart(ProductDetailsAddProductToCartEvent event,
+  FutureOr<void> _addOrRemoveProductToCart(
+      ProductDetailsAddOrRemoveProductToCartEvent event,
       Emitter<ProductDetailsState> emit) async {
     emit(state.copyWith(addProductToCartState: RequestState.loading));
     final result = await addProductToCartUseCase(productId: event.productId);
     result.fold((error) {
       showToast(
-          msg: 'Failed to add product to cart, try again',
+          msg: 'Failed to add or remove product to cart, try again',
           requestState: RequestState.error);
       emit(
         state.copyWith(
@@ -63,8 +64,13 @@ class ProductDetailsBloc
         ),
       );
     }, (cartMessage) {
-      MyApp.productCartQuantity[event.productId] =
-          (MyApp.productCartQuantity[event.productId] ?? 0) + 1;
+      if (cartMessage == 'Added Successfully' ||
+          cartMessage == 'تمت الإضافة بنجاح') {
+        MyApp.productCartQuantity[event.productId] = 1;
+      } else if (cartMessage == 'تم الحذف بنجاح' ||
+          cartMessage == 'Deleted Successfully') {
+        MyApp.productCartQuantity[event.productId] = 0;
+      }
       emit(state.copyWith(addProductToCartState: RequestState.success));
       showToast(msg: cartMessage, requestState: RequestState.success);
     });

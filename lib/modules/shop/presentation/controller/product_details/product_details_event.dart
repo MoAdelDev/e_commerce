@@ -7,21 +7,21 @@ abstract class ProductDetailsBaseEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class ProductDetailsGetEvent extends ProductDetailsBaseEvent{
+class ProductDetailsGetEvent extends ProductDetailsBaseEvent {
   final int productId;
 
   const ProductDetailsGetEvent(this.productId);
-
 }
 
-class ProductDetailsChangeTopConstraintEvent extends ProductDetailsBaseEvent{
+class ProductDetailsChangeTopConstraintEvent extends ProductDetailsBaseEvent {
   final BoxConstraints constraints;
 
   const ProductDetailsChangeTopConstraintEvent(this.constraints);
 }
 
-class ProductDetailsAddProductToCartEvent extends ProductDetailsBaseEvent{
+class ProductDetailsAddOrRemoveProductToCartEvent
+    extends ProductDetailsBaseEvent {
   final int productId;
 
-  const ProductDetailsAddProductToCartEvent(this.productId);
+  const ProductDetailsAddOrRemoveProductToCartEvent(this.productId);
 }

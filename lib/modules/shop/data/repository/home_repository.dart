@@ -128,9 +128,23 @@ class HomeRepository extends HomeBaseRepository {
   }
 
   @override
-  Future<Either<Failure, List<Cart>>> getCarts() async {
+  Future<Either<Failure, List<Cart>>> getCart() async {
     try {
       final result = await homeBaseDataSource.getCarts();
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> updateCart(
+      {required int cartId, required int quantity}) async {
+    try {
+      final result = await homeBaseDataSource.updateCart(
+        cartId: cartId,
+        quantity: quantity,
+      );
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));

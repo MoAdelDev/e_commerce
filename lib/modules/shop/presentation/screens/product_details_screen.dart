@@ -238,7 +238,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         builder: (context) => DefaultButton(
                             onPressed: () {
                               context.read<ProductDetailsBloc>().add(
-                                  ProductDetailsAddProductToCartEvent(
+                                  ProductDetailsAddOrRemoveProductToCartEvent(
                                       state.product?.id ?? 0));
                             },
                             text: 'Add to cart'),
@@ -248,34 +248,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   if (MyApp.productCartQuantity[state.product?.id] != 0)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                              width: 50.0.w,
-                              child:
-                                  DefaultButton(onPressed: () {}, text: ' - ')),
-                          SizedBox(
-                            width: 100.0.w,
-                            child: Align(
-                              alignment: AlignmentDirectional.center,
-                              child: Text(
-                                '${MyApp.productCartQuantity[state.product?.id]}',
-                                style: TextStyle(
-                                    fontSize: 16.0.sp,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 50.0.w,
-                            child: DefaultButton(
-                              onPressed: () {},
-                              text: ' + ',
-                            ),
-                          ),
-                        ],
+                      child: ConditionalBuilder(
+                        condition:
+                            state.addProductToCartState != RequestState.loading,
+                        builder: (context) => DefaultButton(
+                            onPressed: () {
+                              context.read<ProductDetailsBloc>().add(
+                                  ProductDetailsAddOrRemoveProductToCartEvent(
+                                      state.product?.id ?? 0));
+                            },
+                            text: 'Remove from cart'),
+                        fallback: (context) => const DefaultSpinKit(),
                       ),
                     ),
                   SizedBox(
@@ -289,146 +272,4 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       ),
     );
   }
-
-  Widget defaultWidget(context, ProductDetailsState state) => Column(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Stack(
-                  children: [
-                    CarouselSlider(
-                      items: state.product?.images
-                          .map(
-                            (e) => Container(
-                              color: Colors.white,
-                              width: double.infinity,
-                              child: CachedNetworkImage(
-                                imageUrl: e,
-                                height: MediaQuery.sizeOf(context).height / 3.h,
-                                placeholder: (context, url) =>
-                                    const DefaultShimmer(),
-                                errorWidget: (context, url, error) =>
-                                    const DefaultShimmer(),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                      options: CarouselOptions(
-                        height: MediaQuery.sizeOf(context).height / 3.h,
-                        initialPage: 0,
-                        reverse: false,
-                        autoPlay: true,
-                        viewportFraction: 1.0,
-                        enableInfiniteScroll: true,
-                        autoPlayInterval: const Duration(seconds: 5),
-                        autoPlayAnimationDuration: const Duration(seconds: 2),
-                        autoPlayCurve: Curves.fastOutSlowIn,
-                        scrollDirection: Axis.horizontal,
-                      ),
-                    ),
-                    if (state.product?.discount != 0)
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          color: Colors.red,
-                          padding: const EdgeInsets.symmetric(
-                                  horizontal: 5.0, vertical: 5.0)
-                              .r,
-                          child: Text(
-                            'DISCOUNT',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onPrimary),
-                          ),
-                        ),
-                      )
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 5.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        state.product?.name ?? '',
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        overflow: TextOverflow.visible,
-                        maxLines: null,
-                      ),
-                      SizedBox(
-                        height: 8.0.h,
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'EGP ${state.product?.price}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                          SizedBox(
-                            width: 3.0.w,
-                          ),
-                          if (state.product?.discount != 0)
-                            Text(
-                              'EGP ${state.product?.oldPrice}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(
-                                      color: Colors.grey,
-                                      decoration: TextDecoration.lineThrough),
-                            ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  color: Theme.of(context).colorScheme.primary,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 5.0),
-                  child: Text(
-                    'Description',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary),
-                  ),
-                ),
-                SizedBox(height: 10.0.w),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Text(
-                    state.product?.description ?? '',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: DefaultButton(onPressed: () {}, text: 'Add to cart'),
-          ),
-          SizedBox(
-            height: 5.0.h,
-          )
-        ],
-      );
 }

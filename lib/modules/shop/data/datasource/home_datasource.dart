@@ -31,6 +31,8 @@ abstract class HomeBaseDataSource {
   Future<String> addProductToCart({required productId});
 
   Future<List<CartModel>> getCarts();
+
+  Future<String> updateCart({required int cartId, required int quantity});
 }
 
 class HomeDataSource extends HomeBaseDataSource {
@@ -148,10 +150,11 @@ class HomeDataSource extends HomeBaseDataSource {
   }
 
   @override
-  Future<String> removeFavorites({required favoriteId}) async{
+  Future<String> removeFavorites({required favoriteId}) async {
     String? token = await CacheHelper.getData(key: 'token');
 
-    final result = await DioHelper.deleteData(path: '${ApiConstance.favoritesUrl}/$favoriteId', token: token);
+    final result = await DioHelper.deleteData(
+        path: '${ApiConstance.favoritesUrl}/$favoriteId', token: token);
 
     if (result.data['status']) {
       return result.data['message'].toString();
@@ -204,5 +207,20 @@ class HomeDataSource extends HomeBaseDataSource {
     throw ServerException(
       ErrorMessageModel.fromJson(result.data['message']),
     );
+  }
+
+  @override
+  Future<String> updateCart(
+      {required int cartId, required int quantity}) async {
+    String? token = await CacheHelper.getData(key: 'token');
+    final result = await DioHelper.updateData(
+        path: '${ApiConstance.cartUrl}/$cartId',
+        data: {'quantity': quantity},
+        token: token);
+
+    if (result.data['status']) {
+      return result.data['message'];
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
   }
 }

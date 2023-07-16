@@ -113,4 +113,39 @@ class DioHelper {
       );
     }
   }
+
+  static Future<Response> updateData(
+      {required path,
+      token,
+      Map<String, dynamic>? query,
+      required Map<String, dynamic> data}) async {
+    try {
+      dio.options = BaseOptions(
+        headers: {
+          'lang': 'en',
+          'Authorization': token,
+          'Content-Type': 'application/json',
+        },
+        queryParameters: query,
+        receiveDataWhenStatusError: true,
+        connectTimeout: const Duration(minutes: 2),
+        receiveTimeout: const Duration(minutes: 2),
+        sendTimeout: const Duration(minutes: 2),
+      );
+      return await dio.put(path, data: data);
+    } catch (e) {
+      showToast(
+          msg: 'No internet connection, try again',
+          requestState: RequestState.error);
+
+      throw ServerException(
+        ErrorMessageModel.fromJson(
+          const {
+            'message': 'No internet connection, try again',
+            'status': false
+          },
+        ),
+      );
+    }
+  }
 }

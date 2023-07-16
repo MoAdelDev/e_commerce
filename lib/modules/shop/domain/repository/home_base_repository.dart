@@ -26,8 +26,8 @@ abstract class HomeBaseRepository {
 
   Future<Either<Failure, String>> addProductToCart({required productId});
 
-  Future<Either<Failure, List<Cart>>> getCarts();
+  Future<Either<Failure, List<Cart>>> getCart();
 
-
-
+  Future<Either<Failure, String>> updateCart(
+      {required int cartId, required int quantity});
 }

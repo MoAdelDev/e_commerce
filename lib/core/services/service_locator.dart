@@ -11,6 +11,8 @@ import 'package:e_commerce_app/modules/shop/domain/usecases/get_product_details_
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_products_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_user_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/remove_favorite_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/update_cart_usecase.dart';
+import 'package:e_commerce_app/modules/shop/presentation/controller/cart/cart_bloc.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/favorites/favorites_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -56,6 +58,13 @@ class ServiceLocator {
       ),
     );
 
+    sl.registerFactory<CartBloc>(
+      () => CartBloc(
+        sl(),
+        sl(),
+      ),
+    );
+
     /// DATA SOURCE
     sl.registerLazySingleton<AuthBaseRemoteDataSource>(
         () => AuthRemoteDataSource());
@@ -87,6 +96,8 @@ class ServiceLocator {
         () => GetProductDetailsUseCase(sl()));
     sl.registerLazySingleton<AddProductToCartUseCase>(
         () => AddProductToCartUseCase(sl()));
-    sl.registerLazySingleton<GetCartsUseCase>(() => GetCartsUseCase(sl()));
+    sl.registerLazySingleton<GetProductsCartUseCase>(
+        () => GetProductsCartUseCase(sl()));
+    sl.registerLazySingleton<UpdateCartUseCase>(() => UpdateCartUseCase(sl()));
   }
 }

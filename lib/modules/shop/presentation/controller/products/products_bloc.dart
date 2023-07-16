@@ -21,7 +21,7 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
   final GetCategoriesUseCase homeGetCategoriesUseCase;
   final ChangeFavoriteUseCase homeChangeFavoriteUseCase;
   final GetFavoritesUseCase getFavoritesUseCase;
-  final GetCartsUseCase getCartsUseCase;
+  final GetProductsCartUseCase getCartsUseCase;
 
   ProductsBloc(
     this.homeGetProductsUseCase,
@@ -47,7 +47,7 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
     final result = await homeGetProductsUseCase();
 
     result.fold(
-            (error) => emit(
+        (error) => emit(
               state.copyWith(
                 productsState: RequestState.error,
                 productsError: error.message,
@@ -59,7 +59,7 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
         favoritesData.addAll(
           {product.id: product.inFavorites},
         );
-        MyApp.productCartQuantity.addAll({product.id : 0});
+        MyApp.productCartQuantity.addAll({product.id: 0});
       }
       MyApp.favoriteMap = favoritesData;
       add(HomeGetCartsEvent());
