@@ -1,14 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_app/core/route/route_string.dart';
+import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/style/components/default_animation.dart';
-import '../../../../core/style/components/default_shimmer.dart';
-import '../controller/products/products_bloc.dart';
-import '../controller/products/products_state.dart';
+import '../../../../../core/style/components/default_animation.dart';
+import '../../../../../core/style/components/default_shimmer.dart';
+import '../../controller/products/products_bloc.dart';
+import '../../controller/products/products_state.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({Key? key}) : super(key: key);
@@ -60,7 +62,13 @@ class CategoriesScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0).r,
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            ScreenArgs args = ScreenArgs.toCategoryDetails(
+                                category.id, category.name);
+                            Navigator.pushNamed(
+                                context, RouteConst.categoryDetailsScreen,
+                                arguments: args);
+                          },
                           icon: Icon(
                             Icons.arrow_forward_ios,
                             color: Theme.of(context).colorScheme.primary,

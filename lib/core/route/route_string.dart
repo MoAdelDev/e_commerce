@@ -1,4 +1,7 @@
-const String loginScreen = '/login';
-const String registerScreen = '/register';
-const String homeScreen = '/home';
-const String productDetailsScreen = '/product_details';
+class RouteConst {
+  static const String loginScreen = '/login';
+  static const String registerScreen = '/register';
+  static const String homeScreen = '/home';
+  static const String productDetailsScreen = '/product_details';
+  static const String categoryDetailsScreen = '/category_details';
+}

@@ -78,7 +78,7 @@ class HomeRepository extends HomeBaseRepository {
   }
 
   @override
-  Future<Either<Failure, Favorite>> changeFavorite({required productId}) async {
+  Future<Either<Failure, String>> changeFavorite({required productId}) async {
     try {
       final result = await homeBaseDataSource.changeFavorite(
         productId: productId,
@@ -158,6 +158,18 @@ class HomeRepository extends HomeBaseRepository {
       final result = await homeBaseDataSource.deleteProductFromCart(
         cartId: cartId,
       );
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Product>>> getCategoryDetails(
+      {required categoryId}) async {
+    try {
+      final result =
+          await homeBaseDataSource.getCategoryDetails(categoryId: categoryId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));

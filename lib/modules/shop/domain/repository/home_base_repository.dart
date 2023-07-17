@@ -18,7 +18,7 @@ abstract class HomeBaseRepository {
 
   Future<Either<Failure, List<Favorite>>> getFavorites();
 
-  Future<Either<Failure, Favorite>> changeFavorite({required productId});
+  Future<Either<Failure, String>> changeFavorite({required productId});
 
   Future<Either<Failure, String>> removeFavorite({required favoriteId});
 
@@ -32,4 +32,7 @@ abstract class HomeBaseRepository {
       {required int cartId, required int quantity});
 
   Future<Either<Failure, String>> deleteProductFromCart({required int cartId});
+
+  Future<Either<Failure, List<Product>>> getCategoryDetails(
+      {required categoryId});
 }

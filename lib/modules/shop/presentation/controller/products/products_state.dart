@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/modules/shop/presentation/screens/carts_screen.dart';
-import 'package:e_commerce_app/modules/shop/presentation/screens/products_screen.dart';
-import 'package:e_commerce_app/modules/shop/presentation/screens/settings_screen.dart';
+import 'package:e_commerce_app/modules/shop/presentation/screens/home/carts_screen.dart';
+import 'package:e_commerce_app/modules/shop/presentation/screens/home/products_screen.dart';
+import 'package:e_commerce_app/modules/shop/presentation/screens/home/settings_screen.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +11,8 @@ import '../../../domain/entities/cart.dart';
 import '../../../domain/entities/category.dart';
 import '../../../domain/entities/favorite.dart';
 import '../../../domain/entities/product.dart';
-import '../../screens/categories_screen.dart';
-import '../../screens/favorites_screen.dart';
+import '../../screens/home/categories_screen.dart';
+import '../../screens/home/favorites_screen.dart';
 
 class ProductsState extends Equatable {
   /// Bottom Navigation
@@ -26,7 +26,7 @@ class ProductsState extends Equatable {
   final String productsError;
 
   /// Change Favorite
-  final Favorite favorite;
+  final String favoriteMessage;
   final RequestState favoriteState;
   final String favoriteError;
 
@@ -72,7 +72,7 @@ class ProductsState extends Equatable {
     this.products = const [],
     this.productsState = RequestState.loading,
     this.productsError = '',
-    this.favorite = const Favorite(0, 0, 0, 0, 0, '', ''),
+    this.favoriteMessage = '',
     this.favoriteState = RequestState.nothing,
     this.favoriteError = '',
     this.banners = const [],
@@ -97,7 +97,7 @@ class ProductsState extends Equatable {
     List<Favorite>? favorites,
     RequestState? favoritesState,
     String? favoritesError,
-    Favorite? favorite,
+    String? favoriteMessage,
     RequestState? favoriteState,
     String? favoriteError,
     List<BannerEntity>? banners,
@@ -118,7 +118,7 @@ class ProductsState extends Equatable {
         products: products ?? this.products,
         productsState: productsState ?? this.productsState,
         productsError: productsError ?? this.productsError,
-        favorite: favorite ?? this.favorite,
+        favoriteMessage: favoriteMessage ?? this.favoriteMessage,
         favoriteState: favoriteState ?? this.favoriteState,
         favoriteError: favoriteError ?? this.favoriteError,
         banners: banners ?? this.banners,
@@ -143,7 +143,7 @@ class ProductsState extends Equatable {
         products,
         productsState,
         productsError,
-        favorite,
+        favoriteMessage,
         favoriteState,
         favoriteError,
         banners,

@@ -1,11 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_bloc.dart';
+import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_event.dart';
+import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../controller/products/products_bloc.dart';
-import '../controller/products/products_event.dart';
-import '../controller/products/products_state.dart';
 
 class HomeScreen extends StatelessWidget {
   final _pageController = PageController(initialPage: 0);

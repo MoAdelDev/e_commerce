@@ -1,9 +1,14 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class ScreenArgs extends Equatable {
-  final int productId;
+  late int productId;
+  late int categoryId;
+  late String categoryName;
 
-  const ScreenArgs.toProductDetails(this.productId);
+  ScreenArgs.toProductDetails(this.productId);
+
+  ScreenArgs.toCategoryDetails(this.categoryId, this.categoryName);
 
   @override
   List<Object> get props => [productId];

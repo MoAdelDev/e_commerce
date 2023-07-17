@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             if (state.loginState == RequestState.success) {
               Navigator.pushNamedAndRemoveUntil(
-                  context, homeScreen, (route) => false);
+                  context, RouteConst.homeScreen, (route) => false);
             }
           });
           return SafeArea(
@@ -38,10 +38,22 @@ class LoginScreen extends StatelessWidget {
               backgroundColor: Theme.of(context).colorScheme.primary,
               body: Column(
                 children: [
-                  SizedBox(height: 80.0.h,),
-                  SvgPicture.asset('assets/images/shop.svg', height: 100, width: 100.0,),
+                  SizedBox(
+                    height: 80.0.h,
+                  ),
+                  SvgPicture.asset(
+                    'assets/images/shop.svg',
+                    height: 100,
+                    width: 100.0,
+                  ),
                   SizedBox(height: 10.0.h),
-                  Text('Softagi', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),),
+                  Text(
+                    'Softagi',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge
+                        ?.copyWith(color: Colors.white),
+                  ),
                   SizedBox(height: 20.0.h),
                   Expanded(
                     child: SizedBox(
@@ -69,8 +81,14 @@ class LoginScreen extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  DefaultAnimatedText(text: 'Sign In', textStyle: Theme.of(context).textTheme.titleLarge),
-                                  SizedBox(height: 20.0.h,),
+                                  DefaultAnimatedText(
+                                      text: 'Sign In',
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge),
+                                  SizedBox(
+                                    height: 20.0.h,
+                                  ),
                                   DefaultTextFormField(
                                     controller: _emailController,
                                     hintText: AppStringEn.emailHintText,
@@ -96,7 +114,8 @@ class LoginScreen extends StatelessWidget {
                                           .add(LoginShowPasswordEvent());
                                     },
                                     onSubmit: (value) {
-                                      FocusManager.instance.primaryFocus?.unfocus();
+                                      FocusManager.instance.primaryFocus
+                                          ?.unfocus();
                                       // validate and login user
                                       if (_formKey.currentState!.validate()) {
                                         context.read<LoginBloc>().add(
@@ -111,18 +130,23 @@ class LoginScreen extends StatelessWidget {
                                     height: 10.0.h,
                                   ),
                                   ConditionalBuilder(
-                                    condition: state.loginState != RequestState.loading,
+                                    condition: state.loginState !=
+                                        RequestState.loading,
                                     builder: (context) => Column(
                                       children: [
                                         DefaultButton(
                                             onPressed: () {
                                               // to dismiss keyboard
-                                              FocusManager.instance.primaryFocus?.unfocus();
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
                                               // validate and user login
-                                              if (_formKey.currentState!.validate()) {
-                                                context.read<LoginBloc>().add(LoginEvent(
-                                                    _emailController.text,
-                                                    _passwordController.text));
+                                              if (_formKey.currentState!
+                                                  .validate()) {
+                                                context.read<LoginBloc>().add(
+                                                    LoginEvent(
+                                                        _emailController.text,
+                                                        _passwordController
+                                                            .text));
                                               }
                                             },
                                             text: AppStringEn.loginButtonText),
@@ -139,11 +163,11 @@ class LoginScreen extends StatelessWidget {
                                               ),
                                             ),
                                             TextButton(
-                                              child: const Text(
-                                                  AppStringEn.registerButtonText),
+                                              child: const Text(AppStringEn
+                                                  .registerButtonText),
                                               onPressed: () {
-                                                Navigator.pushNamed(
-                                                    context, registerScreen);
+                                                Navigator.pushNamed(context,
+                                                    RouteConst.registerScreen);
                                               },
                                             ),
                                           ],

@@ -12,7 +12,7 @@ import 'core/route/app_route.dart';
 import 'core/services/service_locator.dart';
 import 'core/style/themes.dart';
 import 'modules/authentication/presentation/screens/login_screen.dart';
-import 'modules/shop/presentation/screens/home_screen.dart';
+import 'modules/shop/presentation/screens/home/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -7,6 +7,7 @@ import 'package:e_commerce_app/modules/shop/domain/usecases/delete_product_from_
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_banners_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_carts_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_categories_usecase.dart';
+import 'package:e_commerce_app/modules/shop/domain/usecases/get_category_details_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_favorites_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_product_details_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_products_usecase.dart';
@@ -14,6 +15,7 @@ import 'package:e_commerce_app/modules/shop/domain/usecases/get_user_usecase.dar
 import 'package:e_commerce_app/modules/shop/domain/usecases/remove_favorite_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/update_cart_usecase.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/cart/cart_bloc.dart';
+import 'package:e_commerce_app/modules/shop/presentation/controller/category_details/category_details_bloc.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/favorites/favorites_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -66,6 +68,13 @@ class ServiceLocator {
         sl(),
       ),
     );
+    sl.registerFactory<CategoryDetailsBloc>(
+      () => CategoryDetailsBloc(
+        sl(),
+        sl(),
+        sl(),
+      ),
+    );
 
     /// DATA SOURCE
     sl.registerLazySingleton<AuthBaseRemoteDataSource>(
@@ -103,5 +112,8 @@ class ServiceLocator {
     sl.registerLazySingleton<UpdateCartUseCase>(() => UpdateCartUseCase(sl()));
     sl.registerLazySingleton<DeleteProductFromCartUseCase>(
         () => DeleteProductFromCartUseCase(sl()));
+
+    sl.registerLazySingleton<GetCategoryDetailsUseCase>(
+        () => GetCategoryDetailsUseCase(sl()));
   }
 }

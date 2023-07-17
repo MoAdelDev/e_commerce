@@ -20,7 +20,8 @@ class ProductsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
-        if (state.productsState != RequestState.success && state.cartsState != RequestState.success) {
+        if (state.productsState != RequestState.success &&
+            state.cartsState != RequestState.success) {
           return GridView.count(
             crossAxisCount: 2,
             mainAxisSpacing: 1.0,
@@ -51,7 +52,8 @@ class ProductsWidget extends StatelessWidget {
                     // Navigate to product detail
                     ScreenArgs args =
                         ScreenArgs.toProductDetails(state.products[index].id);
-                    Navigator.pushNamed(context, productDetailsScreen,
+                    Navigator.pushNamed(
+                        context, RouteConst.productDetailsScreen,
                         arguments: args);
                   },
                   child: Container(
@@ -79,16 +81,14 @@ class ProductsWidget extends StatelessWidget {
                                   padding: const EdgeInsets.symmetric(
                                           horizontal: 5.0, vertical: 3.0)
                                       .r,
-                                  child: Text(
-                                    'DISCOUNT',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall
-                                        ?.copyWith(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onPrimary)
-                                  ),
+                                  child: Text('DISCOUNT',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onPrimary)),
                                 )
                             ],
                           ),
@@ -108,7 +108,8 @@ class ProductsWidget extends StatelessWidget {
                                 children: [
                                   Expanded(
                                     child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Text(
                                           'EGP ${state.products[index].price}',

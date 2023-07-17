@@ -1,7 +1,8 @@
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
-import 'package:e_commerce_app/modules/shop/presentation/screens/home_screen.dart';
-import 'package:e_commerce_app/modules/shop/presentation/screens/product_details_screen.dart';
+import 'package:e_commerce_app/modules/shop/presentation/screens/category_details/category_details_Screen.dart';
+import 'package:e_commerce_app/modules/shop/presentation/screens/home/home_screen.dart';
+import 'package:e_commerce_app/modules/shop/presentation/screens/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../modules/authentication/presentation/screens/login_screen.dart';
@@ -14,22 +15,29 @@ class AppRoute {
 
   Route? generateRouter(RouteSettings settings) {
     switch (settings.name) {
-      case loginScreen:
+      case RouteConst.loginScreen:
         return MaterialPageRoute(
           builder: (context) => LoginScreen(),
         );
-      case registerScreen:
+      case RouteConst.registerScreen:
         return MaterialPageRoute(
           builder: (context) => RegisterScreen(),
         );
-      case homeScreen:
+      case RouteConst.homeScreen:
         return MaterialPageRoute(
           builder: (context) => HomeScreen(),
         );
-      case productDetailsScreen:
+      case RouteConst.productDetailsScreen:
         var args = settings.arguments as ScreenArgs;
         return MaterialPageRoute(
           builder: (context) => ProductDetailsScreen(
+            screenArgs: args,
+          ),
+        );
+      case RouteConst.categoryDetailsScreen:
+        var args = settings.arguments as ScreenArgs;
+        return MaterialPageRoute(
+          builder: (context) => CategoryDetailsScreen(
             screenArgs: args,
           ),
         );

@@ -7,6 +7,7 @@ import 'package:e_commerce_app/modules/authentication/data/models/user_model.dar
 import 'package:e_commerce_app/modules/shop/data/models/banner_model.dart';
 import 'package:e_commerce_app/modules/shop/data/models/category_model.dart';
 import 'package:e_commerce_app/modules/shop/data/models/product_model.dart';
+import 'package:e_commerce_app/modules/shop/domain/entities/product.dart';
 
 import '../models/cart_model.dart';
 import '../models/favorite_model.dart';
@@ -22,7 +23,7 @@ abstract class HomeBaseDataSource {
 
   Future<List<FavoriteModel>> getFavorites();
 
-  Future<FavoriteModel> changeFavorite({required productId});
+  Future<String> changeFavorite({required productId});
 
   Future<String> removeFavorites({required favoriteId});
 
@@ -35,6 +36,8 @@ abstract class HomeBaseDataSource {
   Future<String> updateCart({required int cartId, required int quantity});
 
   Future<String> deleteProductFromCart({required int cartId});
+
+  Future<List<Product>> getCategoryDetails({required categoryId});
 }
 
 class HomeDataSource extends HomeBaseDataSource {
@@ -131,7 +134,7 @@ class HomeDataSource extends HomeBaseDataSource {
   }
 
   @override
-  Future<FavoriteModel> changeFavorite({required productId}) async {
+  Future<String> changeFavorite({required productId}) async {
     String? token = await CacheHelper.getData(key: 'token');
     final result = await DioHelper.postData(
       path: ApiConstance.favoritesUrl,
@@ -140,9 +143,7 @@ class HomeDataSource extends HomeBaseDataSource {
     );
 
     if (result.data['status']) {
-      return FavoriteModel.fromJson(
-        result.data['data'],
-      );
+      return result.data['message'];
     }
     throw ServerException(
       ErrorMessageModel.fromJson(
@@ -234,5 +235,24 @@ class HomeDataSource extends HomeBaseDataSource {
       return result.data['message'];
     }
     throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
+
+  @override
+  Future<List<Product>> getCategoryDetails({required categoryId}) async {
+    String? token = await CacheHelper.getData(key: 'token');
+    final result = await DioHelper.getData(
+        path: '${ApiConstance.categoriesUrl}/$categoryId', token: token);
+
+    if (result.data['status']) {
+      return List.from(
+        (result.data['data']['data'] as List).map(
+          (e) => ProductModel.fromJson(e),
+        ),
+      );
+    }
+
+    throw ServerException(
+      ErrorMessageModel.fromJson(result.data),
+    );
   }
 }

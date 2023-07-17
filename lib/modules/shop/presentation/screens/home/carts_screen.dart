@@ -1,5 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_app/core/services/service_locator.dart';
+import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
 import 'package:e_commerce_app/core/style/components/default_material_button.dart';
+import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
+import 'package:e_commerce_app/core/style/components/default_shimmer.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/cart.dart';
@@ -7,11 +11,6 @@ import 'package:e_commerce_app/modules/shop/presentation/controller/cart/cart_bl
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/services/service_locator.dart';
-import '../../../../core/style/components/default_animated_text.dart';
-import '../../../../core/style/components/default_progress_indicator.dart';
-import '../../../../core/style/components/default_shimmer.dart';
 
 class CartsScreen extends StatelessWidget {
   const CartsScreen({Key? key}) : super(key: key);

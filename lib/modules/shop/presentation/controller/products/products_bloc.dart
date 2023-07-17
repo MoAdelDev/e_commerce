@@ -143,10 +143,10 @@ class ProductsBloc extends Bloc<ProductsBaseEvent, ProductsState> {
           favoriteError: error.message,
         ),
       );
-    }, (favorite) {
+    }, (favoriteMessage) {
       emit(
         state.copyWith(
-          favorite: favorite,
+          favoriteMessage: favoriteMessage,
           favoriteState: RequestState.success,
         ),
       );
