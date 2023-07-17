@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/services/service_locator.dart';
 import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
@@ -43,165 +44,175 @@ class CategoryDetailsScreen extends StatelessWidget {
                       textStyle: Theme.of(context).textTheme.titleMedium),
                 );
               }
-              return ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemCount: state.products.length,
-                itemBuilder: (context, index) {
-                  Product product = state.products[index];
-                  return InkWell(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 14.0).r,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Stack(
-                            children: [
-                              SizedBox(
-                                height: 100.0.h,
-                                width: 100.0.w,
-                                child: CachedNetworkImage(
-                                  imageUrl: product.image,
-                                  errorWidget: (context, url, error) =>
-                                      const DefaultShimmer(),
-                                  placeholder: (context, url) =>
-                                      const DefaultShimmer(),
+              return Padding(
+                padding: EdgeInsets.only(bottom: 10.0.r),
+                child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: state.products.length,
+                  itemBuilder: (context, index) {
+                    Product product = state.products[index];
+                    return InkWell(
+                      onTap: () {
+                        ScreenArgs args =
+                            ScreenArgs.toProductDetails(product.id);
+                        Navigator.popAndPushNamed(
+                            context, RouteConst.productDetailsScreen,
+                            arguments: args);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 14.0).r,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Stack(
+                              children: [
+                                SizedBox(
+                                  height: 100.0.h,
+                                  width: 100.0.w,
+                                  child: CachedNetworkImage(
+                                    imageUrl: product.image,
+                                    errorWidget: (context, url, error) =>
+                                        const DefaultShimmer(),
+                                    placeholder: (context, url) =>
+                                        const DefaultShimmer(),
+                                  ),
                                 ),
-                              ),
-                              if (product.discount != 0)
-                                Positioned(
-                                  bottom: 0,
-                                  left: 0,
-                                  right: 0,
-                                  child: Container(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    padding: const EdgeInsets.symmetric(
-                                            horizontal: 5.0, vertical: 3.0)
-                                        .r,
-                                    child: Center(
-                                      child: Text(
-                                        'DISCOUNT',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall
-                                            ?.copyWith(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .onPrimary),
+                                if (product.discount != 0)
+                                  Positioned(
+                                    bottom: 0,
+                                    left: 0,
+                                    right: 0,
+                                    child: Container(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      padding: const EdgeInsets.symmetric(
+                                              horizontal: 5.0, vertical: 3.0)
+                                          .r,
+                                      child: Center(
+                                        child: Text(
+                                          'DISCOUNT',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall
+                                              ?.copyWith(
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .onPrimary),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 5.0.w,
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 8.0)
-                                  .r,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    product.name,
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
-                                  ),
-                                  SizedBox(
-                                    height: 8.0.h,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'EGP ${product.price.toString()}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall
-                                            ?.copyWith(
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .primary,
-                                            ),
-                                      ),
-                                      SizedBox(
-                                        width: 5.0.w,
-                                      ),
-                                      if (product.discount != 0)
+                              ],
+                            ),
+                            SizedBox(
+                              width: 5.0.w,
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                        vertical: 8.0, horizontal: 8.0)
+                                    .r,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      product.name,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                    ),
+                                    SizedBox(
+                                      height: 8.0.h,
+                                    ),
+                                    Row(
+                                      children: [
                                         Text(
-                                          'EGP ${product.oldPrice.toString()}',
-                                          style: TextStyle(
-                                              fontSize: 12.sp,
-                                              color: Colors.grey,
-                                              decoration:
-                                                  TextDecoration.lineThrough),
+                                          'EGP ${product.price.toString()}',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall
+                                              ?.copyWith(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .primary,
+                                              ),
                                         ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          context
-                                              .read<CategoryDetailsBloc>()
-                                              .add(
-                                                  CategoryDetailsCahngeCartEvent(
-                                                      product.id));
-                                        },
-                                        icon: Icon(
-                                          MyApp.productCartQuantity[state
-                                                      .products[index].id] !=
-                                                  0
-                                              ? Icons.shopping_cart
-                                              : Icons.shopping_cart_outlined,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
+                                        SizedBox(
+                                          width: 5.0.w,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 3.0.w,
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          context.read<CategoryDetailsBloc>().add(
-                                              CatgeoryDetailsChangeFavoritesEvent(
-                                                  product.id));
-                                        },
-                                        icon: Icon(
-                                          MyApp.favoriteMap[
-                                                  state.products[index].id]!
-                                              ? Icons.favorite
-                                              : Icons.favorite_border,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
+                                        if (product.discount != 0)
+                                          Text(
+                                            'EGP ${product.oldPrice.toString()}',
+                                            style: TextStyle(
+                                                fontSize: 12.sp,
+                                                color: Colors.grey,
+                                                decoration:
+                                                    TextDecoration.lineThrough),
+                                          ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {
+                                            context
+                                                .read<CategoryDetailsBloc>()
+                                                .add(
+                                                    CategoryDetailsCahngeCartEvent(
+                                                        product.id));
+                                          },
+                                          icon: Icon(
+                                            MyApp.productCartQuantity[state
+                                                        .products[index].id] !=
+                                                    0
+                                                ? Icons.shopping_cart
+                                                : Icons.shopping_cart_outlined,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  )
-                                ],
+                                        SizedBox(
+                                          width: 3.0.w,
+                                        ),
+                                        IconButton(
+                                          onPressed: () {
+                                            context.read<CategoryDetailsBloc>().add(
+                                                CatgeoryDetailsChangeFavoritesEvent(
+                                                    product.id));
+                                          },
+                                          icon: Icon(
+                                            MyApp.favoriteMap[
+                                                    state.products[index].id]!
+                                                ? Icons.favorite
+                                                : Icons.favorite_border,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0).r,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Divider(
-                      color: Colors.grey[400],
-                      height: 1,
+                    );
+                  },
+                  separatorBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0).r,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Divider(
+                        color: Colors.grey[400],
+                        height: 1,
+                      ),
                     ),
                   ),
                 ),

@@ -6,8 +6,6 @@ import 'package:e_commerce_app/modules/shop/domain/entities/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../core/style/components/default_animation.dart';
 import '../../../../../core/style/components/default_shimmer.dart';
 import '../../controller/products/products_bloc.dart';
 import '../../controller/products/products_state.dart';
@@ -32,8 +30,8 @@ class CategoriesScreen extends StatelessWidget {
                     ),
                 itemCount: 30);
           }
-          return DefaultAnimation(
-            animationDirection: AnimationDirection.up,
+          return Padding(
+            padding: EdgeInsets.only(bottom: 10.0.r),
             child: ListView.separated(
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {

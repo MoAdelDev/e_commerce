@@ -62,35 +62,39 @@ class ProductsWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: Stack(
-                            alignment: AlignmentDirectional.bottomStart,
-                            children: [
-                              SizedBox(
-                                height: 180.h,
-                                child: CachedNetworkImage(
-                                  imageUrl: state.products[index].image,
-                                  placeholder: (context, url) =>
-                                      const DefaultShimmer(),
-                                  errorWidget: (context, url, error) =>
-                                      const DefaultShimmer(),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10.0.r),
+                            child: Stack(
+                              alignment: AlignmentDirectional.bottomStart,
+                              children: [
+                                SizedBox(
+                                  height: 180.h,
+                                  child: CachedNetworkImage(
+                                    imageUrl: state.products[index].image,
+                                    placeholder: (context, url) =>
+                                        const DefaultShimmer(),
+                                    errorWidget: (context, url, error) =>
+                                        const DefaultShimmer(),
+                                  ),
                                 ),
-                              ),
-                              if (state.products[index].discount != 0)
-                                Container(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  padding: const EdgeInsets.symmetric(
-                                          horizontal: 5.0, vertical: 3.0)
-                                      .r,
-                                  child: Text('DISCOUNT',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.copyWith(
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .onPrimary)),
-                                )
-                            ],
+                                if (state.products[index].discount != 0)
+                                  Container(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    padding: const EdgeInsets.symmetric(
+                                            horizontal: 5.0, vertical: 3.0)
+                                        .r,
+                                    child: Text('DISCOUNT',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall
+                                            ?.copyWith(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .onPrimary)),
+                                  )
+                              ],
+                            ),
                           ),
                         ),
                         Padding(
