@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DefaultTextFormField extends StatelessWidget {
   final TextEditingController controller;
@@ -39,17 +38,17 @@ class DefaultTextFormField extends StatelessWidget {
         textInputAction: textInputAction,
         decoration: InputDecoration(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0).r,
+            borderRadius: BorderRadius.circular(8.0),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0).r,
+            borderRadius: BorderRadius.circular(8.0),
             borderSide: BorderSide.none
           ),
           fillColor: AppColorLight.primaryColor.shade100,
           filled: true,
           hintText: hintText,
           hintStyle: TextStyle(
-            fontSize: 14.0.sp,
+            fontSize: 14.0,
             color: Colors.grey[700]
           ),
           prefixIcon: Icon(prefixIcon),

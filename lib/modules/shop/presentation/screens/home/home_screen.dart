@@ -6,9 +6,6 @@ import 'package:e_commerce_app/modules/shop/presentation/controller/products/pro
 import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../generated/l10n.dart';
 
 class HomeScreen extends StatelessWidget {
   final _pageController = PageController(initialPage: 0);
@@ -32,7 +29,7 @@ class HomeScreen extends StatelessWidget {
             bottomNavigationBar: CurvedNavigationBar(
               items: state.items,
               color: Theme.of(context).colorScheme.primary,
-              height: 45.0.h,
+              height: 45.0,
               buttonBackgroundColor: Theme.of(context).colorScheme.primary,
               backgroundColor: Colors.transparent,
               animationCurve: Curves.easeInOut,

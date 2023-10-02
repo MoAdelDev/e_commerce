@@ -5,8 +5,6 @@ import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/style/components/default_animation.dart';
 import '../../../../core/style/components/default_shimmer.dart';
 import '../controller/products/products_bloc.dart';
@@ -63,12 +61,12 @@ class ProductsWidget extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10.0.r),
+                            padding: const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Stack(
                               alignment: AlignmentDirectional.bottomStart,
                               children: [
                                 SizedBox(
-                                  height: 180.h,
+                                  height: 180,
                                   child: CachedNetworkImage(
                                     imageUrl: state.products[index].image,
                                     placeholder: (context, url) =>
@@ -83,7 +81,7 @@ class ProductsWidget extends StatelessWidget {
                                         Theme.of(context).colorScheme.primary,
                                     padding: const EdgeInsets.symmetric(
                                             horizontal: 5.0, vertical: 3.0)
-                                        .r,
+                                    ,
                                     child: Text(
                                       '- ${state.products[index].discount} %',
                                       style: Theme.of(context)
@@ -100,7 +98,7 @@ class ProductsWidget extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(12.0).r,
+                          padding: const EdgeInsets.all(12.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -128,8 +126,8 @@ class ProductsWidget extends StatelessWidget {
                                                       .primary),
                                           overflow: TextOverflow.ellipsis,
                                         ),
-                                        SizedBox(
-                                          width: 5.0.w,
+                                        const SizedBox(
+                                          width: 5.0,
                                         ),
                                         if (state.products[index].discount != 0)
                                           Expanded(

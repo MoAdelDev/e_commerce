@@ -4,7 +4,6 @@ import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/style/components/default_animation.dart';
 import 'package:e_commerce_app/core/style/components/default_material_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rive/rive.dart';
 
 import '../../generated/l10n.dart';
@@ -38,15 +37,15 @@ class OnBoardingScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 30.0,
                     vertical: 70.0,
-                  ).r,
+                  ),
                   child: SizedBox(
                     child: DefaultAnimation(
                       animationDirection: AnimationDirection.left,
                       milliseconds: 3000,
                       child: Text(
                         S.of(context).onBoardingTitle,
-                        style: TextStyle(
-                          fontSize: 50.0.sp,
+                        style: const TextStyle(
+                          fontSize: 50.0,
                           fontFamily: "poppins",
                           height: 1.2,
                         ),
@@ -61,13 +60,16 @@ class OnBoardingScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10.0, vertical: 30.0),
-                    child: DefaultButton(
-                      onPressed: () => Navigator.pushNamed(
-                        context,
-                        RouteConst.loginScreen,
+                    child: SizedBox(
+                      width: 250.0,
+                      child: DefaultButton(
+                        onPressed: () => Navigator.pushNamed(
+                          context,
+                          RouteConst.loginScreen,
+                        ),
+                        text: S.of(context).continueTitle,
+                        icon: Icons.arrow_forward_ios,
                       ),
-                      text: S.of(context).continueTitle,
-                      icon: Icons.arrow_forward_ios,
                     ),
                   ),
                 )

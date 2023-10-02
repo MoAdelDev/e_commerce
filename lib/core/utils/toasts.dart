@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 showToast({required String msg, required RequestState requestState}) {
@@ -16,7 +15,7 @@ _defaultSuccessToast({required msg}) => Fluttertoast.showToast(
     msg: msg,
     backgroundColor: Colors.lightGreen,
     textColor: Colors.white,
-    fontSize: 16.0.sp,
+    fontSize: 16.0,
     toastLength: Toast.LENGTH_LONG,
     gravity: ToastGravity.TOP);
 
@@ -24,7 +23,7 @@ _defaultErrorToast({required msg}) => Fluttertoast.showToast(
     msg: msg,
     backgroundColor: Colors.redAccent,
     textColor: Colors.white,
-    fontSize: 16.0.sp,
+    fontSize: 16.0,
     toastLength: Toast.LENGTH_LONG,
     gravity: ToastGravity.TOP);
 
@@ -32,6 +31,6 @@ _defaultWarningToast({required msg}) => Fluttertoast.showToast(
     msg: msg,
     backgroundColor: Colors.yellowAccent,
     textColor: Colors.white,
-    fontSize: 16.0.sp,
+    fontSize: 16.0,
     toastLength: Toast.LENGTH_LONG,
     gravity: ToastGravity.TOP);

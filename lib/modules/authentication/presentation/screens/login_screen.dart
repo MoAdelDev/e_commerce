@@ -7,7 +7,6 @@ import 'package:e_commerce_app/core/style/fonts.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/style/components/default_material_button.dart';
@@ -48,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                        padding: const EdgeInsets.all(20.0).r,
+                        padding: const EdgeInsets.all(20.0),
                         child: SvgPicture.asset(
                           'assets/images/shop.svg',
                           height: 100.0,
@@ -89,8 +88,8 @@ class LoginScreen extends StatelessWidget {
                                             .textTheme
                                             .titleMedium,
                                       ),
-                                      SizedBox(
-                                        height: 20.0.h,
+                                      const SizedBox(
+                                        height: 20.0,
                                       ),
                                       DefaultTextFormField(
                                         controller: _emailController,
@@ -100,8 +99,8 @@ class LoginScreen extends StatelessWidget {
                                         errorMsg: S.of(context).emailHintTitle,
                                         textInputAction: TextInputAction.next,
                                       ),
-                                      SizedBox(
-                                        height: 10.0.h,
+                                      const SizedBox(
+                                        height: 10.0,
                                       ),
                                       DefaultTextFormField(
                                         controller: _passwordController,
@@ -125,8 +124,8 @@ class LoginScreen extends StatelessWidget {
                                         errorMsg: S.of(context).passwordHintTitle,
                                         textInputAction: TextInputAction.done,
                                       ),
-                                      SizedBox(
-                                        height: 10.0.h,
+                                      const SizedBox(
+                                        height: 10.0,
                                       ),
                                       Align(
                                         alignment:
@@ -146,8 +145,8 @@ class LoginScreen extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 10.0.h,
+                                      const SizedBox(
+                                        height: 10.0,
                                       ),
                                       ConditionalBuilder(
                                         condition: state.loginState !=
@@ -176,8 +175,8 @@ class LoginScreen extends StatelessWidget {
                                                   }
                                                 },
                                                 text: S.of(context).signInTitle),
-                                            SizedBox(
-                                              height: 5.0.h,
+                                            const SizedBox(
+                                              height: 5.0,
                                             ),
                                             Row(
                                               children: [
@@ -212,11 +211,11 @@ class LoginScreen extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        fallback: (context) => Padding(
-                                          padding: const EdgeInsets.only(
+                                        fallback: (context) => const Padding(
+                                          padding: EdgeInsets.only(
                                             top: 8.0,
-                                          ).r,
-                                          child: const Center(
+                                          ),
+                                          child: Center(
                                             child: DefaultSpinKit(),
                                           ),
                                         ),

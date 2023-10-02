@@ -10,8 +10,6 @@ import 'package:e_commerce_app/modules/shop/domain/entities/favorite.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/favorites/favorites_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../generated/l10n.dart';
 
 class FavoritesScreen extends StatelessWidget {
@@ -26,7 +24,7 @@ class FavoritesScreen extends StatelessWidget {
         child: BlocBuilder<FavoritesBloc, FavoritesState>(
           builder: (context, state) {
             if (state.favoritesState != RequestState.success) {
-              return const Center(child: DefaultSpinKit());
+              return const Center(child: DefaultSpinKit(size: 60.0,));
             }
             if (state.favorites.isEmpty) {
               return Center(
@@ -44,15 +42,15 @@ class FavoritesScreen extends StatelessWidget {
                       Navigator.pushNamed(context, RouteConst.productDetailsScreen, arguments: args);
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 14.0).r,
+                      padding: const EdgeInsets.symmetric(horizontal: 14.0),
                       child: Column(
                         children: [
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: 100.0.h,
-                                width: 100.0.w,
+                                height: 100.0,
+                                width: 100.0,
                                 child: CachedNetworkImage(
                                   imageUrl: favorite.image,
                                   errorWidget: (context, url, error) =>
@@ -61,14 +59,14 @@ class FavoritesScreen extends StatelessWidget {
                                       const DefaultShimmer(),
                                 ),
                               ),
-                              SizedBox(
-                                width: 5.0.w,
+                              const SizedBox(
+                                width: 5.0,
                               ),
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                           vertical: 8.0, horizontal: 8.0)
-                                      .r,
+                                      ,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
@@ -80,8 +78,8 @@ class FavoritesScreen extends StatelessWidget {
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 2,
                                       ),
-                                      SizedBox(
-                                        height: 8.0.h,
+                                      const SizedBox(
+                                        height: 8.0,
                                       ),
                                       Row(
                                         children: [
@@ -96,14 +94,14 @@ class FavoritesScreen extends StatelessWidget {
                                                       .primary,
                                                 ),
                                           ),
-                                          SizedBox(
-                                            width: 5.0.w,
+                                          const SizedBox(
+                                            width: 5.0,
                                           ),
                                           if (favorite.discount != 0)
                                             Text(
                                               'EGP ${favorite.oldPrice.toString()}',
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
+                                              style: const TextStyle(
+                                                  fontSize: 12,
                                                   color: Colors.grey,
                                                   decoration:
                                                       TextDecoration.lineThrough),
@@ -138,13 +136,13 @@ class FavoritesScreen extends StatelessWidget {
                                     color:
                                         Theme.of(context).colorScheme.primary,
                                   ),
-                                  SizedBox(
-                                    width: 10.0.w,
+                                  const SizedBox(
+                                    width: 10.0,
                                   ),
                                   Text(
                                     S.of(context).removeTitle,
                                     style: TextStyle(
-                                      fontSize: 16.0.sp,
+                                      fontSize: 16.0,
                                       color:
                                           Theme.of(context).colorScheme.primary,
                                     ),
@@ -159,7 +157,7 @@ class FavoritesScreen extends StatelessWidget {
                   );
                 },
                 separatorBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0).r,
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: SizedBox(
                         width: double.infinity,
                         child: Divider(

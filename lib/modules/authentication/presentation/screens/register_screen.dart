@@ -1,9 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../core/route/route_string.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/style/colors.dart';
@@ -12,7 +10,6 @@ import '../../../../core/style/components/default_animation.dart';
 import '../../../../core/style/components/default_material_button.dart';
 import '../../../../core/style/components/default_progress_indicator.dart';
 import '../../../../core/style/components/default_text_form_field.dart';
-import '../../../../core/style/fonts.dart';
 import '../../../../core/utils/enums.dart';
 import '../../../../generated/l10n.dart';
 import '../controller/register/register_bloc.dart';
@@ -50,7 +47,7 @@ class RegisterScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                        padding: const EdgeInsets.all(20.0).r,
+                        padding: const EdgeInsets.all(20.0),
                         child: SvgPicture.asset(
                           'assets/images/shop.svg',
                           height: 100.0,
@@ -91,8 +88,8 @@ class RegisterScreen extends StatelessWidget {
                                             .textTheme
                                             .titleMedium,
                                       ),
-                                      SizedBox(
-                                        height: 20.0.h,
+                                      const SizedBox(
+                                        height: 20.0,
                                       ),
                                       DefaultTextFormField(
                                         controller: _nameController,
@@ -102,8 +99,8 @@ class RegisterScreen extends StatelessWidget {
                                         errorMsg: S.of(context).nameHintTitle,
                                         textInputAction: TextInputAction.next,
                                       ),
-                                      SizedBox(
-                                        height: 10.0.h,
+                                      const SizedBox(
+                                        height: 10.0,
                                       ),
                                       DefaultTextFormField(
                                         controller: _emailController,
@@ -114,8 +111,8 @@ class RegisterScreen extends StatelessWidget {
                                         errorMsg: S.of(context).emailHintTitle,
                                         textInputAction: TextInputAction.next,
                                       ),
-                                      SizedBox(
-                                        height: 10.0.h,
+                                      const SizedBox(
+                                        height: 10.0,
                                       ),
                                       DefaultTextFormField(
                                         controller: _phoneController,
@@ -125,8 +122,8 @@ class RegisterScreen extends StatelessWidget {
                                         errorMsg: S.of(context).phoneHintTitle,
                                         textInputAction: TextInputAction.next,
                                       ),
-                                      SizedBox(
-                                        height: 10.0.h,
+                                      const SizedBox(
+                                        height: 10.0,
                                       ),
                                       DefaultTextFormField(
                                         controller: _passwordController,
@@ -151,8 +148,8 @@ class RegisterScreen extends StatelessWidget {
                                             S.of(context).passwordHintTitle,
                                         textInputAction: TextInputAction.done,
                                       ),
-                                      SizedBox(
-                                        height: 10.0.h,
+                                      const SizedBox(
+                                        height: 10.0,
                                       ),
                                       ConditionalBuilder(
                                         condition: state.registerState !=
@@ -188,11 +185,11 @@ class RegisterScreen extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        fallback: (context) => Padding(
-                                          padding: const EdgeInsets.only(
+                                        fallback: (context) => const Padding(
+                                          padding: EdgeInsets.only(
                                             top: 8.0,
-                                          ).r,
-                                          child: const Center(
+                                          ),
+                                          child: Center(
                                             child: DefaultSpinKit(),
                                           ),
                                         ),

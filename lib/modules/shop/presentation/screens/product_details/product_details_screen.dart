@@ -11,8 +11,6 @@ import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/product_details/product_details_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/services/service_locator.dart';
 import '../../../../../core/style/components/default_shimmer.dart';
 import '../../../../../generated/l10n.dart';
@@ -28,10 +26,10 @@ class ProductDetailsScreen extends StatefulWidget {
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   buildSliverAppBar(context, ProductDetailsState state) {
-    var imageHeight = MediaQuery.sizeOf(context).height / 2.0.h;
+    var imageHeight = MediaQuery.sizeOf(context).height / 2.0;
 
     return SliverAppBar(
-      expandedHeight: MediaQuery.sizeOf(context).height / 3.h,
+      expandedHeight: MediaQuery.sizeOf(context).height / 3,
       stretch: true,
       pinned: true,
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -81,7 +79,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   color: Theme.of(context).colorScheme.primary,
                   padding: const EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 5.0)
-                      .r,
+                      ,
                   child: Text(
                     '- ${state.product?.discount} %',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -120,7 +118,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   height: double.infinity,
                   width: double.infinity,
                   child: Center(
-                    child: DefaultSpinKit(),
+                    child: DefaultSpinKit(size: 60.0,),
                   ),
                 );
               } else if (state.productState == RequestState.error) {
@@ -157,8 +155,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       overflow: TextOverflow.visible,
                                       maxLines: null,
                                     ),
-                                    SizedBox(
-                                      height: 8.0.h,
+                                    const SizedBox(
+                                      height: 8.0,
                                     ),
                                     Row(
                                       crossAxisAlignment:
@@ -176,8 +174,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                                 fontWeight: FontWeight.bold,
                                               ),
                                         ),
-                                        SizedBox(
-                                          width: 3.0.w,
+                                        const SizedBox(
+                                          width: 3.0,
                                         ),
                                         if (state.product?.discount != 0)
                                           Text(
@@ -211,7 +209,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                               .onPrimary),
                                 ),
                               ),
-                              SizedBox(height: 10.0.w),
+                              const SizedBox(height: 10.0),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10.0),
@@ -229,8 +227,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 10.0.h,
+                  const SizedBox(
+                    height: 10.0,
                   ),
                   if (MyApp.productCartQuantity[state.product?.id] == 0)
                     Padding(
@@ -264,8 +262,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         fallback: (context) => const DefaultSpinKit(),
                       ),
                     ),
-                  SizedBox(
-                    height: 5.0.h,
+                  const SizedBox(
+                    height: 5.0,
                   )
                 ],
               );

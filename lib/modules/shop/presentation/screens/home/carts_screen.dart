@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/services/service_locator.dart';
+import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
 import 'package:e_commerce_app/core/style/components/default_material_button.dart';
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
@@ -10,8 +11,6 @@ import 'package:e_commerce_app/modules/shop/domain/entities/cart.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/cart/cart_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/route/route_string.dart';
 import '../../../../../core/route/screen_args.dart';
 import '../../../../../generated/l10n.dart';
@@ -31,7 +30,7 @@ class CartsScreen extends StatelessWidget {
         child: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
             if (state.productsCartState != RequestState.success) {
-              return const Center(child: DefaultSpinKit());
+              return const Center(child: DefaultSpinKit(size: 60.0,));
             }
             if (state.cart.products.isEmpty) {
               return Center(
@@ -57,9 +56,9 @@ class CartsScreen extends StatelessWidget {
                               arguments: args);
                         },
                         child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20.0.r,
-                            vertical: 10.0.r,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0,
+                            vertical: 10.0,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,8 +67,8 @@ class CartsScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    height: 100.0.h,
-                                    width: 100.0.w,
+                                    height: 100.0,
+                                    width: 100.0,
                                     child: CachedNetworkImage(
                                       imageUrl: cart.image,
                                       errorWidget: (context, url, error) =>
@@ -78,14 +77,14 @@ class CartsScreen extends StatelessWidget {
                                           const DefaultShimmer(),
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: 5.0.w,
+                                  const SizedBox(
+                                    width: 5.0,
                                   ),
                                   Expanded(
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                               vertical: 8.0, horizontal: 8.0)
-                                          .r,
+                                          ,
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -98,8 +97,8 @@ class CartsScreen extends StatelessWidget {
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 2,
                                           ),
-                                          SizedBox(
-                                            height: 8.0.h,
+                                          const SizedBox(
+                                            height: 8.0,
                                           ),
                                           Row(
                                             children: [
@@ -114,14 +113,14 @@ class CartsScreen extends StatelessWidget {
                                                           .primary,
                                                     ),
                                               ),
-                                              SizedBox(
-                                                width: 5.0.w,
+                                              const SizedBox(
+                                                width: 5.0,
                                               ),
                                               if (cart.discount != 0)
                                                 Text(
                                                   'EGP ${cart.oldPrice.toString()}',
-                                                  style: TextStyle(
-                                                      fontSize: 12.sp,
+                                                  style: const TextStyle(
+                                                      fontSize: 12,
                                                       color: Colors.grey,
                                                       decoration: TextDecoration
                                                           .lineThrough),
@@ -134,131 +133,123 @@ class CartsScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                height: 3.0.h,
+                              const SizedBox(
+                                height: 3.0,
                               ),
                               Row(
                                 children: [
                                   Container(
-                                    width: 123.6.w,
-                                    height: 30.0.h,
+                                    width:
+                                    MediaQuery.sizeOf(context).width *
+                                        0.1,
+                                    height: 30.0,
                                     decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary,
+                                      borderRadius: MyApp.isArabic
+                                          ? const BorderRadius.only(
+                                        topRight:
+                                        Radius.circular(10.0),
+                                        bottomRight:
+                                        Radius.circular(10.0),
+                                      )
+                                          : const BorderRadius.only(
+                                        topLeft:
+                                        Radius.circular(10.0),
+                                        bottomLeft:
+                                        Radius.circular(10.0),
                                       ),
-                                      borderRadius:
-                                          BorderRadius.circular(12.0).r,
                                     ),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          width: 40.0.w,
-                                          height: 30.0.h,
-                                          decoration: BoxDecoration(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .primary,
-                                            borderRadius: MyApp.isArabic
-                                                ? BorderRadius.only(
-                                                    topRight:
-                                                        Radius.circular(10.0.r),
-                                                    bottomRight:
-                                                        Radius.circular(10.0.r),
-                                                  )
-                                                : BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(10.0.r),
-                                                    bottomLeft:
-                                                        Radius.circular(10.0.r),
-                                                  ),
-                                          ),
-                                          child: MaterialButton(
-                                            onPressed:
-                                                MyApp.productCartQuantity[cart
-                                                                .productId] ==
-                                                            1 ||
-                                                        isLoading(state)
-                                                    ? null
-                                                    : () {
-                                                        context
-                                                            .read<CartBloc>()
-                                                            .add(
-                                                              CartUpdateProductsCartEvent(
-                                                                  cart.id,
-                                                                  cart.quantity -
-                                                                      1,
-                                                                  cart.productId),
-                                                            );
-                                                      },
-                                            child: Text(
-                                              '-',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .labelLarge,
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 40.0.h,
-                                          height: 30.h,
-                                          child: Center(
-                                            child: isLoading(state)
-                                                ? const DefaultSpinKit(
-                                                    size: 25,
-                                                  )
-                                                : Text(
-                                                    '${MyApp.productCartQuantity[cart.productId]}',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyMedium,
-                                                  ),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 40.0.w,
-                                          height: 30.0.h,
-                                          decoration: BoxDecoration(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .primary,
-                                            borderRadius: MyApp.isArabic
-                                                ? BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(10.0.r),
-                                                    bottomLeft:
-                                                        Radius.circular(10.0.r),
-                                                  )
-                                                : BorderRadius.only(
-                                                    topRight:
-                                                        Radius.circular(10.0.r),
-                                                    bottomRight:
-                                                        Radius.circular(10.0.r),
-                                                  ),
-                                          ),
-                                          child: MaterialButton(
-                                            onPressed: isLoading(state)
-                                                ? null
-                                                : () {
-                                                    context
-                                                        .read<CartBloc>()
-                                                        .add(
-                                                          CartUpdateProductsCartEvent(
-                                                              cart.id,
-                                                              cart.quantity + 1,
-                                                              cart.productId),
-                                                        );
-                                                  },
-                                            child: Text(
-                                              '+',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .labelLarge,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                    child: MaterialButton(
+                                      onPressed:
+                                      MyApp.productCartQuantity[cart
+                                          .productId] ==
+                                          1 ||
+                                          isLoading(state)
+                                          ? null
+                                          : () {
+                                        context
+                                            .read<CartBloc>()
+                                            .add(
+                                          CartUpdateProductsCartEvent(
+                                              cart.id,
+                                              cart.quantity -
+                                                  1,
+                                              cart.productId),
+                                        );
+                                      },
+                                      child: Text(
+                                        '-',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width:
+                                    MediaQuery.sizeOf(context).width *
+                                        0.1,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: AppColorLight.primaryColor)
+                                    ),
+                                    child: Center(
+                                      child: isLoading(state)
+                                          ? const DefaultSpinKit(
+                                        size: 25,
+                                      )
+                                          : Text(
+                                        '${MyApp.productCartQuantity[cart.productId]}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width:
+                                    MediaQuery.sizeOf(context).width *
+                                        0.1,
+                                    height: 30.0,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary,
+                                      borderRadius: MyApp.isArabic
+                                          ? const BorderRadius.only(
+                                        topLeft:
+                                        Radius.circular(10.0),
+                                        bottomLeft:
+                                        Radius.circular(10.0),
+                                      )
+                                          : const BorderRadius.only(
+                                        topRight:
+                                        Radius.circular(10.0),
+                                        bottomRight:
+                                        Radius.circular(10.0),
+                                      ),
+                                    ),
+                                    child: MaterialButton(
+                                      onPressed: isLoading(state)
+                                          ? null
+                                          : () {
+                                        context
+                                            .read<CartBloc>()
+                                            .add(
+                                          CartUpdateProductsCartEvent(
+                                              cart.id,
+                                              cart.quantity + 1,
+                                              cart.productId),
+                                        );
+                                      },
+                                      child: Text(
+                                        '+',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge,
+                                      ),
                                     ),
                                   ),
                                   const Spacer(),
@@ -281,13 +272,13 @@ class CartsScreen extends StatelessWidget {
                                               .colorScheme
                                               .primary,
                                         ),
-                                        SizedBox(
-                                          width: 10.0.w,
+                                        const SizedBox(
+                                          width: 10.0,
                                         ),
                                         Text(
                                           S.of(context).removeTitle,
                                           style: TextStyle(
-                                            fontSize: 16.0.sp,
+                                            fontSize: 16.0,
                                             color: Theme.of(context)
                                                 .colorScheme
                                                 .primary,
@@ -305,7 +296,7 @@ class CartsScreen extends StatelessWidget {
                     },
                     separatorBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0).r,
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: SizedBox(
                           width: double.infinity,
                           child: Divider(
@@ -317,8 +308,8 @@ class CartsScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                SizedBox(
-                  height: 10.0.h,
+                const SizedBox(
+                  height: 10.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),

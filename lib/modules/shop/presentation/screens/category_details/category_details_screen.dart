@@ -10,8 +10,6 @@ import 'package:e_commerce_app/modules/shop/domain/entities/product.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/category_details/category_details_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/style/components/default_shimmer.dart';
 import '../../../../../generated/l10n.dart';
 
@@ -38,7 +36,7 @@ class CategoryDetailsScreen extends StatelessWidget {
             builder: (context, state) {
               if (state.productsState != RequestState.success) {
                 return const Center(
-                  child: DefaultSpinKit(),
+                  child: DefaultSpinKit(size: 60.0,),
                 );
               }
 
@@ -50,7 +48,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                 );
               }
               return Padding(
-                padding: EdgeInsets.only(bottom: 10.0.r),
+                padding: const EdgeInsets.only(bottom: 10.0),
                 child: ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   itemCount: state.products.length,
@@ -65,15 +63,15 @@ class CategoryDetailsScreen extends StatelessWidget {
                             arguments: args);
                       },
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 14.0).r,
+                        padding: const EdgeInsets.symmetric(horizontal: 14.0),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Stack(
                               children: [
                                 SizedBox(
-                                  height: 100.0.h,
-                                  width: 100.0.w,
+                                  height: 100.0,
+                                  width: 100.0,
                                   child: CachedNetworkImage(
                                     imageUrl: product.image,
                                     errorWidget: (context, url, error) =>
@@ -92,7 +90,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                                           Theme.of(context).colorScheme.primary,
                                       padding: const EdgeInsets.symmetric(
                                               horizontal: 5.0, vertical: 3.0)
-                                          .r,
+                                          ,
                                       child: Center(
                                         child: Text(
                                           '- ${product.discount} %',
@@ -109,14 +107,14 @@ class CategoryDetailsScreen extends StatelessWidget {
                                   ),
                               ],
                             ),
-                            SizedBox(
-                              width: 5.0.w,
+                            const SizedBox(
+                              width: 5.0,
                             ),
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                         vertical: 8.0, horizontal: 8.0)
-                                    .r,
+                                    ,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -128,8 +126,8 @@ class CategoryDetailsScreen extends StatelessWidget {
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 2,
                                     ),
-                                    SizedBox(
-                                      height: 8.0.h,
+                                    const SizedBox(
+                                      height: 8.0,
                                     ),
                                     Row(
                                       children: [
@@ -144,14 +142,14 @@ class CategoryDetailsScreen extends StatelessWidget {
                                                     .primary,
                                               ),
                                         ),
-                                        SizedBox(
-                                          width: 5.0.w,
+                                        const SizedBox(
+                                          width: 5.0,
                                         ),
                                         if (product.discount != 0)
                                           Text(
                                             'EGP ${product.oldPrice.toString()}',
-                                            style: TextStyle(
-                                                fontSize: 12.sp,
+                                            style: const TextStyle(
+                                                fontSize: 12,
                                                 color: Colors.grey,
                                                 decoration:
                                                     TextDecoration.lineThrough),
@@ -180,8 +178,8 @@ class CategoryDetailsScreen extends StatelessWidget {
                                                 .primary,
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: 3.0.w,
+                                        const SizedBox(
+                                          width: 3.0,
                                         ),
                                         IconButton(
                                           onPressed: () {
@@ -211,7 +209,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0).r,
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: SizedBox(
                       width: double.infinity,
                       child: Divider(

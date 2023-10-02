@@ -5,7 +5,6 @@ import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/shop/domain/entities/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/style/components/default_shimmer.dart';
 import '../../controller/products/products_bloc.dart';
 import '../../controller/products/products_state.dart';
@@ -20,10 +19,10 @@ class CategoriesScreen extends StatelessWidget {
         builder: (context, state) {
           if (state.categoriesState != RequestState.success) {
             return ListView.separated(
-                itemBuilder: (context, index) => SizedBox(
-                      height: 100.0.h,
+                itemBuilder: (context, index) => const SizedBox(
+                      height: 100.0,
                       width: double.infinity,
-                      child: const DefaultShimmer(),
+                      child: DefaultShimmer(),
                     ),
                 separatorBuilder: (context, index) => const SizedBox(
                       height: 8.0,
@@ -31,7 +30,7 @@ class CategoriesScreen extends StatelessWidget {
                 itemCount: 30);
           }
           return Padding(
-            padding: EdgeInsets.only(bottom: 10.0.r),
+            padding: const EdgeInsets.only(bottom: 10.0),
             child: ListView.separated(
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
@@ -40,12 +39,12 @@ class CategoriesScreen extends StatelessWidget {
                     children: [
                       CachedNetworkImage(
                         imageUrl: category.image,
-                        height: 100.0.h,
-                        width: 100.0.w,
+                        height: 100.0,
+                        width: 100.0,
                         placeholder: (context, url) => const DefaultShimmer(),
                       ),
-                      SizedBox(
-                        width: 10.0.w,
+                      const SizedBox(
+                        width: 10.0,
                       ),
                       Expanded(
                         child: Text(
@@ -58,7 +57,7 @@ class CategoriesScreen extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0).r,
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: IconButton(
                           onPressed: () {
                             ScreenArgs args = ScreenArgs.toCategoryDetails(
@@ -80,9 +79,9 @@ class CategoriesScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                         horizontal: 10.0,
                         vertical: 8.0,
-                      ).r,
+                      ),
                       child: Divider(
-                        height: 1.0.h,
+                        height: 1.0,
                         color: Colors.grey[300],
                       ),
                     ),

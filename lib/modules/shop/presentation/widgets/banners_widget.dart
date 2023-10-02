@@ -4,8 +4,6 @@ import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/style/components/default_animation.dart';
 import '../../../../core/style/components/default_shimmer.dart';
 import '../controller/products/products_state.dart';
@@ -17,7 +15,7 @@ class BannersWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
-        double bannerHeight = MediaQuery.of(context).size.height * 1 / 3.h;
+        double bannerHeight = MediaQuery.of(context).size.height * 1 / 3;
         if (state.bannersState != RequestState.success) {
           return SizedBox(
             height: bannerHeight,

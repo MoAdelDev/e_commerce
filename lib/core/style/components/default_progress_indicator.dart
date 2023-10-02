@@ -8,7 +8,7 @@ class DefaultSpinKit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SpinKitSpinningLines(
+    return SpinKitChasingDots(
       color: Theme.of(context).colorScheme.primary,
       size: size,
     );
