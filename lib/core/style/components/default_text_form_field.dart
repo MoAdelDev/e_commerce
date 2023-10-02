@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,6 +13,7 @@ class DefaultTextFormField extends StatelessWidget {
   final String errorMsg;
   final TextInputType keyboardType;
   final bool? isNextTabEnable;
+  final TextInputAction textInputAction;
 
   const DefaultTextFormField({
     Key? key,
@@ -24,7 +26,7 @@ class DefaultTextFormField extends StatelessWidget {
     this.isNextTabEnable = true,
     this.onSuffixIcon,
     this.suffixIcon,
-    this.onSubmit,
+    this.onSubmit, required this.textInputAction,
   }) : super(key: key);
 
   @override
@@ -34,14 +36,21 @@ class DefaultTextFormField extends StatelessWidget {
         controller: controller,
         keyboardType: keyboardType,
         onFieldSubmitted: onSubmit,
-        textInputAction: isNextTabEnable! ? TextInputAction.next : null,
+        textInputAction: textInputAction,
         decoration: InputDecoration(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0).r,
+            borderRadius: BorderRadius.circular(8.0).r,
           ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0).r,
+            borderSide: BorderSide.none
+          ),
+          fillColor: AppColorLight.primaryColor.shade100,
+          filled: true,
           hintText: hintText,
           hintStyle: TextStyle(
-            fontSize: 16.0.sp,
+            fontSize: 14.0.sp,
+            color: Colors.grey[700]
           ),
           prefixIcon: Icon(prefixIcon),
           suffixIcon: IconButton(

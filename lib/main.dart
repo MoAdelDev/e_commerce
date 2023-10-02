@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/modules/authentication/domain/entities/user.dart';
+import 'package:e_commerce_app/modules/on_boarding/on_boarding_screen.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_bloc.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_event.dart';
 import 'package:flutter/foundation.dart';
@@ -73,7 +74,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: lightTheme(context),
-          home: token == '' ? LoginScreen() : HomeScreen(),
+          home: token == '' ? const OnBoardingScreen() : HomeScreen(),
           onGenerateRoute: (settings) =>
               AppRoute.getInstance().generateRouter(settings),
           locale:

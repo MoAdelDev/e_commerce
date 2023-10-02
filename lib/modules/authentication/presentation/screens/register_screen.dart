@@ -87,6 +87,8 @@ class RegisterScreen extends StatelessWidget {
                                   prefixIcon: Icons.person,
                                   keyboardType: TextInputType.name,
                                   errorMsg: S.of(context).nameHintTitle,
+                                  textInputAction: TextInputAction.next,
+
                                 ),
                                 SizedBox(
                                   height: 10.0.h,
@@ -97,6 +99,8 @@ class RegisterScreen extends StatelessWidget {
                                   prefixIcon: Icons.email,
                                   keyboardType: TextInputType.emailAddress,
                                   errorMsg: S.of(context).emailHintTitle,
+                                  textInputAction: TextInputAction.next,
+
                                 ),
                                 SizedBox(
                                   height: 10.0.h,
@@ -107,6 +111,8 @@ class RegisterScreen extends StatelessWidget {
                                   prefixIcon: Icons.phone,
                                   keyboardType: TextInputType.phone,
                                   errorMsg: S.of(context).phoneHintTitle,
+                                  textInputAction: TextInputAction.next,
+
                                 ),
                                 SizedBox(
                                   height: 10.0.h,
@@ -127,20 +133,9 @@ class RegisterScreen extends StatelessWidget {
                                   },
                                   onSubmit: (value) {
                                     FocusManager.instance.primaryFocus?.unfocus();
-                                    // validate and login user
-                                    if (_formKey.currentState!.validate()) {
-                                      context.read<RegisterBloc>().add(
-                                            RegisterEvent(
-                                              _nameController.text,
-                                              _emailController.text,
-                                              _phoneController.text,
-                                              _passwordController.text,
-                                              S.of(context).registerSuccessMsg,
-                                            ),
-                                          );
-                                    }
                                   },
                                   errorMsg: S.of(context).passwordHintTitle,
+                                  textInputAction: TextInputAction.done,
                                 ),
                                 SizedBox(
                                   height: 10.0.h,

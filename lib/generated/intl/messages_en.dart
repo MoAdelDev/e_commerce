@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addToCartTitle": MessageLookupByLibrary.simpleMessage("Add to cart"),
         "appName": MessageLookupByLibrary.simpleMessage("Shop"),
         "checkoutTitle": MessageLookupByLibrary.simpleMessage("Checkout"),
+        "continueTitle": MessageLookupByLibrary.simpleMessage("Continue"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("DISCOUNT"),
         "emailHintTitle":
@@ -33,11 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Failed to load data, try again"),
         "loginSuccessMsg": MessageLookupByLibrary.simpleMessage(
             "you have been logged in successfully"),
-        "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginTitle": MessageLookupByLibrary.simpleMessage("LOGIN"),
         "nameHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your name"),
         "noProductsTitle":
             MessageLookupByLibrary.simpleMessage("No Products yet"),
+        "onBoardingTitle":
+            MessageLookupByLibrary.simpleMessage("Shop Products"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "phoneHintTitle":

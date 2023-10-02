@@ -19,7 +19,9 @@
   "removeFromCartTitle" : "إزالة من السلة",
   "noProductsTitle" : "لا توجد منتجات حتى الآن",
   "removeTitle" : "إزالة",
-  "checkoutTitle" : "الدفع"
+  "checkoutTitle" : "الدفع",
+  "onBoardingTitle" : "تسوق المنتجات",
+  "continueTitle" : "إستمر"
 
 
 }

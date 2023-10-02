@@ -100,10 +100,10 @@ class S {
     );
   }
 
-  /// `Login`
+  /// `LOGIN`
   String get loginTitle {
     return Intl.message(
-      'Login',
+      'LOGIN',
       name: 'loginTitle',
       desc: '',
       args: [],
@@ -255,6 +255,26 @@ class S {
     return Intl.message(
       'Checkout',
       name: 'checkoutTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shop Products`
+  String get onBoardingTitle {
+    return Intl.message(
+      'Shop Products',
+      name: 'onBoardingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continueTitle {
+    return Intl.message(
+      'Continue',
+      name: 'continueTitle',
       desc: '',
       args: [],
     );

@@ -1,5 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
+import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:flutter/material.dart';
@@ -34,15 +35,69 @@ class LoginScreen extends StatelessWidget {
                   context, RouteConst.homeScreen, (route) => false);
             }
           });
+          if (MediaQuery.of(context).viewInsets.bottom > 0) {
+            _scrollController.animateTo(
+                _scrollController.position.maxScrollExtent,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeInOut);
+          }
+
           return SafeArea(
             child: Scaffold(
-              backgroundColor: Theme.of(context).colorScheme.primary,
-              body: Column(
+              resizeToAvoidBottomInset: false,
+              backgroundColor: AppColorLight.primaryColor.shade700,
+              body: Stack(
+                alignment: AlignmentDirectional.center,
                 children: [
-                  SizedBox(
-                    height: 80.0.h,
+                  Column(
+                    children: [
+                      Container(
+                        color: AppColorLight.primaryColor,
+                        height: MediaQuery.sizeOf(context).height * 0.3.h,
+                        width: double.infinity,
+                      ),
+                      Container(
+                        color: AppColorLight.primaryColor.shade100,
+                        width: double.infinity,
+                      )
+                    ],
                   ),
-                  SvgPicture.asset(
+                  Positioned(
+                    top: 30.0.h,
+                    right: 0,
+                    left: 0,
+                    child: Column(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/shop.svg',
+                          height: 100.h,
+                          width: 100.0.w,
+                        ),
+                        SizedBox(
+                          height: 20.0.h,
+                          child: Text(
+                            S.of(context).loginTitle,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+/*SvgPicture.asset(
                     'assets/images/shop.svg',
                     height: 100,
                     width: 100.0,
@@ -56,153 +111,140 @@ class LoginScreen extends StatelessWidget {
                         ?.copyWith(color: Colors.white),
                   ),
                   SizedBox(height: 20.0.h),
-                  Expanded(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(25),
-                              topRight: Radius.circular(25),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white30,
+                              blurRadius: 25,
+                              spreadRadius: 0.5,
+                              offset: Offset(0.6, 0.6),
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.white30,
-                                blurRadius: 25,
-                                spreadRadius: 0.5,
-                                offset: Offset(0.6, 0.6),
+                          ]),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              DefaultAnimatedText(
+                                  text: S.of(context).loginTitle,
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge),
+                              SizedBox(
+                                height: 20.0.h,
                               ),
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Form(
-                            key: _formKey,
-                            child: SingleChildScrollView(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  DefaultAnimatedText(
-                                      text: S.of(context).loginTitle,
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge),
-                                  SizedBox(
-                                    height: 20.0.h,
-                                  ),
-                                  DefaultTextFormField(
-                                    controller: _emailController,
-                                    hintText: S.of(context).emailHintTitle,
-                                    prefixIcon: Icons.email,
-                                    keyboardType: TextInputType.emailAddress,
-                                    errorMsg: S.of(context).emailHintTitle,
-                                  ),
-                                  SizedBox(
-                                    height: 10.0.h,
-                                  ),
-                                  DefaultTextFormField(
-                                    controller: _passwordController,
-                                    keyboardType: TextInputType.visiblePassword,
-                                    hintText: S.of(context).passwordHintTitle,
-                                    prefixIcon: Icons.lock,
-                                    obscureText: state.isPasswordHidden,
-                                    suffixIcon: state.isPasswordHidden
-                                        ? Icons.visibility_rounded
-                                        : Icons.visibility_off_rounded,
-                                    onSuffixIcon: () {
-                                      context
-                                          .read<LoginBloc>()
-                                          .add(LoginShowPasswordEvent());
-                                    },
-                                    onSubmit: (value) {
-                                      FocusManager.instance.primaryFocus
-                                          ?.unfocus();
-                                      // validate and login user
-                                      if (_formKey.currentState!.validate()) {
-                                        context.read<LoginBloc>().add(
-                                              LoginEvent(
-                                                _emailController.text,
-                                                _passwordController.text,
-                                                S.of(context).loginSuccessMsg,
-                                              ),
-                                            );
-                                      }
-                                    },
-                                    errorMsg: S.of(context).passwordHintTitle,
-                                  ),
-                                  SizedBox(
-                                    height: 10.0.h,
-                                  ),
-                                  ConditionalBuilder(
-                                    condition: state.loginState !=
-                                        RequestState.loading,
-                                    builder: (context) => Column(
+                              DefaultTextFormField(
+                                controller: _emailController,
+                                hintText: S.of(context).emailHintTitle,
+                                prefixIcon: Icons.email,
+                                keyboardType: TextInputType.emailAddress,
+                                errorMsg: S.of(context).emailHintTitle,
+                              ),
+                              SizedBox(
+                                height: 10.0.h,
+                              ),
+                              DefaultTextFormField(
+                                controller: _passwordController,
+                                keyboardType: TextInputType.visiblePassword,
+                                hintText: S.of(context).passwordHintTitle,
+                                prefixIcon: Icons.lock,
+                                obscureText: state.isPasswordHidden,
+                                suffixIcon: state.isPasswordHidden
+                                    ? Icons.visibility_rounded
+                                    : Icons.visibility_off_rounded,
+                                onSuffixIcon: () {
+                                  context
+                                      .read<LoginBloc>()
+                                      .add(LoginShowPasswordEvent());
+                                },
+                                onSubmit: (value) {
+                                  FocusManager.instance.primaryFocus
+                                      ?.unfocus();
+                                  // validate and login user
+                                  if (_formKey.currentState!.validate()) {
+                                    context.read<LoginBloc>().add(
+                                          LoginEvent(
+                                            _emailController.text,
+                                            _passwordController.text,
+                                            S.of(context).loginSuccessMsg,
+                                          ),
+                                        );
+                                  }
+                                },
+                                errorMsg: S.of(context).passwordHintTitle,
+                              ),
+                              SizedBox(
+                                height: 10.0.h,
+                              ),
+                              ConditionalBuilder(
+                                condition: state.loginState !=
+                                    RequestState.loading,
+                                builder: (context) => Column(
+                                  children: [
+                                    DefaultButton(
+                                        onPressed: () {
+                                          // to dismiss keyboard
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                          // validate and user login
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            context
+                                                .read<LoginBloc>()
+                                                .add(LoginEvent(
+                                                  _emailController.text,
+                                                  _passwordController.text,
+                                                  S.of(context).loginSuccessMsg
+                                                ));
+                                          }
+                                        },
+                                        text: S.of(context).signInTitle),
+                                    SizedBox(
+                                      height: 5.0.h,
+                                    ),
+                                    Row(
                                       children: [
-                                        DefaultButton(
-                                            onPressed: () {
-                                              // to dismiss keyboard
-                                              FocusManager.instance.primaryFocus
-                                                  ?.unfocus();
-                                              // validate and user login
-                                              if (_formKey.currentState!
-                                                  .validate()) {
-                                                context
-                                                    .read<LoginBloc>()
-                                                    .add(LoginEvent(
-                                                      _emailController.text,
-                                                      _passwordController.text,
-                                                      S.of(context).loginSuccessMsg
-                                                    ));
-                                              }
-                                            },
-                                            text: S.of(context).signInTitle),
-                                        SizedBox(
-                                          height: 5.0.h,
+                                        Text(
+                                          S.of(context).registerQuestion,
+                                          style: TextStyle(
+                                            fontSize: 16.0,
+                                            color: Colors.grey[700],
+                                          ),
                                         ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              S.of(context).registerQuestion,
-                                              style: TextStyle(
-                                                fontSize: 16.0,
-                                                color: Colors.grey[700],
-                                              ),
-                                            ),
-                                            TextButton(
-                                              child: Text(
-                                                  S.of(context).registerTitle),
-                                              onPressed: () {
-                                                Navigator.pushNamed(context,
-                                                    RouteConst.registerScreen);
-                                              },
-                                            ),
-                                          ],
+                                        TextButton(
+                                          child: Text(
+                                              S.of(context).registerTitle),
+                                          onPressed: () {
+                                            Navigator.pushNamed(context,
+                                                RouteConst.registerScreen);
+                                          },
                                         ),
                                       ],
                                     ),
-                                    fallback: (context) => Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 8.0,
-                                      ).r,
-                                      child: const Center(
-                                        child: DefaultSpinKit(),
-                                      ),
-                                    ),
+                                  ],
+                                ),
+                                fallback: (context) => Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 8.0,
+                                  ).r,
+                                  child: const Center(
+                                    child: DefaultSpinKit(),
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
+                  ),*/

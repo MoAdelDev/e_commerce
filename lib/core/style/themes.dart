@@ -22,13 +22,13 @@ ThemeData lightTheme(context) => ThemeData(
       ),
       textTheme: const TextTheme(
         titleLarge: TextStyle(
-          fontSize: 28,
+          fontSize: 40,
           color: AppColorLight.onBackgroundColor,
           fontFamily: AppFonts.regularFont,
         ),
         titleMedium: TextStyle(
-          fontSize: 24,
-          color: AppColorLight.onPrimaryColor,
+          fontSize: 30,
+          color: AppColorLight.onBackgroundColor,
           fontFamily: AppFonts.regularFont,
         ),
         titleSmall: TextStyle(
@@ -52,18 +52,18 @@ ThemeData lightTheme(context) => ThemeData(
           fontFamily: AppFonts.regularFont,
         ),
         labelLarge: TextStyle(
-          fontSize: 18,
-          fontFamily: AppFonts.mediumFont,
+          fontSize: 20,
+          fontFamily: AppFonts.boldFont,
           color: AppColorLight.onPrimaryColor,
         ),
         labelMedium: TextStyle(
-          fontSize: 16,
-          fontFamily: AppFonts.mediumFont,
+          fontSize: 18,
+          fontFamily: AppFonts.semiBoldFont,
           color: AppColorLight.onPrimaryColor,
         ),
         labelSmall: TextStyle(
-          fontSize: 14,
-          fontFamily: AppFonts.mediumFont,
+          fontSize: 16,
+          fontFamily: AppFonts.semiBoldFont,
           color: AppColorLight.onPrimaryColor,
         ),
       ),

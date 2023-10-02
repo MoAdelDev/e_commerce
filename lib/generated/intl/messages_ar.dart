@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addToCartTitle": MessageLookupByLibrary.simpleMessage("أضف الى السلة"),
         "appName": MessageLookupByLibrary.simpleMessage("المتجر"),
         "checkoutTitle": MessageLookupByLibrary.simpleMessage("الدفع"),
+        "continueTitle": MessageLookupByLibrary.simpleMessage("إستمر"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("الوصف"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("خصم"),
         "emailHintTitle":
@@ -37,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameHintTitle": MessageLookupByLibrary.simpleMessage("أدخل أسمك"),
         "noProductsTitle":
             MessageLookupByLibrary.simpleMessage("لا توجد منتجات حتى الآن"),
+        "onBoardingTitle":
+            MessageLookupByLibrary.simpleMessage("تسوق المنتجات"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
         "phoneHintTitle":

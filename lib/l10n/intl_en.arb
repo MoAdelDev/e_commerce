@@ -4,7 +4,7 @@
   "signUpTitle" : "Sign Up",
   "emailHintTitle" : "Enter your email",
   "passwordHintTitle" : "Enter your password",
-  "loginTitle" : "Login",
+  "loginTitle" : "LOGIN",
   "registerTitle" : "Register",
   "registerQuestion" : "Aren't you have an account ?",
   "nameHintTitle" : "Enter your name",
@@ -19,6 +19,8 @@
   "removeFromCartTitle" : "Remove from cart",
   "noProductsTitle" : "No Products yet",
   "removeTitle" : "Remove",
-  "checkoutTitle" : "Checkout"
+  "checkoutTitle" : "Checkout",
+  "onBoardingTitle" : "Shop Products",
+  "continueTitle" : "Continue"
 
 }
