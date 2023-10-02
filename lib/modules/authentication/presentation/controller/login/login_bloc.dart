@@ -6,7 +6,6 @@ import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/authentication/domain/entities/login.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/style/app_string_en.dart';
 import '../../../domain/usecases/login_usecase.dart';
 import 'login_state.dart';
 
@@ -27,7 +26,7 @@ class LoginBloc extends Bloc<LoginBaseEvent, LoginState> {
     final result = await loginUseCase(login);
     result.fold((error) {
       showToast(
-        msg: AppStringEn.loginErrorMsg,
+        msg: error.message,
         requestState: RequestState.error,
       );
       emit(
@@ -38,7 +37,7 @@ class LoginBloc extends Bloc<LoginBaseEvent, LoginState> {
       MyApp.user = userData;
       CacheHelper.saveData(key: 'token', value: MyApp.user.token);
       showToast(
-        msg: AppStringEn.loginSuccessMsg,
+        msg: event.loginSuccess,
         requestState: RequestState.success,
       );
       emit(state.copyWith(user: userData, loginState: RequestState.success));

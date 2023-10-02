@@ -6,16 +6,20 @@ import 'package:e_commerce_app/modules/shop/presentation/controller/products/pro
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'core/route/app_route.dart';
 import 'core/services/service_locator.dart';
 import 'core/style/themes.dart';
+import 'generated/l10n.dart';
 import 'modules/authentication/presentation/screens/login_screen.dart';
 import 'modules/shop/presentation/screens/home/home_screen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   await CacheHelper.init();
   await DioHelper.init();
 
@@ -36,12 +40,14 @@ class MyApp extends StatelessWidget {
   static late User user;
   static Map<int, bool> favoriteMap = {};
   static Map<int, int> productCartQuantity = {};
+  static bool isArabic = CacheHelper.getBool(key: 'isArabic') ?? false;
 
   const MyApp({super.key, required this.token});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    FlutterNativeSplash.remove();
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
@@ -49,7 +55,15 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider<ProductsBloc>(
-            create: (context) => sl()
+            create: (context) => ProductsBloc(
+              sl(),
+              sl(),
+              sl(),
+              sl(),
+              sl(),
+              sl(),
+              sl(),
+            )
               ..add(HomeGetBannersEvent())
               ..add(HomeGetProductsEvent())
               ..add(HomeGetCategoriesEvent())
@@ -58,11 +72,19 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'E Commerce',
           theme: lightTheme(context),
           home: token == '' ? LoginScreen() : HomeScreen(),
           onGenerateRoute: (settings) =>
               AppRoute.getInstance().generateRouter(settings),
+          locale:
+              isArabic ? const Locale('ar', 'EG') : const Locale('en', 'US'),
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
         ),
       ),
     );

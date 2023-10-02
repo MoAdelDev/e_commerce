@@ -14,9 +14,6 @@ import 'package:e_commerce_app/modules/shop/domain/usecases/get_products_usecase
 import 'package:e_commerce_app/modules/shop/domain/usecases/get_user_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/remove_favorite_usecase.dart';
 import 'package:e_commerce_app/modules/shop/domain/usecases/update_cart_usecase.dart';
-import 'package:e_commerce_app/modules/shop/presentation/controller/cart/cart_bloc.dart';
-import 'package:e_commerce_app/modules/shop/presentation/controller/category_details/category_details_bloc.dart';
-import 'package:e_commerce_app/modules/shop/presentation/controller/favorites/favorites_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../modules/authentication/data/datasource/auth_datasource.dart';
@@ -24,57 +21,10 @@ import '../../modules/authentication/data/repository/auth_repository.dart';
 import '../../modules/authentication/domain/repository/authentication_base_repository.dart';
 import '../../modules/authentication/domain/usecases/login_usecase.dart';
 import '../../modules/authentication/domain/usecases/register_usecase.dart';
-import '../../modules/authentication/presentation/controller/login/login_bloc.dart';
-import '../../modules/authentication/presentation/controller/register/register_bloc.dart';
-import '../../modules/shop/presentation/controller/product_details/product_details_bloc.dart';
-import '../../modules/shop/presentation/controller/products/products_bloc.dart';
-
 final sl = GetIt.instance;
 
 class ServiceLocator {
   void init() {
-    /// BLOC
-    sl.registerFactory<LoginBloc>(() => LoginBloc(sl()));
-    sl.registerFactory<RegisterBloc>(() => RegisterBloc(sl()));
-    sl.registerFactory<ProductsBloc>(
-      () => ProductsBloc(
-        sl(),
-        sl(),
-        sl(),
-        sl(),
-        sl(),
-        sl(),
-        sl(),
-      ),
-    );
-    sl.registerFactory<FavoritesBloc>(
-      () => FavoritesBloc(
-        sl(),
-        sl(),
-      ),
-    );
-
-    sl.registerFactory<ProductDetailsBloc>(
-      () => ProductDetailsBloc(
-        sl(),
-        sl(),
-      ),
-    );
-
-    sl.registerFactory<CartBloc>(
-      () => CartBloc(
-        sl(),
-        sl(),
-        sl(),
-      ),
-    );
-    sl.registerFactory<CategoryDetailsBloc>(
-      () => CategoryDetailsBloc(
-        sl(),
-        sl(),
-        sl(),
-      ),
-    );
 
     /// DATA SOURCE
     sl.registerLazySingleton<AuthBaseRemoteDataSource>(

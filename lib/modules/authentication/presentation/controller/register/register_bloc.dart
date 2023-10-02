@@ -5,8 +5,6 @@ import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../core/style/app_string_en.dart';
 import '../../../../../main.dart';
 import '../../../domain/entities/register.dart';
 import '../../../domain/entities/user.dart';
@@ -54,7 +52,7 @@ class RegisterBloc extends Bloc<RegisterBaseEvent, RegisterState> {
         value: userData.token,
       );
       showToast(
-        msg: AppStringEn.registerSuccessMsg,
+        msg: event.registerSuccess,
         requestState: RequestState.success,
       );
       emit(state.copyWith(

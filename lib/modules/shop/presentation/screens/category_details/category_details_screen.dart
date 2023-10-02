@@ -13,9 +13,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/style/components/default_shimmer.dart';
+import '../../../../../generated/l10n.dart';
 
 class CategoryDetailsScreen extends StatelessWidget {
   final ScreenArgs screenArgs;
+
   const CategoryDetailsScreen({super.key, required this.screenArgs});
 
   @override
@@ -27,8 +29,11 @@ class CategoryDetailsScreen extends StatelessWidget {
           title: Text(screenArgs.categoryName),
         ),
         body: BlocProvider<CategoryDetailsBloc>(
-          create: (context) =>
-              sl()..add(CategoryDetailsGetEvent(screenArgs.categoryId)),
+          create: (context) => CategoryDetailsBloc(
+            sl(),
+            sl(),
+            sl(),
+          )..add(CategoryDetailsGetEvent(screenArgs.categoryId)),
           child: BlocBuilder<CategoryDetailsBloc, CategoryDetailsState>(
             builder: (context, state) {
               if (state.productsState != RequestState.success) {
@@ -40,7 +45,7 @@ class CategoryDetailsScreen extends StatelessWidget {
               if (state.products.isEmpty) {
                 return Center(
                   child: DefaultAnimatedText(
-                      text: 'No Products yet',
+                      text: S.of(context).noProductsTitle,
                       textStyle: Theme.of(context).textTheme.titleMedium),
                 );
               }
@@ -90,7 +95,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                                           .r,
                                       child: Center(
                                         child: Text(
-                                          'DISCOUNT',
+                                          '- ${product.discount} %',
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodySmall

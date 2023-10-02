@@ -7,10 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/services/service_locator.dart';
-import '../../../../core/style/app_string_en.dart';
 import '../../../../core/style/components/default_material_button.dart';
 import '../../../../core/style/components/default_progress_indicator.dart';
 import '../../../../core/style/components/default_text_form_field.dart';
+import '../../../../generated/l10n.dart';
 import '../controller/login/login_bloc.dart';
 import '../controller/login/login_state.dart';
 
@@ -18,13 +18,14 @@ class LoginScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _scrollController = ScrollController();
 
   LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginBloc>(
-      create: (context) => sl<LoginBloc>(),
+      create: (context) => LoginBloc(sl()),
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -48,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 10.0.h),
                   Text(
-                    'Softagi',
+                    S.of(context).appName,
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge
@@ -82,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   DefaultAnimatedText(
-                                      text: 'Sign In',
+                                      text: S.of(context).loginTitle,
                                       textStyle: Theme.of(context)
                                           .textTheme
                                           .titleLarge),
@@ -91,10 +92,10 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                   DefaultTextFormField(
                                     controller: _emailController,
-                                    hintText: AppStringEn.emailHintText,
+                                    hintText: S.of(context).emailHintTitle,
                                     prefixIcon: Icons.email,
                                     keyboardType: TextInputType.emailAddress,
-                                    errorMsg: AppStringEn.emailErrorMsgText,
+                                    errorMsg: S.of(context).emailHintTitle,
                                   ),
                                   SizedBox(
                                     height: 10.0.h,
@@ -102,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                                   DefaultTextFormField(
                                     controller: _passwordController,
                                     keyboardType: TextInputType.visiblePassword,
-                                    hintText: AppStringEn.passwordHintText,
+                                    hintText: S.of(context).passwordHintTitle,
                                     prefixIcon: Icons.lock,
                                     obscureText: state.isPasswordHidden,
                                     suffixIcon: state.isPasswordHidden
@@ -119,12 +120,15 @@ class LoginScreen extends StatelessWidget {
                                       // validate and login user
                                       if (_formKey.currentState!.validate()) {
                                         context.read<LoginBloc>().add(
-                                              LoginEvent(_emailController.text,
-                                                  _passwordController.text),
+                                              LoginEvent(
+                                                _emailController.text,
+                                                _passwordController.text,
+                                                S.of(context).loginSuccessMsg,
+                                              ),
                                             );
                                       }
                                     },
-                                    errorMsg: AppStringEn.passwordErrorMsgText,
+                                    errorMsg: S.of(context).passwordHintTitle,
                                   ),
                                   SizedBox(
                                     height: 10.0.h,
@@ -142,29 +146,31 @@ class LoginScreen extends StatelessWidget {
                                               // validate and user login
                                               if (_formKey.currentState!
                                                   .validate()) {
-                                                context.read<LoginBloc>().add(
-                                                    LoginEvent(
-                                                        _emailController.text,
-                                                        _passwordController
-                                                            .text));
+                                                context
+                                                    .read<LoginBloc>()
+                                                    .add(LoginEvent(
+                                                      _emailController.text,
+                                                      _passwordController.text,
+                                                      S.of(context).loginSuccessMsg
+                                                    ));
                                               }
                                             },
-                                            text: AppStringEn.loginButtonText),
+                                            text: S.of(context).signInTitle),
                                         SizedBox(
                                           height: 5.0.h,
                                         ),
                                         Row(
                                           children: [
                                             Text(
-                                              AppStringEn.registerText,
+                                              S.of(context).registerQuestion,
                                               style: TextStyle(
                                                 fontSize: 16.0,
                                                 color: Colors.grey[700],
                                               ),
                                             ),
                                             TextButton(
-                                              child: const Text(AppStringEn
-                                                  .registerButtonText),
+                                              child: Text(
+                                                  S.of(context).registerTitle),
                                               onPressed: () {
                                                 Navigator.pushNamed(context,
                                                     RouteConst.registerScreen);

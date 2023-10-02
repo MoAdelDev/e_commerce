@@ -1,10 +1,13 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_bloc.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_event.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../generated/l10n.dart';
 
 class HomeScreen extends StatelessWidget {
   final _pageController = PageController(initialPage: 0);
@@ -17,9 +20,10 @@ class HomeScreen extends StatelessWidget {
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
+            backgroundColor: AppColorLight.backgroundColor,
             appBar: AppBar(
-              title: const Text(
-                'Softagi',
+              title: Text(
+                S.of(context).appName,
               ),
             ),
             bottomNavigationBar: CurvedNavigationBar(

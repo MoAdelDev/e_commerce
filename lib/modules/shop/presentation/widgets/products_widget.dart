@@ -84,14 +84,16 @@ class ProductsWidget extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                             horizontal: 5.0, vertical: 3.0)
                                         .r,
-                                    child: Text('DISCOUNT',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall
-                                            ?.copyWith(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .onPrimary)),
+                                    child: Text(
+                                      '- ${state.products[index].discount} %',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onPrimary),
+                                    ),
                                   )
                               ],
                             ),

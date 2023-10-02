@@ -14,6 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/services/service_locator.dart';
 import '../../../../../core/style/components/default_shimmer.dart';
+import '../../../../../generated/l10n.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final ScreenArgs screenArgs;
@@ -80,7 +81,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           horizontal: 10.0, vertical: 5.0)
                       .r,
                   child: Text(
-                    'DISCOUNT',
+                    '- ${state.product?.discount} %',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onPrimary),
                   ),
@@ -108,8 +109,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return SafeArea(
       child: Scaffold(
         body: BlocProvider<ProductDetailsBloc>(
-          create: (context) =>
-              sl()..add(ProductDetailsGetEvent(widget.screenArgs.productId)),
+          create: (context) => ProductDetailsBloc(sl(), sl())
+            ..add(ProductDetailsGetEvent(widget.screenArgs.productId)),
           child: BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
             builder: (context, state) {
               if (state.productState == RequestState.loading) {
@@ -126,7 +127,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   width: double.infinity,
                   child: Center(
                     child: DefaultAnimatedText(
-                      text: 'Failed to load data, try again',
+                      text: S.of(context).loadingDataErrorTitle,
                       textStyle: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
@@ -198,7 +199,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10.0, vertical: 5.0),
                                 child: Text(
-                                  'Description',
+                                  S.of(context).descriptionTitle,
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge
@@ -241,7 +242,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ProductDetailsAddOrRemoveProductToCartEvent(
                                       state.product?.id ?? 0));
                             },
-                            text: 'Add to cart'),
+                            text: S.of(context).addToCartTitle),
                         fallback: (context) => const DefaultSpinKit(),
                       ),
                     ),
@@ -257,7 +258,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ProductDetailsAddOrRemoveProductToCartEvent(
                                       state.product?.id ?? 0));
                             },
-                            text: 'Remove from cart'),
+                            text: S.of(context).removeFromCartTitle),
                         fallback: (context) => const DefaultSpinKit(),
                       ),
                     ),

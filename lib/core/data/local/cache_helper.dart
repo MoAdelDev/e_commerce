@@ -8,6 +8,9 @@ class CacheHelper {
     if (!sharedPreferences.containsKey('token')) {
       saveData(key: 'token', value: '');
     }
+    else if(!sharedPreferences.containsKey('isArabic')) {
+      saveBool(key: 'isArabic', value: false);
+    }
   }
 
   static Future<bool> saveData({
@@ -21,5 +24,18 @@ class CacheHelper {
     required String key,
   }) async {
     return sharedPreferences.getString(key);
+  }
+
+  static Future<bool> saveBool({
+    required String key,
+    required bool value,
+  }) async {
+    return await sharedPreferences.setBool(key, value);
+  }
+
+  static bool? getBool({
+    required String key,
+  }) {
+    return sharedPreferences.getBool(key);
   }
 }

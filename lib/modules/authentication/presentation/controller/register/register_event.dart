@@ -12,8 +12,9 @@ class RegisterEvent extends RegisterBaseEvent {
   final String email;
   final String phone;
   final String password;
+  final String registerSuccess;
 
-  const RegisterEvent(this.name, this.email, this.phone, this.password);
+  const RegisterEvent(this.name, this.email, this.phone, this.password, this.registerSuccess);
 }
 
 class RegisterShowPasswordEvent extends RegisterBaseEvent {

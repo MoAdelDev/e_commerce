@@ -5,12 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/services/service_locator.dart';
-import '../../../../core/style/app_string_en.dart';
 import '../../../../core/style/components/default_animated_text.dart';
 import '../../../../core/style/components/default_material_button.dart';
 import '../../../../core/style/components/default_progress_indicator.dart';
 import '../../../../core/style/components/default_text_form_field.dart';
 import '../../../../core/utils/enums.dart';
+import '../../../../generated/l10n.dart';
 import '../controller/register/register_bloc.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<RegisterBloc>(
-      create: (context) => sl<RegisterBloc>(),
+      create: (context) => RegisterBloc(sl()),
       child: BlocBuilder<RegisterBloc, RegisterState>(
         builder: (context, state) {
           return Scaffold(
@@ -46,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 10.0.h),
                 Text(
-                  'Softagi',
+                  S.of(context).appName,
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge
@@ -79,34 +79,34 @@ class RegisterScreen extends StatelessWidget {
                           child: SingleChildScrollView(
                             child: Column(
                               children: [
-                                DefaultAnimatedText(text: 'Sign Up', textStyle: Theme.of(context).textTheme.titleLarge),
+                                DefaultAnimatedText(text: S.of(context).registerTitle, textStyle: Theme.of(context).textTheme.titleLarge),
                                 SizedBox(height: 20.0.h,),
                                 DefaultTextFormField(
                                   controller: _nameController,
-                                  hintText: AppStringEn.nameHintText,
+                                  hintText: S.of(context).nameHintTitle,
                                   prefixIcon: Icons.person,
                                   keyboardType: TextInputType.name,
-                                  errorMsg: AppStringEn.nameErrorMsgText,
+                                  errorMsg: S.of(context).nameHintTitle,
                                 ),
                                 SizedBox(
                                   height: 10.0.h,
                                 ),
                                 DefaultTextFormField(
                                   controller: _emailController,
-                                  hintText: AppStringEn.emailHintText,
+                                  hintText: S.of(context).emailHintTitle,
                                   prefixIcon: Icons.email,
                                   keyboardType: TextInputType.emailAddress,
-                                  errorMsg: AppStringEn.emailErrorMsgText,
+                                  errorMsg: S.of(context).emailHintTitle,
                                 ),
                                 SizedBox(
                                   height: 10.0.h,
                                 ),
                                 DefaultTextFormField(
                                   controller: _phoneController,
-                                  hintText: AppStringEn.phoneHintText,
+                                  hintText: S.of(context).phoneHintTitle,
                                   prefixIcon: Icons.phone,
                                   keyboardType: TextInputType.phone,
-                                  errorMsg: AppStringEn.phoneErrorMsgText,
+                                  errorMsg: S.of(context).phoneHintTitle,
                                 ),
                                 SizedBox(
                                   height: 10.0.h,
@@ -114,7 +114,7 @@ class RegisterScreen extends StatelessWidget {
                                 DefaultTextFormField(
                                   controller: _passwordController,
                                   keyboardType: TextInputType.visiblePassword,
-                                  hintText: AppStringEn.passwordHintText,
+                                  hintText: S.of(context).passwordHintTitle,
                                   prefixIcon: Icons.lock,
                                   obscureText: state.isPasswordHidden,
                                   suffixIcon: state.isPasswordHidden
@@ -135,11 +135,12 @@ class RegisterScreen extends StatelessWidget {
                                               _emailController.text,
                                               _phoneController.text,
                                               _passwordController.text,
+                                              S.of(context).registerSuccessMsg,
                                             ),
                                           );
                                     }
                                   },
-                                  errorMsg: AppStringEn.passwordErrorMsgText,
+                                  errorMsg: S.of(context).passwordHintTitle,
                                 ),
                                 SizedBox(
                                   height: 10.0.h,
@@ -164,11 +165,12 @@ class RegisterScreen extends StatelessWidget {
                                                     _emailController.text,
                                                     _phoneController.text,
                                                     _passwordController.text,
+                                                    S.of(context).registerSuccessMsg,
                                                   ),
                                                 );
                                           }
                                         },
-                                        text: AppStringEn.registerButtonText),
+                                        text: S.of(context).signUpTitle),
                                     fallback: (context) => Padding(
                                       padding: const EdgeInsets.only(
                                         top: 8.0,

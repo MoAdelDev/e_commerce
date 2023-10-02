@@ -1,12 +1,12 @@
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
-import 'package:e_commerce_app/modules/shop/presentation/screens/category_details/category_details_Screen.dart';
 import 'package:e_commerce_app/modules/shop/presentation/screens/home/home_screen.dart';
 import 'package:e_commerce_app/modules/shop/presentation/screens/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../modules/authentication/presentation/screens/login_screen.dart';
 import '../../modules/authentication/presentation/screens/register_screen.dart';
+import '../../modules/shop/presentation/screens/category_details/category_details_screen.dart';
 
 class AppRoute {
   static AppRoute getInstance() {

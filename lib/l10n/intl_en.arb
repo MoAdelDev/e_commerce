@@ -1,0 +1,24 @@
+{
+  "appName" : "Shop",
+  "signInTitle" : "Sign In",
+  "signUpTitle" : "Sign Up",
+  "emailHintTitle" : "Enter your email",
+  "passwordHintTitle" : "Enter your password",
+  "loginTitle" : "Login",
+  "registerTitle" : "Register",
+  "registerQuestion" : "Aren't you have an account ?",
+  "nameHintTitle" : "Enter your name",
+  "phoneHintTitle" : "Enter your phone",
+  "registerSuccessMsg" : "You have been registered successfully",
+  "loginSuccessMsg" : "you have been logged in successfully",
+  "productsTitle" : "Products",
+  "descriptionTitle" : "Description",
+  "discountTitle" : "DISCOUNT",
+  "loadingDataErrorTitle" : "Failed to load data, try again",
+  "addToCartTitle" : "Add to cart",
+  "removeFromCartTitle" : "Remove from cart",
+  "noProductsTitle" : "No Products yet",
+  "removeTitle" : "Remove",
+  "checkoutTitle" : "Checkout"
+
+}

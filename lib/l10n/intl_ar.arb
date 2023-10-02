@@ -1,0 +1,25 @@
+{
+  "appName" : "المتجر",
+  "signInTitle" : "تسجيل الدخول",
+  "signUpTitle" : "طلب تسجيل حساب",
+  "emailHintTitle" : "أدخل البريد الإلكتروني",
+  "passwordHintTitle" : "أدخل كلمة المرور",
+  "loginTitle" : "تسجيل الدخول",
+  "registerTitle" : "طلب تسجيل حساب",
+  "registerQuestion" : "أليس لديك حساب ؟",
+  "nameHintTitle" : "أدخل أسمك",
+  "phoneHintTitle" : "أدخل رقم الهاتف",
+  "registerSuccessMsg" : "تم طلب تسجيل الحساب بنجاح",
+  "loginSuccessMsg" : "تم تسجيل الدخول بنجاح",
+  "productsTitle" : "المنتجات",
+  "descriptionTitle" : "الوصف",
+  "discountTitle" : "خصم",
+  "loadingDataErrorTitle" : "فشل في تحميل البيانات. حاول مرة أخرى",
+  "addToCartTitle" : "أضف الى السلة",
+  "removeFromCartTitle" : "إزالة من السلة",
+  "noProductsTitle" : "لا توجد منتجات حتى الآن",
+  "removeTitle" : "إزالة",
+  "checkoutTitle" : "الدفع"
+
+
+}

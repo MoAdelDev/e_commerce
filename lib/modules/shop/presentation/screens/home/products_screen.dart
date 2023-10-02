@@ -3,6 +3,8 @@ import 'package:e_commerce_app/modules/shop/presentation/widgets/products_widget
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({Key? key}) : super(key: key);
 
@@ -26,7 +28,7 @@ class ProductsScreen extends StatelessWidget {
                   color: Theme.of(context).colorScheme.primary,
                   padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                   child: Text(
-                    'Products',
+                    S.of(context).productsTitle,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
                   ),
                 ),
