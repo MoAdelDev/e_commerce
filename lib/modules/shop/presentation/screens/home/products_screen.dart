@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/modules/shop/presentation/widgets/banners_widget.dart';
 import 'package:e_commerce_app/modules/shop/presentation/widgets/products_widget.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class ProductsScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                   child: Text(
                     S.of(context).productsTitle,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: AppColorLight.onPrimaryColor),
                   ),
                 ),
                 SizedBox(

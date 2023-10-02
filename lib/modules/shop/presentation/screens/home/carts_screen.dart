@@ -262,19 +262,40 @@ class CartsScreen extends StatelessWidget {
                                     ),
                                   ),
                                   const Spacer(),
-                                  SizedBox(
-                                    width: 100.0.w,
-                                    height: 30.0.h,
-                                    child: DefaultButton(
-                                      onPressed: () {
-                                        context.read<CartBloc>().add(
-                                              CartDeleteProductFromCartEvent(
-                                                  cart.id, cart.productId),
-                                            );
-                                      },
-                                      text: S.of(context).removeTitle,
+                                  MaterialButton(
+                                    onPressed: () {
+                                      // remove product from cart
+                                      context.read<CartBloc>().add(
+                                            CartDeleteProductFromCartEvent(
+                                                cart.id, cart.productId),
+                                          );
+                                    },
+                                    color: Colors.white,
+                                    elevation: 0,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(
+                                          Icons.delete,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                        ),
+                                        SizedBox(
+                                          width: 10.0.w,
+                                        ),
+                                        Text(
+                                          S.of(context).removeTitle,
+                                          style: TextStyle(
+                                            fontSize: 16.0.sp,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ],
@@ -299,10 +320,15 @@ class CartsScreen extends StatelessWidget {
                 SizedBox(
                   height: 10.0.h,
                 ),
-                DefaultButton(
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: DefaultButton(
                     onPressed: () {},
                     text:
-                        '${S.of(context).checkoutTitle} (EGP ${state.cart.totalPrice})')
+                        '${S.of(context).checkoutTitle} (EGP ${state.cart.totalPrice})',
+                    textStyle: Theme.of(context).textTheme.labelMedium,
+                  ),
+                ),
               ],
             );
           },

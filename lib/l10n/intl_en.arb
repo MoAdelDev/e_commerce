@@ -21,6 +21,8 @@
   "removeTitle" : "Remove",
   "checkoutTitle" : "Checkout",
   "onBoardingTitle" : "Shop Products",
-  "continueTitle" : "Continue"
+  "continueTitle" : "Continue",
+  "forgotPasswordTitle" : "Forgot password ?"
+
 
 }

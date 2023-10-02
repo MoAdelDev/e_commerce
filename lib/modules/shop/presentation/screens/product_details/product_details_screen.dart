@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
+import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
 import 'package:e_commerce_app/core/style/components/default_material_button.dart';
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
@@ -33,7 +34,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       expandedHeight: MediaQuery.sizeOf(context).height / 3.h,
       stretch: true,
       pinned: true,
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: Theme.of(context).colorScheme.background,
+      iconTheme: const IconThemeData(color: AppColorLight.onBackgroundColor),
       flexibleSpace: LayoutBuilder(
         builder: (context, constraints) {
           context
@@ -97,7 +99,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         icon: Icon(
           Icons.arrow_back,
           color: state.top == MediaQuery.paddingOf(context).top + kToolbarHeight
-              ? Colors.white
+              ? AppColorLight.onBackgroundColor
               : Theme.of(context).colorScheme.primary,
         ),
       ),
@@ -151,7 +153,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     Text(
                                       state.product?.name ?? '',
                                       style:
-                                          Theme.of(context).textTheme.bodyLarge,
+                                          Theme.of(context).textTheme.bodyMedium,
                                       overflow: TextOverflow.visible,
                                       maxLines: null,
                                     ),
@@ -202,7 +204,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   S.of(context).descriptionTitle,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .titleLarge
+                                      .titleMedium
                                       ?.copyWith(
                                           color: Theme.of(context)
                                               .colorScheme

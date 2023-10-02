@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'colors.dart';
 import 'fonts.dart';
@@ -20,67 +21,68 @@ ThemeData lightTheme(context) => ThemeData(
         onBackground: AppColorLight.onBackgroundColor,
         brightness: Brightness.light,
       ),
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         titleLarge: TextStyle(
-          fontSize: 40,
+          fontSize: 40.sp,
           color: AppColorLight.onBackgroundColor,
-          fontFamily: AppFonts.regularFont,
+          fontFamily: AppFonts.boldFont,
         ),
         titleMedium: TextStyle(
-          fontSize: 30,
+          fontSize: 30.sp,
           color: AppColorLight.onBackgroundColor,
-          fontFamily: AppFonts.regularFont,
+          fontFamily: AppFonts.boldFont,
         ),
         titleSmall: TextStyle(
-          fontSize: 20,
+          fontSize: 20.sp,
           color: AppColorLight.onBackgroundColor,
-          fontFamily: AppFonts.regularFont,
+          fontFamily: AppFonts.boldFont,
         ),
         bodyLarge: TextStyle(
-          fontSize: 18,
+          fontSize: 18.sp,
           color: AppColorLight.onBackgroundColor,
           fontFamily: AppFonts.regularFont,
         ),
         bodyMedium: TextStyle(
-          fontSize: 16,
+          fontSize: 16.sp,
           color: AppColorLight.onBackgroundColor,
           fontFamily: AppFonts.regularFont,
         ),
         bodySmall: TextStyle(
-          fontSize: 14,
+          fontSize: 14.sp,
           color: AppColorLight.onBackgroundColor,
           fontFamily: AppFonts.regularFont,
         ),
         labelLarge: TextStyle(
-          fontSize: 20,
+          fontSize: 20.sp,
           fontFamily: AppFonts.boldFont,
           color: AppColorLight.onPrimaryColor,
         ),
         labelMedium: TextStyle(
-          fontSize: 18,
+          fontSize: 18.sp,
           fontFamily: AppFonts.semiBoldFont,
           color: AppColorLight.onPrimaryColor,
         ),
         labelSmall: TextStyle(
-          fontSize: 16,
+          fontSize: 16.sp,
           fontFamily: AppFonts.semiBoldFont,
           color: AppColorLight.onPrimaryColor,
         ),
       ),
       appBarTheme: AppBarTheme(
+        backgroundColor: AppColorLight.backgroundColor,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: AppColorLight.primaryColor,
           statusBarIconBrightness: Brightness.dark,
         ),
-        titleTextStyle: const TextStyle(
-          fontSize: 25.0,
-          color: AppColorLight.onPrimaryColor,
-          fontFamily: AppFonts.regularFont,
+        titleTextStyle: TextStyle(
+          fontSize: 30.0.sp,
+          color: AppColorLight.onBackgroundColor,
+          fontFamily: AppFonts.boldFont,
         ),
-        elevation: 3.0,
+        elevation: 1.0,
         iconTheme: const IconThemeData(
-          color: AppColorLight.onPrimaryColor,
+          color: AppColorLight.onBackgroundColor,
         ),
-        titleSpacing: 5.0,
+        titleSpacing: 10.0.w,
       ),
     );

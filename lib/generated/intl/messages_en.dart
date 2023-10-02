@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "discountTitle": MessageLookupByLibrary.simpleMessage("DISCOUNT"),
         "emailHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your email"),
+        "forgotPasswordTitle":
+            MessageLookupByLibrary.simpleMessage("Forgot password ?"),
         "loadingDataErrorTitle": MessageLookupByLibrary.simpleMessage(
             "Failed to load data, try again"),
         "loginSuccessMsg": MessageLookupByLibrary.simpleMessage(

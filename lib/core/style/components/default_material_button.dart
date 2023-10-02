@@ -8,34 +8,39 @@ class DefaultButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final IconData? icon;
   final String text;
+  final TextStyle? textStyle;
 
-  const DefaultButton({Key? key, required this.onPressed, required this.text, this.icon})
+  const DefaultButton(
+      {Key? key, required this.onPressed, required this.text, this.icon, this.textStyle})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.sizeOf(context).width * 0.5.w,
       height: 50.0,
       child: MaterialButton(
         onPressed: onPressed,
         color: AppColorDark.primaryColor,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(MyApp.isArabic ? 25 : 10.0).r,
-              topRight:Radius.circular(MyApp.isArabic ? 10 : 25.0).r,
-              bottomLeft: const Radius.circular(25.0).r,
-              bottomRight: const Radius.circular(25.0).r,
-            )
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(MyApp.isArabic ? 25 : 10.0).r,
+            topRight: Radius.circular(MyApp.isArabic ? 10 : 25.0).r,
+            bottomLeft: const Radius.circular(25.0).r,
+            bottomRight: const Radius.circular(25.0).r,
+          ),
         ),
-        child:  Row(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               text,
-              style: Theme.of(context).textTheme.labelLarge,
+              style: textStyle ?? Theme.of(context).textTheme.labelLarge,
             ),
             const Spacer(),
-            Icon(icon, color: Colors.white,)
+            Icon(
+              icon,
+              color: Colors.white,
+            )
           ],
         ),
       ),

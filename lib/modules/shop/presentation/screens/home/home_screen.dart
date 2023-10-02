@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:e_commerce_app/core/style/colors.dart';
+import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_bloc.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_event.dart';
 import 'package:e_commerce_app/modules/shop/presentation/controller/products/products_state.dart';
@@ -23,7 +24,9 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: AppColorLight.backgroundColor,
             appBar: AppBar(
               title: Text(
-                S.of(context).appName,
+                MyApp.isArabic
+                    ? state.arabicTitles[state.currentIndex]
+                    : state.englishTitles[state.currentIndex],
               ),
             ),
             bottomNavigationBar: CurvedNavigationBar(

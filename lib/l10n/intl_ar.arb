@@ -21,7 +21,8 @@
   "removeTitle" : "إزالة",
   "checkoutTitle" : "الدفع",
   "onBoardingTitle" : "تسوق المنتجات",
-  "continueTitle" : "إستمر"
+  "continueTitle" : "إستمر",
+  "forgotPasswordTitle" : "هل نسيت كلمة المرور ؟"
 
 
 }

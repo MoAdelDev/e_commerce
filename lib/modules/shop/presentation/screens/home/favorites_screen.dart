@@ -118,40 +118,38 @@ class FavoritesScreen extends StatelessWidget {
                           ),
                           Align(
                             alignment: AlignmentDirectional.center,
-                            child: SizedBox(
-                              width: 120.0.w,
-                              child: MaterialButton(
-                                onPressed: () {
-                                  // remove favorite
-                                  context.read<FavoritesBloc>().add(
-                                        FavoritesRemoveProductEvent(
-                                          favorite.id,
-                                          favorite.productId,
-                                        ),
-                                      );
-                                },
-                                color: Colors.white,
-                                elevation: 0,
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.delete,
+                            child: MaterialButton(
+                              onPressed: () {
+                                // remove favorite
+                                context.read<FavoritesBloc>().add(
+                                      FavoritesRemoveProductEvent(
+                                        favorite.id,
+                                        favorite.productId,
+                                      ),
+                                    );
+                              },
+                              color: Colors.white,
+                              elevation: 0,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.delete,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                  SizedBox(
+                                    width: 10.0.w,
+                                  ),
+                                  Text(
+                                    S.of(context).removeTitle,
+                                    style: TextStyle(
+                                      fontSize: 16.0.sp,
                                       color:
                                           Theme.of(context).colorScheme.primary,
                                     ),
-                                    SizedBox(
-                                      width: 10.0.w,
-                                    ),
-                                    Text(
-                                      S.of(context).removeTitle,
-                                      style: TextStyle(
-                                        fontSize: 16.0.sp,
-                                        color:
-                                            Theme.of(context).colorScheme.primary,
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                  )
+                                ],
                               ),
                             ),
                           )

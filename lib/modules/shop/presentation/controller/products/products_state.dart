@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/shop/presentation/screens/home/carts_screen.dart';
 import 'package:e_commerce_app/modules/shop/presentation/screens/home/products_screen.dart';
 import 'package:e_commerce_app/modules/shop/presentation/screens/home/settings_screen.dart';
@@ -19,6 +20,8 @@ class ProductsState extends Equatable {
   final int currentIndex;
   final List<Widget> screens;
   final List<Widget> items;
+  final List<String> arabicTitles;
+  final List<String> englishTitles;
 
   /// PRODUCTS
   final List<Product> products;
@@ -68,6 +71,8 @@ class ProductsState extends Equatable {
       Icon(Icons.shopping_cart, color: Colors.white),
       Icon(Icons.settings, color: Colors.white),
     ],
+    this.arabicTitles = const ['الصفحة الرئيسية', 'التصنيفات', 'المفضلات', 'السلة', 'الإعدادات'],
+    this.englishTitles = const ['Home', 'Categories', 'Favorites', 'Cart', 'Settings'],
     this.currentIndex = 0,
     this.products = const [],
     this.productsState = RequestState.loading,
