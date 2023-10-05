@@ -1,4 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
+import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -40,7 +42,7 @@ class RegisterScreen extends StatelessWidget {
             child: Scaffold(
               appBar: AppBar(),
               resizeToAvoidBottomInset: false,
-              backgroundColor: AppColorLight.backgroundColor,
+              backgroundColor: Theme.of(context).colorScheme.background,
               body: SizedBox(
                 width: double.infinity,
                 child: Column(
@@ -61,21 +63,22 @@ class RegisterScreen extends StatelessWidget {
                           milliseconds: 2000,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: AppColorLight.primaryColor.shade100,
+                              color: MyApp.isDark ? AppColorLight.primaryColor.shade700 : AppColorLight.primaryColor.shade100,
                               borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(25),
                                 topRight: Radius.circular(25),
                               ),
-                              boxShadow: const [
+                              boxShadow:  [
                                 BoxShadow(
-                                  color: Colors.white30,
+                                  color: Theme.of(context).colorScheme.background.withAlpha(50),
                                   blurRadius: 25,
                                   spreadRadius: 0.5,
-                                  offset: Offset(0.6, 0.6),
+                                  offset: const Offset(0.6, 0.6),
                                 ),
                               ],
                             ),
                             child: SingleChildScrollView(
+                              physics:  DefaultScrollPhysics.defaultPhysics(),
                               child: Padding(
                                 padding: const EdgeInsets.all(20.0),
                                 child: Form(
@@ -190,7 +193,7 @@ class RegisterScreen extends StatelessWidget {
                                             top: 8.0,
                                           ),
                                           child: Center(
-                                            child: DefaultProgressIndicstor(),
+                                            child: DefaultProgressIndicator(size: 35,),
                                           ),
                                         ),
                                       ),

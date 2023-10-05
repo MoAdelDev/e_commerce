@@ -33,5 +33,6 @@
   "offTitle": "إيقاف",
   "onTitle": "تشغيل",
   "englishTitle": "الإنجليزية",
-  "arabicTitleTitle": "العربية"
+  "arabicTitleTitle": "العربية",
+  "logoutTitle": "تسجيل الخروج"
 }

@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
-            backgroundColor: AppColorLight.backgroundColor,
+            backgroundColor: Theme.of(context).colorScheme.background,
             appBar: AppBar(
               title: Text(
                 MyApp.language == Language.arabic.name

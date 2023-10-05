@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class DefaultProgressIndicstor extends StatelessWidget {
+class DefaultProgressIndicator extends StatelessWidget {
   final double size;
 
-  const DefaultProgressIndicstor({Key? key, this.size = 30.0}) : super(key: key);
+  const DefaultProgressIndicator({Key? key, this.size = 30.0}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

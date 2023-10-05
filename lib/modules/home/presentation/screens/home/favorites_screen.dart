@@ -18,19 +18,23 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: BlocProvider<FavoritesBloc>(
-        create: (context) => FavoritesBloc(sl(), sl())..add(FavoritesGetEvent()),
+    return Container(
+      color: Theme.of(context).colorScheme.background,
+      child: BlocProvider<FavoritesBloc>(
+        create: (context) =>
+            FavoritesBloc(sl(), sl())..add(FavoritesGetEvent()),
         child: BlocBuilder<FavoritesBloc, FavoritesState>(
           builder: (context, state) {
             if (state.favoritesState != RequestState.success) {
-              return const Center(child: DefaultProgressIndicstor(size: 60.0,));
+              return const Center(
+                  child: DefaultProgressIndicator(
+                size: 60.0,
+              ));
             }
             if (state.favorites.isEmpty) {
               return Center(
                   child: DefaultAnimatedText(
-                      text:  S.of(context).noProductsTitle,
+                      text: S.of(context).noProductsTitle,
                       textStyle: Theme.of(context).textTheme.titleLarge));
             }
             return ListView.separated(
@@ -38,9 +42,12 @@ class FavoritesScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   Favorite favorite = state.favorites[index];
                   return InkWell(
-                    onTap: (){
-                      ScreenArgs args = ScreenArgs.toProductDetails(favorite.productId);
-                      Navigator.pushNamed(context, RouteConst.productDetailsScreen, arguments: args);
+                    onTap: () {
+                      ScreenArgs args =
+                          ScreenArgs.toProductDetails(favorite.productId);
+                      Navigator.pushNamed(
+                          context, RouteConst.productDetailsScreen,
+                          arguments: args);
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 14.0),
@@ -66,10 +73,10 @@ class FavoritesScreen extends StatelessWidget {
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                          vertical: 8.0, horizontal: 8.0)
-                                      ,
+                                      vertical: 8.0, horizontal: 8.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         favorite.name,
@@ -85,16 +92,10 @@ class FavoritesScreen extends StatelessWidget {
                                       Row(
                                         children: [
                                           Text(
-                                            'EGP ${favorite.price.toString()}',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall
-                                                ?.copyWith(
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .primary,
-                                                ),
-                                          ),
+                                              'EGP ${favorite.price.toString()}',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodySmall),
                                           const SizedBox(
                                             width: 5.0,
                                           ),
@@ -104,8 +105,8 @@ class FavoritesScreen extends StatelessWidget {
                                               style: const TextStyle(
                                                   fontSize: 12,
                                                   color: Colors.grey,
-                                                  decoration:
-                                                      TextDecoration.lineThrough),
+                                                  decoration: TextDecoration
+                                                      .lineThrough),
                                             ),
                                         ],
                                       ),
@@ -127,7 +128,7 @@ class FavoritesScreen extends StatelessWidget {
                                       ),
                                     );
                               },
-                              color: Colors.white,
+                              color: Theme.of(context).colorScheme.background,
                               elevation: 0,
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -135,7 +136,7 @@ class FavoritesScreen extends StatelessWidget {
                                   Icon(
                                     Icons.delete,
                                     color:
-                                        Theme.of(context).colorScheme.primary,
+                                        Theme.of(context).colorScheme.onBackground,
                                   ),
                                   const SizedBox(
                                     width: 10.0,
@@ -145,7 +146,7 @@ class FavoritesScreen extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 16.0,
                                       color:
-                                          Theme.of(context).colorScheme.primary,
+                                          Theme.of(context).colorScheme.onBackground,
                                     ),
                                   )
                                 ],

@@ -38,6 +38,8 @@ abstract class BaseHomeRemoteDataSource {
   Future<String> deleteProductFromCart({required int cartId});
 
   Future<List<Product>> getCategoryDetails({required categoryId});
+
+  Future<String> signOut();
 }
 
 class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
@@ -109,7 +111,7 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
     }
     throw ServerException(
       ErrorMessageModel.fromJson(
-        result.data['message'],
+        result.data,
       ),
     );
   }
@@ -204,7 +206,7 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
       return CartModel.fromJson(result.data['data']);
     }
     throw ServerException(
-      ErrorMessageModel.fromJson(result.data['message']),
+      ErrorMessageModel.fromJson(result.data),
     );
   }
 
@@ -254,5 +256,15 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
     throw ServerException(
       ErrorMessageModel.fromJson(result.data),
     );
+  }
+
+  @override
+  Future<String> signOut() async{
+    String? token =  CacheHelper.getString(key: 'token');
+    final result = await DioHelper.postData(path: ApiConstance.logoutUrl, data: {'fcm_token' : token}, token: token);
+    if(result.data['status']){
+      return result.data['message'];
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
   }
 }

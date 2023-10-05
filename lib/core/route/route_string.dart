@@ -5,4 +5,5 @@ class RouteConst {
   static const String productDetailsScreen = '/product_details';
   static const String categoryDetailsScreen = '/category_details';
   static const String languageScreen = '/language';
+  static const String nightModeScreen = '/nightMode';
 }

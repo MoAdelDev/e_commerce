@@ -26,9 +26,9 @@ void main() async {
 
   ServiceLocator().init();
 
-  String? token = await CacheHelper.getString(key: 'token');
+  String? token = CacheHelper.getString(key: 'token');
   if (kDebugMode) {
-    print('token: ${await CacheHelper.getString(key: 'token')}');
+    print('token: ${CacheHelper.getString(key: 'token')}');
   }
 
   runApp(MyApp(
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
   static String language =
       CacheHelper.getString(key: 'language') ?? Language.english.name;
 
-  static bool? isDark = CacheHelper.getBool(key: 'isDark') ?? false;
+  static bool isDark = CacheHelper.getBool(key: 'isDark') ?? false;
 
   const MyApp({super.key, required this.token});
 
@@ -66,6 +66,7 @@ class MyApp extends StatelessWidget {
             sl(),
             sl(),
             sl(),
+            sl(),
           )
             ..add(HomeGetBannersEvent())
             ..add(HomeGetProductsEvent())
@@ -77,7 +78,7 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: lightTheme(context),
+            theme: isDark ? darkTheme(context) : lightTheme(context),
             home: token == '' ? const OnBoardingScreen() : HomeScreen(),
             onGenerateRoute: (settings) =>
                 AppRoute.getInstance().generateRouter(settings),

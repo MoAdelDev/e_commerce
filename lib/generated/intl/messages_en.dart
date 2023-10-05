@@ -26,7 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("Shop"),
         "arabicTitleTitle": MessageLookupByLibrary.simpleMessage("Arabic"),
         "checkoutTitle": MessageLookupByLibrary.simpleMessage("Checkout"),
-        "contactMeTitle": MessageLookupByLibrary.simpleMessage("Contact me"),
+        "contactMeTitle": MessageLookupByLibrary.simpleMessage("Contact us"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("Continue"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("DISCOUNT"),
@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginSuccessMsg": MessageLookupByLibrary.simpleMessage(
             "you have been logged in successfully"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("LOGIN"),
+        "logoutTitle": MessageLookupByLibrary.simpleMessage("Log out"),
         "myAddressesTitle":
             MessageLookupByLibrary.simpleMessage("My addresses"),
         "nameHintTitle":

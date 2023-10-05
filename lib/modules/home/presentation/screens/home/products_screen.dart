@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
 import 'package:e_commerce_app/modules/home/presentation/widgets/banners_widget.dart';
 import 'package:e_commerce_app/modules/home/presentation/widgets/products_widget.dart';
@@ -10,8 +9,9 @@ class ProductsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    return Container(
+      color: Theme.of(context).colorScheme.background,
+      child: SingleChildScrollView(
         physics: DefaultScrollPhysics.defaultPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,7 +21,7 @@ class ProductsScreen extends StatelessWidget {
               height: 10.0,
             ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
                   width: double.infinity,
@@ -29,7 +29,7 @@ class ProductsScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                   child: Text(
                     S.of(context).productsTitle,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: AppColorLight.onPrimaryColor),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
                   ),
                 ),
                 const SizedBox(

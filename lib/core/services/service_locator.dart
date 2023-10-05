@@ -16,6 +16,7 @@ import 'package:e_commerce_app/modules/home/domain/usecases/get_product_details_
 import 'package:e_commerce_app/modules/home/domain/usecases/get_products_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/get_user_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/remove_favorite_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/signout_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/update_cart_usecase.dart';
 import 'package:get_it/get_it.dart';
 
@@ -97,5 +98,8 @@ class ServiceLocator {
 
     sl.registerLazySingleton<ChangeNightModeUseCase>(
         () => ChangeNightModeUseCase(sl()));
+
+    sl.registerLazySingleton<SignOutUseCase>(
+            () => SignOutUseCase(sl()));
   }
 }

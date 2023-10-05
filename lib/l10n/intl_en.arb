@@ -29,9 +29,10 @@
   "languageTitle" : "Language",
   "nightModeTitle" : "Night mode",
   "faqsTitle" : "FAQS",
-  "contactMeTitle" : "Contact me",
+  "contactMeTitle" : "Contact us",
   "offTitle" : "Off",
   "onTitle" : "On",
   "englishTitle" : "English",
-  "arabicTitleTitle" : "Arabic"
+  "arabicTitleTitle" : "Arabic",
+  "logoutTitle" : "Log out"
 }

@@ -5,12 +5,14 @@ import 'package:e_commerce_app/core/style/components/default_animated_text.dart'
 import 'package:e_commerce_app/core/style/components/default_animation.dart';
 import 'package:e_commerce_app/core/style/fonts.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
+import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/style/components/default_material_button.dart';
 import '../../../../core/style/components/default_progress_indicator.dart';
+import '../../../../core/style/components/default_scroll_physics.dart';
 import '../../../../core/style/components/default_text_form_field.dart';
 import '../../../../generated/l10n.dart';
 import '../controller/login/login_bloc.dart';
@@ -40,7 +42,7 @@ class LoginScreen extends StatelessWidget {
             child: Scaffold(
               appBar: AppBar(),
               resizeToAvoidBottomInset: false,
-              backgroundColor: AppColorLight.backgroundColor,
+              backgroundColor: Theme.of(context).colorScheme.background,
               body: SizedBox(
                 width: double.infinity,
                 child: Column(
@@ -61,21 +63,22 @@ class LoginScreen extends StatelessWidget {
                           milliseconds: 2000,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: AppColorLight.primaryColor.shade100,
+                              color: MyApp.isDark ? AppColorLight.primaryColor.shade700 : AppColorLight.primaryColor.shade100,
                               borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(25),
                                 topRight: Radius.circular(25),
                               ),
-                              boxShadow: const [
+                              boxShadow:  [
                                 BoxShadow(
-                                  color: Colors.white30,
+                                  color: Theme.of(context).colorScheme.background.withAlpha(50),
                                   blurRadius: 25,
                                   spreadRadius: 0.5,
-                                  offset: Offset(0.6, 0.6),
+                                  offset: const Offset(0.6, 0.6),
                                 ),
                               ],
                             ),
                             child: SingleChildScrollView(
+                              physics:  DefaultScrollPhysics.defaultPhysics(),
                               child: Padding(
                                 padding: const EdgeInsets.all(20.0),
                                 child: Form(
@@ -138,7 +141,7 @@ class LoginScreen extends StatelessWidget {
                                                 .textTheme
                                                 .bodyMedium
                                                 ?.copyWith(
-                                                    color: AppColorLight
+                                                    color: MyApp.isDark? Theme.of(context).colorScheme.onPrimary: AppColorLight
                                                         .primaryColor,
                                                     fontFamily:
                                                         AppFonts.boldFont),
@@ -184,7 +187,7 @@ class LoginScreen extends StatelessWidget {
                                                   S.of(context).registerQuestion,
                                                   style: TextStyle(
                                                     fontSize: 16.0,
-                                                    color: Colors.grey[700],
+                                                    color: MyApp.isDark ? Theme.of(context).colorScheme.onPrimary: Colors.grey[700],
                                                   ),
                                                 ),
                                                 TextButton(
@@ -196,7 +199,7 @@ class LoginScreen extends StatelessWidget {
                                                         ?.copyWith(
                                                           fontFamily:
                                                               AppFonts.boldFont,
-                                                          color: AppColorLight
+                                                          color: MyApp.isDark ? Theme.of(context).colorScheme.error: AppColorLight
                                                               .primaryColor,
                                                         ),
                                                   ),
@@ -216,7 +219,7 @@ class LoginScreen extends StatelessWidget {
                                             top: 8.0,
                                           ),
                                           child: Center(
-                                            child: DefaultProgressIndicstor(),
+                                            child: DefaultProgressIndicator(size: 35.0,),
                                           ),
                                         ),
                                       ),

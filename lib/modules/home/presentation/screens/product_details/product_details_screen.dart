@@ -119,7 +119,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   height: double.infinity,
                   width: double.infinity,
                   child: Center(
-                    child: DefaultProgressIndicstor(size: 60.0,),
+                    child: DefaultProgressIndicator(size: 60.0,),
                   ),
                 );
               } else if (state.productState == RequestState.error) {
@@ -245,7 +245,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       state.product?.id ?? 0));
                             },
                             text: S.of(context).addToCartTitle),
-                        fallback: (context) => const DefaultProgressIndicstor(),
+                        fallback: (context) => const DefaultProgressIndicator(),
                       ),
                     ),
                   if (MyApp.productCartQuantity[state.product?.id] != 0)
@@ -261,7 +261,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       state.product?.id ?? 0));
                             },
                             text: S.of(context).removeFromCartTitle),
-                        fallback: (context) => const DefaultProgressIndicstor(),
+                        fallback: (context) => const DefaultProgressIndicator(),
                       ),
                     ),
                   const SizedBox(

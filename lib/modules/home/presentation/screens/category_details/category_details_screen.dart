@@ -37,7 +37,9 @@ class CategoryDetailsScreen extends StatelessWidget {
             builder: (context, state) {
               if (state.productsState != RequestState.success) {
                 return const Center(
-                  child: DefaultProgressIndicstor(size: 60.0,),
+                  child: DefaultProgressIndicator(
+                    size: 60.0,
+                  ),
                 );
               }
 
@@ -90,8 +92,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                                       color:
                                           Theme.of(context).colorScheme.primary,
                                       padding: const EdgeInsets.symmetric(
-                                              horizontal: 5.0, vertical: 3.0)
-                                          ,
+                                          horizontal: 5.0, vertical: 3.0),
                                       child: Center(
                                         child: Text(
                                           '- ${product.discount} %',
@@ -114,8 +115,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
-                                        vertical: 8.0, horizontal: 8.0)
-                                    ,
+                                    vertical: 8.0, horizontal: 8.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -132,17 +132,10 @@ class CategoryDetailsScreen extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        Text(
-                                          'EGP ${product.price.toString()}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodySmall
-                                              ?.copyWith(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .primary,
-                                              ),
-                                        ),
+                                        Text('EGP ${product.price.toString()}',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall),
                                         const SizedBox(
                                           width: 5.0,
                                         ),

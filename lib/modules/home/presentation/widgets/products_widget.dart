@@ -55,9 +55,9 @@ class ProductsWidget extends StatelessWidget {
                         arguments: args);
                   },
                   child: Container(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.surface,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
                           child: Padding(
@@ -119,11 +119,8 @@ class ProductsWidget extends StatelessWidget {
                                           'EGP ${state.products[index].price}',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .bodySmall
-                                              ?.copyWith(
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .primary),
+                                              .bodySmall,
+
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                         const SizedBox(
@@ -132,7 +129,8 @@ class ProductsWidget extends StatelessWidget {
                                         if (state.products[index].discount != 0)
                                           Expanded(
                                             child: Text(
-                                              'EGP ${state.products[index].oldPrice}',
+                                              '${state.products[index].oldPrice}',
+                                              overflow: TextOverflow.ellipsis,
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .bodySmall

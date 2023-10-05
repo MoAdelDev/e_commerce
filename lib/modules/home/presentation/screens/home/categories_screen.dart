@@ -60,7 +60,7 @@ class CategoriesScreen extends StatelessWidget {
                                 .textTheme
                                 .titleSmall
                                 ?.copyWith(
-                                    color: Theme.of(context).colorScheme.primary),
+                                    color: Theme.of(context).colorScheme.onBackground),
                           ),
                         ),
                         Padding(
@@ -75,7 +75,7 @@ class CategoriesScreen extends StatelessWidget {
                             },
                             icon: Icon(
                               Icons.arrow_forward_ios,
-                              color: Theme.of(context).colorScheme.primary,
+                              color: Theme.of(context).colorScheme.onBackground,
                             ),
                           ),
                         ),

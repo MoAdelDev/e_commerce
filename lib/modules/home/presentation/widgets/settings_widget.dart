@@ -11,6 +11,7 @@ class SettingsItemWidget extends StatelessWidget {
   final String text;
   final bool? isLanguage;
   final bool? isNightMode;
+  final Color? textColor;
 
   const SettingsItemWidget({
     super.key,
@@ -19,6 +20,7 @@ class SettingsItemWidget extends StatelessWidget {
     required this.text,
     this.isLanguage,
     this.isNightMode,
+    this.textColor,
   });
 
   @override
@@ -33,14 +35,14 @@ class SettingsItemWidget extends StatelessWidget {
               width: 40.0,
               height: 40.0,
               decoration: BoxDecoration(
-                color: AppColorLight.primaryColor.shade100,
+                color: textColor == null ? AppColorLight.primaryColor.shade100 : AppColorLight.errorColor.withAlpha(50),
                 borderRadius: const BorderRadius.all(
                   Radius.circular(10.0),
                 ),
               ),
               child: Icon(
                 icon,
-                color: AppColorLight.primaryColor,
+                color: textColor == null ? AppColorLight.primaryColor : AppColorLight.errorColor,
                 size: 30.0,
               ),
             ),
@@ -52,7 +54,7 @@ class SettingsItemWidget extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium
-                  ?.copyWith(fontFamily: AppFonts.boldFont),
+                  ?.copyWith(fontFamily: AppFonts.boldFont, color: textColor),
             ),
             const Spacer(),
             if (isLanguage ?? false)
@@ -67,7 +69,7 @@ class SettingsItemWidget extends StatelessWidget {
               ),
             if (isNightMode ?? false)
               Text(
-                'Off',
+                MyApp.isDark ? S.of(context).onTitle : S.of(context).offTitle,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Colors.grey,
                       fontFamily: AppFonts.boldFont,
@@ -76,9 +78,9 @@ class SettingsItemWidget extends StatelessWidget {
             const SizedBox(
               width: 10.0,
             ),
-            const Icon(
+             Icon(
               Icons.arrow_forward_ios,
-              color: AppColorLight.onBackgroundColor,
+              color: Theme.of(context).colorScheme.onBackground,
             )
           ],
         ),

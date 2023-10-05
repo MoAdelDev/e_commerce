@@ -2,6 +2,7 @@ import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/home_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/settings/language_screen.dart';
+import 'package:e_commerce_app/modules/home/presentation/screens/home/settings/night_mode_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -45,6 +46,10 @@ class AppRoute {
       case RouteConst.languageScreen:
         return MaterialPageRoute(
           builder: (context) => const LanguageScreen(),
+        );
+      case RouteConst.nightModeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const NightModeScreen(),
         );
     }
     return null;

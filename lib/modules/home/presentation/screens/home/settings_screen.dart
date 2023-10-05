@@ -7,6 +7,7 @@ import 'package:e_commerce_app/core/style/fonts.dart';
 import 'package:e_commerce_app/generated/l10n.dart';
 import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_bloc.dart';
+import 'package:e_commerce_app/modules/home/presentation/controller/home/home_event.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_state.dart';
 import 'package:e_commerce_app/modules/home/presentation/widgets/settings_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,22 +22,22 @@ class SettingsScreen extends StatelessWidget {
       builder: (context, state) {
         if (MyApp.user == null) {
           return Container(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.background,
             width: double.infinity,
             height: double.infinity,
             child: const Center(
-              child: DefaultProgressIndicstor(),
+              child: DefaultProgressIndicator(size: 60.0,),
             ),
           );
         }
         return Container(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.background,
           width: double.infinity,
           child: SingleChildScrollView(
               physics: DefaultScrollPhysics.defaultPhysics(),
               child: Padding(
-                padding:
-                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 20.0),
                 child: Column(
                   children: [
                     Row(
@@ -97,14 +98,18 @@ class SettingsScreen extends StatelessWidget {
                             text: S.of(context).notificationsTitle),
                         SettingsItemWidget(
                           onPressed: () {
-                            Navigator.pushNamed(context, RouteConst.languageScreen);
+                            Navigator.pushNamed(
+                                context, RouteConst.languageScreen);
                           },
                           icon: Icons.language,
                           text: S.of(context).languageTitle,
                           isLanguage: true,
                         ),
                         SettingsItemWidget(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, RouteConst.nightModeScreen);
+                          },
                           icon: Icons.nightlight_round,
                           text: S.of(context).nightModeTitle,
                           isNightMode: true,
@@ -117,6 +122,14 @@ class SettingsScreen extends StatelessWidget {
                             onPressed: () {},
                             icon: Icons.contacts,
                             text: S.of(context).contactMeTitle),
+                        SettingsItemWidget(
+                          onPressed: () {
+                            context.read<HomeBloc>().add(HomeSignOutEvent(context));
+                          },
+                          icon: Icons.logout,
+                          textColor: AppColorLight.errorColor,
+                          text: S.of(context).logoutTitle,
+                        ),
                       ],
                     ),
                   ],

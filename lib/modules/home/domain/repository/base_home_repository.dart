@@ -39,4 +39,6 @@ abstract class BaseHomeRepository {
   Future<Either<Failure, void>> changeLanguage({required String language});
 
   Future<Either<Failure, void>> changeNightMode({required bool isDark});
+
+  Future<Either<Failure, String>> signOut();
 }

@@ -12,6 +12,9 @@ class CacheHelper {
     else if(!sharedPreferences.containsKey('language')) {
       saveString(key: 'language', value: Language.english.name);
     }
+    else if(!sharedPreferences.containsKey('isDark')) {
+      saveBool(key: 'isDark', value: false);
+    }
   }
 
   static Future<bool> saveString({

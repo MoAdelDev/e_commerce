@@ -12,15 +12,15 @@ import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
 import 'package:e_commerce_app/modules/home/domain/repository/base_home_repository.dart';
 
 class HomeRepository extends BaseHomeRepository {
-  final BaseHomeRemoteDataSource baseHomeDataSource;
+  final BaseHomeRemoteDataSource baseHomeRemoteDataSource;
   final BaseHomeLocalDataSource baseHomeLocalDataSource;
 
-  HomeRepository(this.baseHomeDataSource, this.baseHomeLocalDataSource);
+  HomeRepository(this.baseHomeRemoteDataSource, this.baseHomeLocalDataSource);
 
   @override
   Future<Either<Failure, List<Product>>> getProducts() async {
     try {
-      return Right(await baseHomeDataSource.getProducts());
+      return Right(await baseHomeRemoteDataSource.getProducts());
     } on ServerException catch (e) {
       return Left(
         ServerFailure(e.errorMessageModel.errorMessage),
@@ -32,7 +32,7 @@ class HomeRepository extends BaseHomeRepository {
   Future<Either<Failure, User>> getUser() async {
     try {
       return Right(
-        await baseHomeDataSource.getUser(),
+        await baseHomeRemoteDataSource.getUser(),
       );
     } on ServerException catch (error) {
       return Left(
@@ -44,7 +44,7 @@ class HomeRepository extends BaseHomeRepository {
   @override
   Future<Either<Failure, List<BannerEntity>>> getBanners() async {
     try {
-      final result = await baseHomeDataSource.getBanners();
+      final result = await baseHomeRemoteDataSource.getBanners();
       return Right(result);
     } on ServerException catch (e) {
       return Left(
@@ -56,7 +56,7 @@ class HomeRepository extends BaseHomeRepository {
   @override
   Future<Either<Failure, List<Category>>> getCategories() async {
     try {
-      final result = await baseHomeDataSource.getCategories();
+      final result = await baseHomeRemoteDataSource.getCategories();
       return Right(result);
     } on ServerException catch (e) {
       return Left(
@@ -68,7 +68,7 @@ class HomeRepository extends BaseHomeRepository {
   @override
   Future<Either<Failure, List<Favorite>>> getFavorites() async {
     try {
-      final result = await baseHomeDataSource.getFavorites();
+      final result = await baseHomeRemoteDataSource.getFavorites();
       return Right(
         result,
       );
@@ -82,7 +82,7 @@ class HomeRepository extends BaseHomeRepository {
   @override
   Future<Either<Failure, String>> changeFavorite({required productId}) async {
     try {
-      final result = await baseHomeDataSource.changeFavorite(
+      final result = await baseHomeRemoteDataSource.changeFavorite(
         productId: productId,
       );
       return Right(result);
@@ -97,7 +97,7 @@ class HomeRepository extends BaseHomeRepository {
   Future<Either<Failure, String>> removeFavorite({required favoriteId}) async {
     try {
       final result =
-          await baseHomeDataSource.removeFavorites(favoriteId: favoriteId);
+          await baseHomeRemoteDataSource.removeFavorites(favoriteId: favoriteId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
@@ -109,7 +109,7 @@ class HomeRepository extends BaseHomeRepository {
       {required productId}) async {
     try {
       final result =
-          await baseHomeDataSource.getProductDetails(productId: productId);
+          await baseHomeRemoteDataSource.getProductDetails(productId: productId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
@@ -120,7 +120,7 @@ class HomeRepository extends BaseHomeRepository {
   Future<Either<Failure, String>> addProductToCart({required productId}) async {
     try {
       final result =
-          await baseHomeDataSource.addProductToCart(productId: productId);
+          await baseHomeRemoteDataSource.addProductToCart(productId: productId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(
@@ -132,7 +132,7 @@ class HomeRepository extends BaseHomeRepository {
   @override
   Future<Either<Failure, CartModel>> getCart() async {
     try {
-      final result = await baseHomeDataSource.getCarts();
+      final result = await baseHomeRemoteDataSource.getCarts();
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
@@ -143,7 +143,7 @@ class HomeRepository extends BaseHomeRepository {
   Future<Either<Failure, String>> updateCart(
       {required int cartId, required int quantity}) async {
     try {
-      final result = await baseHomeDataSource.updateCart(
+      final result = await baseHomeRemoteDataSource.updateCart(
         cartId: cartId,
         quantity: quantity,
       );
@@ -157,7 +157,7 @@ class HomeRepository extends BaseHomeRepository {
   Future<Either<Failure, String>> deleteProductFromCart(
       {required int cartId}) async {
     try {
-      final result = await baseHomeDataSource.deleteProductFromCart(
+      final result = await baseHomeRemoteDataSource.deleteProductFromCart(
         cartId: cartId,
       );
       return Right(result);
@@ -171,7 +171,7 @@ class HomeRepository extends BaseHomeRepository {
       {required categoryId}) async {
     try {
       final result =
-          await baseHomeDataSource.getCategoryDetails(categoryId: categoryId);
+          await baseHomeRemoteDataSource.getCategoryDetails(categoryId: categoryId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
@@ -198,6 +198,16 @@ class HomeRepository extends BaseHomeRepository {
       return Right(result);
     } on ServerException catch (e) {
       return Left(LocalDatabaseFailure(e.errorMessageModel.errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> signOut() async{
+    try{
+      final result = await baseHomeRemoteDataSource.signOut();
+      return Right(result);
+    } on ServerException catch(e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
     }
   }
 }

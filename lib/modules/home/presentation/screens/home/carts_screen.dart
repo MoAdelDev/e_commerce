@@ -21,9 +21,9 @@ class CartsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: BlocProvider<CartBloc>(
+    return Container(
+      color: Theme.of(context).colorScheme.background,
+      child: BlocProvider<CartBloc>(
         create: (context) => CartBloc(sl(), sl(), sl())
           ..add(
             CartGetProductsCartEvent(),
@@ -32,7 +32,7 @@ class CartsScreen extends StatelessWidget {
           builder: (context, state) {
             if (state.productsCartState != RequestState.success) {
               return const Center(
-                  child: DefaultProgressIndicstor(
+                  child: DefaultProgressIndicator(
                 size: 60.0,
               ));
             }
@@ -106,16 +106,10 @@ class CartsScreen extends StatelessWidget {
                                           Row(
                                             children: [
                                               Text(
-                                                'EGP ${cart.price.toString()}',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodySmall
-                                                    ?.copyWith(
-                                                      color: Theme.of(context)
-                                                          .colorScheme
-                                                          .primary,
-                                                    ),
-                                              ),
+                                                  'EGP ${cart.price.toString()}',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodySmall),
                                               const SizedBox(
                                                 width: 5.0,
                                               ),
@@ -191,7 +185,7 @@ class CartsScreen extends StatelessWidget {
                                             color: AppColorLight.primaryColor)),
                                     child: Center(
                                       child: isLoading(state)
-                                          ? const DefaultProgressIndicstor(
+                                          ? const DefaultProgressIndicator(
                                               size: 25,
                                             )
                                           : Text(
@@ -209,7 +203,8 @@ class CartsScreen extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       color:
                                           Theme.of(context).colorScheme.primary,
-                                      borderRadius: MyApp.language == Language.arabic.name
+                                      borderRadius: MyApp.language ==
+                                              Language.arabic.name
                                           ? const BorderRadius.only(
                                               topLeft: Radius.circular(10.0),
                                               bottomLeft: Radius.circular(10.0),
@@ -248,7 +243,7 @@ class CartsScreen extends StatelessWidget {
                                                 cart.id, cart.productId),
                                           );
                                     },
-                                    color: Colors.white,
+                                    color: Theme.of(context).colorScheme.background,
                                     elevation: 0,
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -257,7 +252,7 @@ class CartsScreen extends StatelessWidget {
                                           Icons.delete,
                                           color: Theme.of(context)
                                               .colorScheme
-                                              .primary,
+                                              .onBackground,
                                         ),
                                         const SizedBox(
                                           width: 10.0,
@@ -268,7 +263,7 @@ class CartsScreen extends StatelessWidget {
                                             fontSize: 16.0,
                                             color: Theme.of(context)
                                                 .colorScheme
-                                                .primary,
+                                                .onBackground,
                                           ),
                                         )
                                       ],

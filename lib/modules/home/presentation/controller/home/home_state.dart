@@ -58,6 +58,10 @@ class HomeState extends Equatable {
   /// Night mode
   final bool isDark;
 
+  /// sign out
+  final String signOutError;
+  final RequestState signOutState;
+
   const HomeState({
     this.screens = const [
       ProductsScreen(),
@@ -111,6 +115,8 @@ class HomeState extends Equatable {
     this.cartsError = '',
     this.language = 'english',
     this.isDark = false,
+    this.signOutError = '',
+    this.signOutState = RequestState.nothing,
   });
 
   HomeState copyWith({
@@ -138,6 +144,8 @@ class HomeState extends Equatable {
     String? cartsError,
     String? language,
     bool? isDark,
+    String? signOutError,
+    RequestState? signOutState,
   }) =>
       HomeState(
         currentIndex: currentIndex ?? this.currentIndex,
@@ -161,6 +169,8 @@ class HomeState extends Equatable {
         cartsError: cartsError ?? this.cartsError,
         language: language ?? this.language,
         isDark: isDark ?? this.isDark,
+        signOutError: signOutError ?? this.signOutError,
+        signOutState: signOutState ?? this.signOutState,
       );
 
   @override
@@ -188,5 +198,7 @@ class HomeState extends Equatable {
         cartsError,
         language,
         isDark,
+        signOutError,
+        signOutState,
       ];
 }

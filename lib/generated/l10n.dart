@@ -350,10 +350,10 @@ class S {
     );
   }
 
-  /// `Contact me`
+  /// `Contact us`
   String get contactMeTitle {
     return Intl.message(
-      'Contact me',
+      'Contact us',
       name: 'contactMeTitle',
       desc: '',
       args: [],
@@ -395,6 +395,16 @@ class S {
     return Intl.message(
       'Arabic',
       name: 'arabicTitleTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log out`
+  String get logoutTitle {
+    return Intl.message(
+      'Log out',
+      name: 'logoutTitle',
       desc: '',
       args: [],
     );

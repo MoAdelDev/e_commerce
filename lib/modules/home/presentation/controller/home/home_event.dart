@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
 abstract class BaseHomeEvent extends Equatable {
   const BaseHomeEvent();
@@ -50,6 +51,15 @@ class HomeChangeNightModeEvent extends BaseHomeEvent {
   @override
   List<Object> get props => [isDark];
 
+}
+
+class HomeSignOutEvent extends BaseHomeEvent {
+  final BuildContext context;
+
+  const HomeSignOutEvent(this.context);
+
+  @override
+  List<Object> get props => [context];
 }
 
 
