@@ -4,12 +4,12 @@ import 'package:e_commerce_app/core/error/server_exception.dart';
 
 import '../../domain/entities/login.dart';
 import '../../domain/entities/register.dart';
-import '../../domain/repository/authentication_base_repository.dart';
-import '../datasource/auth_datasource.dart';
+import '../../domain/repository/base_authentication_repository.dart';
+import '../datasource/auth_remote_datasource.dart';
 import '../models/user_model.dart';
 
-class AuthRepository extends AuthenticationBaseRepository {
-  AuthBaseRemoteDataSource baseRemoteDataSource;
+class AuthRepository extends BaseAuthenticationRepository {
+  BaseAuthRemoteDataSource baseRemoteDataSource;
 
   AuthRepository(this.baseRemoteDataSource);
 

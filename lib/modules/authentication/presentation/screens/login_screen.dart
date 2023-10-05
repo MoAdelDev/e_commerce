@@ -216,7 +216,7 @@ class LoginScreen extends StatelessWidget {
                                             top: 8.0,
                                           ),
                                           child: Center(
-                                            child: DefaultSpinKit(),
+                                            child: DefaultProgressIndicstor(),
                                           ),
                                         ),
                                       ),

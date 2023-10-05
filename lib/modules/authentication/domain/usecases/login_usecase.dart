@@ -3,10 +3,10 @@ import 'package:e_commerce_app/core/error/failure.dart';
 
 import '../entities/login.dart';
 import '../entities/user.dart';
-import '../repository/authentication_base_repository.dart';
+import '../repository/base_authentication_repository.dart';
 
 class LoginUseCase {
-  final AuthenticationBaseRepository baseLoginRepository;
+  final BaseAuthenticationRepository baseLoginRepository;
 
   LoginUseCase(this.baseLoginRepository);
 

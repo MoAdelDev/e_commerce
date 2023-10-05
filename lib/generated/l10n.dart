@@ -289,6 +289,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit profile`
+  String get editProfileTitle {
+    return Intl.message(
+      'Edit profile',
+      name: 'editProfileTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My addresses`
+  String get myAddressesTitle {
+    return Intl.message(
+      'My addresses',
+      name: 'myAddressesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications`
+  String get notificationsTitle {
+    return Intl.message(
+      'Notifications',
+      name: 'notificationsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get languageTitle {
+    return Intl.message(
+      'Language',
+      name: 'languageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Night mode`
+  String get nightModeTitle {
+    return Intl.message(
+      'Night mode',
+      name: 'nightModeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FAQS`
+  String get faqsTitle {
+    return Intl.message(
+      'FAQS',
+      name: 'faqsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact me`
+  String get contactMeTitle {
+    return Intl.message(
+      'Contact me',
+      name: 'contactMeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Off`
+  String get offTitle {
+    return Intl.message(
+      'Off',
+      name: 'offTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `On`
+  String get onTitle {
+    return Intl.message(
+      'On',
+      name: 'onTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get englishTitle {
+    return Intl.message(
+      'English',
+      name: 'englishTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arabic`
+  String get arabicTitleTitle {
+    return Intl.message(
+      'Arabic',
+      name: 'arabicTitleTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

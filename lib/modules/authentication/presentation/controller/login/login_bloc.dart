@@ -35,7 +35,7 @@ class LoginBloc extends Bloc<LoginBaseEvent, LoginState> {
       );
     }, (userData) {
       MyApp.user = userData;
-      CacheHelper.saveData(key: 'token', value: MyApp.user.token);
+      CacheHelper.saveString(key: 'token', value: MyApp.user?.token ?? '');
       showToast(
         msg: event.loginSuccess,
         requestState: RequestState.success,

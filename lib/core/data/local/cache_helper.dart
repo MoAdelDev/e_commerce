@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
@@ -6,23 +7,23 @@ class CacheHelper {
   static init() async {
     sharedPreferences = await SharedPreferences.getInstance();
     if (!sharedPreferences.containsKey('token')) {
-      saveData(key: 'token', value: '');
+      saveString(key: 'token', value: '');
     }
-    else if(!sharedPreferences.containsKey('isArabic')) {
-      saveBool(key: 'isArabic', value: false);
+    else if(!sharedPreferences.containsKey('language')) {
+      saveString(key: 'language', value: Language.english.name);
     }
   }
 
-  static Future<bool> saveData({
+  static Future<bool> saveString({
     required String key,
     required String value,
   }) async {
     return await sharedPreferences.setString(key, value);
   }
 
-  static Future<String?> getData({
+  static String? getString({
     required String key,
-  }) async {
+  }) {
     return sharedPreferences.getString(key);
   }
 

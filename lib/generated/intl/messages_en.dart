@@ -24,25 +24,39 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addToCartTitle": MessageLookupByLibrary.simpleMessage("Add to cart"),
         "appName": MessageLookupByLibrary.simpleMessage("Shop"),
+        "arabicTitleTitle": MessageLookupByLibrary.simpleMessage("Arabic"),
         "checkoutTitle": MessageLookupByLibrary.simpleMessage("Checkout"),
+        "contactMeTitle": MessageLookupByLibrary.simpleMessage("Contact me"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("Continue"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("DISCOUNT"),
+        "editProfileTitle":
+            MessageLookupByLibrary.simpleMessage("Edit profile"),
         "emailHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your email"),
+        "englishTitle": MessageLookupByLibrary.simpleMessage("English"),
+        "faqsTitle": MessageLookupByLibrary.simpleMessage("FAQS"),
         "forgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Forgot password ?"),
+        "languageTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "loadingDataErrorTitle": MessageLookupByLibrary.simpleMessage(
             "Failed to load data, try again"),
         "loginSuccessMsg": MessageLookupByLibrary.simpleMessage(
             "you have been logged in successfully"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("LOGIN"),
+        "myAddressesTitle":
+            MessageLookupByLibrary.simpleMessage("My addresses"),
         "nameHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your name"),
+        "nightModeTitle": MessageLookupByLibrary.simpleMessage("Night mode"),
         "noProductsTitle":
             MessageLookupByLibrary.simpleMessage("No Products yet"),
+        "notificationsTitle":
+            MessageLookupByLibrary.simpleMessage("Notifications"),
+        "offTitle": MessageLookupByLibrary.simpleMessage("Off"),
         "onBoardingTitle":
             MessageLookupByLibrary.simpleMessage("Shop Products"),
+        "onTitle": MessageLookupByLibrary.simpleMessage("On"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "phoneHintTitle":

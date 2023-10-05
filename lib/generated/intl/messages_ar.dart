@@ -24,24 +24,36 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addToCartTitle": MessageLookupByLibrary.simpleMessage("أضف الى السلة"),
         "appName": MessageLookupByLibrary.simpleMessage("المتجر"),
+        "arabicTitleTitle": MessageLookupByLibrary.simpleMessage("العربية"),
         "checkoutTitle": MessageLookupByLibrary.simpleMessage("الدفع"),
+        "contactMeTitle": MessageLookupByLibrary.simpleMessage("إتصل بنا"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("إستمر"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("الوصف"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("خصم"),
+        "editProfileTitle":
+            MessageLookupByLibrary.simpleMessage("تعديل الصفحة الشخصية"),
         "emailHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل البريد الإلكتروني"),
+        "englishTitle": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
+        "faqsTitle": MessageLookupByLibrary.simpleMessage("FAQS"),
         "forgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور ؟"),
+        "languageTitle": MessageLookupByLibrary.simpleMessage("اللغة"),
         "loadingDataErrorTitle": MessageLookupByLibrary.simpleMessage(
             "فشل في تحميل البيانات. حاول مرة أخرى"),
         "loginSuccessMsg":
             MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "myAddressesTitle": MessageLookupByLibrary.simpleMessage("عناويني"),
         "nameHintTitle": MessageLookupByLibrary.simpleMessage("أدخل أسمك"),
+        "nightModeTitle": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
         "noProductsTitle":
             MessageLookupByLibrary.simpleMessage("لا توجد منتجات حتى الآن"),
+        "notificationsTitle": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+        "offTitle": MessageLookupByLibrary.simpleMessage("إيقاف"),
         "onBoardingTitle":
             MessageLookupByLibrary.simpleMessage("تسوق المنتجات"),
+        "onTitle": MessageLookupByLibrary.simpleMessage("تشغيل"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
         "phoneHintTitle":

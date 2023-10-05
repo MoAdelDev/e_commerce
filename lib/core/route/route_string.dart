@@ -4,4 +4,5 @@ class RouteConst {
   static const String homeScreen = '/home';
   static const String productDetailsScreen = '/product_details';
   static const String categoryDetailsScreen = '/category_details';
+  static const String languageScreen = '/language';
 }

@@ -3,10 +3,10 @@ import 'package:e_commerce_app/core/error/failure.dart';
 
 import '../entities/register.dart';
 import '../entities/user.dart';
-import '../repository/authentication_base_repository.dart';
+import '../repository/base_authentication_repository.dart';
 
 class RegisterUseCase {
-  final AuthenticationBaseRepository authenticationBaseRepository;
+  final BaseAuthenticationRepository authenticationBaseRepository;
 
   RegisterUseCase(this.authenticationBaseRepository);
 

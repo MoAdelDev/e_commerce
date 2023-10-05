@@ -22,7 +22,16 @@
   "checkoutTitle" : "Checkout",
   "onBoardingTitle" : "Shop Products",
   "continueTitle" : "Continue",
-  "forgotPasswordTitle" : "Forgot password ?"
-
-
+  "forgotPasswordTitle" : "Forgot password ?",
+  "editProfileTitle" : "Edit profile",
+  "myAddressesTitle" : "My addresses",
+  "notificationsTitle" : "Notifications",
+  "languageTitle" : "Language",
+  "nightModeTitle" : "Night mode",
+  "faqsTitle" : "FAQS",
+  "contactMeTitle" : "Contact me",
+  "offTitle" : "Off",
+  "onTitle" : "On",
+  "englishTitle" : "English",
+  "arabicTitleTitle" : "Arabic"
 }

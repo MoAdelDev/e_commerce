@@ -190,7 +190,7 @@ class RegisterScreen extends StatelessWidget {
                                             top: 8.0,
                                           ),
                                           child: Center(
-                                            child: DefaultSpinKit(),
+                                            child: DefaultProgressIndicstor(),
                                           ),
                                         ),
                                       ),

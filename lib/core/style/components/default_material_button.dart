@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 
@@ -22,8 +23,8 @@ class DefaultButton extends StatelessWidget {
         color: AppColorDark.primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(MyApp.isArabic ? 25 : 10.0),
-            topRight: Radius.circular(MyApp.isArabic ? 10 : 25.0),
+            topLeft: Radius.circular(MyApp.language == Language.arabic.name ? 25 : 10.0),
+            topRight: Radius.circular(MyApp.language == Language.arabic.name ? 10 : 25.0),
             bottomLeft: const Radius.circular(25.0),
             bottomRight: const Radius.circular(25.0),
           ),

@@ -47,7 +47,7 @@ class RegisterBloc extends Bloc<RegisterBaseEvent, RegisterState> {
       ));
     }, (userData) {
       MyApp.user = userData;
-      CacheHelper.saveData(
+      CacheHelper.saveString(
         key: 'token',
         value: userData.token,
       );
