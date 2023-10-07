@@ -4,6 +4,7 @@ import 'package:e_commerce_app/modules/addresses/presentation/screens/add_edit_a
 import 'package:e_commerce_app/modules/addresses/presentation/screens/adresses_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/home_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/product_details/product_details_screen.dart';
+import 'package:e_commerce_app/modules/home/presentation/screens/settings/contacts_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/language_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/night_mode_screen.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,10 @@ class AppRoute {
       case RouteConst.updateProfileScreen:
         return MaterialPageRoute(
           builder: (context) =>  const UpdateProfileScreen(),
+        );
+      case RouteConst.contactsScreen:
+        return MaterialPageRoute(
+          builder: (context) =>  const ContactsScreen(),
         );
     }
     return null;

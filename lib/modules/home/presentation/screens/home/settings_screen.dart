@@ -118,9 +118,9 @@ class SettingsScreen extends StatelessWidget {
                             icon: Icons.article,
                             text: S.of(context).faqsTitle),
                         SettingsItemWidget(
-                            onPressed: () {},
+                            onPressed: () => Navigator.pushNamed(context, RouteConst.contactsScreen),
                             icon: Icons.contacts,
-                            text: S.of(context).contactMeTitle),
+                            text: S.of(context).contactsTitle),
                         SettingsItemWidget(
                           onPressed: () {
                             context

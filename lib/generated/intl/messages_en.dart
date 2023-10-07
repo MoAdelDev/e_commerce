@@ -34,7 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cityHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your city"),
         "cityTitle": MessageLookupByLibrary.simpleMessage("City"),
-        "contactMeTitle": MessageLookupByLibrary.simpleMessage("Contact us"),
+        "contactsTitle": MessageLookupByLibrary.simpleMessage("Contacts"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("Continue"),
         "deleteAddressBodyTitle": MessageLookupByLibrary.simpleMessage(
             "This address will be permanently deleted ."),

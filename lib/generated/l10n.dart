@@ -350,11 +350,11 @@ class S {
     );
   }
 
-  /// `Contact us`
-  String get contactMeTitle {
+  /// `Contacts`
+  String get contactsTitle {
     return Intl.message(
-      'Contact us',
-      name: 'contactMeTitle',
+      'Contacts',
+      name: 'contactsTitle',
       desc: '',
       args: [],
     );

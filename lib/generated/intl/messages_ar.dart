@@ -32,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkoutTitle": MessageLookupByLibrary.simpleMessage("الدفع"),
         "cityHintTitle": MessageLookupByLibrary.simpleMessage("أدخل مدينتك"),
         "cityTitle": MessageLookupByLibrary.simpleMessage("المدينة"),
-        "contactMeTitle": MessageLookupByLibrary.simpleMessage("إتصل بنا"),
+        "contactsTitle": MessageLookupByLibrary.simpleMessage("وسائل التواصل"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("إستمر"),
         "deleteAddressBodyTitle": MessageLookupByLibrary.simpleMessage(
             "هذا العنوان سيتم مسحه للأبد ."),

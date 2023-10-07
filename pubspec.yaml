@@ -60,6 +60,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   rive: ^0.9.1
   geolocator: ^10.0.1
+  url_launcher: ^6.1.14
 
 
 # flutter_native_splash-development.yaml
