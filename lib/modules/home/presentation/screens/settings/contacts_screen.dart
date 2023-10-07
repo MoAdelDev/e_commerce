@@ -15,22 +15,22 @@ class ContactsScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         physics: DefaultScrollPhysics.defaultPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           child: Column(
             children: [
               ContactWidget(
                   imageName: 'linkedin.svg',
                   title: 'Linkedin',
                   url: 'https://www.linkedin.com/in/mohammedadel10/'),
-              const SizedBox(
+              SizedBox(
                 height: 20.0,
               ),
               ContactWidget(
                   imageName: 'github.svg',
                   title: 'Github',
                   url: 'https://github.com/MoAdelDev'),
-              const SizedBox(
+              SizedBox(
                 height: 20.0,
               ),
               ContactWidget(
