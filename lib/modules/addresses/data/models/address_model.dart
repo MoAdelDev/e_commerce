@@ -23,4 +23,13 @@ class AddressModel extends Address {
         json['longitude'],
       );
 
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'city': name,
+        'region': name,
+        'details': name,
+        'latitude': name,
+        'longitude': name,
+        'notes': note,
+      };
 }

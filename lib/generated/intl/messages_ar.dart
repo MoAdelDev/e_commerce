@@ -22,10 +22,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addNewAddress":
+            MessageLookupByLibrary.simpleMessage("إضافة عنوان جديد"),
         "addToCartTitle": MessageLookupByLibrary.simpleMessage("أضف الى السلة"),
+        "addressHintTitle": MessageLookupByLibrary.simpleMessage("أدخل عنوانك"),
+        "addressTitle": MessageLookupByLibrary.simpleMessage("العنوان"),
         "appName": MessageLookupByLibrary.simpleMessage("المتجر"),
         "arabicTitleTitle": MessageLookupByLibrary.simpleMessage("العربية"),
         "checkoutTitle": MessageLookupByLibrary.simpleMessage("الدفع"),
+        "cityHintTitle": MessageLookupByLibrary.simpleMessage("أدخل مدينتك"),
+        "cityTitle": MessageLookupByLibrary.simpleMessage("المدينة"),
         "contactMeTitle": MessageLookupByLibrary.simpleMessage("إتصل بنا"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("إستمر"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("الوصف"),
@@ -38,6 +44,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "faqsTitle": MessageLookupByLibrary.simpleMessage("FAQS"),
         "forgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور ؟"),
+        "fullNameHintTitle":
+            MessageLookupByLibrary.simpleMessage("أدخل إسمك بالكامل"),
+        "fullNameTitle": MessageLookupByLibrary.simpleMessage("الإسم بالكامل"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("اللغة"),
         "loadingDataErrorTitle": MessageLookupByLibrary.simpleMessage(
             "فشل في تحميل البيانات. حاول مرة أخرى"),
@@ -50,6 +59,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nightModeTitle": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
         "noProductsTitle":
             MessageLookupByLibrary.simpleMessage("لا توجد منتجات حتى الآن"),
+        "noteHintTitle": MessageLookupByLibrary.simpleMessage("أدخل ملاحظاتك"),
+        "noteTitle": MessageLookupByLibrary.simpleMessage("ملاحظات"),
         "notificationsTitle": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "offTitle": MessageLookupByLibrary.simpleMessage("إيقاف"),
         "onBoardingTitle":
@@ -60,6 +71,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل رقم الهاتف"),
         "productsTitle": MessageLookupByLibrary.simpleMessage("المنتجات"),
+        "regionHintTitle": MessageLookupByLibrary.simpleMessage("أدخل منطقتك"),
+        "regionTitle": MessageLookupByLibrary.simpleMessage("المنطقة"),
         "registerQuestion":
             MessageLookupByLibrary.simpleMessage("أليس لديك حساب ؟"),
         "registerSuccessMsg":

@@ -36,7 +36,7 @@ class DefaultTextFormField extends StatelessWidget {
         controller: controller,
         keyboardType: keyboardType,
         onFieldSubmitted: onSubmit,
-        cursorColor: Theme.of(context).colorScheme.background,
+        cursorColor: Theme.of(context).colorScheme.primary,
         textInputAction: textInputAction,
         decoration: InputDecoration(
           border: OutlineInputBorder(

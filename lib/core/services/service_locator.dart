@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/modules/addresses/data/datasource/addresses_remote_datasource.dart';
 import 'package:e_commerce_app/modules/addresses/data/repository/addresses_repository.dart';
 import 'package:e_commerce_app/modules/addresses/domain/repository/base_addresses_repository.dart';
+import 'package:e_commerce_app/modules/addresses/domain/usecases/add_address_usecase.dart';
 import 'package:e_commerce_app/modules/addresses/domain/usecases/get_addresses_usecase.dart';
 import 'package:e_commerce_app/modules/home/data/datasource/home_local_datasource.dart';
 import 'package:e_commerce_app/modules/home/data/datasource/home_remote_datasource.dart';
@@ -106,6 +107,9 @@ class ServiceLocator {
 
     sl.registerLazySingleton<SignOutUseCase>(() => SignOutUseCase(sl()));
 
-    sl.registerLazySingleton<GetAddressesUseCase>(() => GetAddressesUseCase(sl()));
+    sl.registerLazySingleton<GetAddressesUseCase>(
+        () => GetAddressesUseCase(sl()));
+
+    sl.registerLazySingleton<AddAddressUseCase>(() => AddAddressUseCase(sl()));
   }
 }

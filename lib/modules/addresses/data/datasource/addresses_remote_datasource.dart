@@ -7,6 +7,8 @@ import 'package:e_commerce_app/modules/addresses/data/models/address_model.dart'
 
 abstract class BaseAddressesRemoteDataSource {
   Future<List<AddressModel>> getAddresses();
+
+  Future<String> addAddresses({required AddressModel addressModel});
 }
 
 class AddressesRemoteDataSource extends BaseAddressesRemoteDataSource {
@@ -24,6 +26,21 @@ class AddressesRemoteDataSource extends BaseAddressesRemoteDataSource {
           (e) => AddressModel.fromJson(e),
         ),
       );
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
+
+  @override
+  Future<String> addAddresses({required AddressModel addressModel}) async {
+    String? token = CacheHelper.getString(key: 'token');
+    final result = await DioHelper.postData(
+      path: ApiConstance.addressesUrl,
+      data: addressModel.toJson(),
+      token: token,
+    );
+
+    if (result.data['status']) {
+      return result.data['message'];
     }
     throw ServerException(ErrorMessageModel.fromJson(result.data));
   }

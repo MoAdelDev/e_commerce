@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
+import 'package:e_commerce_app/modules/addresses/presentation/controller/addresses_bloc.dart';
 import 'package:e_commerce_app/modules/authentication/domain/entities/user.dart';
 import 'package:e_commerce_app/modules/on_boarding/on_boarding_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_bloc.dart';
@@ -72,6 +73,12 @@ class MyApp extends StatelessWidget {
             ..add(HomeGetProductsEvent())
             ..add(HomeGetCategoriesEvent())
             ..add(HomeGetUserEvent()),
+        ),
+        BlocProvider<AddressesBloc>(
+          create: (context) => AddressesBloc(
+            sl(),
+            sl(),
+          )..add(const AddressesGetEvent()),
         ),
       ],
       child: BlocBuilder<HomeBloc, HomeState>(

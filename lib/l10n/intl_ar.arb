@@ -34,5 +34,16 @@
   "onTitle": "تشغيل",
   "englishTitle": "الإنجليزية",
   "arabicTitleTitle": "العربية",
-  "logoutTitle": "تسجيل الخروج"
+  "logoutTitle": "تسجيل الخروج",
+  "addNewAddress": "إضافة عنوان جديد",
+  "fullNameTitle": "الإسم بالكامل",
+  "fullNameHintTitle": "أدخل إسمك بالكامل",
+  "addressTitle": "العنوان",
+  "addressHintTitle": "أدخل عنوانك",
+  "cityTitle" : "المدينة",
+  "cityHintTitle" : "أدخل مدينتك",
+  "regionTitle" : "المنطقة",
+  "regionHintTitle" : "أدخل منطقتك",
+  "noteTitle" : "ملاحظات",
+  "noteHintTitle" : "أدخل ملاحظاتك"
 }

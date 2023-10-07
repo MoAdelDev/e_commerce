@@ -22,10 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addNewAddress":
+            MessageLookupByLibrary.simpleMessage("Add new address"),
         "addToCartTitle": MessageLookupByLibrary.simpleMessage("Add to cart"),
+        "addressHintTitle":
+            MessageLookupByLibrary.simpleMessage("Enter your address"),
+        "addressTitle": MessageLookupByLibrary.simpleMessage("Address"),
         "appName": MessageLookupByLibrary.simpleMessage("Shop"),
         "arabicTitleTitle": MessageLookupByLibrary.simpleMessage("Arabic"),
         "checkoutTitle": MessageLookupByLibrary.simpleMessage("Checkout"),
+        "cityHintTitle":
+            MessageLookupByLibrary.simpleMessage("Enter your city"),
+        "cityTitle": MessageLookupByLibrary.simpleMessage("City"),
         "contactMeTitle": MessageLookupByLibrary.simpleMessage("Contact us"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("Continue"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
@@ -38,6 +46,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "faqsTitle": MessageLookupByLibrary.simpleMessage("FAQS"),
         "forgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Forgot password ?"),
+        "fullNameHintTitle":
+            MessageLookupByLibrary.simpleMessage("Enter your full name"),
+        "fullNameTitle": MessageLookupByLibrary.simpleMessage("Full name"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "loadingDataErrorTitle": MessageLookupByLibrary.simpleMessage(
             "Failed to load data, try again"),
@@ -52,6 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "nightModeTitle": MessageLookupByLibrary.simpleMessage("Night mode"),
         "noProductsTitle":
             MessageLookupByLibrary.simpleMessage("No Products yet"),
+        "noteHintTitle":
+            MessageLookupByLibrary.simpleMessage("Enter your notes"),
+        "noteTitle": MessageLookupByLibrary.simpleMessage("Notes"),
         "notificationsTitle":
             MessageLookupByLibrary.simpleMessage("Notifications"),
         "offTitle": MessageLookupByLibrary.simpleMessage("Off"),
@@ -63,6 +77,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your phone"),
         "productsTitle": MessageLookupByLibrary.simpleMessage("Products"),
+        "regionHintTitle":
+            MessageLookupByLibrary.simpleMessage("Enter your region"),
+        "regionTitle": MessageLookupByLibrary.simpleMessage("Region"),
         "registerQuestion": MessageLookupByLibrary.simpleMessage(
             "Aren\'t you have an account ?"),
         "registerSuccessMsg": MessageLookupByLibrary.simpleMessage(

@@ -60,7 +60,7 @@ class AppRoute {
 
       case RouteConst.addAddressScreen:
         return MaterialPageRoute(
-          builder: (context) => const AddAddressScreen(),
+          builder: (context) =>  AddAddressScreen(),
         );
     }
     return null;

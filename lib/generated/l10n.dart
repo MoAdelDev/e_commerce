@@ -409,6 +409,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Add new address`
+  String get addNewAddress {
+    return Intl.message(
+      'Add new address',
+      name: 'addNewAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full name`
+  String get fullNameTitle {
+    return Intl.message(
+      'Full name',
+      name: 'fullNameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your full name`
+  String get fullNameHintTitle {
+    return Intl.message(
+      'Enter your full name',
+      name: 'fullNameHintTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get addressTitle {
+    return Intl.message(
+      'Address',
+      name: 'addressTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your address`
+  String get addressHintTitle {
+    return Intl.message(
+      'Enter your address',
+      name: 'addressHintTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get cityTitle {
+    return Intl.message(
+      'City',
+      name: 'cityTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your city`
+  String get cityHintTitle {
+    return Intl.message(
+      'Enter your city',
+      name: 'cityHintTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Region`
+  String get regionTitle {
+    return Intl.message(
+      'Region',
+      name: 'regionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your region`
+  String get regionHintTitle {
+    return Intl.message(
+      'Enter your region',
+      name: 'regionHintTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notes`
+  String get noteTitle {
+    return Intl.message(
+      'Notes',
+      name: 'noteTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your notes`
+  String get noteHintTitle {
+    return Intl.message(
+      'Enter your notes',
+      name: 'noteHintTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

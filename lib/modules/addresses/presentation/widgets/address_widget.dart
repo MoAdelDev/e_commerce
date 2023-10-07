@@ -16,7 +16,7 @@ class AddressWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           20.0,
         ),
-        color: Colors.grey[200],
+        color: MyApp.isDark ? Colors.grey[800]:Colors.grey[200],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

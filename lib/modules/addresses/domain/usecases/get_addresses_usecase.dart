@@ -9,5 +9,5 @@ class GetAddressesUseCase {
   GetAddressesUseCase(this.baseAddressRepository);
 
   Future<Either<Failure, List<Address>>> call() async =>
-      await baseAddressRepository.getAddress();
+      await baseAddressRepository.getAddresses();
 }
