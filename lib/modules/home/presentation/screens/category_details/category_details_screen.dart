@@ -35,7 +35,9 @@ class CategoryDetailsScreen extends StatelessWidget {
           )..add(CategoryDetailsGetEvent(screenArgs.categoryId)),
           child: BlocBuilder<CategoryDetailsBloc, CategoryDetailsState>(
             builder: (context, state) {
-              if (state.productsState != RequestState.success) {
+              if (state.productsState != RequestState.success &&
+                  MyApp.favoriteMap.isEmpty &&
+                  MyApp.productCartQuantity.isEmpty) {
                 return const Center(
                   child: DefaultProgressIndicator(
                     size: 60.0,
@@ -158,7 +160,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                                             context
                                                 .read<CategoryDetailsBloc>()
                                                 .add(
-                                                    CategoryDetailsCahngeCartEvent(
+                                                    CategoryDetailsChangeCartEvent(
                                                         product.id));
                                           },
                                           icon: Icon(
@@ -177,13 +179,18 @@ class CategoryDetailsScreen extends StatelessWidget {
                                         ),
                                         IconButton(
                                           onPressed: () {
-                                            context.read<CategoryDetailsBloc>().add(
-                                                CatgeoryDetailsChangeFavoritesEvent(
-                                                    product.id));
+                                            context
+                                                .read<CategoryDetailsBloc>()
+                                                .add(
+                                                  CategoryDetailsChangeFavoritesEvent(
+                                                    product.id,
+                                                  ),
+                                                );
                                           },
                                           icon: Icon(
-                                            MyApp.favoriteMap[
-                                                    state.products[index].id]!
+                                            MyApp.favoriteMap[state
+                                                        .products[index].id] ??
+                                                    false
                                                 ? Icons.favorite
                                                 : Icons.favorite_border,
                                             color: Theme.of(context)

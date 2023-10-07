@@ -8,6 +8,6 @@ class GetProductsCartUseCase {
 
   GetProductsCartUseCase(this.homeBaseRepository);
 
-  Future<Either<Failure, CartModel>> call() async =>
+  Future<Either<Failure, CartProductModel>> call() async =>
       await homeBaseRepository.getCart();
 }

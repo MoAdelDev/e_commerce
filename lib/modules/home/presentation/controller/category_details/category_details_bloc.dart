@@ -23,8 +23,8 @@ class CategoryDetailsBloc
     this.addProductToCartUseCase,
   ) : super(const CategoryDetailsState()) {
     on<CategoryDetailsGetEvent>(_getProducts);
-    on<CatgeoryDetailsChangeFavoritesEvent>(_changeFavorites);
-    on<CategoryDetailsCahngeCartEvent>(_changeCart);
+    on<CategoryDetailsChangeFavoritesEvent>(_changeFavorites);
+    on<CategoryDetailsChangeCartEvent>(_changeCart);
   }
 
   FutureOr<void> _getProducts(
@@ -42,7 +42,7 @@ class CategoryDetailsBloc
     );
   }
 
-  FutureOr<void> _changeFavorites(CatgeoryDetailsChangeFavoritesEvent event,
+  FutureOr<void> _changeFavorites(CategoryDetailsChangeFavoritesEvent event,
       Emitter<CategoryDetailsState> emit) async {
     emit(
       state.copyWith(
@@ -67,7 +67,7 @@ class CategoryDetailsBloc
     });
   }
 
-  FutureOr<void> _changeCart(CategoryDetailsCahngeCartEvent event,
+  FutureOr<void> _changeCart(CategoryDetailsChangeCartEvent event,
       Emitter<CategoryDetailsState> emit) async {
     emit(state.copyWith(cartState: RequestState.loading));
     final result = await addProductToCartUseCase(productId: event.productId);

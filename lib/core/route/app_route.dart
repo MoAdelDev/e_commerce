@@ -1,5 +1,7 @@
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
+import 'package:e_commerce_app/modules/addresses/presentation/screens/add_address_screen.dart';
+import 'package:e_commerce_app/modules/addresses/presentation/screens/adresses_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/home_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/settings/language_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/settings/night_mode_screen.dart';
@@ -50,6 +52,15 @@ class AppRoute {
       case RouteConst.nightModeScreen:
         return MaterialPageRoute(
           builder: (context) => const NightModeScreen(),
+        );
+      case RouteConst.addressScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddressesScreen(),
+        );
+
+      case RouteConst.addAddressScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddAddressScreen(),
         );
     }
     return null;

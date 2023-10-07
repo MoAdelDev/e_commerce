@@ -4,9 +4,9 @@ import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/style/components/default_animation.dart';
-import '../../../../core/style/components/default_shimmer.dart';
-import '../controller/home/home_state.dart';
+import '../../../../../core/style/components/default_animation.dart';
+import '../../../../../core/style/components/default_shimmer.dart';
+import '../../controller/home/home_state.dart';
 
 class BannersWidget extends StatelessWidget {
   const BannersWidget({Key? key}) : super(key: key);

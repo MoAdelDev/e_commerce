@@ -13,14 +13,14 @@ class CategoryDetailsGetEvent extends CategoryDetailsBaseEvent {
   const CategoryDetailsGetEvent(this.categoryId);
 }
 
-class CatgeoryDetailsChangeFavoritesEvent extends CategoryDetailsBaseEvent {
+class CategoryDetailsChangeFavoritesEvent extends CategoryDetailsBaseEvent {
   final int productId;
 
-  const CatgeoryDetailsChangeFavoritesEvent(this.productId);
+  const CategoryDetailsChangeFavoritesEvent(this.productId);
 }
 
-class CategoryDetailsCahngeCartEvent extends CategoryDetailsBaseEvent {
+class CategoryDetailsChangeCartEvent extends CategoryDetailsBaseEvent {
   final int productId;
 
-  const CategoryDetailsCahngeCartEvent(this.productId);
+  const CategoryDetailsChangeCartEvent(this.productId);
 }

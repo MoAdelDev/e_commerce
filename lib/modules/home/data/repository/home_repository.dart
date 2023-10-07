@@ -96,8 +96,8 @@ class HomeRepository extends BaseHomeRepository {
   @override
   Future<Either<Failure, String>> removeFavorite({required favoriteId}) async {
     try {
-      final result =
-          await baseHomeRemoteDataSource.removeFavorites(favoriteId: favoriteId);
+      final result = await baseHomeRemoteDataSource.removeFavorites(
+          favoriteId: favoriteId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
@@ -108,8 +108,8 @@ class HomeRepository extends BaseHomeRepository {
   Future<Either<Failure, Product>> getProductDetails(
       {required productId}) async {
     try {
-      final result =
-          await baseHomeRemoteDataSource.getProductDetails(productId: productId);
+      final result = await baseHomeRemoteDataSource.getProductDetails(
+          productId: productId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
@@ -130,7 +130,7 @@ class HomeRepository extends BaseHomeRepository {
   }
 
   @override
-  Future<Either<Failure, CartModel>> getCart() async {
+  Future<Either<Failure, CartProductModel>> getCart() async {
     try {
       final result = await baseHomeRemoteDataSource.getCarts();
       return Right(result);
@@ -170,8 +170,8 @@ class HomeRepository extends BaseHomeRepository {
   Future<Either<Failure, List<Product>>> getCategoryDetails(
       {required categoryId}) async {
     try {
-      final result =
-          await baseHomeRemoteDataSource.getCategoryDetails(categoryId: categoryId);
+      final result = await baseHomeRemoteDataSource.getCategoryDetails(
+          categoryId: categoryId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
@@ -202,11 +202,11 @@ class HomeRepository extends BaseHomeRepository {
   }
 
   @override
-  Future<Either<Failure, String>> signOut() async{
-    try{
+  Future<Either<Failure, String>> signOut() async {
+    try {
       final result = await baseHomeRemoteDataSource.signOut();
       return Right(result);
-    } on ServerException catch(e) {
+    } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
     }
   }

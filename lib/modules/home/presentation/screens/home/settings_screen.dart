@@ -26,7 +26,9 @@ class SettingsScreen extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             child: const Center(
-              child: DefaultProgressIndicator(size: 60.0,),
+              child: DefaultProgressIndicator(
+                size: 60.0,
+              ),
             ),
           );
         }
@@ -89,7 +91,8 @@ class SettingsScreen extends StatelessWidget {
                     Column(
                       children: [
                         SettingsItemWidget(
-                            onPressed: () {},
+                            onPressed: () => Navigator.pushNamed(
+                                context, RouteConst.addressScreen),
                             icon: Icons.location_history,
                             text: S.of(context).myAddressesTitle),
                         SettingsItemWidget(
@@ -124,7 +127,9 @@ class SettingsScreen extends StatelessWidget {
                             text: S.of(context).contactMeTitle),
                         SettingsItemWidget(
                           onPressed: () {
-                            context.read<HomeBloc>().add(HomeSignOutEvent(context));
+                            context
+                                .read<HomeBloc>()
+                                .add(HomeSignOutEvent(context));
                           },
                           icon: Icons.logout,
                           textColor: AppColorLight.errorColor,

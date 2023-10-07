@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColorLight {
   static MaterialColor primaryColor =
-      MaterialColorGenerator.from(const Color(0xff5727c6));
+      MaterialColorGenerator.from(const Color(0xff4e5ae8));
   static const Color primaryVariantColor = Color(0xff4510c0);
   static const Color secondaryColor = Color(0xffFF6600);
   static const Color secondaryVariantColor = Color(0xffe05A00);
@@ -19,7 +19,7 @@ class AppColorLight {
 
 class AppColorDark {
   static MaterialColor primaryColor =
-  MaterialColorGenerator.from(const Color(0xff5727c6));
+  MaterialColorGenerator.from(const Color(0xff4e5ae8));
   static const Color primaryVariantColor = Color(0xffB200ED);
   static const Color secondaryColor = Color(0xffFF6600);
   static const Color secondaryVariantColor = Color(0xffe05A00);

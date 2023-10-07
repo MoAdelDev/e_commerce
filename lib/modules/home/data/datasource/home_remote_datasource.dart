@@ -31,7 +31,7 @@ abstract class BaseHomeRemoteDataSource {
 
   Future<String> addProductToCart({required productId});
 
-  Future<CartModel> getCarts();
+  Future<CartProductModel> getCarts();
 
   Future<String> updateCart({required int cartId, required int quantity});
 
@@ -118,7 +118,7 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
 
   @override
   Future<List<FavoriteModel>> getFavorites() async {
-    String? token =  CacheHelper.getString(key: 'token');
+    String? token = CacheHelper.getString(key: 'token');
     final result =
         await DioHelper.getData(path: ApiConstance.favoritesUrl, token: token);
     if (result.data['status']) {
@@ -137,7 +137,7 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
 
   @override
   Future<String> changeFavorite({required productId}) async {
-    String? token =  CacheHelper.getString(key: 'token');
+    String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.postData(
       path: ApiConstance.favoritesUrl,
       data: {'product_id': productId},
@@ -156,7 +156,7 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
 
   @override
   Future<String> removeFavorites({required favoriteId}) async {
-    String? token =  CacheHelper.getString(key: 'token');
+    String? token = CacheHelper.getString(key: 'token');
 
     final result = await DioHelper.deleteData(
         path: '${ApiConstance.favoritesUrl}/$favoriteId', token: token);
@@ -173,7 +173,7 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
 
   @override
   Future<ProductModel> getProductDetails({required productId}) async {
-    String? token =  CacheHelper.getString(key: 'token');
+    String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.getData(
         path: '${ApiConstance.productsUrl}/$productId', token: token);
 
@@ -185,7 +185,7 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
 
   @override
   Future<String> addProductToCart({required productId}) async {
-    String? token =  CacheHelper.getString(key: 'token');
+    String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.postData(
       path: ApiConstance.cartUrl,
       data: {'product_id': productId},
@@ -198,12 +198,12 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
   }
 
   @override
-  Future<CartModel> getCarts() async {
-    String? token =  CacheHelper.getString(key: 'token');
+  Future<CartProductModel> getCarts() async {
+    String? token = CacheHelper.getString(key: 'token');
     final result =
         await DioHelper.getData(path: ApiConstance.cartUrl, token: token);
     if (result.data['status']) {
-      return CartModel.fromJson(result.data['data']);
+      return CartProductModel.fromJson(result.data['data']);
     }
     throw ServerException(
       ErrorMessageModel.fromJson(result.data),
@@ -213,7 +213,7 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
   @override
   Future<String> updateCart(
       {required int cartId, required int quantity}) async {
-    String? token =  CacheHelper.getString(key: 'token');
+    String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.updateData(
         path: '${ApiConstance.cartUrl}/$cartId',
         data: {'quantity': quantity},
@@ -229,7 +229,7 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
   Future<String> deleteProductFromCart({
     required int cartId,
   }) async {
-    String? token =  CacheHelper.getString(key: 'token');
+    String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.deleteData(
         path: '${ApiConstance.cartUrl}/$cartId', token: token);
 
@@ -241,7 +241,7 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
 
   @override
   Future<List<Product>> getCategoryDetails({required categoryId}) async {
-    String? token =  CacheHelper.getString(key: 'token');
+    String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.getData(
         path: '${ApiConstance.categoriesUrl}/$categoryId', token: token);
 
@@ -259,12 +259,14 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
   }
 
   @override
-  Future<String> signOut() async{
-    String? token =  CacheHelper.getString(key: 'token');
-    final result = await DioHelper.postData(path: ApiConstance.logoutUrl, data: {'fcm_token' : token}, token: token);
-    if(result.data['status']){
+  Future<String> signOut() async {
+    String? token = CacheHelper.getString(key: 'token');
+    final result = await DioHelper.postData(
+        path: ApiConstance.logoutUrl, data: {'fcm_token': token}, token: token);
+    if (result.data['status']) {
       return result.data['message'];
     }
     throw ServerException(ErrorMessageModel.fromJson(result.data));
   }
+
 }

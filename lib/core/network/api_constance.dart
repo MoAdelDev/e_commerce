@@ -9,4 +9,5 @@ class ApiConstance {
   static const String profileUrl = '$baseUrl/profile';
   static const String favoritesUrl = '$baseUrl/favorites';
   static const String cartUrl = '$baseUrl/carts';
+  static const String addressesUrl = '$baseUrl/addresses';
 }

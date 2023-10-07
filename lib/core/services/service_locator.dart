@@ -1,3 +1,7 @@
+import 'package:e_commerce_app/modules/addresses/data/datasource/addresses_remote_datasource.dart';
+import 'package:e_commerce_app/modules/addresses/data/repository/addresses_repository.dart';
+import 'package:e_commerce_app/modules/addresses/domain/repository/base_addresses_repository.dart';
+import 'package:e_commerce_app/modules/addresses/domain/usecases/get_addresses_usecase.dart';
 import 'package:e_commerce_app/modules/home/data/datasource/home_local_datasource.dart';
 import 'package:e_commerce_app/modules/home/data/datasource/home_remote_datasource.dart';
 import 'package:e_commerce_app/modules/home/data/repository/home_repository.dart';
@@ -30,7 +34,6 @@ final sl = GetIt.instance;
 
 class ServiceLocator {
   void init() {
-
     /// DATA SOURCE
     sl.registerLazySingleton<BaseAuthRemoteDataSource>(
         () => AuthRemoteDataSource());
@@ -38,19 +41,21 @@ class ServiceLocator {
     sl.registerLazySingleton<BaseHomeRemoteDataSource>(
         () => HomeRemoteDataSource());
 
+    sl.registerLazySingleton<BaseAddressesRemoteDataSource>(
+        () => AddressesRemoteDataSource());
+
     sl.registerLazySingleton<BaseHomeLocalDataSource>(
         () => HomeLocalDataSource());
-
-
 
     /// REPOSITORY
     sl.registerLazySingleton<BaseAuthenticationRepository>(
         () => AuthRepository(sl()));
 
+    sl.registerLazySingleton<BaseAddressRepository>(
+        () => AddressesRepository(sl()));
+
     sl.registerLazySingleton<BaseHomeRepository>(
         () => HomeRepository(sl(), sl()));
-
-
 
     ///  USE CASES
     sl.registerLazySingleton<LoginUseCase>(() => LoginUseCase(sl()));
@@ -99,7 +104,8 @@ class ServiceLocator {
     sl.registerLazySingleton<ChangeNightModeUseCase>(
         () => ChangeNightModeUseCase(sl()));
 
-    sl.registerLazySingleton<SignOutUseCase>(
-            () => SignOutUseCase(sl()));
+    sl.registerLazySingleton<SignOutUseCase>(() => SignOutUseCase(sl()));
+
+    sl.registerLazySingleton<GetAddressesUseCase>(() => GetAddressesUseCase(sl()));
   }
 }

@@ -8,5 +8,5 @@ class GetFavoritesUseCase{
 
   GetFavoritesUseCase(this.homeBaseRepository);
 
-  Future<Either<Failure, List<Favorite>>> call() async => homeBaseRepository.getFavorites();
+  Future<Either<Failure, List<Favorite>>> call() async => await homeBaseRepository.getFavorites();
 }

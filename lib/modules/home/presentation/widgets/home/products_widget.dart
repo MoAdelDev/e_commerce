@@ -5,11 +5,11 @@ import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/style/components/default_animation.dart';
-import '../../../../core/style/components/default_shimmer.dart';
-import '../controller/home/home_bloc.dart';
-import '../controller/home/home_event.dart';
-import '../controller/home/home_state.dart';
+import '../../../../../core/style/components/default_animation.dart';
+import '../../../../../core/style/components/default_shimmer.dart';
+import '../../controller/home/home_bloc.dart';
+import '../../controller/home/home_event.dart';
+import '../../controller/home/home_state.dart';
 
 class ProductsWidget extends StatelessWidget {
   const ProductsWidget({Key? key}) : super(key: key);

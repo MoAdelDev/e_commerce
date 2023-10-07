@@ -1,19 +1,19 @@
 import 'package:e_commerce_app/modules/home/domain/entities/cart.dart';
 
-class CartModel extends Cart {
-  const CartModel(
+class CartProductModel extends Cart {
+  const CartProductModel(
     super.products,
     super.totalPrice,
   );
-
-  factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
+  
+  factory CartProductModel.fromJson(Map<String, dynamic> json) => CartProductModel(
         List.from((json['cart_items'] as List)
             .map((e) => ProductCartModel.fromJson(e))),
         json['total'],
       );
 }
 
-class ProductCartModel extends ProductCart {
+class ProductCartModel extends CartProduct {
   const ProductCartModel(
       super.id,
       super.quantity,

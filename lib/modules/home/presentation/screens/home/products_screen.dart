@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
-import 'package:e_commerce_app/modules/home/presentation/widgets/banners_widget.dart';
-import 'package:e_commerce_app/modules/home/presentation/widgets/products_widget.dart';
+import 'package:e_commerce_app/modules/home/presentation/widgets/home/banners_widget.dart';
+import 'package:e_commerce_app/modules/home/presentation/widgets/home/products_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 
