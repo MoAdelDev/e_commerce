@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
-import 'package:e_commerce_app/modules/addresses/presentation/screens/add_address_screen.dart';
+import 'package:e_commerce_app/modules/addresses/presentation/screens/add_edit_address_screen.dart';
 import 'package:e_commerce_app/modules/addresses/presentation/screens/adresses_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/home_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/settings/language_screen.dart';
@@ -58,9 +58,12 @@ class AppRoute {
           builder: (context) => const AddressesScreen(),
         );
 
-      case RouteConst.addAddressScreen:
+      case RouteConst.addOrAddressScreen:
+        var args = settings.arguments as ScreenArgs;
         return MaterialPageRoute(
-          builder: (context) =>  AddAddressScreen(),
+          builder: (context) => AddOrEditAddressScreen(
+            screenArgs: args,
+          ),
         );
     }
     return null;

@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/route/route_string.dart';
+import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
 import 'package:e_commerce_app/core/style/components/default_material_button.dart';
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
@@ -54,7 +55,7 @@ class AddressesScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(20.0),
                       child: DefaultButton(
                           onPressed: () => Navigator.pushNamed(
-                              context, RouteConst.addAddressScreen),
+                              context, RouteConst.addOrAddressScreen),
                           text: S.of(context).addNewAddress),
                     ),
                   ],
@@ -83,10 +84,22 @@ class AddressesScreen extends StatelessWidget {
                     height: 10.0,
                   ),
                   DefaultButton(
-                    onPressed: () => Navigator.pushNamed(
-                      context,
-                      RouteConst.addAddressScreen,
-                    ),
+                    onPressed: () {
+                      ScreenArgs screenArgs =
+                          ScreenArgs.toAddAndEditAddressScreen(
+                        0,
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                      );
+                      Navigator.pushNamed(
+                        context,
+                        RouteConst.addOrAddressScreen,
+                        arguments: screenArgs,
+                      );
+                    },
                     text: S.of(context).addNewAddress,
                     icon: Icons.location_on,
                   ),

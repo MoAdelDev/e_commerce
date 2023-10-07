@@ -8,7 +8,9 @@ import 'package:e_commerce_app/modules/addresses/presentation/controller/address
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddAddressScreen extends StatelessWidget {
+import '../../../../core/route/screen_args.dart';
+
+class AddOrEditAddressScreen extends StatelessWidget {
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _noteController = TextEditingController();
@@ -17,7 +19,18 @@ class AddAddressScreen extends StatelessWidget {
 
   final _formKey = GlobalKey<FormState>();
 
-  AddAddressScreen({super.key});
+  final ScreenArgs screenArgs;
+
+  AddOrEditAddressScreen({
+    super.key,
+    required this.screenArgs,
+  }) {
+    _fullNameController.text = screenArgs.addressName;
+    _addressController.text = screenArgs.addressDetails;
+    _noteController.text = screenArgs.addressNotes;
+    _cityController.text = screenArgs.addressCity;
+    _regionController.text = screenArgs.addressRegion;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +40,9 @@ class AddAddressScreen extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               title: Text(
-                S.of(context).addNewAddress,
+                screenArgs.addressId == 0
+                    ? S.of(context).addNewAddress
+                    : S.of(context).editNewAddress,
               ),
             ),
             body: SingleChildScrollView(
@@ -154,7 +169,7 @@ class AddAddressScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20.0,
                       ),
-                      state.addAddressState == RequestState.loading
+                      state.addOrUpdateAddressState == RequestState.loading
                           ? const Center(
                               child: DefaultProgressIndicator(),
                             )
@@ -162,16 +177,31 @@ class AddAddressScreen extends StatelessWidget {
                               onPressed: () {
                                 FocusManager.instance.primaryFocus?.unfocus();
                                 if (_formKey.currentState!.validate()) {
-                                  context
-                                      .read<AddressesBloc>()
-                                      .add(AddressesAddEvent(
+                                  if (screenArgs.addressId == 0) {
+                                    context.read<AddressesBloc>().add(
+                                          AddressesAddEvent(
+                                            _fullNameController.text,
+                                            _addressController.text,
+                                            _noteController.text,
+                                            _cityController.text,
+                                            _regionController.text,
+                                            context,
+                                          ),
+                                        );
+                                  }
+                                  else{
+                                    context.read<AddressesBloc>().add(
+                                      AddressesUpdateEvent(
+                                        screenArgs.addressId,
                                         _fullNameController.text,
                                         _addressController.text,
                                         _noteController.text,
                                         _cityController.text,
                                         _regionController.text,
                                         context,
-                                      ));
+                                      ),
+                                    );
+                                  }
                                 }
                               },
                               text: 'Save',

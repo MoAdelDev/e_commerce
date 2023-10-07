@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/core/route/route_string.dart';
+import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/style/components/default_material_button.dart';
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
@@ -94,8 +96,13 @@ class AddressWidget extends StatelessWidget {
                       actions: [
                         BlocBuilder<AddressesBloc, AddressesState>(
                           builder: (context, state) {
-                            if(state.deleteAddressState == RequestState.loading) {
-                              return const Center(child: DefaultProgressIndicator(size: 40.0,),);
+                            if (state.deleteAddressState ==
+                                RequestState.loading) {
+                              return const Center(
+                                child: DefaultProgressIndicator(
+                                  size: 40.0,
+                                ),
+                              );
                             }
                             return DefaultButton(
                               onPressed: () {
@@ -120,7 +127,21 @@ class AddressWidget extends StatelessWidget {
                 width: 20.0,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  ScreenArgs screenArgs = ScreenArgs.toAddAndEditAddressScreen(
+                    address.id,
+                    address.name,
+                    address.details,
+                    address.note,
+                    address.city,
+                    address.region,
+                  );
+                  Navigator.pushNamed(
+                    context,
+                    RouteConst.addOrAddressScreen,
+                    arguments: screenArgs,
+                  );
+                },
                 child: Icon(
                   Icons.edit,
                   color: Theme.of(context).colorScheme.primary,

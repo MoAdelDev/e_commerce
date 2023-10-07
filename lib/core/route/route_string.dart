@@ -7,5 +7,5 @@ class RouteConst {
   static const String languageScreen = '/language';
   static const String nightModeScreen = '/nightMode';
   static const String addressScreen = '/addresses';
-  static const String addAddressScreen = '/add_address';
+  static const String addOrAddressScreen = '/add_edit_address';
 }

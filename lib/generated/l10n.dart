@@ -420,6 +420,16 @@ class S {
     );
   }
 
+  /// `Edit address`
+  String get editNewAddress {
+    return Intl.message(
+      'Edit address',
+      name: 'editNewAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Full name`
   String get fullNameTitle {
     return Intl.message(

@@ -44,4 +44,16 @@ class AddressesRepository extends BaseAddressRepository {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> updateAddress(
+      {required AddressModel addressModel}) async {
+    try {
+      final result = await baseAddressesRemoteDataSource.updateAddress(
+          addressModel: addressModel);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
+    }
+  }
 }

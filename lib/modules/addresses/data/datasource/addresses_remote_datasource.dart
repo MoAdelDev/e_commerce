@@ -11,6 +11,8 @@ abstract class BaseAddressesRemoteDataSource {
   Future<String> addAddresses({required AddressModel addressModel});
 
   Future<String> deleteAddress({required int addressId});
+
+  Future<String> updateAddress({required AddressModel addressModel});
 }
 
 class AddressesRemoteDataSource extends BaseAddressesRemoteDataSource {
@@ -52,6 +54,21 @@ class AddressesRemoteDataSource extends BaseAddressesRemoteDataSource {
     String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.deleteData(
       path: '${ApiConstance.addressesUrl}/$addressId',
+      token: token,
+    );
+
+    if (result.data['status']) {
+      return result.data['message'];
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
+
+  @override
+  Future<String> updateAddress({required AddressModel addressModel}) async {
+    String? token = CacheHelper.getString(key: 'token');
+    final result = await DioHelper.updateData(
+      path: '${ApiConstance.addressesUrl}/${addressModel.id}',
+      data: addressModel.toJson(),
       token: token,
     );
 

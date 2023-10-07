@@ -4,6 +4,7 @@ import 'package:e_commerce_app/modules/addresses/domain/repository/base_addresse
 import 'package:e_commerce_app/modules/addresses/domain/usecases/add_address_usecase.dart';
 import 'package:e_commerce_app/modules/addresses/domain/usecases/delete_address_usecase.dart';
 import 'package:e_commerce_app/modules/addresses/domain/usecases/get_addresses_usecase.dart';
+import 'package:e_commerce_app/modules/addresses/domain/usecases/update_address_usecase.dart';
 import 'package:e_commerce_app/modules/home/data/datasource/home_local_datasource.dart';
 import 'package:e_commerce_app/modules/home/data/datasource/home_remote_datasource.dart';
 import 'package:e_commerce_app/modules/home/data/repository/home_repository.dart';
@@ -115,5 +116,8 @@ class ServiceLocator {
 
     sl.registerLazySingleton<DeleteAddressUseCase>(
         () => DeleteAddressUseCase(sl()));
+
+    sl.registerLazySingleton<UpdateAddressUseCase>(
+        () => UpdateAddressUseCase(sl()));
   }
 }

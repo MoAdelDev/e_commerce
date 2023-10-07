@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هل تريد مسح العنوان ؟"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("الوصف"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("خصم"),
+        "editNewAddress": MessageLookupByLibrary.simpleMessage("تعديل العنوان"),
         "editProfileTitle":
             MessageLookupByLibrary.simpleMessage("تعديل الصفحة الشخصية"),
         "emailHintTitle":

@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Delete this address ?"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("DISCOUNT"),
+        "editNewAddress": MessageLookupByLibrary.simpleMessage("Edit address"),
         "editProfileTitle":
             MessageLookupByLibrary.simpleMessage("Edit profile"),
         "emailHintTitle":

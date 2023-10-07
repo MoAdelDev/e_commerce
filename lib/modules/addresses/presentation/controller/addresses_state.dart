@@ -5,9 +5,9 @@ class AddressesState extends Equatable {
   final RequestState addressesState;
   final String addressesError;
 
-  final String addAddressMsg;
-  final RequestState addAddressState;
-  final String addAddressError;
+  final String addOrUpdateAddressMsg;
+  final RequestState addOrUpdateAddressState;
+  final String addOrUpdateAddressError;
 
   final String deleteAddressMsg;
   final RequestState deleteAddressState;
@@ -17,9 +17,9 @@ class AddressesState extends Equatable {
     this.addresses = const [],
     this.addressesState = RequestState.loading,
     this.addressesError = '',
-    this.addAddressMsg = '',
-    this.addAddressState = RequestState.nothing,
-    this.addAddressError = '',
+    this.addOrUpdateAddressMsg = '',
+    this.addOrUpdateAddressState = RequestState.nothing,
+    this.addOrUpdateAddressError = '',
     this.deleteAddressMsg = '',
     this.deleteAddressState = RequestState.nothing,
     this.deleteAddressError = '',
@@ -29,9 +29,9 @@ class AddressesState extends Equatable {
     List<Address>? addresses,
     RequestState? addressesState,
     String? addressesError,
-    String? addAddressMsg,
-    RequestState? addAddressState,
-    String? addAddressError,
+    String? addOrUpdateAddressMsg,
+    RequestState? addOrUpdateAddressState,
+    String? addOrUpdateAddressError,
     String? deleteAddressMsg,
     RequestState? deleteAddressState,
     String? deleteAddressError,
@@ -40,23 +40,25 @@ class AddressesState extends Equatable {
         addresses: addresses ?? this.addresses,
         addressesState: addressesState ?? this.addressesState,
         addressesError: addressesError ?? this.addressesError,
-        addAddressMsg: addAddressMsg ?? this.addAddressMsg,
-        addAddressState: addAddressState ?? this.addAddressState,
-        addAddressError: addAddressError ?? this.addAddressError,
-        deleteAddressMsg: addAddressMsg ?? this.deleteAddressMsg,
+        addOrUpdateAddressMsg:
+            addOrUpdateAddressMsg ?? this.addOrUpdateAddressMsg,
+        addOrUpdateAddressState:
+            addOrUpdateAddressState ?? this.addOrUpdateAddressState,
+        addOrUpdateAddressError:
+            addOrUpdateAddressError ?? this.addOrUpdateAddressError,
+        deleteAddressMsg: addOrUpdateAddressMsg ?? this.deleteAddressMsg,
         deleteAddressState: deleteAddressState ?? this.deleteAddressState,
         deleteAddressError: deleteAddressError ?? this.deleteAddressError,
       );
 
   @override
-  List<Object> get props =>
-      [
+  List<Object> get props => [
         addresses,
         addressesState,
         addressesError,
-        addAddressMsg,
-        addAddressState,
-        addAddressError,
+        addOrUpdateAddressMsg,
+        addOrUpdateAddressState,
+        addOrUpdateAddressError,
         deleteAddressMsg,
         deleteAddressState,
         deleteAddressError,
