@@ -12,7 +12,6 @@ class HomeChangeBottomNavIndexEvent extends BaseHomeEvent {
   final int index;
 
   const HomeChangeBottomNavIndexEvent(this.index);
-
 }
 
 class HomeGetProductsEvent extends BaseHomeEvent {}
@@ -40,7 +39,6 @@ class HomeChangeLanguageEvent extends BaseHomeEvent {
 
   @override
   List<Object> get props => [language];
-
 }
 
 class HomeChangeNightModeEvent extends BaseHomeEvent {
@@ -50,7 +48,6 @@ class HomeChangeNightModeEvent extends BaseHomeEvent {
 
   @override
   List<Object> get props => [isDark];
-
 }
 
 class HomeSignOutEvent extends BaseHomeEvent {
@@ -62,4 +59,19 @@ class HomeSignOutEvent extends BaseHomeEvent {
   List<Object> get props => [context];
 }
 
+class HomeUpdateProfileEvent extends BaseHomeEvent {
+  final String name;
+  final String email;
+  final String phone;
+  final String password;
+  final BuildContext context;
 
+  const HomeUpdateProfileEvent(this.name,
+      this.email,
+      this.phone,
+      this.password,
+      this.context,);
+
+  @override
+  List<Object> get props => [name, email, phone, password, context];
+}

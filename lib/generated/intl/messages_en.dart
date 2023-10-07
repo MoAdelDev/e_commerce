@@ -43,10 +43,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("DISCOUNT"),
         "editNewAddress": MessageLookupByLibrary.simpleMessage("Edit address"),
-        "editProfileTitle":
-            MessageLookupByLibrary.simpleMessage("Edit profile"),
         "emailHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your email"),
+        "emailTitle": MessageLookupByLibrary.simpleMessage("Email"),
         "englishTitle": MessageLookupByLibrary.simpleMessage("English"),
         "faqsTitle": MessageLookupByLibrary.simpleMessage("FAQS"),
         "forgotPasswordTitle":
@@ -65,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("My addresses"),
         "nameHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your name"),
+        "nameTitle": MessageLookupByLibrary.simpleMessage("Name"),
         "nightModeTitle": MessageLookupByLibrary.simpleMessage("Night mode"),
         "noAddressTitle":
             MessageLookupByLibrary.simpleMessage("No addresses yet"),
@@ -81,8 +81,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "onTitle": MessageLookupByLibrary.simpleMessage("On"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "passwordTitle": MessageLookupByLibrary.simpleMessage("Password"),
         "phoneHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your phone"),
+        "phoneTitle": MessageLookupByLibrary.simpleMessage("Phone"),
         "productsTitle": MessageLookupByLibrary.simpleMessage("Products"),
         "regionHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your region"),
@@ -96,6 +98,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Remove from cart"),
         "removeTitle": MessageLookupByLibrary.simpleMessage("Remove"),
         "signInTitle": MessageLookupByLibrary.simpleMessage("Sign In"),
-        "signUpTitle": MessageLookupByLibrary.simpleMessage("Sign Up")
+        "signUpTitle": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "updateProfileTitle":
+            MessageLookupByLibrary.simpleMessage("Update profile")
       };
 }

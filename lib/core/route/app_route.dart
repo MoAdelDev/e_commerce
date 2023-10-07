@@ -3,14 +3,15 @@ import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/modules/addresses/presentation/screens/add_edit_address_screen.dart';
 import 'package:e_commerce_app/modules/addresses/presentation/screens/adresses_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/home_screen.dart';
-import 'package:e_commerce_app/modules/home/presentation/screens/home/settings/language_screen.dart';
-import 'package:e_commerce_app/modules/home/presentation/screens/home/settings/night_mode_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/product_details/product_details_screen.dart';
+import 'package:e_commerce_app/modules/home/presentation/screens/settings/language_screen.dart';
+import 'package:e_commerce_app/modules/home/presentation/screens/settings/night_mode_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../modules/authentication/presentation/screens/login_screen.dart';
 import '../../modules/authentication/presentation/screens/register_screen.dart';
 import '../../modules/home/presentation/screens/category_details/category_details_screen.dart';
+import '../../modules/home/presentation/screens/settings/update_profile_screen.dart';
 
 class AppRoute {
   static AppRoute getInstance() {
@@ -58,12 +59,17 @@ class AppRoute {
           builder: (context) => const AddressesScreen(),
         );
 
-      case RouteConst.addOrAddressScreen:
+      case RouteConst.addOrUpdateAddressScreen:
         var args = settings.arguments as ScreenArgs;
         return MaterialPageRoute(
           builder: (context) => AddOrEditAddressScreen(
             screenArgs: args,
           ),
+        );
+
+      case RouteConst.updateProfileScreen:
+        return MaterialPageRoute(
+          builder: (context) =>  const UpdateProfileScreen(),
         );
     }
     return null;

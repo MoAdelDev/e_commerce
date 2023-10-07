@@ -4,6 +4,7 @@ import 'package:e_commerce_app/core/error/error_message_model.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
 import 'package:e_commerce_app/core/network/api_constance.dart';
 import 'package:e_commerce_app/modules/authentication/data/models/user_model.dart';
+import 'package:e_commerce_app/modules/authentication/domain/entities/register.dart';
 import 'package:e_commerce_app/modules/home/data/models/banner_model.dart';
 import 'package:e_commerce_app/modules/home/data/models/category_model.dart';
 import 'package:e_commerce_app/modules/home/data/models/product_model.dart';
@@ -40,6 +41,8 @@ abstract class BaseHomeRemoteDataSource {
   Future<List<Product>> getCategoryDetails({required categoryId});
 
   Future<String> signOut();
+
+  Future<String> updateProfile({required Register register});
 }
 
 class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
@@ -269,4 +272,16 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
     throw ServerException(ErrorMessageModel.fromJson(result.data));
   }
 
+  @override
+  Future<String> updateProfile({required Register register}) async {
+    String? token = CacheHelper.getString(key: 'token');
+    final result = await DioHelper.updateData(
+        path: ApiConstance.updateProfileUrl,
+        data: register.toJson(),
+        token: token);
+    if (result.data['status']) {
+      return result.data['message'];
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
 }

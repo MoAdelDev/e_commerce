@@ -62,6 +62,11 @@ class HomeState extends Equatable {
   final String signOutError;
   final RequestState signOutState;
 
+  /// Update profile
+  final String updateProfileMsg;
+  final String updateProfileError;
+  final RequestState updateProfileState;
+
   const HomeState({
     this.screens = const [
       ProductsScreen(),
@@ -117,6 +122,9 @@ class HomeState extends Equatable {
     this.isDark = false,
     this.signOutError = '',
     this.signOutState = RequestState.nothing,
+    this.updateProfileMsg = '',
+    this.updateProfileError = '',
+    this.updateProfileState = RequestState.nothing,
   });
 
   HomeState copyWith({
@@ -146,6 +154,9 @@ class HomeState extends Equatable {
     bool? isDark,
     String? signOutError,
     RequestState? signOutState,
+    String? updateProfileMsg,
+    String? updateProfileError,
+    RequestState? updateProfileState,
   }) =>
       HomeState(
         currentIndex: currentIndex ?? this.currentIndex,
@@ -171,13 +182,19 @@ class HomeState extends Equatable {
         isDark: isDark ?? this.isDark,
         signOutError: signOutError ?? this.signOutError,
         signOutState: signOutState ?? this.signOutState,
+        updateProfileMsg: updateProfileMsg ?? this.updateProfileMsg,
+        updateProfileError: updateProfileError ?? this.updateProfileError,
+        updateProfileState: updateProfileState ?? this.updateProfileState,
       );
 
   @override
-  List<Object> get props => [
+  List<Object> get props =>
+      [
         currentIndex,
         screens,
         items,
+        arabicTitles,
+        englishTitles,
         products,
         productsState,
         productsError,
@@ -200,5 +217,8 @@ class HomeState extends Equatable {
         isDark,
         signOutError,
         signOutState,
+        updateProfileMsg,
+        updateProfileError,
+        updateProfileState,
       ];
 }

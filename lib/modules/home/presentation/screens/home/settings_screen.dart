@@ -81,8 +81,8 @@ class SettingsScreen extends StatelessWidget {
                       height: 20.0,
                     ),
                     DefaultButton(
-                      onPressed: () {},
-                      text: S.of(context).editProfileTitle,
+                      onPressed: () => Navigator.pushNamed(context, RouteConst.updateProfileScreen),
+                      text: S.of(context).updateProfileTitle,
                       icon: Icons.edit,
                     ),
                     const SizedBox(
@@ -95,10 +95,6 @@ class SettingsScreen extends StatelessWidget {
                                 context, RouteConst.addressScreen),
                             icon: Icons.location_history,
                             text: S.of(context).myAddressesTitle),
-                        SettingsItemWidget(
-                            onPressed: () {},
-                            icon: Icons.notifications,
-                            text: S.of(context).notificationsTitle),
                         SettingsItemWidget(
                           onPressed: () {
                             Navigator.pushNamed(

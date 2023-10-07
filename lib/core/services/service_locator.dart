@@ -25,6 +25,7 @@ import 'package:e_commerce_app/modules/home/domain/usecases/get_user_usecase.dar
 import 'package:e_commerce_app/modules/home/domain/usecases/remove_favorite_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/signout_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/update_cart_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/update_profile_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../modules/authentication/data/datasource/auth_remote_datasource.dart';
@@ -119,5 +120,8 @@ class ServiceLocator {
 
     sl.registerLazySingleton<UpdateAddressUseCase>(
         () => UpdateAddressUseCase(sl()));
+
+    sl.registerLazySingleton<UpdateProfileUseCase>(
+            () => UpdateProfileUseCase(sl()));
   }
 }

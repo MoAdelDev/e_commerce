@@ -138,7 +138,7 @@ class AddressWidget extends StatelessWidget {
                   );
                   Navigator.pushNamed(
                     context,
-                    RouteConst.addOrAddressScreen,
+                    RouteConst.addOrUpdateAddressScreen,
                     arguments: screenArgs,
                   );
                 },

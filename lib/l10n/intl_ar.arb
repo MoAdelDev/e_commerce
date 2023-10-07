@@ -23,7 +23,7 @@
   "onBoardingTitle": "تسوق المنتجات",
   "continueTitle": "إستمر",
   "forgotPasswordTitle": "هل نسيت كلمة المرور ؟",
-  "editProfileTitle": "تعديل الصفحة الشخصية",
+  "updateProfileTitle": "تعديل الصفحة الشخصية",
   "myAddressesTitle": "عناويني",
   "notificationsTitle": "الإشعارات",
   "languageTitle": "اللغة",
@@ -49,5 +49,9 @@
   "noteHintTitle" : "أدخل ملاحظاتك",
   "deleteAddressQuestionTitle" : "هل تريد مسح العنوان ؟",
   "deleteAddressBodyTitle" : "هذا العنوان سيتم مسحه للأبد .",
-  "noAddressTitle" : "لا يوجد عناوين"
+  "noAddressTitle" : "لا يوجد عناوين",
+  "nameTitle" : "الإسم",
+  "emailTitle" : "البريد الإلكتروني",
+  "phoneTitle" : "رقم الهاتف",
+  "passwordTitle" : "كلمة المرور"
 }

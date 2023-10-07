@@ -55,7 +55,7 @@ class AddressesScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(20.0),
                       child: DefaultButton(
                           onPressed: () => Navigator.pushNamed(
-                              context, RouteConst.addOrAddressScreen),
+                              context, RouteConst.addOrUpdateAddressScreen),
                           text: S.of(context).addNewAddress),
                     ),
                   ],
@@ -96,7 +96,7 @@ class AddressesScreen extends StatelessWidget {
                       );
                       Navigator.pushNamed(
                         context,
-                        RouteConst.addOrAddressScreen,
+                        RouteConst.addOrUpdateAddressScreen,
                         arguments: screenArgs,
                       );
                     },

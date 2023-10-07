@@ -7,6 +7,7 @@ class ApiConstance {
   static const String bannersUrl = '$baseUrl/banners';
   static const String categoriesUrl = '$baseUrl/categories';
   static const String profileUrl = '$baseUrl/profile';
+  static const String updateProfileUrl = '$baseUrl/update-profile';
   static const String favoritesUrl = '$baseUrl/favorites';
   static const String cartUrl = '$baseUrl/carts';
   static const String addressesUrl = '$baseUrl/addresses';

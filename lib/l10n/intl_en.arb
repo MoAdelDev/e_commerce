@@ -23,7 +23,7 @@
   "onBoardingTitle": "Shop Products",
   "continueTitle": "Continue",
   "forgotPasswordTitle": "Forgot password ?",
-  "editProfileTitle": "Edit profile",
+  "updateProfileTitle": "Update profile",
   "myAddressesTitle": "My addresses",
   "notificationsTitle": "Notifications",
   "languageTitle": "Language",
@@ -49,5 +49,9 @@
   "noteHintTitle" : "Enter your notes",
   "deleteAddressQuestionTitle" : "Delete this address ?",
   "deleteAddressBodyTitle" : "This address will be permanently deleted .",
-  "noAddressTitle" : "No addresses yet"
+  "noAddressTitle" : "No addresses yet",
+  "nameTitle" : "Name",
+  "emailTitle" : "Email",
+  "phoneTitle" : "Phone",
+  "passwordTitle" : "Password"
 }

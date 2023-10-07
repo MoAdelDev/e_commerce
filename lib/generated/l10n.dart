@@ -290,11 +290,11 @@ class S {
     );
   }
 
-  /// `Edit profile`
-  String get editProfileTitle {
+  /// `Update profile`
+  String get updateProfileTitle {
     return Intl.message(
-      'Edit profile',
-      name: 'editProfileTitle',
+      'Update profile',
+      name: 'updateProfileTitle',
       desc: '',
       args: [],
     );
@@ -555,6 +555,46 @@ class S {
     return Intl.message(
       'No addresses yet',
       name: 'noAddressTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get nameTitle {
+    return Intl.message(
+      'Name',
+      name: 'nameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get emailTitle {
+    return Intl.message(
+      'Email',
+      name: 'emailTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone`
+  String get phoneTitle {
+    return Intl.message(
+      'Phone',
+      name: 'phoneTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get passwordTitle {
+    return Intl.message(
+      'Password',
+      name: 'passwordTitle',
       desc: '',
       args: [],
     );

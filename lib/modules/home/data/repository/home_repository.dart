@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/core/error/failure.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
+import 'package:e_commerce_app/modules/authentication/domain/entities/register.dart';
 import 'package:e_commerce_app/modules/authentication/domain/entities/user.dart';
 import 'package:e_commerce_app/modules/home/data/datasource/home_local_datasource.dart';
 import 'package:e_commerce_app/modules/home/data/datasource/home_remote_datasource.dart';
@@ -205,6 +206,18 @@ class HomeRepository extends BaseHomeRepository {
   Future<Either<Failure, String>> signOut() async {
     try {
       final result = await baseHomeRemoteDataSource.signOut();
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> updateProfile(
+      {required Register register}) async {
+    try {
+      final result =
+          await baseHomeRemoteDataSource.updateProfile(register: register);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));

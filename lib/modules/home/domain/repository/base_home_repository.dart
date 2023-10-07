@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/core/error/failure.dart';
+import 'package:e_commerce_app/modules/authentication/domain/entities/register.dart';
 import 'package:e_commerce_app/modules/authentication/domain/entities/user.dart';
 import 'package:e_commerce_app/modules/home/data/models/cart_model.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/banner.dart';
@@ -41,4 +42,6 @@ abstract class BaseHomeRepository {
   Future<Either<Failure, void>> changeNightMode({required bool isDark});
 
   Future<Either<Failure, String>> signOut();
+
+  Future<Either<Failure, String>> updateProfile({required Register register});
 }

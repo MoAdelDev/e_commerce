@@ -41,10 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("الوصف"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("خصم"),
         "editNewAddress": MessageLookupByLibrary.simpleMessage("تعديل العنوان"),
-        "editProfileTitle":
-            MessageLookupByLibrary.simpleMessage("تعديل الصفحة الشخصية"),
         "emailHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل البريد الإلكتروني"),
+        "emailTitle": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "englishTitle": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
         "faqsTitle": MessageLookupByLibrary.simpleMessage("FAQS"),
         "forgotPasswordTitle":
@@ -61,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutTitle": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "myAddressesTitle": MessageLookupByLibrary.simpleMessage("عناويني"),
         "nameHintTitle": MessageLookupByLibrary.simpleMessage("أدخل أسمك"),
+        "nameTitle": MessageLookupByLibrary.simpleMessage("الإسم"),
         "nightModeTitle": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
         "noAddressTitle":
             MessageLookupByLibrary.simpleMessage("لا يوجد عناوين"),
@@ -75,8 +75,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "onTitle": MessageLookupByLibrary.simpleMessage("تشغيل"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
+        "passwordTitle": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "phoneHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل رقم الهاتف"),
+        "phoneTitle": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "productsTitle": MessageLookupByLibrary.simpleMessage("المنتجات"),
         "regionHintTitle": MessageLookupByLibrary.simpleMessage("أدخل منطقتك"),
         "regionTitle": MessageLookupByLibrary.simpleMessage("المنطقة"),
@@ -89,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إزالة من السلة"),
         "removeTitle": MessageLookupByLibrary.simpleMessage("إزالة"),
         "signInTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
-        "signUpTitle": MessageLookupByLibrary.simpleMessage("طلب تسجيل حساب")
+        "signUpTitle": MessageLookupByLibrary.simpleMessage("طلب تسجيل حساب"),
+        "updateProfileTitle":
+            MessageLookupByLibrary.simpleMessage("تعديل الصفحة الشخصية")
       };
 }

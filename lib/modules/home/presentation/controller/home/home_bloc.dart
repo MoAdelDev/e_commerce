@@ -4,6 +4,7 @@ import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
+import 'package:e_commerce_app/modules/authentication/domain/entities/register.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/change_language_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/change_night_mode_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/get_banners_usecase.dart';
@@ -20,6 +21,7 @@ import '../../../domain/usecases/get_carts_usecase.dart';
 import '../../../domain/usecases/get_favorites_usecase.dart';
 import '../../../domain/usecases/get_products_usecase.dart';
 import '../../../domain/usecases/get_user_usecase.dart';
+import '../../../domain/usecases/update_profile_usecase.dart';
 
 class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
   final GetProductsUseCase homeGetProductsUseCase;
@@ -32,6 +34,7 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
   final ChangeLanguageUseCase changeLanguageUseCase;
   final ChangeNightModeUseCase changeNightModeUseCase;
   final SignOutUseCase signOutUseCase;
+  final UpdateProfileUseCase updateProfileUseCase;
 
   HomeBloc(
     this.homeGetProductsUseCase,
@@ -44,6 +47,7 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
     this.changeLanguageUseCase,
     this.changeNightModeUseCase,
     this.signOutUseCase,
+    this.updateProfileUseCase,
   ) : super(const HomeState()) {
     on<HomeChangeBottomNavIndexEvent>(_changeCurrentIndex);
     on<HomeGetProductsEvent>(_getProducts);
@@ -55,6 +59,7 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
     on<HomeChangeLanguageEvent>(_changeLanguage);
     on<HomeChangeNightModeEvent>(_changeNightMode);
     on<HomeSignOutEvent>(_signOut);
+    on<HomeUpdateProfileEvent>(_updateProfile);
   }
 
   /// Products - Banners - Categories
@@ -218,16 +223,41 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
     });
   }
 
-  FutureOr<void> _signOut(HomeSignOutEvent event, Emitter<HomeState> emit) async{
+  FutureOr<void> _signOut(
+      HomeSignOutEvent event, Emitter<HomeState> emit) async {
     final result = await signOutUseCase();
     result.fold((error) {
       showToast(msg: error.message, requestState: RequestState.error);
-      emit(state.copyWith(signOutError: error.message, signOutState: RequestState.error));
+      emit(state.copyWith(
+          signOutError: error.message, signOutState: RequestState.error));
     }, (message) {
       showToast(msg: message, requestState: RequestState.success);
       CacheHelper.saveString(key: 'token', value: '');
       emit(state.copyWith(signOutState: RequestState.success, currentIndex: 0));
-      Navigator.pushNamedAndRemoveUntil(event.context, RouteConst.loginScreen, (route) => false);
+      Navigator.pushNamedAndRemoveUntil(
+          event.context, RouteConst.loginScreen, (route) => false);
+    });
+  }
+
+  FutureOr<void> _updateProfile(
+      HomeUpdateProfileEvent event, Emitter<HomeState> emit) async {
+    emit(state.copyWith(updateProfileState: RequestState.loading));
+    Register register = Register(
+      event.name,
+      event.phone,
+      '',
+      event.email,
+      event.password,
+    );
+    final result = await updateProfileUseCase(register: register);
+    result.fold((error) {
+      showToast(msg: error.message, requestState: RequestState.error);
+      emit(state.copyWith(updateProfileError: error.message, updateProfileState: RequestState.error));
+    }, (message) {
+      add(HomeGetUserEvent());
+      emit(state.copyWith(updateProfileMsg: message, updateProfileState: RequestState.success));
+      showToast(msg: message, requestState: RequestState.success);
+      Navigator.pop(event.context);
     });
   }
 }
