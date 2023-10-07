@@ -519,6 +519,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Delete this address ?`
+  String get deleteAddressQuestionTitle {
+    return Intl.message(
+      'Delete this address ?',
+      name: 'deleteAddressQuestionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This address will be permanently deleted .`
+  String get deleteAddressBodyTitle {
+    return Intl.message(
+      'This address will be permanently deleted .',
+      name: 'deleteAddressBodyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No addresses yet`
+  String get noAddressTitle {
+    return Intl.message(
+      'No addresses yet',
+      name: 'noAddressTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

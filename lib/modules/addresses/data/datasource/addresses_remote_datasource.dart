@@ -9,6 +9,8 @@ abstract class BaseAddressesRemoteDataSource {
   Future<List<AddressModel>> getAddresses();
 
   Future<String> addAddresses({required AddressModel addressModel});
+
+  Future<String> deleteAddress({required int addressId});
 }
 
 class AddressesRemoteDataSource extends BaseAddressesRemoteDataSource {
@@ -36,6 +38,20 @@ class AddressesRemoteDataSource extends BaseAddressesRemoteDataSource {
     final result = await DioHelper.postData(
       path: ApiConstance.addressesUrl,
       data: addressModel.toJson(),
+      token: token,
+    );
+
+    if (result.data['status']) {
+      return result.data['message'];
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
+
+  @override
+  Future<String> deleteAddress({required int addressId}) async {
+    String? token = CacheHelper.getString(key: 'token');
+    final result = await DioHelper.deleteData(
+      path: '${ApiConstance.addressesUrl}/$addressId',
       token: token,
     );
 

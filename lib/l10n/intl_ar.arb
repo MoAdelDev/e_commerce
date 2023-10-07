@@ -45,5 +45,8 @@
   "regionTitle" : "المنطقة",
   "regionHintTitle" : "أدخل منطقتك",
   "noteTitle" : "ملاحظات",
-  "noteHintTitle" : "أدخل ملاحظاتك"
+  "noteHintTitle" : "أدخل ملاحظاتك",
+  "deleteAddressQuestionTitle" : "هل تريد مسح العنوان ؟",
+  "deleteAddressBodyTitle" : "هذا العنوان سيتم مسحه للأبد .",
+  "noAddressTitle" : "لا يوجد عناوين"
 }

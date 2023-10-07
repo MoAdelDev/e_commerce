@@ -34,6 +34,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "cityTitle": MessageLookupByLibrary.simpleMessage("المدينة"),
         "contactMeTitle": MessageLookupByLibrary.simpleMessage("إتصل بنا"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("إستمر"),
+        "deleteAddressBodyTitle": MessageLookupByLibrary.simpleMessage(
+            "هذا العنوان سيتم مسحه للأبد ."),
+        "deleteAddressQuestionTitle":
+            MessageLookupByLibrary.simpleMessage("هل تريد مسح العنوان ؟"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("الوصف"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("خصم"),
         "editProfileTitle":
@@ -57,6 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "myAddressesTitle": MessageLookupByLibrary.simpleMessage("عناويني"),
         "nameHintTitle": MessageLookupByLibrary.simpleMessage("أدخل أسمك"),
         "nightModeTitle": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
+        "noAddressTitle":
+            MessageLookupByLibrary.simpleMessage("لا يوجد عناوين"),
         "noProductsTitle":
             MessageLookupByLibrary.simpleMessage("لا توجد منتجات حتى الآن"),
         "noteHintTitle": MessageLookupByLibrary.simpleMessage("أدخل ملاحظاتك"),

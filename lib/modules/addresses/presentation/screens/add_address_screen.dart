@@ -147,7 +147,7 @@ class AddAddressScreen extends StatelessWidget {
                             prefixIcon: Icons.location_city,
                             errorMsg: S.of(context).regionHintTitle,
                             keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.next,
+                            textInputAction: TextInputAction.done,
                           ),
                         ],
                       ),
@@ -160,6 +160,7 @@ class AddAddressScreen extends StatelessWidget {
                             )
                           : DefaultButton(
                               onPressed: () {
+                                FocusManager.instance.primaryFocus?.unfocus();
                                 if (_formKey.currentState!.validate()) {
                                   context
                                       .read<AddressesBloc>()

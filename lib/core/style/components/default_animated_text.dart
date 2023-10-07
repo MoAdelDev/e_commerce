@@ -15,7 +15,7 @@ class DefaultAnimatedText extends StatelessWidget {
           text,
           textStyle: textStyle!,
           colors: MyApp.isDark ?  [
-          Theme.of(context).colorScheme.background,
+          Theme.of(context).colorScheme.primary,
             Theme.of(context).colorScheme.primaryContainer,
             Theme.of(context).colorScheme.secondary,
             Theme.of(context).colorScheme.secondaryContainer,

@@ -36,6 +36,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "cityTitle": MessageLookupByLibrary.simpleMessage("City"),
         "contactMeTitle": MessageLookupByLibrary.simpleMessage("Contact us"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("Continue"),
+        "deleteAddressBodyTitle": MessageLookupByLibrary.simpleMessage(
+            "This address will be permanently deleted ."),
+        "deleteAddressQuestionTitle":
+            MessageLookupByLibrary.simpleMessage("Delete this address ?"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("DISCOUNT"),
         "editProfileTitle":
@@ -61,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your name"),
         "nightModeTitle": MessageLookupByLibrary.simpleMessage("Night mode"),
+        "noAddressTitle":
+            MessageLookupByLibrary.simpleMessage("No addresses yet"),
         "noProductsTitle":
             MessageLookupByLibrary.simpleMessage("No Products yet"),
         "noteHintTitle":

@@ -78,6 +78,7 @@ class MyApp extends StatelessWidget {
           create: (context) => AddressesBloc(
             sl(),
             sl(),
+            sl(),
           )..add(const AddressesGetEvent()),
         ),
       ],

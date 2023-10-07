@@ -22,9 +22,23 @@ class AddressesRepository extends BaseAddressRepository {
   }
 
   @override
-  Future<Either<Failure, String>> addAddress({required AddressModel addressModel}) async {
+  Future<Either<Failure, String>> addAddress(
+      {required AddressModel addressModel}) async {
     try {
-      final result = await baseAddressesRemoteDataSource.addAddresses(addressModel: addressModel);
+      final result = await baseAddressesRemoteDataSource.addAddresses(
+          addressModel: addressModel);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> deleteAddress(
+      {required int addressId}) async {
+    try {
+      final result = await baseAddressesRemoteDataSource.deleteAddress(
+          addressId: addressId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));

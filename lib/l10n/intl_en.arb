@@ -45,5 +45,8 @@
   "regionTitle" : "Region",
   "regionHintTitle" : "Enter your region",
   "noteTitle" : "Notes",
-  "noteHintTitle" : "Enter your notes"
+  "noteHintTitle" : "Enter your notes",
+  "deleteAddressQuestionTitle" : "Delete this address ?",
+  "deleteAddressBodyTitle" : "This address will be permanently deleted .",
+  "noAddressTitle" : "No addresses yet"
 }

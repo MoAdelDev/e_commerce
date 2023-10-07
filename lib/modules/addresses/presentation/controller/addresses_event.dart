@@ -38,3 +38,16 @@ class AddressesAddEvent extends AddressesEvent {
         context,
       ];
 }
+
+class AddressesDeleteEvent extends AddressesEvent {
+  final int addressId;
+  final BuildContext context;
+
+  const AddressesDeleteEvent(this.addressId, this.context);
+
+  @override
+  List<Object> get props => [
+        addressId,
+        context,
+      ];
+}

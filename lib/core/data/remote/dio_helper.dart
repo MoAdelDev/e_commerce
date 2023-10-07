@@ -65,7 +65,7 @@ class DioHelper {
       return await dio.post(path, data: data);
     } catch (e) {
       showToast(
-          msg: 'No internet connection, try again',
+          msg: e.toString(),
           requestState: RequestState.error);
 
       throw ServerException(

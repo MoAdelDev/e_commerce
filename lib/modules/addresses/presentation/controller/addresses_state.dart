@@ -9,6 +9,10 @@ class AddressesState extends Equatable {
   final RequestState addAddressState;
   final String addAddressError;
 
+  final String deleteAddressMsg;
+  final RequestState deleteAddressState;
+  final String deleteAddressError;
+
   const AddressesState({
     this.addresses = const [],
     this.addressesState = RequestState.loading,
@@ -16,6 +20,9 @@ class AddressesState extends Equatable {
     this.addAddressMsg = '',
     this.addAddressState = RequestState.nothing,
     this.addAddressError = '',
+    this.deleteAddressMsg = '',
+    this.deleteAddressState = RequestState.nothing,
+    this.deleteAddressError = '',
   });
 
   AddressesState copyWith({
@@ -25,6 +32,9 @@ class AddressesState extends Equatable {
     String? addAddressMsg,
     RequestState? addAddressState,
     String? addAddressError,
+    String? deleteAddressMsg,
+    RequestState? deleteAddressState,
+    String? deleteAddressError,
   }) =>
       AddressesState(
         addresses: addresses ?? this.addresses,
@@ -33,15 +43,22 @@ class AddressesState extends Equatable {
         addAddressMsg: addAddressMsg ?? this.addAddressMsg,
         addAddressState: addAddressState ?? this.addAddressState,
         addAddressError: addAddressError ?? this.addAddressError,
+        deleteAddressMsg: addAddressMsg ?? this.deleteAddressMsg,
+        deleteAddressState: deleteAddressState ?? this.deleteAddressState,
+        deleteAddressError: deleteAddressError ?? this.deleteAddressError,
       );
 
   @override
-  List<Object> get props => [
+  List<Object> get props =>
+      [
         addresses,
         addressesState,
         addressesError,
         addAddressMsg,
         addAddressState,
         addAddressError,
+        deleteAddressMsg,
+        deleteAddressState,
+        deleteAddressError,
       ];
 }
