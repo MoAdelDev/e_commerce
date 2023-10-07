@@ -27,7 +27,7 @@ class RemoveProductFromCartWidget extends StatelessWidget {
         children: [
           Icon(
             Icons.delete,
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.primary,
           ),
           const SizedBox(
             width: 10.0,
@@ -36,7 +36,7 @@ class RemoveProductFromCartWidget extends StatelessWidget {
             S.of(context).removeTitle,
             style: TextStyle(
               fontSize: 16.0,
-              color: Theme.of(context).colorScheme.onBackground,
+              color: Theme.of(context).colorScheme.primary,
             ),
           )
         ],

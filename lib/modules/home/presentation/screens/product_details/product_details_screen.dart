@@ -41,54 +41,57 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               .read<ProductDetailsBloc>()
               .add(ProductDetailsChangeTopConstraintEvent(constraints));
           return FlexibleSpaceBar(
-              background: Stack(children: [
-            CarouselSlider(
-              items: state.product?.images
-                  .map(
-                    (e) => Container(
-                      color: Colors.white,
-                      width: double.infinity,
-                      height: imageHeight,
-                      child: CachedNetworkImage(
-                        imageUrl: e,
-                        height: imageHeight,
-                        placeholder: (context, url) => const DefaultShimmer(),
-                        errorWidget: (context, url, error) =>
-                            const DefaultShimmer(),
+            background: Stack(
+              children: [
+                CarouselSlider(
+                  items: state.product?.images
+                      .map(
+                        (e) => Container(
+                          color: Colors.white,
+                          width: double.infinity,
+                          height: imageHeight,
+                          child: CachedNetworkImage(
+                            imageUrl: e,
+                            height: imageHeight,
+                            placeholder: (context, url) =>
+                                const DefaultShimmer(),
+                            errorWidget: (context, url, error) =>
+                                const DefaultShimmer(),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                  options: CarouselOptions(
+                    height: imageHeight,
+                    initialPage: 0,
+                    reverse: false,
+                    autoPlay: true,
+                    viewportFraction: 1.0,
+                    enableInfiniteScroll: true,
+                    autoPlayInterval: const Duration(seconds: 5),
+                    autoPlayAnimationDuration: const Duration(seconds: 2),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
+                if (state.product?.discount != 0)
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    child: Container(
+                      color: Theme.of(context).colorScheme.primary,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 5.0),
+                      child: Text(
+                        '- ${state.product?.discount} %',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimary),
                       ),
                     ),
                   )
-                  .toList(),
-              options: CarouselOptions(
-                height: imageHeight,
-                initialPage: 0,
-                reverse: false,
-                autoPlay: true,
-                viewportFraction: 1.0,
-                enableInfiniteScroll: true,
-                autoPlayInterval: const Duration(seconds: 5),
-                autoPlayAnimationDuration: const Duration(seconds: 2),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                scrollDirection: Axis.horizontal,
-              ),
+              ],
             ),
-            if (state.product?.discount != 0)
-              Positioned(
-                bottom: 0,
-                left: 0,
-                child: Container(
-                  color: Theme.of(context).colorScheme.primary,
-                  padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 5.0)
-                      ,
-                  child: Text(
-                    '- ${state.product?.discount} %',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary),
-                  ),
-                ),
-              )
-          ]));
+          );
         },
       ),
       leading: IconButton(
@@ -119,7 +122,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   height: double.infinity,
                   width: double.infinity,
                   child: Center(
-                    child: DefaultProgressIndicator(size: 60.0,),
+                    child: DefaultProgressIndicator(
+                      size: 60.0,
+                    ),
                   ),
                 );
               } else if (state.productState == RequestState.error) {
@@ -152,8 +157,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   children: [
                                     Text(
                                       state.product?.name ?? '',
-                                      style:
-                                          Theme.of(context).textTheme.bodyMedium,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
                                       overflow: TextOverflow.visible,
                                       maxLines: null,
                                     ),

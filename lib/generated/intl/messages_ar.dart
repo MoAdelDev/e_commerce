@@ -58,7 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logoutTitle": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
-        "myAddressesTitle": MessageLookupByLibrary.simpleMessage("عناويني"),
+        "myAddressesTitle": MessageLookupByLibrary.simpleMessage("العناوين"),
         "nameHintTitle": MessageLookupByLibrary.simpleMessage("أدخل أسمك"),
         "nameTitle": MessageLookupByLibrary.simpleMessage("الإسم"),
         "nightModeTitle": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),

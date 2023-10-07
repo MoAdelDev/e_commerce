@@ -136,7 +136,7 @@ class FavoritesScreen extends StatelessWidget {
                                   Icon(
                                     Icons.delete,
                                     color:
-                                        Theme.of(context).colorScheme.onBackground,
+                                        Theme.of(context).colorScheme.primary,
                                   ),
                                   const SizedBox(
                                     width: 10.0,
@@ -146,7 +146,7 @@ class FavoritesScreen extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 16.0,
                                       color:
-                                          Theme.of(context).colorScheme.onBackground,
+                                          Theme.of(context).colorScheme.primary,
                                     ),
                                   )
                                 ],
