@@ -11,7 +11,11 @@ class DefaultButton extends StatelessWidget {
   final TextStyle? textStyle;
 
   const DefaultButton(
-      {Key? key, required this.onPressed, required this.text, this.icon, this.textStyle})
+      {Key? key,
+      required this.onPressed,
+      required this.text,
+      this.icon,
+      this.textStyle})
       : super(key: key);
 
   @override
@@ -23,24 +27,30 @@ class DefaultButton extends StatelessWidget {
         color: AppColorDark.primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(MyApp.language == Language.arabic.name ? 25 : 10.0),
-            topRight: Radius.circular(MyApp.language == Language.arabic.name ? 10 : 25.0),
+            topLeft: Radius.circular(
+                MyApp.language == Language.arabic.name ? 25 : 10.0),
+            topRight: Radius.circular(
+                MyApp.language == Language.arabic.name ? 10 : 25.0),
             bottomLeft: const Radius.circular(25.0),
             bottomRight: const Radius.circular(25.0),
           ),
         ),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              text,
-              style: textStyle ?? Theme.of(context).textTheme.labelLarge,
+            Expanded(
+              child: Text(
+                text.toUpperCase(),
+                textAlign: TextAlign.center,
+                style: textStyle ?? Theme.of(context).textTheme.labelSmall,
+              ),
             ),
-            const Spacer(),
-            Icon(
-              icon,
-              color: Colors.white,
-            )
+            if (icon != null)
+              Icon(
+                icon,
+                color: Colors.white,
+              )
           ],
         ),
       ),

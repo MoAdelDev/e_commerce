@@ -609,6 +609,146 @@ class S {
       args: [],
     );
   }
+
+  /// `Confirm order`
+  String get confirmOrderTitle {
+    return Intl.message(
+      'Confirm order',
+      name: 'confirmOrderTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order summary`
+  String get orderSummaryTitle {
+    return Intl.message(
+      'Order summary',
+      name: 'orderSummaryTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery fees`
+  String get deliveryFeesTitle {
+    return Intl.message(
+      'Delivery fees',
+      name: 'deliveryFeesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Item's total`
+  String get itemTotalTitle {
+    return Intl.message(
+      'Item\'s total',
+      name: 'itemTotalTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Free`
+  String get freeTitle {
+    return Intl.message(
+      'Free',
+      name: 'freeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get totalTitle {
+    return Intl.message(
+      'Total',
+      name: 'totalTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter code here`
+  String get codeHintTitle {
+    return Intl.message(
+      'Enter code here',
+      name: 'codeHintTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `APPLY`
+  String get applyTitle {
+    return Intl.message(
+      'APPLY',
+      name: 'applyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment method`
+  String get paymentMethodTitle {
+    return Intl.message(
+      'Payment method',
+      name: 'paymentMethodTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cash On Delivery`
+  String get cashOnDeliveryTitle {
+    return Intl.message(
+      'Cash On Delivery',
+      name: 'cashOnDeliveryTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `COD is a type of transaction where the recipient pays for a good at the time of delivery rather than using credit`
+  String get cashOnDeliveryBody {
+    return Intl.message(
+      'COD is a type of transaction where the recipient pays for a good at the time of delivery rather than using credit',
+      name: 'cashOnDeliveryBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CHANGE`
+  String get changeTitle {
+    return Intl.message(
+      'CHANGE',
+      name: 'changeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery`
+  String get deliveryTitle {
+    return Intl.message(
+      'Delivery',
+      name: 'deliveryTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Modify cart`
+  String get modifyCardTitle {
+    return Intl.message(
+      'Modify cart',
+      name: 'modifyCardTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

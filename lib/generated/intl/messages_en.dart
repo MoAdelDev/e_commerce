@@ -29,17 +29,30 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your address"),
         "addressTitle": MessageLookupByLibrary.simpleMessage("Address"),
         "appName": MessageLookupByLibrary.simpleMessage("Shop"),
+        "applyTitle": MessageLookupByLibrary.simpleMessage("APPLY"),
         "arabicTitleTitle": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "cashOnDeliveryBody": MessageLookupByLibrary.simpleMessage(
+            "COD is a type of transaction where the recipient pays for a good at the time of delivery rather than using credit"),
+        "cashOnDeliveryTitle":
+            MessageLookupByLibrary.simpleMessage("Cash On Delivery"),
+        "changeTitle": MessageLookupByLibrary.simpleMessage("CHANGE"),
         "checkoutTitle": MessageLookupByLibrary.simpleMessage("Checkout"),
         "cityHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your city"),
         "cityTitle": MessageLookupByLibrary.simpleMessage("City"),
+        "codeHintTitle":
+            MessageLookupByLibrary.simpleMessage("Enter code here"),
+        "confirmOrderTitle":
+            MessageLookupByLibrary.simpleMessage("Confirm order"),
         "contactsTitle": MessageLookupByLibrary.simpleMessage("Contacts"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("Continue"),
         "deleteAddressBodyTitle": MessageLookupByLibrary.simpleMessage(
             "This address will be permanently deleted ."),
         "deleteAddressQuestionTitle":
             MessageLookupByLibrary.simpleMessage("Delete this address ?"),
+        "deliveryFeesTitle":
+            MessageLookupByLibrary.simpleMessage("Delivery fees"),
+        "deliveryTitle": MessageLookupByLibrary.simpleMessage("Delivery"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("DISCOUNT"),
         "editNewAddress": MessageLookupByLibrary.simpleMessage("Edit address"),
@@ -50,9 +63,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "faqsTitle": MessageLookupByLibrary.simpleMessage("FAQS"),
         "forgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Forgot password ?"),
+        "freeTitle": MessageLookupByLibrary.simpleMessage("Free"),
         "fullNameHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your full name"),
         "fullNameTitle": MessageLookupByLibrary.simpleMessage("Full name"),
+        "itemTotalTitle": MessageLookupByLibrary.simpleMessage("Item\'s total"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "loadingDataErrorTitle": MessageLookupByLibrary.simpleMessage(
             "Failed to load data, try again"),
@@ -60,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "you have been logged in successfully"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("LOGIN"),
         "logoutTitle": MessageLookupByLibrary.simpleMessage("Log out"),
+        "modifyCardTitle": MessageLookupByLibrary.simpleMessage("Modify cart"),
         "myAddressesTitle":
             MessageLookupByLibrary.simpleMessage("My addresses"),
         "nameHintTitle":
@@ -79,9 +95,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingTitle":
             MessageLookupByLibrary.simpleMessage("Shop Products"),
         "onTitle": MessageLookupByLibrary.simpleMessage("On"),
+        "orderSummaryTitle":
+            MessageLookupByLibrary.simpleMessage("Order summary"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "passwordTitle": MessageLookupByLibrary.simpleMessage("Password"),
+        "paymentMethodTitle":
+            MessageLookupByLibrary.simpleMessage("Payment method"),
         "phoneHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your phone"),
         "phoneTitle": MessageLookupByLibrary.simpleMessage("Phone"),
@@ -101,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Search here ..."),
         "signInTitle": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUpTitle": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "totalTitle": MessageLookupByLibrary.simpleMessage("Total"),
         "updateProfileTitle":
             MessageLookupByLibrary.simpleMessage("Update profile")
       };

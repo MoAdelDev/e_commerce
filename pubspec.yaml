@@ -142,15 +142,17 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Intel
+    - family: Intel-Regular
       fonts:
         - asset: assets/fonts/Inter-Regular.ttf
-        - asset: assets/fonts/Inter-SemiBold.ttf
-          weight: 600
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Bold.ttf
-          weight: 700
+          weight: 200
+    - family: Intel-SemiBold
+      fonts:
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 200
     # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_intl:

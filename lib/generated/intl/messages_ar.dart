@@ -28,16 +28,28 @@ class MessageLookup extends MessageLookupByLibrary {
         "addressHintTitle": MessageLookupByLibrary.simpleMessage("أدخل عنوانك"),
         "addressTitle": MessageLookupByLibrary.simpleMessage("العنوان"),
         "appName": MessageLookupByLibrary.simpleMessage("المتجر"),
+        "applyTitle": MessageLookupByLibrary.simpleMessage("تطبيق"),
         "arabicTitleTitle": MessageLookupByLibrary.simpleMessage("العربية"),
+        "cashOnDeliveryBody": MessageLookupByLibrary.simpleMessage(
+            "الدفع عند الإستلام هو نوع من المعاملات حيث يدفع المستلم مقابل السلعة في وقت التسليم بدلاً من استخدام الائتمان"),
+        "cashOnDeliveryTitle":
+            MessageLookupByLibrary.simpleMessage("الدفع عند الإستلام"),
+        "changeTitle": MessageLookupByLibrary.simpleMessage("تغيير"),
         "checkoutTitle": MessageLookupByLibrary.simpleMessage("الدفع"),
         "cityHintTitle": MessageLookupByLibrary.simpleMessage("أدخل مدينتك"),
         "cityTitle": MessageLookupByLibrary.simpleMessage("المدينة"),
+        "codeHintTitle": MessageLookupByLibrary.simpleMessage("أدخل كود الخصم"),
+        "confirmOrderTitle":
+            MessageLookupByLibrary.simpleMessage("تأكيد الطلب"),
         "contactsTitle": MessageLookupByLibrary.simpleMessage("وسائل التواصل"),
         "continueTitle": MessageLookupByLibrary.simpleMessage("إستمر"),
         "deleteAddressBodyTitle": MessageLookupByLibrary.simpleMessage(
             "هذا العنوان سيتم مسحه للأبد ."),
         "deleteAddressQuestionTitle":
             MessageLookupByLibrary.simpleMessage("هل تريد مسح العنوان ؟"),
+        "deliveryFeesTitle":
+            MessageLookupByLibrary.simpleMessage("تكلفة التوصيل"),
+        "deliveryTitle": MessageLookupByLibrary.simpleMessage("التوصيل"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("الوصف"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("خصم"),
         "editNewAddress": MessageLookupByLibrary.simpleMessage("تعديل العنوان"),
@@ -48,9 +60,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "faqsTitle": MessageLookupByLibrary.simpleMessage("FAQS"),
         "forgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور ؟"),
+        "freeTitle": MessageLookupByLibrary.simpleMessage("مجاني"),
         "fullNameHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل إسمك بالكامل"),
         "fullNameTitle": MessageLookupByLibrary.simpleMessage("الإسم بالكامل"),
+        "itemTotalTitle": MessageLookupByLibrary.simpleMessage("عدد العناصر"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("اللغة"),
         "loadingDataErrorTitle": MessageLookupByLibrary.simpleMessage(
             "فشل في تحميل البيانات. حاول مرة أخرى"),
@@ -58,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logoutTitle": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "modifyCardTitle": MessageLookupByLibrary.simpleMessage("تعديل السلة"),
         "myAddressesTitle": MessageLookupByLibrary.simpleMessage("العناوين"),
         "nameHintTitle": MessageLookupByLibrary.simpleMessage("أدخل أسمك"),
         "nameTitle": MessageLookupByLibrary.simpleMessage("الإسم"),
@@ -73,9 +88,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingTitle":
             MessageLookupByLibrary.simpleMessage("تسوق المنتجات"),
         "onTitle": MessageLookupByLibrary.simpleMessage("تشغيل"),
+        "orderSummaryTitle": MessageLookupByLibrary.simpleMessage("ملخص الطلب"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
         "passwordTitle": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "paymentMethodTitle":
+            MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
         "phoneHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل رقم الهاتف"),
         "phoneTitle": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
@@ -93,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "searchHereTitle": MessageLookupByLibrary.simpleMessage("إبحث هنا"),
         "signInTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "signUpTitle": MessageLookupByLibrary.simpleMessage("طلب تسجيل حساب"),
+        "totalTitle": MessageLookupByLibrary.simpleMessage("إجمالي"),
         "updateProfileTitle":
             MessageLookupByLibrary.simpleMessage("تعديل الصفحة الشخصية")
       };

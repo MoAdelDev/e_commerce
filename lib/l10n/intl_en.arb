@@ -54,5 +54,19 @@
   "emailTitle" : "Email",
   "phoneTitle" : "Phone",
   "passwordTitle" : "Password",
-  "searchHereTitle" : "Search here ..."
+  "searchHereTitle" : "Search here ...",
+  "confirmOrderTitle" : "Confirm order",
+  "orderSummaryTitle" : "Order summary",
+  "deliveryFeesTitle" : "Delivery fees",
+  "itemTotalTitle" : "Item's total",
+  "freeTitle" : "Free",
+  "totalTitle" : "Total",
+  "codeHintTitle" : "Enter code here",
+  "applyTitle" : "APPLY",
+  "paymentMethodTitle" : "Payment method",
+  "cashOnDeliveryTitle" : "Cash On Delivery",
+  "cashOnDeliveryBody" : "COD is a type of transaction where the recipient pays for a good at the time of delivery rather than using credit",
+  "changeTitle" : "CHANGE",
+  "deliveryTitle" : "Delivery",
+  "modifyCardTitle" : "Modify cart"
 }

@@ -73,7 +73,7 @@ ThemeData lightTheme(context) => ThemeData(
           statusBarIconBrightness: Brightness.light,
         ),
         titleTextStyle: const TextStyle(
-          fontSize: 30.0,
+          fontSize: 24.0,
           color: AppColorLight.onBackgroundColor,
           fontFamily: AppFonts.boldFont,
         ),

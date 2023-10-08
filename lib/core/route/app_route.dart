@@ -8,6 +8,7 @@ import 'package:e_commerce_app/modules/home/presentation/screens/product_details
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/contacts_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/language_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/night_mode_screen.dart';
+import 'package:e_commerce_app/modules/orders/presentation/screens/order_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../modules/authentication/presentation/screens/login_screen.dart';
@@ -81,6 +82,11 @@ class AppRoute {
       case RouteConst.productsSearchScreen:
         return MaterialPageRoute(
           builder: (context) => ProductsSearchScreen(),
+        );
+
+        case RouteConst.orderScreen:
+        return MaterialPageRoute(
+          builder: (context) => OrderScreen(),
         );
     }
     return null;
