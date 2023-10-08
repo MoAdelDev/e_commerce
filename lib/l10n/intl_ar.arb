@@ -69,5 +69,6 @@
   "changeTitle" : "تغيير",
   "deliveryTitle" : "التوصيل",
   "modifyCartTitle" : "تعديل السلة",
-  "quantityTitle" : "الكمية"
+  "quantityTitle" : "الكمية",
+  "ordersTitle" : "الطلبات"
 }

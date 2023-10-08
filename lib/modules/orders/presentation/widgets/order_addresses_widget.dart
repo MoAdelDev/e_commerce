@@ -7,7 +7,7 @@ import '../../../../core/route/route_string.dart';
 import '../../../../core/style/colors.dart';
 import '../../../../core/style/fonts.dart';
 import '../../../../generated/l10n.dart';
-import '../controller/orders_bloc.dart';
+import '../controller/order_confirmation/order_confirmation_bloc.dart';
 import 'order_title_widget.dart';
 
 class OrderAddressesWidget extends StatelessWidget {
@@ -15,7 +15,7 @@ class OrderAddressesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OrdersBloc, OrdersState>(
+    return BlocBuilder<OrderConfirmationBloc, OrderConfirmationState>(
       builder: (context, state) {
         if (state.addressesState == RequestState.loading) {
           return ListView.separated(
@@ -64,8 +64,8 @@ class OrderAddressesWidget extends StatelessWidget {
                             value: index,
                             groupValue: state.addressSelected,
                             onChanged: (value) {
-                              context.read<OrdersBloc>().add(
-                                  OrdersChangeAddressEvent(
+                              context.read<OrderConfirmationBloc>().add(
+                                  OrderConfirmationChangeAddressEvent(
                                       addressId: address.id,
                                       addressSelected: value ?? 0));
                             },

@@ -10,6 +10,7 @@ import 'package:e_commerce_app/modules/home/presentation/controller/home/home_bl
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_event.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_state.dart';
 import 'package:e_commerce_app/modules/home/presentation/widgets/settings_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -81,7 +82,8 @@ class SettingsScreen extends StatelessWidget {
                       height: 20.0,
                     ),
                     DefaultButton(
-                      onPressed: () => Navigator.pushNamed(context, RouteConst.updateProfileScreen),
+                      onPressed: () => Navigator.pushNamed(
+                          context, RouteConst.updateProfileScreen),
                       text: S.of(context).updateProfileTitle,
                       icon: Icons.edit,
                     ),
@@ -96,9 +98,17 @@ class SettingsScreen extends StatelessWidget {
                             icon: Icons.location_history,
                             text: S.of(context).myAddressesTitle),
                         SettingsItemWidget(
+                          onPressed: () => Navigator.pushNamed(
+                              context, RouteConst.addressScreen),
+                          icon: Icons.shopping_cart_rounded,
+                          text: S.of(context).ordersTitle,
+                        ),
+                        SettingsItemWidget(
                           onPressed: () {
                             Navigator.pushNamed(
-                                context, RouteConst.languageScreen);
+                              context,
+                              RouteConst.languageScreen,
+                            );
                           },
                           icon: Icons.language,
                           text: S.of(context).languageTitle,
@@ -118,7 +128,8 @@ class SettingsScreen extends StatelessWidget {
                             icon: Icons.article,
                             text: S.of(context).faqsTitle),
                         SettingsItemWidget(
-                            onPressed: () => Navigator.pushNamed(context, RouteConst.contactsScreen),
+                            onPressed: () => Navigator.pushNamed(
+                                context, RouteConst.contactsScreen),
                             icon: Icons.contacts,
                             text: S.of(context).contactsTitle),
                         SettingsItemWidget(

@@ -2,7 +2,7 @@ import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/generated/l10n.dart';
-import 'package:e_commerce_app/modules/orders/presentation/controller/orders_bloc.dart';
+import 'package:e_commerce_app/modules/orders/presentation/controller/order_confirmation/order_confirmation_bloc.dart';
 import 'package:e_commerce_app/modules/orders/presentation/widgets/order_divider_widget.dart';
 import 'package:e_commerce_app/modules/orders/presentation/widgets/order_title_widget.dart';
 import 'package:flutter/material.dart';
@@ -133,7 +133,7 @@ class _OrderSummaryWidgetState extends State<OrderSummaryWidget> {
                           const SizedBox(
                             width: 5.0,
                           ),
-                          BlocBuilder<OrdersBloc, OrdersState>(
+                          BlocBuilder<OrderConfirmationBloc, OrderConfirmationState>(
                             builder: (context, state) {
                               if(state.validatePromoCodesState == RequestState.loading){
                                 return const Center(child: DefaultProgressIndicator(size: 40.0,),);
@@ -142,8 +142,8 @@ class _OrderSummaryWidgetState extends State<OrderSummaryWidget> {
                                 onPressed: isButtonClickable ? () {
                                   FocusManager.instance.primaryFocus?.unfocus();
                                   if(_promoCodeController.text.isNotEmpty) {
-                                    context.read<OrdersBloc>().add(
-                                        OrdersValidatePromoCodesEvent(
+                                    context.read<OrderConfirmationBloc>().add(
+                                        OrderConfirmationValidatePromoCodesEvent(
                                           _promoCodeController.text,
                                         ),
                                       );

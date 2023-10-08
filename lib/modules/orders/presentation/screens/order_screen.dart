@@ -6,7 +6,7 @@ import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
 import 'package:e_commerce_app/generated/l10n.dart';
-import 'package:e_commerce_app/modules/orders/presentation/controller/orders_bloc.dart';
+import 'package:e_commerce_app/modules/orders/presentation/controller/order_confirmation/order_confirmation_bloc.dart';
 import 'package:e_commerce_app/modules/orders/presentation/widgets/order_addresses_widget.dart';
 import 'package:e_commerce_app/modules/orders/presentation/widgets/order_products_widget.dart';
 import 'package:e_commerce_app/modules/orders/presentation/widgets/order_summary_widget.dart';
@@ -25,11 +25,11 @@ class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OrdersBloc(
+      create: (context) => OrderConfirmationBloc(
         sl(),
         sl(),
         sl(),
-      )..add(const OrdersGetAddressesEvent()),
+      )..add(const OrderConfirmationStateGetAddressesEvent()),
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
@@ -69,7 +69,7 @@ class OrderScreen extends StatelessWidget {
               const SizedBox(
                 height: 10.0,
               ),
-              BlocBuilder<OrdersBloc, OrdersState>(
+              BlocBuilder<OrderConfirmationBloc, OrderConfirmationState>(
                 builder: (context, state) {
                   if (state.addOrderState == RequestState.loading) {
                     return const Center(
@@ -85,7 +85,7 @@ class OrderScreen extends StatelessWidget {
                             msg: 'Add address to deliver you the order',
                             requestState: RequestState.nothing);
                       } else {
-                        context.read<OrdersBloc>().add(OrdersAddOrderEvent(
+                        context.read<OrderConfirmationBloc>().add(OrderConfirmationAddOrderEvent(
                             addressId: state.addressId, context: context));
                       }
                     },

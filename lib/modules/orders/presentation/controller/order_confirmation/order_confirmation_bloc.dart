@@ -11,28 +11,28 @@ import 'package:e_commerce_app/modules/orders/domain/usecases/validate_promo_cod
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../domain/usecases/add_order_usecase.dart';
+import '../../../domain/usecases/add_order_usecase.dart';
 
-part 'orders_event.dart';
+part 'order_confirmation_event.dart';
 
-part 'orders_state.dart';
+part 'order_confirmation_state.dart';
 
-class OrdersBloc extends Bloc<BaseOrdersEvent, OrdersState> {
+class OrderConfirmationBloc extends Bloc<BaseOrderConfirmationEvent, OrderConfirmationState> {
   final GetAddressesInOrdersUseCase getAddressesInOrderUseCase;
   final ValidatePromoCodesUseCase validatePromoCodesUseCase;
   final AddOrderUseCase addOrderUseCase;
 
-  OrdersBloc(this.getAddressesInOrderUseCase, this.validatePromoCodesUseCase,
+  OrderConfirmationBloc(this.getAddressesInOrderUseCase, this.validatePromoCodesUseCase,
       this.addOrderUseCase)
-      : super(const OrdersState()) {
-    on<OrdersValidatePromoCodesEvent>(_validatePromoCode);
-    on<OrdersGetAddressesEvent>(_getAddresses);
-    on<OrdersChangeAddressEvent>(_changeAddress);
-    on<OrdersAddOrderEvent>(_addOrder);
+      : super(const OrderConfirmationState()) {
+    on<OrderConfirmationValidatePromoCodesEvent>(_validatePromoCode);
+    on<OrderConfirmationStateGetAddressesEvent>(_getAddresses);
+    on<OrderConfirmationChangeAddressEvent>(_changeAddress);
+    on<OrderConfirmationAddOrderEvent>(_addOrder);
   }
 
   FutureOr<void> _getAddresses(
-      OrdersGetAddressesEvent event, Emitter<OrdersState> emit) async {
+      OrderConfirmationStateGetAddressesEvent event, Emitter<OrderConfirmationState> emit) async {
     emit(state.copyWith(addressesState: RequestState.loading));
     final result = await getAddressesInOrderUseCase();
     result.fold(
@@ -55,7 +55,7 @@ class OrdersBloc extends Bloc<BaseOrdersEvent, OrdersState> {
   }
 
   FutureOr<void> _validatePromoCode(
-      OrdersValidatePromoCodesEvent event, Emitter<OrdersState> emit) async {
+      OrderConfirmationValidatePromoCodesEvent event, Emitter<OrderConfirmationState> emit) async {
     emit(state.copyWith(validatePromoCodesState: RequestState.loading));
     final result = await validatePromoCodesUseCase(code: event.code);
     result.fold((error) {
@@ -78,13 +78,13 @@ class OrdersBloc extends Bloc<BaseOrdersEvent, OrdersState> {
   }
 
   FutureOr<void> _changeAddress(
-      OrdersChangeAddressEvent event, Emitter<OrdersState> emit) {
+      OrderConfirmationChangeAddressEvent event, Emitter<OrderConfirmationState> emit) {
     emit(state.copyWith(
         addressId: event.addressId, addressSelected: event.addressSelected));
   }
 
   FutureOr<void> _addOrder(
-      OrdersAddOrderEvent event, Emitter<OrdersState> emit) async {
+      OrderConfirmationAddOrderEvent event, Emitter<OrderConfirmationState> emit) async {
     emit(state.copyWith(addOrderState: RequestState.loading));
     final result = await addOrderUseCase(addressId: event.addressId);
     result.fold((error) {

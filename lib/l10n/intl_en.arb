@@ -69,5 +69,6 @@
   "changeTitle" : "CHANGE",
   "deliveryTitle" : "Delivery",
   "modifyCartTitle" : "Modify cart",
-  "quantityTitle" : "Quantity"
+  "quantityTitle" : "Quantity",
+  "ordersTitle" : "Orders"
 }

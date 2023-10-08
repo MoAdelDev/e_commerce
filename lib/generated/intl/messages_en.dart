@@ -97,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "onTitle": MessageLookupByLibrary.simpleMessage("On"),
         "orderSummaryTitle":
             MessageLookupByLibrary.simpleMessage("Order summary"),
+        "ordersTitle": MessageLookupByLibrary.simpleMessage("Orders"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "passwordTitle": MessageLookupByLibrary.simpleMessage("Password"),

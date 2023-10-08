@@ -1,6 +1,6 @@
-part of 'orders_bloc.dart';
+part of 'order_confirmation_bloc.dart';
 
-class OrdersState extends Equatable {
+class OrderConfirmationState extends Equatable {
   final String validatePromoCodesMsg;
   final RequestState validatePromoCodesState;
   final String validatePromoCodesError;
@@ -16,7 +16,7 @@ class OrdersState extends Equatable {
   final int addressId;
   final int addressSelected;
 
-  const OrdersState({
+  const OrderConfirmationState({
     this.validatePromoCodesMsg = '',
     this.validatePromoCodesState = RequestState.nothing,
     this.validatePromoCodesError = '',
@@ -30,7 +30,7 @@ class OrdersState extends Equatable {
     this.addOrderError = '',
   });
 
-  OrdersState copyWith({
+  OrderConfirmationState copyWith({
     String? validatePromoCodesMsg,
     RequestState? validatePromoCodesState,
     String? validatePromoCodesError,
@@ -43,7 +43,7 @@ class OrdersState extends Equatable {
     RequestState? addOrderState,
     String? addOrderError,
   }) =>
-      OrdersState(
+      OrderConfirmationState(
         validatePromoCodesMsg:
             validatePromoCodesMsg ?? this.validatePromoCodesMsg,
         validatePromoCodesState:

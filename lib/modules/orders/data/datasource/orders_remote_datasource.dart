@@ -4,11 +4,16 @@ import 'package:e_commerce_app/core/error/error_message_model.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
 import 'package:e_commerce_app/core/network/api_constance.dart';
 import 'package:e_commerce_app/modules/addresses/data/models/address_model.dart';
+import 'package:e_commerce_app/modules/orders/data/models/order_model.dart';
 
 abstract class BaseOrdersRemoteDataSource {
   Future<String> validatePromoCode({required String code});
+
   Future<List<AddressModel>> getAddresses();
+
   Future<String> addOrder({required int addressId});
+
+  Future<List<OrderModel>> getOrders();
 }
 
 class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
@@ -38,7 +43,7 @@ class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
     if (result.data['status']) {
       return List.from(
         (result.data['data']['data'] as List).map(
-              (e) => AddressModel.fromJson(e),
+          (e) => AddressModel.fromJson(e),
         ),
       );
     }
@@ -46,15 +51,15 @@ class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
   }
 
   @override
-  Future<String> addOrder({required int addressId}) async{
+  Future<String> addOrder({required int addressId}) async {
     String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.postData(
       path: ApiConstance.ordersUrl,
       token: token,
       data: {
-        'address_id' : addressId,
-        'payment_method' : 1,
-        'use_points' : false,
+        'address_id': addressId,
+        'payment_method': 1,
+        'use_points': false,
       },
     );
 
@@ -64,4 +69,21 @@ class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
     throw ServerException(ErrorMessageModel.fromJson(result.data));
   }
 
+  @override
+  Future<List<OrderModel>> getOrders() async {
+    String? token = CacheHelper.getString(key: 'token');
+    final result = await DioHelper.getData(
+      path: ApiConstance.ordersUrl,
+      token: token,
+    );
+
+    if (result.data['status']) {
+      return List.from(
+        (result.data['data']['data'] as List).map(
+          (e) => OrderModel.fromJson(e),
+        ),
+      );
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
 }

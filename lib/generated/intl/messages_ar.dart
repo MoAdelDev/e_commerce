@@ -89,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تسوق المنتجات"),
         "onTitle": MessageLookupByLibrary.simpleMessage("تشغيل"),
         "orderSummaryTitle": MessageLookupByLibrary.simpleMessage("ملخص الطلب"),
+        "ordersTitle": MessageLookupByLibrary.simpleMessage("الطلبات"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
         "passwordTitle": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
