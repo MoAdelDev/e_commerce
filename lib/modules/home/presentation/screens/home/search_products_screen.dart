@@ -52,8 +52,11 @@ class ProductsSearchScreen extends StatelessWidget {
                   ),
                 ),
                 onChanged: (value) {
+                  print(value);
                   context.read<SearchBloc>().add(SearchProductsEvent(value));
-                  print(state.products.length);
+                },
+                onFieldSubmitted: (value) {
+                  context.read<SearchBloc>().add(SearchProductsEvent(value));
                 },
               ),
             ),

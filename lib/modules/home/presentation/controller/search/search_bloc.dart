@@ -20,6 +20,7 @@ class SearchBloc extends Bloc<BaseSearchEvent, SearchState> {
 
   FutureOr<void> _searchProducts(
       SearchProductsEvent event, Emitter<SearchState> emit) async {
+    print('Done');
     emit(state.copyWith(productsState: RequestState.loading));
     final result = await searchProductsUseCase(query: event.query);
     result.fold((error) {
@@ -27,6 +28,7 @@ class SearchBloc extends Bloc<BaseSearchEvent, SearchState> {
       emit(state.copyWith(
           productsState: RequestState.error, productsError: error.message));
     }, (products) {
+      emit(state.copyWith(products: const []));
       emit(state.copyWith(
           productsState: RequestState.success, products: products));
     });
