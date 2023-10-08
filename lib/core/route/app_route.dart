@@ -3,6 +3,7 @@ import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/modules/addresses/presentation/screens/add_edit_address_screen.dart';
 import 'package:e_commerce_app/modules/addresses/presentation/screens/adresses_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/home_screen.dart';
+import 'package:e_commerce_app/modules/home/presentation/screens/home/search_products_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/product_details/product_details_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/contacts_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/language_screen.dart';
@@ -70,11 +71,16 @@ class AppRoute {
 
       case RouteConst.updateProfileScreen:
         return MaterialPageRoute(
-          builder: (context) =>  const UpdateProfileScreen(),
+          builder: (context) => const UpdateProfileScreen(),
         );
       case RouteConst.contactsScreen:
         return MaterialPageRoute(
-          builder: (context) =>  const ContactsScreen(),
+          builder: (context) => const ContactsScreen(),
+        );
+
+      case RouteConst.productsSearchScreen:
+        return MaterialPageRoute(
+          builder: (context) => ProductsSearchScreen(),
         );
     }
     return null;

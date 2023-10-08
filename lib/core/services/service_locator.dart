@@ -23,6 +23,7 @@ import 'package:e_commerce_app/modules/home/domain/usecases/get_product_details_
 import 'package:e_commerce_app/modules/home/domain/usecases/get_products_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/get_user_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/remove_favorite_usecase.dart';
+import 'package:e_commerce_app/modules/home/domain/usecases/search_products_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/signout_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/update_cart_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/update_profile_usecase.dart';
@@ -122,6 +123,9 @@ class ServiceLocator {
         () => UpdateAddressUseCase(sl()));
 
     sl.registerLazySingleton<UpdateProfileUseCase>(
-            () => UpdateProfileUseCase(sl()));
+        () => UpdateProfileUseCase(sl()));
+
+    sl.registerLazySingleton<SearchProductsUseCase>(
+        () => SearchProductsUseCase(sl()));
   }
 }

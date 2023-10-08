@@ -8,6 +8,7 @@ import 'package:e_commerce_app/modules/authentication/domain/entities/register.d
 import 'package:e_commerce_app/modules/home/data/models/banner_model.dart';
 import 'package:e_commerce_app/modules/home/data/models/category_model.dart';
 import 'package:e_commerce_app/modules/home/data/models/product_model.dart';
+import 'package:e_commerce_app/modules/home/data/models/search_model.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
 
 import '../models/cart_model.dart';
@@ -43,6 +44,8 @@ abstract class BaseHomeRemoteDataSource {
   Future<String> signOut();
 
   Future<String> updateProfile({required Register register});
+
+  Future<List<SearchModel>> searchProducts({required String query});
 }
 
 class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
@@ -283,5 +286,23 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
       return result.data['message'];
     }
     throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
+
+  @override
+  Future<List<SearchModel>> searchProducts({required String query}) async {
+    String? token = CacheHelper.getString(key: 'token');
+    final result = await DioHelper.postData(
+        path: ApiConstance.searchUrl, token: token, data: {'text': query});
+
+    if (result.data['status']) {
+      return List.from(
+        (result.data['data']['data'] as List).map(
+          (e) => SearchModel.fromJson(e),
+        ),
+      );
+    }
+    throw ServerException(
+      ErrorMessageModel.fromJson(result.data),
+    );
   }
 }

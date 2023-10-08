@@ -11,4 +11,5 @@ class ApiConstance {
   static const String favoritesUrl = '$baseUrl/favorites';
   static const String cartUrl = '$baseUrl/carts';
   static const String addressesUrl = '$baseUrl/addresses';
+  static const String searchUrl = '$baseUrl/products/search';
 }

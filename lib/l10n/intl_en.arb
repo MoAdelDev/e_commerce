@@ -53,5 +53,6 @@
   "nameTitle" : "Name",
   "emailTitle" : "Email",
   "phoneTitle" : "Phone",
-  "passwordTitle" : "Password"
+  "passwordTitle" : "Password",
+  "searchHereTitle" : "Search here ..."
 }

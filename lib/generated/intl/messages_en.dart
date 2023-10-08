@@ -97,6 +97,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "removeFromCartTitle":
             MessageLookupByLibrary.simpleMessage("Remove from cart"),
         "removeTitle": MessageLookupByLibrary.simpleMessage("Remove"),
+        "searchHereTitle":
+            MessageLookupByLibrary.simpleMessage("Search here ..."),
         "signInTitle": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUpTitle": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "updateProfileTitle":

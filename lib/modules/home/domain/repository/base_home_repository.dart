@@ -7,6 +7,7 @@ import 'package:e_commerce_app/modules/home/domain/entities/banner.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/category.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/favorite.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
+import 'package:e_commerce_app/modules/home/domain/entities/search.dart';
 
 abstract class BaseHomeRepository {
   Future<Either<Failure, List<Product>>> getProducts();
@@ -44,4 +45,7 @@ abstract class BaseHomeRepository {
   Future<Either<Failure, String>> signOut();
 
   Future<Either<Failure, String>> updateProfile({required Register register});
+
+  Future<Either<Failure, List<Search>>> searchProducts(
+      {required String query});
 }

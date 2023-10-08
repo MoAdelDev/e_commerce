@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/main.dart';
@@ -27,13 +28,16 @@ class HomeScreen extends StatelessWidget {
                     : state.englishTitles[state.currentIndex],
               ),
               actions: [
-                IconButton(
-                  onPressed: (){},
-                  icon: const Icon(
-                    Icons.search,
-                    size: 30.0,
+                if (state.currentIndex == 0)
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, RouteConst.productsSearchScreen);
+                    },
+                    icon: const Icon(
+                      Icons.search,
+                      size: 30.0,
+                    ),
                   ),
-                ),
               ],
             ),
             bottomNavigationBar: CurvedNavigationBar(

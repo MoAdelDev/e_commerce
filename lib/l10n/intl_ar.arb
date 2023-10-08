@@ -53,5 +53,6 @@
   "nameTitle" : "الإسم",
   "emailTitle" : "البريد الإلكتروني",
   "phoneTitle" : "رقم الهاتف",
-  "passwordTitle" : "كلمة المرور"
+  "passwordTitle" : "كلمة المرور",
+  "searchHereTitle" : "إبحث هنا"
 }

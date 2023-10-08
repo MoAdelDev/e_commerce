@@ -10,6 +10,7 @@ import 'package:e_commerce_app/modules/home/domain/entities/banner.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/category.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/favorite.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
+import 'package:e_commerce_app/modules/home/domain/entities/search.dart';
 import 'package:e_commerce_app/modules/home/domain/repository/base_home_repository.dart';
 
 class HomeRepository extends BaseHomeRepository {
@@ -218,6 +219,18 @@ class HomeRepository extends BaseHomeRepository {
     try {
       final result =
           await baseHomeRemoteDataSource.updateProfile(register: register);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Search>>> searchProducts(
+      {required String query}) async {
+    try {
+      final result =
+          await baseHomeRemoteDataSource.searchProducts(query: query);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));

@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/bloc_observer.dart';
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
@@ -22,7 +21,7 @@ import 'modules/home/presentation/screens/home/home_screen.dart';
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  Bloc.observer = MyBlocObserver();
+  //Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
   await DioHelper.init();
 

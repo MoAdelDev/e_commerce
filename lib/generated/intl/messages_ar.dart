@@ -90,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "removeFromCartTitle":
             MessageLookupByLibrary.simpleMessage("إزالة من السلة"),
         "removeTitle": MessageLookupByLibrary.simpleMessage("إزالة"),
+        "searchHereTitle": MessageLookupByLibrary.simpleMessage("إبحث هنا"),
         "signInTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "signUpTitle": MessageLookupByLibrary.simpleMessage("طلب تسجيل حساب"),
         "updateProfileTitle":

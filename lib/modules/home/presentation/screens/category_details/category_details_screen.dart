@@ -1,18 +1,14 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/services/service_locator.dart';
-import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/category_details/category_details_bloc.dart';
+import 'package:e_commerce_app/modules/home/presentation/widgets/category_details/category_product_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/style/components/default_shimmer.dart';
-import '../../../../../generated/l10n.dart';
 
 class CategoryDetailsScreen extends StatelessWidget {
   final ScreenArgs screenArgs;
@@ -40,16 +36,14 @@ class CategoryDetailsScreen extends StatelessWidget {
                   MyApp.productCartQuantity.isEmpty) {
                 return const Center(
                   child: DefaultProgressIndicator(
-                    size: 60.0,
+                    size: 70.0,
                   ),
                 );
-              }
-
-              if (state.products.isEmpty) {
-                return Center(
-                  child: DefaultAnimatedText(
-                      text: S.of(context).noProductsTitle,
-                      textStyle: Theme.of(context).textTheme.titleMedium),
+              } else if (state.products.isEmpty) {
+                return const Center(
+                  child: DefaultProgressIndicator(
+                    size: 70.0,
+                  ),
                 );
               }
               return Padding(
@@ -59,154 +53,8 @@ class CategoryDetailsScreen extends StatelessWidget {
                   itemCount: state.products.length,
                   itemBuilder: (context, index) {
                     Product product = state.products[index];
-                    return InkWell(
-                      onTap: () {
-                        ScreenArgs args =
-                            ScreenArgs.toProductDetails(product.id);
-                        Navigator.popAndPushNamed(
-                            context, RouteConst.productDetailsScreen,
-                            arguments: args);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 14.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Stack(
-                              children: [
-                                SizedBox(
-                                  height: 100.0,
-                                  width: 100.0,
-                                  child: CachedNetworkImage(
-                                    imageUrl: product.image,
-                                    errorWidget: (context, url, error) =>
-                                        const DefaultShimmer(),
-                                    placeholder: (context, url) =>
-                                        const DefaultShimmer(),
-                                  ),
-                                ),
-                                if (product.discount != 0)
-                                  Positioned(
-                                    bottom: 0,
-                                    left: 0,
-                                    right: 0,
-                                    child: Container(
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5.0, vertical: 3.0),
-                                      child: Center(
-                                        child: Text(
-                                          '- ${product.discount} %',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodySmall
-                                              ?.copyWith(
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .onPrimary),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 5.0,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 8.0, horizontal: 8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      product.name,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                    ),
-                                    const SizedBox(
-                                      height: 8.0,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text('EGP ${product.price.toString()}',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall),
-                                        const SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        if (product.discount != 0)
-                                          Text(
-                                            'EGP ${product.oldPrice.toString()}',
-                                            style: const TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.grey,
-                                                decoration:
-                                                    TextDecoration.lineThrough),
-                                          ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            context
-                                                .read<CategoryDetailsBloc>()
-                                                .add(
-                                                    CategoryDetailsChangeCartEvent(
-                                                        product.id));
-                                          },
-                                          icon: Icon(
-                                            MyApp.productCartQuantity[state
-                                                        .products[index].id] !=
-                                                    0
-                                                ? Icons.shopping_cart
-                                                : Icons.shopping_cart_outlined,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .primary,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 3.0,
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            context
-                                                .read<CategoryDetailsBloc>()
-                                                .add(
-                                                  CategoryDetailsChangeFavoritesEvent(
-                                                    product.id,
-                                                  ),
-                                                );
-                                          },
-                                          icon: Icon(
-                                            MyApp.favoriteMap[state
-                                                        .products[index].id] ??
-                                                    false
-                                                ? Icons.favorite
-                                                : Icons.favorite_border,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .primary,
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    return CategoryProductWidget(
+                      product: product,
                     );
                   },
                   separatorBuilder: (context, index) => Padding(
