@@ -1,7 +1,6 @@
-import 'package:equatable/equatable.dart';
+import 'package:e_commerce_app/modules/home/domain/entities/cart.dart';
 
-// ignore: must_be_immutable
-class ScreenArgs extends Equatable {
+class ScreenArgs {
   late int productId;
   late int categoryId;
   late String categoryName;
@@ -12,6 +11,10 @@ class ScreenArgs extends Equatable {
   late String addressNotes;
   late String addressCity;
   late String addressRegion;
+
+  late int itemsCount;
+  late dynamic totalPrice;
+  late List<CartProduct> products;
 
   ScreenArgs.toProductDetails(this.productId);
 
@@ -26,6 +29,9 @@ class ScreenArgs extends Equatable {
     this.addressRegion,
   );
 
-  @override
-  List<Object> get props => [productId];
+  ScreenArgs.toConfirmOrder(
+    this.itemsCount,
+    this.totalPrice,
+    this.products,
+  );
 }

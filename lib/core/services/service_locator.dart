@@ -27,6 +27,12 @@ import 'package:e_commerce_app/modules/home/domain/usecases/search_products_usec
 import 'package:e_commerce_app/modules/home/domain/usecases/signout_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/update_cart_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/update_profile_usecase.dart';
+import 'package:e_commerce_app/modules/orders/data/datasource/orders_remote_datasource.dart';
+import 'package:e_commerce_app/modules/orders/data/repository/orders_repository.dart';
+import 'package:e_commerce_app/modules/orders/domain/repository/base_orders_repository.dart';
+import 'package:e_commerce_app/modules/orders/domain/usecases/add_order_usecase.dart';
+import 'package:e_commerce_app/modules/orders/domain/usecases/get_addresses_in_orders_usecase.dart';
+import 'package:e_commerce_app/modules/orders/domain/usecases/validate_promo_codes_usecase.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../modules/authentication/data/datasource/auth_remote_datasource.dart';
@@ -49,6 +55,9 @@ class ServiceLocator {
     sl.registerLazySingleton<BaseAddressesRemoteDataSource>(
         () => AddressesRemoteDataSource());
 
+    sl.registerLazySingleton<BaseOrdersRemoteDataSource>(
+        () => OrdersRemoteDataSource());
+
     sl.registerLazySingleton<BaseHomeLocalDataSource>(
         () => HomeLocalDataSource());
 
@@ -61,6 +70,9 @@ class ServiceLocator {
 
     sl.registerLazySingleton<BaseHomeRepository>(
         () => HomeRepository(sl(), sl()));
+
+    sl.registerLazySingleton<BaseOrdersRepository>(
+        () => OrdersRepository(sl()));
 
     ///  USE CASES
     sl.registerLazySingleton<LoginUseCase>(() => LoginUseCase(sl()));
@@ -127,5 +139,14 @@ class ServiceLocator {
 
     sl.registerLazySingleton<SearchProductsUseCase>(
         () => SearchProductsUseCase(sl()));
+
+    sl.registerLazySingleton<ValidatePromoCodesUseCase>(
+        () => ValidatePromoCodesUseCase(sl()));
+
+    sl.registerLazySingleton<GetAddressesInOrdersUseCase>(
+        () => GetAddressesInOrdersUseCase(sl()));
+
+    sl.registerLazySingleton<AddOrderUseCase>(
+            () => AddOrderUseCase(sl()));
   }
 }

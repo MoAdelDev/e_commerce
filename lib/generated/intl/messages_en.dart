@@ -75,7 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "you have been logged in successfully"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("LOGIN"),
         "logoutTitle": MessageLookupByLibrary.simpleMessage("Log out"),
-        "modifyCardTitle": MessageLookupByLibrary.simpleMessage("Modify cart"),
+        "modifyCartTitle": MessageLookupByLibrary.simpleMessage("Modify cart"),
         "myAddressesTitle":
             MessageLookupByLibrary.simpleMessage("My addresses"),
         "nameHintTitle":
@@ -106,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your phone"),
         "phoneTitle": MessageLookupByLibrary.simpleMessage("Phone"),
         "productsTitle": MessageLookupByLibrary.simpleMessage("Products"),
+        "quantityTitle": MessageLookupByLibrary.simpleMessage("Quantity"),
         "regionHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your region"),
         "regionTitle": MessageLookupByLibrary.simpleMessage("Region"),

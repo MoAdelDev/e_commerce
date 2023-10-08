@@ -9,6 +9,7 @@ class DefaultTextFormField extends StatelessWidget {
   final IconData? suffixIcon;
   final VoidCallback? onSuffixIcon;
   final Function(String)? onSubmit;
+  final Function(String)? onChange;
   final bool? obscureText;
   final String errorMsg;
   final TextInputType keyboardType;
@@ -26,7 +27,9 @@ class DefaultTextFormField extends StatelessWidget {
     this.isNextTabEnable = true,
     this.onSuffixIcon,
     this.suffixIcon,
-    this.onSubmit, required this.textInputAction,
+    this.onChange,
+    this.onSubmit,
+    required this.textInputAction,
   }) : super(key: key);
 
   @override
@@ -43,21 +46,30 @@ class DefaultTextFormField extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide.none
-          ),
-          fillColor: MyApp.isDark ? AppColorDark.primaryColor.shade500 :AppColorLight.primaryColor.shade100,
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide.none),
+          fillColor: MyApp.isDark
+              ? AppColorDark.primaryColor.shade500
+              : AppColorLight.primaryColor.shade100,
           filled: true,
           hintText: hintText,
           hintStyle: TextStyle(
-            fontSize: 14.0,
-            color: MyApp.isDark ? Theme.of(context).colorScheme.onPrimary:Colors.grey[700]
+              fontSize: 14.0,
+              color: MyApp.isDark
+                  ? Theme.of(context).colorScheme.onPrimary
+                  : Colors.grey[700]),
+          prefixIcon: Icon(
+            prefixIcon,
+            color: MyApp.isDark
+                ? Theme.of(context).colorScheme.onPrimary
+                : Colors.grey[700],
           ),
-          prefixIcon: Icon(prefixIcon, color: MyApp.isDark ? Theme.of(context).colorScheme.onPrimary : Colors.grey[700],),
           suffixIcon: IconButton(
             icon: Icon(suffixIcon),
             onPressed: onSuffixIcon,
-            color: MyApp.isDark ? Theme.of(context).colorScheme.onPrimary : Colors.grey[700],
+            color: MyApp.isDark
+                ? Theme.of(context).colorScheme.onPrimary
+                : Colors.grey[700],
           ),
         ),
         style: Theme.of(context).textTheme.bodyMedium,
@@ -70,6 +82,7 @@ class DefaultTextFormField extends StatelessWidget {
           }
           return null;
         },
+        onChanged: onChange,
       ),
     );
   }

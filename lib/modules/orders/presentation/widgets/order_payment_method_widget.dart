@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/generated/l10n.dart';
 import 'package:e_commerce_app/modules/orders/presentation/widgets/order_title_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class OrderPaymentMethodWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const OrderTitleWidget(text: 'Payment method'),
+        OrderTitleWidget(text: S.of(context).paymentMethodTitle),
         SizedBox(
           width: double.infinity,
           child: Card(
@@ -39,7 +40,7 @@ class OrderPaymentMethodWidget extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Cash On Delivery',
+                                S.of(context).cashOnDeliveryTitle,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium
@@ -48,7 +49,7 @@ class OrderPaymentMethodWidget extends StatelessWidget {
                                     ),
                               ),
                               Text(
-                                'COD is a type of transaction where the recipient pays for a good at the time of delivery rather than using credit',
+                                S.of(context).cashOnDeliveryBody,
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
                             ],

@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/route/route_string.dart';
+import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/services/service_locator.dart';
 import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
 import 'package:e_commerce_app/core/style/components/default_material_button.dart';
@@ -67,10 +68,20 @@ class CartsScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(10.0),
                   child: DefaultButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, RouteConst.orderScreen);
+                      int totalItems = 0;
+                      for (CartProduct product in state.cart.products) {
+                        totalItems += product.quantity;
+                      }
+                      ScreenArgs args = ScreenArgs.toConfirmOrder(
+                        totalItems,
+                        state.cart.totalPrice.toStringAsFixed(2).toString(),
+                        state.cart.products,
+                      );
+                      Navigator.pushNamed(context, RouteConst.orderScreen,
+                          arguments: args);
                     },
                     text:
-                        '${S.of(context).checkoutTitle} (EGP ${state.cart.totalPrice})',
+                        '${S.of(context).checkoutTitle} ( EGP ${state.cart.totalPrice.toStringAsFixed(2)} )',
                     textStyle: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),

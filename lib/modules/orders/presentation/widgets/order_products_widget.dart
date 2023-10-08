@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/style/fonts.dart';
 import 'package:e_commerce_app/generated/l10n.dart';
 import 'package:e_commerce_app/modules/orders/presentation/widgets/order_divider_widget.dart';
@@ -9,7 +10,8 @@ import '../../../../core/style/colors.dart';
 import '../../../../core/style/components/default_shimmer.dart';
 
 class OrderProductsWidget extends StatelessWidget {
-  const OrderProductsWidget({super.key});
+  final ScreenArgs args;
+  const OrderProductsWidget({super.key, required this.args});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class OrderProductsWidget extends StatelessWidget {
             InkWell(
               onTap: () => Navigator.pop(context),
               child: Text(
-                'Modify card'.toUpperCase(),
+                S.of(context).modifyCartTitle.toUpperCase(),
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: AppColorLight.primaryColor,
                     fontFamily: AppFonts.boldFont),
@@ -45,16 +47,6 @@ class OrderProductsWidget extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: Column(
                       children: [
-                        Text(
-                          S.of(context).productsTitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(fontFamily: AppFonts.boldFont),
-                        ),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
                         ListView.separated(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
@@ -63,7 +55,7 @@ class OrderProductsWidget extends StatelessWidget {
                                 children: [
                                   CachedNetworkImage(
                                     imageUrl:
-                                        'https://student.valuxapps.com/storage/uploads/products/1615440322npwmU.71DVgBTdyLL._SL1500_.jpg',
+                                        args.products[index].image,
                                     errorWidget: (context, url, error) =>
                                         const DefaultShimmer(),
                                     placeholder: (context, url) =>
@@ -80,7 +72,7 @@ class OrderProductsWidget extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Apple Mac Os',
+                                          args.products[index].name,
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodySmall,
@@ -89,7 +81,7 @@ class OrderProductsWidget extends StatelessWidget {
                                           height: 5.0,
                                         ),
                                         Text(
-                                          'Quantity 5',
+                                          '${S.of(context).quantityTitle} -> ${args.products[index].quantity}',
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodySmall,
@@ -102,7 +94,7 @@ class OrderProductsWidget extends StatelessWidget {
                             },
                             separatorBuilder: (context, index) =>
                                 const OrderDividerWidget(),
-                            itemCount: 10),
+                            itemCount: args.products.length),
                       ],
                     ),
                   ),

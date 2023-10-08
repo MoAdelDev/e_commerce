@@ -84,9 +84,12 @@ class AppRoute {
           builder: (context) => ProductsSearchScreen(),
         );
 
-        case RouteConst.orderScreen:
+      case RouteConst.orderScreen:
+        var args = settings.arguments as ScreenArgs;
         return MaterialPageRoute(
-          builder: (context) => OrderScreen(),
+          builder: (context) => OrderScreen(
+            args: args,
+          ),
         );
     }
     return null;

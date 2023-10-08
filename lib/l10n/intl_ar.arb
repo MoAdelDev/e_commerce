@@ -68,5 +68,6 @@
   "cashOnDeliveryBody" : "الدفع عند الإستلام هو نوع من المعاملات حيث يدفع المستلم مقابل السلعة في وقت التسليم بدلاً من استخدام الائتمان",
   "changeTitle" : "تغيير",
   "deliveryTitle" : "التوصيل",
-  "modifyCardTitle" : "تعديل السلة"
+  "modifyCartTitle" : "تعديل السلة",
+  "quantityTitle" : "الكمية"
 }

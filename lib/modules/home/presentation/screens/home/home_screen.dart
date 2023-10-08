@@ -9,10 +9,26 @@ import 'package:e_commerce_app/modules/home/presentation/controller/home/home_st
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final _pageController = PageController(initialPage: 0);
 
-  HomeScreen({Key? key}) : super(key: key);
+  int currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      currentIndex = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +40,11 @@ class HomeScreen extends StatelessWidget {
             appBar: AppBar(
               title: Text(
                 MyApp.language == Language.arabic.name
-                    ? state.arabicTitles[state.currentIndex]
-                    : state.englishTitles[state.currentIndex],
+                    ? state.arabicTitles[currentIndex]
+                    : state.englishTitles[currentIndex],
               ),
               actions: [
-                if (state.currentIndex == 0)
+                if (currentIndex == 0)
                   IconButton(
                     onPressed: () {
                       Navigator.pushNamed(context, RouteConst.productsSearchScreen);
@@ -47,9 +63,12 @@ class HomeScreen extends StatelessWidget {
               buttonBackgroundColor: AppColorLight.primaryColor,
               backgroundColor: Colors.transparent,
               animationCurve: Curves.easeInOut,
-              index: state.currentIndex,
+              index: currentIndex,
               animationDuration: const Duration(milliseconds: 800),
               onTap: (index) {
+                setState(() {
+                  currentIndex = index;
+                });
                 _pageController.jumpToPage(index);
                 context.read<HomeBloc>().add(
                       HomeChangeBottomNavIndexEvent(index),
@@ -62,6 +81,9 @@ class HomeScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: state.screens.map((e) => e).toList(),
               onPageChanged: (index) {
+                setState(() {
+                  currentIndex = index;
+                });
                 context.read<HomeBloc>().add(
                       HomeChangeBottomNavIndexEvent(index),
                     );

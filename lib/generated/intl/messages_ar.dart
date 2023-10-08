@@ -72,7 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logoutTitle": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
-        "modifyCardTitle": MessageLookupByLibrary.simpleMessage("تعديل السلة"),
+        "modifyCartTitle": MessageLookupByLibrary.simpleMessage("تعديل السلة"),
         "myAddressesTitle": MessageLookupByLibrary.simpleMessage("العناوين"),
         "nameHintTitle": MessageLookupByLibrary.simpleMessage("أدخل أسمك"),
         "nameTitle": MessageLookupByLibrary.simpleMessage("الإسم"),
@@ -98,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أدخل رقم الهاتف"),
         "phoneTitle": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "productsTitle": MessageLookupByLibrary.simpleMessage("المنتجات"),
+        "quantityTitle": MessageLookupByLibrary.simpleMessage("الكمية"),
         "regionHintTitle": MessageLookupByLibrary.simpleMessage("أدخل منطقتك"),
         "regionTitle": MessageLookupByLibrary.simpleMessage("المنطقة"),
         "registerQuestion":

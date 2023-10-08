@@ -741,10 +741,20 @@ class S {
   }
 
   /// `Modify cart`
-  String get modifyCardTitle {
+  String get modifyCartTitle {
     return Intl.message(
       'Modify cart',
-      name: 'modifyCardTitle',
+      name: 'modifyCartTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get quantityTitle {
+    return Intl.message(
+      'Quantity',
+      name: 'quantityTitle',
       desc: '',
       args: [],
     );

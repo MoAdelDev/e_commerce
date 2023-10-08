@@ -1,21 +1,35 @@
+import 'package:e_commerce_app/core/route/screen_args.dart';
+import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
+import 'package:e_commerce_app/core/utils/enums.dart';
+import 'package:e_commerce_app/generated/l10n.dart';
+import 'package:e_commerce_app/modules/orders/presentation/controller/orders_bloc.dart';
 import 'package:e_commerce_app/modules/orders/presentation/widgets/order_divider_widget.dart';
 import 'package:e_commerce_app/modules/orders/presentation/widgets/order_title_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/style/colors.dart';
 import '../../../../core/style/components/default_text_form_field.dart';
 import '../../../../core/style/fonts.dart';
 
-class OrderSummaryWidget extends StatelessWidget {
-  final TextEditingController _promoCodeController = TextEditingController();
-  OrderSummaryWidget({super.key});
+class OrderSummaryWidget extends StatefulWidget {
+  final ScreenArgs args;
 
+  const OrderSummaryWidget({super.key, required this.args});
+
+  @override
+  State<OrderSummaryWidget> createState() => _OrderSummaryWidgetState();
+}
+
+class _OrderSummaryWidgetState extends State<OrderSummaryWidget> {
+  final TextEditingController _promoCodeController = TextEditingController();
+  bool isButtonClickable = false;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const OrderTitleWidget(text: 'Order summary'),
+        OrderTitleWidget(text: S.of(context).orderSummaryTitle),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30.0),
@@ -36,12 +50,12 @@ class OrderSummaryWidget extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                "Item's total (1)",
+                                "${S.of(context).itemTotalTitle} ( ${widget.args.itemsCount} )",
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               const Spacer(),
                               Text(
-                                "EGP 1000.00",
+                                "EGP ${widget.args.totalPrice}",
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             ],
@@ -52,12 +66,12 @@ class OrderSummaryWidget extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                "Delivery fees",
+                                S.of(context).deliveryFeesTitle,
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               const Spacer(),
                               Text(
-                                "Free",
+                                S.of(context).freeTitle,
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             ],
@@ -66,7 +80,7 @@ class OrderSummaryWidget extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                "Total",
+                                S.of(context).totalTitle,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium
@@ -76,7 +90,7 @@ class OrderSummaryWidget extends StatelessWidget {
                               ),
                               const Spacer(),
                               Text(
-                                "EGP 16000",
+                                "EGP ${widget.args.totalPrice}",
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge
@@ -97,27 +111,55 @@ class OrderSummaryWidget extends StatelessWidget {
                           Expanded(
                             child: DefaultTextFormField(
                               controller: _promoCodeController,
-                              hintText: 'Enter code here',
+                              hintText: S.of(context).codeHintTitle,
                               prefixIcon: Icons.card_giftcard,
-                              errorMsg: 'Enter code here',
+                              errorMsg: S.of(context).codeHintTitle,
                               keyboardType: TextInputType.text,
                               textInputAction: TextInputAction.done,
+                              onChange: (value) {
+                                if(value.isNotEmpty) {
+                                  setState(() {
+                                    isButtonClickable = true;
+                                  });
+                                }
+                                else{
+                                  setState(() {
+                                    isButtonClickable = false;
+                                  });
+                                }
+                              },
                             ),
                           ),
                           const SizedBox(
                             width: 5.0,
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'APPLY',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(
-                                      color: AppColorDark.primaryColor,
-                                      fontFamily: AppFonts.boldFont),
-                            ),
+                          BlocBuilder<OrdersBloc, OrdersState>(
+                            builder: (context, state) {
+                              if(state.validatePromoCodesState == RequestState.loading){
+                                return const Center(child: DefaultProgressIndicator(size: 40.0,),);
+                              }
+                              return TextButton(
+                                onPressed: isButtonClickable ? () {
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                  if(_promoCodeController.text.isNotEmpty) {
+                                    context.read<OrdersBloc>().add(
+                                        OrdersValidatePromoCodesEvent(
+                                          _promoCodeController.text,
+                                        ),
+                                      );
+                                  }
+                                } : null,
+                                child: Text(
+                                  S.of(context).applyTitle,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge
+                                      ?.copyWith(
+                                          color: isButtonClickable ? AppColorDark.primaryColor : Colors.grey,
+                                          fontFamily: AppFonts.boldFont),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
