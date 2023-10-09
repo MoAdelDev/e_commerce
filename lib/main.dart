@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: isDark ? darkTheme(context) : lightTheme(context),
-            home: token == '' ? const OnBoardingScreen() : HomeScreen(),
+            home: token == '' ? const OnBoardingScreen() : const HomeScreen(),
             onGenerateRoute: (settings) =>
                 AppRoute.getInstance().generateRouter(settings),
             locale: language == Language.arabic.name
