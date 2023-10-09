@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/modules/home/domain/entities/cart.dart';
+import 'package:e_commerce_app/modules/orders/domain/entities/order.dart';
 
 class ScreenArgs {
   late int productId;
@@ -15,6 +16,8 @@ class ScreenArgs {
   late int itemsCount;
   late dynamic totalPrice;
   late List<CartProduct> products;
+
+  late Order order;
 
   ScreenArgs.toProductDetails(this.productId);
 
@@ -34,4 +37,6 @@ class ScreenArgs {
     this.totalPrice,
     this.products,
   );
+
+  ScreenArgs.toOrderDetails(this.order);
 }

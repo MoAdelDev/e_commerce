@@ -3,6 +3,7 @@ import 'package:e_commerce_app/core/error/failure.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
 import 'package:e_commerce_app/modules/addresses/domain/entities/address.dart';
 import 'package:e_commerce_app/modules/orders/data/datasource/orders_remote_datasource.dart';
+import 'package:e_commerce_app/modules/orders/domain/entities/order_details.dart';
 import 'package:e_commerce_app/modules/orders/domain/repository/base_orders_repository.dart';
 
 import '../../domain/entities/order.dart' as order;
@@ -49,6 +50,18 @@ class OrdersRepository extends BaseOrdersRepository {
   Future<Either<Failure, List<order.Order>>> getOrders() async {
     try {
       final result = await baseOrdersRemoteDataSource.getOrders();
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, OrderDetails>> getOrderDetails(
+      {required int orderId}) async {
+    try {
+      final result =
+          await baseOrdersRemoteDataSource.getOrderDetails(orderId: orderId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));

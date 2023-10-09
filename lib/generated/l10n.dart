@@ -630,10 +630,10 @@ class S {
     );
   }
 
-  /// `Delivery fees`
+  /// `Delivery Fees`
   String get deliveryFeesTitle {
     return Intl.message(
-      'Delivery fees',
+      'Delivery Fees',
       name: 'deliveryFeesTitle',
       desc: '',
       args: [],
@@ -690,10 +690,10 @@ class S {
     );
   }
 
-  /// `Payment method`
+  /// `Payment Method`
   String get paymentMethodTitle {
     return Intl.message(
-      'Payment method',
+      'Payment Method',
       name: 'paymentMethodTitle',
       desc: '',
       args: [],

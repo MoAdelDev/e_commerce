@@ -52,7 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAddressQuestionTitle":
             MessageLookupByLibrary.simpleMessage("Delete this address ?"),
         "deliveryFeesTitle":
-            MessageLookupByLibrary.simpleMessage("Delivery fees"),
+            MessageLookupByLibrary.simpleMessage("Delivery Fees"),
         "deliveryTitle": MessageLookupByLibrary.simpleMessage("Delivery"),
         "descriptionTitle": MessageLookupByLibrary.simpleMessage("Description"),
         "discountTitle": MessageLookupByLibrary.simpleMessage("DISCOUNT"),
@@ -103,7 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "passwordTitle": MessageLookupByLibrary.simpleMessage("Password"),
         "paymentMethodTitle":
-            MessageLookupByLibrary.simpleMessage("Payment method"),
+            MessageLookupByLibrary.simpleMessage("Payment Method"),
         "phoneHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your phone"),
         "phoneTitle": MessageLookupByLibrary.simpleMessage("Phone"),

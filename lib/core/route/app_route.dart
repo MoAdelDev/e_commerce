@@ -9,6 +9,7 @@ import 'package:e_commerce_app/modules/home/presentation/screens/settings/contac
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/language_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/night_mode_screen.dart';
 import 'package:e_commerce_app/modules/orders/presentation/screens/order_confirmation_screen.dart';
+import 'package:e_commerce_app/modules/orders/presentation/screens/order_details_screen.dart';
 import 'package:e_commerce_app/modules/orders/presentation/screens/orders_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -96,6 +97,13 @@ class AppRoute {
       case RouteConst.ordersScreen:
         return MaterialPageRoute(
           builder: (context) => const OrdersScreen(),
+        );
+      case RouteConst.orderDetailScreen:
+        var args = settings.arguments as ScreenArgs;
+        return MaterialPageRoute(
+          builder: (context) => OrderDetailsScreen(
+            args: args,
+          ),
         );
     }
     return null;

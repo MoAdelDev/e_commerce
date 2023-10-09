@@ -4,6 +4,7 @@ import 'package:e_commerce_app/core/error/error_message_model.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
 import 'package:e_commerce_app/core/network/api_constance.dart';
 import 'package:e_commerce_app/modules/addresses/data/models/address_model.dart';
+import 'package:e_commerce_app/modules/orders/data/models/order_details_model.dart';
 import 'package:e_commerce_app/modules/orders/data/models/order_model.dart';
 
 abstract class BaseOrdersRemoteDataSource {
@@ -14,6 +15,8 @@ abstract class BaseOrdersRemoteDataSource {
   Future<String> addOrder({required int addressId});
 
   Future<List<OrderModel>> getOrders();
+
+  Future<OrderDetailsModel> getOrderDetails({required int orderId});
 }
 
 class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
@@ -83,6 +86,20 @@ class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
           (e) => OrderModel.fromJson(e),
         ),
       );
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
+
+  @override
+  Future<OrderDetailsModel> getOrderDetails({required int orderId}) async{
+    String? token = CacheHelper.getString(key: 'token');
+    final result = await DioHelper.getData(
+      path: '${ApiConstance.ordersUrl}/$orderId',
+      token: token,
+    );
+
+    if (result.data['status']) {
+      return OrderDetailsModel.fromJson(result.data['data']);
     }
     throw ServerException(ErrorMessageModel.fromJson(result.data));
   }

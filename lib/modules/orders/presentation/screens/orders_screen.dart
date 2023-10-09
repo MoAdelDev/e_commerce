@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/core/route/route_string.dart';
+import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/services/service_locator.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
 import 'package:e_commerce_app/core/style/components/default_shimmer.dart';
@@ -43,82 +45,87 @@ class OrdersScreen extends StatelessWidget {
                 itemCount: 20,
               );
             }
-            return Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: ListView.separated(
-                itemBuilder: (context, itemIndex) {
-                  Order order = state.orders[itemIndex];
-                  return Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Image.asset(
-                        'assets/images/shop.png',
-                        width: 70,
-                        height: 70,
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "${order.totalPrice.toStringAsFixed(2)} EGP",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(fontFamily: AppFonts.semiBoldFont),
-                            ),
-                            const SizedBox(
-                              height: 5.0,
-                            ),
-                            Text(
-                              order.date,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                            const SizedBox(
-                              height: 5.0,
-                            ),
-                            Text(
-                              order.status,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                    color: Colors.green[900],
-                                    fontFamily: AppFonts.boldFont,
-                                  ),
-                            ),
-                          ],
+            return ListView.separated(
+              itemBuilder: (context, itemIndex) {
+                Order order = state.orders[itemIndex];
+                return InkWell(
+                  onTap: (){
+                    ScreenArgs args = ScreenArgs.toOrderDetails(order);
+                    Navigator.pushNamed(context, RouteConst.orderDetailScreen, arguments: args);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Image.asset(
+                          'assets/images/shop.png',
+                          width: 70,
+                          height: 70,
                         ),
-                      ),
-                      if(order.status == 'New' || order.status == 'جديد')
-                      InkWell(
-                        onTap: () {},
-                        splashColor: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withOpacity(0.2),
-                        child: Text(
-                          S.of(context).cancelOrder,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  fontFamily: AppFonts.semiBoldFont),
+                        const SizedBox(
+                          width: 10.0,
                         ),
-                      ),
-                    ],
-                  );
-                },
-                separatorBuilder: (context, index) =>
-                    const OrderDividerWidget(),
-                itemCount: state.orders.length,
-                physics: DefaultScrollPhysics.defaultPhysics(),
-              ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "EGP ${order.totalPrice.toStringAsFixed(2)}",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(fontFamily: AppFonts.semiBoldFont),
+                              ),
+                              const SizedBox(
+                                height: 5.0,
+                              ),
+                              Text(
+                                order.date,
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              const SizedBox(
+                                height: 5.0,
+                              ),
+                              Text(
+                                order.status,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(
+                                      color: Colors.green[900],
+                                      fontFamily: AppFonts.boldFont,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        if(order.status == 'New' || order.status == 'جديد')
+                        InkWell(
+                          onTap: () {},
+                          splashColor: Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withOpacity(0.2),
+                          child: Text(
+                            S.of(context).cancelOrder,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                    color: Theme.of(context).colorScheme.primary,
+                                    fontFamily: AppFonts.semiBoldFont),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) =>
+                  const OrderDividerWidget(),
+              itemCount: state.orders.length,
+              physics: DefaultScrollPhysics.defaultPhysics(),
             );
           },
         ),

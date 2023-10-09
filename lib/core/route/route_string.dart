@@ -13,4 +13,6 @@ class RouteConst {
   static const String productsSearchScreen = '/products_search';
   static const String orderConfirmationScreen = '/order_confirmation';
   static const String ordersScreen = '/orders';
+  static const String orderDetailScreen = '/orderDetail';
+
 }
