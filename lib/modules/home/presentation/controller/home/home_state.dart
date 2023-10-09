@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/modules/home/presentation/screens/home/carts_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/home/products_screen.dart';
-import 'package:e_commerce_app/modules/home/presentation/screens/home/settings_screen.dart';
+import 'package:e_commerce_app/modules/home/presentation/screens/settings/settings_screen.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 

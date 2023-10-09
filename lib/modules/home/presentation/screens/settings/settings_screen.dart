@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/style/components/default_material_button.dart';
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
+import 'package:e_commerce_app/core/style/components/default_shimmer.dart';
 import 'package:e_commerce_app/core/style/fonts.dart';
 import 'package:e_commerce_app/generated/l10n.dart';
 import 'package:e_commerce_app/main.dart';
@@ -10,7 +12,6 @@ import 'package:e_commerce_app/modules/home/presentation/controller/home/home_bl
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_event.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_state.dart';
 import 'package:e_commerce_app/modules/home/presentation/widgets/settings_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,10 +49,18 @@ class SettingsScreen extends StatelessWidget {
                         CircleAvatar(
                           radius: 40.0,
                           backgroundColor: AppColorLight.primaryColor,
-                          child: const Icon(
-                            Icons.person,
-                            size: 35.0,
-                            color: Colors.white,
+                          child: ClipRRect(
+                            clipBehavior: Clip.antiAlias,
+                            borderRadius: BorderRadius.circular(40.0),
+                            child: CachedNetworkImage(
+                              imageUrl:
+                                  'https://scontent.fcai1-2.fna.fbcdn.net/v/t1.6435-9/118615913_2715686415310873_3020939721327476067_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=7a1959&_nc_eui2=AeFDbb7pjRG5Bgl58owZp2-qUkx9oExcvQ1STH2gTFy9DYSH5UsQf5LvW0LtjzST8hQUgJ3-40iNBrehstJWc1IY&_nc_ohc=c2mp-ONvNLAAX-Ur9ya&_nc_ht=scontent.fcai1-2.fna&oh=00_AfD5LNDaFu8YyC7ntM509osZ9FcfyzuWJ4MR3y7CQcD6sw&oe=654B725C',
+                              width: 100,
+                              height: 100,
+                              errorWidget: (context, url, error) => const DefaultShimmer(),
+                              placeholder: (context, url) => const DefaultShimmer(),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -123,10 +132,7 @@ class SettingsScreen extends StatelessWidget {
                           text: S.of(context).nightModeTitle,
                           isNightMode: true,
                         ),
-                        SettingsItemWidget(
-                            onPressed: () {},
-                            icon: Icons.article,
-                            text: S.of(context).faqsTitle),
+
                         SettingsItemWidget(
                             onPressed: () => Navigator.pushNamed(
                                 context, RouteConst.contactsScreen),
