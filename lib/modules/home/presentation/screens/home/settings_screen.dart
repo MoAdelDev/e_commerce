@@ -99,7 +99,7 @@ class SettingsScreen extends StatelessWidget {
                             text: S.of(context).myAddressesTitle),
                         SettingsItemWidget(
                           onPressed: () => Navigator.pushNamed(
-                              context, RouteConst.addressScreen),
+                              context, RouteConst.ordersScreen),
                           icon: Icons.shopping_cart_rounded,
                           text: S.of(context).ordersTitle,
                         ),

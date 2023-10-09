@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("المتجر"),
         "applyTitle": MessageLookupByLibrary.simpleMessage("تطبيق"),
         "arabicTitleTitle": MessageLookupByLibrary.simpleMessage("العربية"),
+        "cancelOrder": MessageLookupByLibrary.simpleMessage("إلغاء الطلب"),
         "cashOnDeliveryBody": MessageLookupByLibrary.simpleMessage(
             "الدفع عند الإستلام هو نوع من المعاملات حيث يدفع المستلم مقابل السلعة في وقت التسليم بدلاً من استخدام الائتمان"),
         "cashOnDeliveryTitle":

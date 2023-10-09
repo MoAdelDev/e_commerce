@@ -70,5 +70,6 @@
   "deliveryTitle" : "Delivery",
   "modifyCartTitle" : "Modify cart",
   "quantityTitle" : "Quantity",
-  "ordersTitle" : "Orders"
+  "ordersTitle" : "Orders",
+  "cancelOrder" : "Cancel order"
 }

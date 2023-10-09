@@ -6,6 +6,7 @@ import 'package:e_commerce_app/core/style/components/default_animated_text.dart'
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
 import 'package:e_commerce_app/core/style/components/default_shimmer.dart';
+import 'package:e_commerce_app/core/style/fonts.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/favorite.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/favorites/favorites_bloc.dart';
@@ -117,42 +118,30 @@ class FavoritesScreen extends StatelessWidget {
                             ],
                           ),
                           Align(
-                            alignment: AlignmentDirectional.center,
-                            child: MaterialButton(
-                              onPressed: () {
-                                // remove favorite
-                                context.read<FavoritesBloc>().add(
-                                      FavoritesRemoveProductEvent(
-                                        favorite.id,
-                                        favorite.productId,
+                              alignment: AlignmentDirectional.centerEnd,
+                              child: TextButton(
+                                onPressed: () {
+                                  // remove favorite
+                                  context.read<FavoritesBloc>().add(
+                                        FavoritesRemoveProductEvent(
+                                          favorite.id,
+                                          favorite.productId,
+                                        ),
+                                      );
+                                },
+                                child: Text(
+                                  S.of(context).removeTitle,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge
+                                      ?.copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        fontFamily: AppFonts.semiBoldFont,
                                       ),
-                                    );
-                              },
-                              color: Theme.of(context).colorScheme.background,
-                              elevation: 0,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.delete,
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                  ),
-                                  const SizedBox(
-                                    width: 10.0,
-                                  ),
-                                  Text(
-                                    S.of(context).removeTitle,
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          )
+                                ),
+                              ))
                         ],
                       ),
                     ),

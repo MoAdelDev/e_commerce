@@ -8,7 +8,8 @@ import 'package:e_commerce_app/modules/home/presentation/screens/product_details
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/contacts_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/language_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/screens/settings/night_mode_screen.dart';
-import 'package:e_commerce_app/modules/orders/presentation/screens/order_screen.dart';
+import 'package:e_commerce_app/modules/orders/presentation/screens/order_confirmation_screen.dart';
+import 'package:e_commerce_app/modules/orders/presentation/screens/orders_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../modules/authentication/presentation/screens/login_screen.dart';
@@ -84,12 +85,17 @@ class AppRoute {
           builder: (context) => ProductsSearchScreen(),
         );
 
-      case RouteConst.orderScreen:
+      case RouteConst.orderConfirmationScreen:
         var args = settings.arguments as ScreenArgs;
         return MaterialPageRoute(
-          builder: (context) => OrderScreen(
+          builder: (context) => OrderConfirmationScreen(
             args: args,
           ),
+        );
+
+      case RouteConst.ordersScreen:
+        return MaterialPageRoute(
+          builder: (context) => const OrdersScreen(),
         );
     }
     return null;

@@ -14,10 +14,10 @@ import 'package:e_commerce_app/modules/orders/presentation/widgets/order_payment
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OrderScreen extends StatelessWidget {
+class OrderConfirmationScreen extends StatelessWidget {
   final ScreenArgs args;
 
-  const OrderScreen({
+  const OrderConfirmationScreen({
     super.key,
     required this.args,
   });

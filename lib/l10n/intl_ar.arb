@@ -70,5 +70,6 @@
   "deliveryTitle" : "التوصيل",
   "modifyCartTitle" : "تعديل السلة",
   "quantityTitle" : "الكمية",
-  "ordersTitle" : "الطلبات"
+  "ordersTitle" : "الطلبات",
+  "cancelOrder" : "إلغاء الطلب"
 }

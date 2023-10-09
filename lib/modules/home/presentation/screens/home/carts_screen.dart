@@ -77,7 +77,7 @@ class CartsScreen extends StatelessWidget {
                         state.cart.totalPrice.toStringAsFixed(2).toString(),
                         state.cart.products,
                       );
-                      Navigator.pushNamed(context, RouteConst.orderScreen,
+                      Navigator.pushNamed(context, RouteConst.orderConfirmationScreen,
                           arguments: args);
                     },
                     text:

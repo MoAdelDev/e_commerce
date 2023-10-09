@@ -11,5 +11,6 @@ class RouteConst {
   static const String updateProfileScreen = '/update_profile';
   static const String contactsScreen = '/contacts';
   static const String productsSearchScreen = '/products_search';
-  static const String orderScreen = '/order';
+  static const String orderConfirmationScreen = '/order_confirmation';
+  static const String ordersScreen = '/orders';
 }

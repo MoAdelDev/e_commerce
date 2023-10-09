@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("Shop"),
         "applyTitle": MessageLookupByLibrary.simpleMessage("APPLY"),
         "arabicTitleTitle": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "cancelOrder": MessageLookupByLibrary.simpleMessage("Cancel order"),
         "cashOnDeliveryBody": MessageLookupByLibrary.simpleMessage(
             "COD is a type of transaction where the recipient pays for a good at the time of delivery rather than using credit"),
         "cashOnDeliveryTitle":
