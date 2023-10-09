@@ -17,6 +17,9 @@ abstract class BaseOrdersRemoteDataSource {
   Future<List<OrderModel>> getOrders();
 
   Future<OrderDetailsModel> getOrderDetails({required int orderId});
+
+  Future<String> cancelOrder({required int orderId});
+
 }
 
 class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
@@ -100,6 +103,19 @@ class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
 
     if (result.data['status']) {
       return OrderDetailsModel.fromJson(result.data['data']);
+    }
+    throw ServerException(ErrorMessageModel.fromJson(result.data));
+  }
+
+  @override
+  Future<String> cancelOrder({required int orderId}) async{
+    String? token = CacheHelper.getString(key: 'token');
+    final result = await DioHelper.getData(
+      path: '${ApiConstance.ordersUrl}/$orderId/cancel',
+      token: token,
+    );
+    if (result.data['status']) {
+      return result.data['message'];
     }
     throw ServerException(ErrorMessageModel.fromJson(result.data));
   }

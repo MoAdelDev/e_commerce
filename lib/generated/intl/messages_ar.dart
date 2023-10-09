@@ -66,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أدخل إسمك بالكامل"),
         "fullNameTitle": MessageLookupByLibrary.simpleMessage("الإسم بالكامل"),
         "itemTotalTitle": MessageLookupByLibrary.simpleMessage("عدد العناصر"),
+        "itemsTitle": MessageLookupByLibrary.simpleMessage("العناصر"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("اللغة"),
         "loadingDataErrorTitle": MessageLookupByLibrary.simpleMessage(
             "فشل في تحميل البيانات. حاول مرة أخرى"),
@@ -75,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutTitle": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "modifyCartTitle": MessageLookupByLibrary.simpleMessage("تعديل السلة"),
         "myAddressesTitle": MessageLookupByLibrary.simpleMessage("العناوين"),
+        "nOfItemsTitle": MessageLookupByLibrary.simpleMessage("عدد العناصر"),
         "nameHintTitle": MessageLookupByLibrary.simpleMessage("أدخل أسمك"),
         "nameTitle": MessageLookupByLibrary.simpleMessage("الإسم"),
         "nightModeTitle": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
@@ -89,16 +91,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingTitle":
             MessageLookupByLibrary.simpleMessage("تسوق المنتجات"),
         "onTitle": MessageLookupByLibrary.simpleMessage("تشغيل"),
+        "orderDetailsTitle":
+            MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
         "orderSummaryTitle": MessageLookupByLibrary.simpleMessage("ملخص الطلب"),
+        "orderTitle": MessageLookupByLibrary.simpleMessage("الطلب"),
         "ordersTitle": MessageLookupByLibrary.simpleMessage("الطلبات"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
         "passwordTitle": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "paymentMethodTitle":
             MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+        "paymentTitle": MessageLookupByLibrary.simpleMessage("الدفع"),
         "phoneHintTitle":
             MessageLookupByLibrary.simpleMessage("أدخل رقم الهاتف"),
         "phoneTitle": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "placedOnTitle": MessageLookupByLibrary.simpleMessage("تم وضعه بتاريخ"),
         "productsTitle": MessageLookupByLibrary.simpleMessage("المنتجات"),
         "quantityTitle": MessageLookupByLibrary.simpleMessage("الكمية"),
         "regionHintTitle": MessageLookupByLibrary.simpleMessage("أدخل منطقتك"),
@@ -112,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إزالة من السلة"),
         "removeTitle": MessageLookupByLibrary.simpleMessage("إزالة"),
         "searchHereTitle": MessageLookupByLibrary.simpleMessage("إبحث هنا"),
+        "shippingAddressTitle":
+            MessageLookupByLibrary.simpleMessage("عنوان التوصيل"),
         "signInTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "signUpTitle": MessageLookupByLibrary.simpleMessage("طلب تسجيل حساب"),
         "totalTitle": MessageLookupByLibrary.simpleMessage("إجمالي"),

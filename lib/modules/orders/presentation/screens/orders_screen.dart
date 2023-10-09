@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/services/service_locator.dart';
+import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
 import 'package:e_commerce_app/core/style/components/default_shimmer.dart';
 import 'package:e_commerce_app/core/style/fonts.dart';
@@ -19,6 +20,7 @@ class OrdersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => OrdersBloc(
+        sl(),
         sl(),
       )..add(const OrdersGetEvent()),
       child: Scaffold(
@@ -49,12 +51,14 @@ class OrdersScreen extends StatelessWidget {
               itemBuilder: (context, itemIndex) {
                 Order order = state.orders[itemIndex];
                 return InkWell(
-                  onTap: (){
+                  onTap: () {
                     ScreenArgs args = ScreenArgs.toOrderDetails(order);
-                    Navigator.pushNamed(context, RouteConst.orderDetailScreen, arguments: args);
+                    Navigator.pushNamed(context, RouteConst.orderDetailScreen,
+                        arguments: args);
                   },
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 10.0),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -75,7 +79,8 @@ class OrdersScreen extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium
-                                    ?.copyWith(fontFamily: AppFonts.semiBoldFont),
+                                    ?.copyWith(
+                                        fontFamily: AppFonts.semiBoldFont),
                               ),
                               const SizedBox(
                                 height: 5.0,
@@ -100,30 +105,39 @@ class OrdersScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        if(order.status == 'New' || order.status == 'جديد')
-                        InkWell(
-                          onTap: () {},
-                          splashColor: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.2),
-                          child: Text(
-                            S.of(context).cancelOrder,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                    color: Theme.of(context).colorScheme.primary,
-                                    fontFamily: AppFonts.semiBoldFont),
-                          ),
-                        ),
+                        if (order.status == 'New' || order.status == 'جديد')
+                          state.cancelOrderState == RequestState.loading
+                              ? const Center(
+                                  child: DefaultProgressIndicator(
+                                    size: 40.0,
+                                  ),
+                                )
+                              : InkWell(
+                                  onTap: () => context
+                                      .read<OrdersBloc>()
+                                      .add(OrdersCancelOrderEvent(order.id)),
+                                  splashColor: Theme.of(context)
+                                      .colorScheme
+                                      .primary
+                                      .withOpacity(0.2),
+                                  child: Text(
+                                    S.of(context).cancelOrder,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium
+                                        ?.copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                            fontFamily: AppFonts.semiBoldFont),
+                                  ),
+                                ),
                       ],
                     ),
                   ),
                 );
               },
-              separatorBuilder: (context, index) =>
-                  const OrderDividerWidget(),
+              separatorBuilder: (context, index) => const OrderDividerWidget(),
               itemCount: state.orders.length,
               physics: DefaultScrollPhysics.defaultPhysics(),
             );

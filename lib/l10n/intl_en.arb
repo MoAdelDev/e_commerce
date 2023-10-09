@@ -71,5 +71,12 @@
   "modifyCartTitle" : "Modify cart",
   "quantityTitle" : "Quantity",
   "ordersTitle" : "Orders",
-  "cancelOrder" : "Cancel order"
+  "cancelOrder" : "Cancel order",
+  "orderDetailsTitle" : "Order Details",
+  "orderTitle" : "Order",
+  "placedOnTitle" : "Placed On",
+  "nOfItemsTitle" : "N of items",
+  "paymentTitle" : "Payment",
+  "shippingAddressTitle" : "Shipping Address",
+  "itemsTitle" : "Items"
 }

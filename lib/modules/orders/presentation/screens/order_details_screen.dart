@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/services/service_locator.dart';
+import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
 import 'package:e_commerce_app/core/style/components/default_shimmer.dart';
 import 'package:e_commerce_app/core/style/fonts.dart';
@@ -27,19 +28,45 @@ class OrderDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          OrderDetailsBloc(sl())..add(OrderDetailsGetEvent(args.order.id)),
-      child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
-        appBar: AppBar(
-          title: const Text('Order Details'),
-        ),
-        body: BlocBuilder<OrderDetailsBloc, OrderDetailsState>(
-          builder: (context, state) {
-            if (state.orderDetailsState == RequestState.success) {
-              Address? address = state.orderDetails?.address;
-              List<OrderProduct>? products = state.orderDetails?.products;
-              return SingleChildScrollView(
+      create: (context) => OrderDetailsBloc(
+        sl(),
+        sl(),
+      )..add(OrderDetailsGetEvent(args.order.id)),
+      child: BlocBuilder<OrderDetailsBloc, OrderDetailsState>(
+        builder: (context, state) {
+          if (state.orderDetailsState == RequestState.success) {
+            Address? address = state.orderDetails?.address;
+            List<OrderProduct>? products = state.orderDetails?.products;
+            return Scaffold(
+              backgroundColor: Theme.of(context).colorScheme.background,
+              appBar: AppBar(
+                title: Text(S.of(context).orderDetailsTitle),
+                actions: [
+                  if (state.orderDetails?.status == 'New' ||
+                      state.orderDetails?.status == 'جديد')
+                    state.cancelOrderState == RequestState.loading
+                        ? const DefaultProgressIndicator(
+                            size: 40.0,
+                          )
+                        : TextButton(
+                            onPressed: () => context
+                                .read<OrderDetailsBloc>()
+                                .add(OrderDetailsCancelOrderEvent(
+                                    args.order.id)),
+                            child: Text(
+                              S.of(context).cancelOrder.toUpperCase(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontFamily: AppFonts.semiBoldFont),
+                            ),
+                          ),
+                ],
+              ),
+              body: SingleChildScrollView(
                 physics: DefaultScrollPhysics.defaultPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +80,7 @@ class OrderDetailsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Order #${args.order.id}',
+                              '${S.of(context).orderTitle} #${args.order.id}',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge
@@ -63,7 +90,7 @@ class OrderDetailsScreen extends StatelessWidget {
                               height: 10.0,
                             ),
                             Text(
-                              'Placed on: ${args.order.date}',
+                              '${S.of(context).placedOnTitle}: ${args.order.date}',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
@@ -73,7 +100,7 @@ class OrderDetailsScreen extends StatelessWidget {
                               height: 5.0,
                             ),
                             Text(
-                              'N of items: 5',
+                              '${S.of(context).nOfItemsTitle}: 5',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
@@ -100,7 +127,8 @@ class OrderDetailsScreen extends StatelessWidget {
                                       color: Colors.grey[600],
                                       borderRadius: BorderRadius.circular(5.0)),
                                   child: Text(
-                                    args.order.status.toUpperCase(),
+                                    state.orderDetails?.status.toUpperCase() ??
+                                        '',
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodySmall
@@ -119,10 +147,11 @@ class OrderDetailsScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.symmetric(
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 20.0, vertical: 10.0),
-                              child: OrderTitleWidget(text: 'Payment'),
+                              child: OrderTitleWidget(
+                                  text: S.of(context).paymentTitle),
                             ),
                             OrderCardWidget(
                               widget: Column(
@@ -188,7 +217,7 @@ class OrderDetailsScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Shipping Address',
+                                    S.of(context).shippingAddressTitle,
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge
@@ -238,11 +267,11 @@ class OrderDetailsScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.symmetric(
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 20.0, vertical: 10.0),
                               child: OrderTitleWidget(
-                                text: 'Items',
+                                text: S.of(context).itemsTitle,
                               ),
                             ),
                             OrderCardWidget(
@@ -329,9 +358,14 @@ class OrderDetailsScreen extends StatelessWidget {
                     )
                   ],
                 ),
-              );
-            }
-            return ListView.separated(
+              ),
+            );
+          }
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(S.of(context).orderDetailsTitle),
+            ),
+            body: ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 30,
@@ -344,9 +378,9 @@ class OrderDetailsScreen extends StatelessWidget {
                 height: 10.0,
                 width: double.infinity,
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

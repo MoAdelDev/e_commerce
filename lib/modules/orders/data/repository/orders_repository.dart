@@ -67,4 +67,15 @@ class OrdersRepository extends BaseOrdersRepository {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> cancelOrder({required int orderId}) async {
+    try {
+      final result =
+          await baseOrdersRemoteDataSource.cancelOrder(orderId: orderId);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.errorMessage));
+    }
+  }
 }

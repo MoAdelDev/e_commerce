@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your full name"),
         "fullNameTitle": MessageLookupByLibrary.simpleMessage("Full name"),
         "itemTotalTitle": MessageLookupByLibrary.simpleMessage("Item\'s total"),
+        "itemsTitle": MessageLookupByLibrary.simpleMessage("Items"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "loadingDataErrorTitle": MessageLookupByLibrary.simpleMessage(
             "Failed to load data, try again"),
@@ -79,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "modifyCartTitle": MessageLookupByLibrary.simpleMessage("Modify cart"),
         "myAddressesTitle":
             MessageLookupByLibrary.simpleMessage("My addresses"),
+        "nOfItemsTitle": MessageLookupByLibrary.simpleMessage("N of items"),
         "nameHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your name"),
         "nameTitle": MessageLookupByLibrary.simpleMessage("Name"),
@@ -96,17 +98,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingTitle":
             MessageLookupByLibrary.simpleMessage("Shop Products"),
         "onTitle": MessageLookupByLibrary.simpleMessage("On"),
+        "orderDetailsTitle":
+            MessageLookupByLibrary.simpleMessage("Order Details"),
         "orderSummaryTitle":
             MessageLookupByLibrary.simpleMessage("Order summary"),
+        "orderTitle": MessageLookupByLibrary.simpleMessage("Order"),
         "ordersTitle": MessageLookupByLibrary.simpleMessage("Orders"),
         "passwordHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "passwordTitle": MessageLookupByLibrary.simpleMessage("Password"),
         "paymentMethodTitle":
             MessageLookupByLibrary.simpleMessage("Payment Method"),
+        "paymentTitle": MessageLookupByLibrary.simpleMessage("Payment"),
         "phoneHintTitle":
             MessageLookupByLibrary.simpleMessage("Enter your phone"),
         "phoneTitle": MessageLookupByLibrary.simpleMessage("Phone"),
+        "placedOnTitle": MessageLookupByLibrary.simpleMessage("Placed On"),
         "productsTitle": MessageLookupByLibrary.simpleMessage("Products"),
         "quantityTitle": MessageLookupByLibrary.simpleMessage("Quantity"),
         "regionHintTitle":
@@ -122,6 +129,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "removeTitle": MessageLookupByLibrary.simpleMessage("Remove"),
         "searchHereTitle":
             MessageLookupByLibrary.simpleMessage("Search here ..."),
+        "shippingAddressTitle":
+            MessageLookupByLibrary.simpleMessage("Shipping Address"),
         "signInTitle": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUpTitle": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "totalTitle": MessageLookupByLibrary.simpleMessage("Total"),

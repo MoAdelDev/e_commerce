@@ -31,6 +31,7 @@ import 'package:e_commerce_app/modules/orders/data/datasource/orders_remote_data
 import 'package:e_commerce_app/modules/orders/data/repository/orders_repository.dart';
 import 'package:e_commerce_app/modules/orders/domain/repository/base_orders_repository.dart';
 import 'package:e_commerce_app/modules/orders/domain/usecases/add_order_usecase.dart';
+import 'package:e_commerce_app/modules/orders/domain/usecases/cancel_order_usecase.dart';
 import 'package:e_commerce_app/modules/orders/domain/usecases/get_addresses_in_orders_usecase.dart';
 import 'package:e_commerce_app/modules/orders/domain/usecases/get_order_details_usecase.dart';
 import 'package:e_commerce_app/modules/orders/domain/usecases/get_orders_usecase.dart';
@@ -152,7 +153,10 @@ class ServiceLocator {
 
     sl.registerLazySingleton<GetOrdersUseCase>(() => GetOrdersUseCase(sl()));
 
-    sl.registerLazySingleton<GetOrderDetailsUseCase>(() => GetOrderDetailsUseCase(sl()));
+    sl.registerLazySingleton<GetOrderDetailsUseCase>(
+        () => GetOrderDetailsUseCase(sl()));
 
+    sl.registerLazySingleton<CancelOrderUseCase>(
+        () => CancelOrderUseCase(sl()));
   }
 }

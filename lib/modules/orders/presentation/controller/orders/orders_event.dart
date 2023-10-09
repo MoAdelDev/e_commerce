@@ -10,3 +10,12 @@ class OrdersGetEvent extends BaseOrdersEvent {
   @override
   List<Object> get props => [];
 }
+
+class OrdersCancelOrderEvent extends BaseOrdersEvent {
+  final int orderId;
+
+  const OrdersCancelOrderEvent(this.orderId);
+
+  @override
+  List<Object> get props => [orderId];
+}

@@ -16,5 +16,8 @@ abstract class BaseOrdersRepository {
 
   Future<Either<Failure, OrderDetails>> getOrderDetails({required int orderId});
 
+  Future<Either<Failure, String>> cancelOrder({required int orderId});
+
+
 
 }
