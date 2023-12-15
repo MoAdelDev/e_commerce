@@ -10,8 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
-
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -47,7 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (currentIndex == 0)
                   IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, RouteConst.productsSearchScreen);
+                      Navigator.pushNamed(
+                          context, RouteConst.productsSearchScreen);
                     },
                     icon: const Icon(
                       Icons.search,

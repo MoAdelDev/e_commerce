@@ -11,12 +11,11 @@ class DefaultButton extends StatelessWidget {
   final TextStyle? textStyle;
 
   const DefaultButton(
-      {Key? key,
+      {super.key,
       required this.onPressed,
       required this.text,
       this.icon,
-      this.textStyle})
-      : super(key: key);
+      this.textStyle});
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class DefaultShimmer extends StatelessWidget {
-  const DefaultShimmer({Key? key}) : super(key: key);
+  const DefaultShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

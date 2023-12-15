@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +57,10 @@ class SettingsScreen extends StatelessWidget {
                                   'https://scontent.fcai1-2.fna.fbcdn.net/v/t1.6435-9/118615913_2715686415310873_3020939721327476067_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=7a1959&_nc_eui2=AeFDbb7pjRG5Bgl58owZp2-qUkx9oExcvQ1STH2gTFy9DYSH5UsQf5LvW0LtjzST8hQUgJ3-40iNBrehstJWc1IY&_nc_ohc=c2mp-ONvNLAAX-Ur9ya&_nc_ht=scontent.fcai1-2.fna&oh=00_AfD5LNDaFu8YyC7ntM509osZ9FcfyzuWJ4MR3y7CQcD6sw&oe=654B725C',
                               width: 100,
                               height: 100,
-                              errorWidget: (context, url, error) => const DefaultShimmer(),
-                              placeholder: (context, url) => const DefaultShimmer(),
+                              errorWidget: (context, url, error) =>
+                                  const DefaultShimmer(),
+                              placeholder: (context, url) =>
+                                  const DefaultShimmer(),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -132,7 +134,6 @@ class SettingsScreen extends StatelessWidget {
                           text: S.of(context).nightModeTitle,
                           isNightMode: true,
                         ),
-
                         SettingsItemWidget(
                             onPressed: () => Navigator.pushNamed(
                                 context, RouteConst.contactsScreen),

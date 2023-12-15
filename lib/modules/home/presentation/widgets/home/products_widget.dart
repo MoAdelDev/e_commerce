@@ -12,7 +12,7 @@ import '../../controller/home/home_event.dart';
 import '../../controller/home/home_state.dart';
 
 class ProductsWidget extends StatelessWidget {
-  const ProductsWidget({Key? key}) : super(key: key);
+  const ProductsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,8 @@ class ProductsWidget extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Stack(
                               alignment: AlignmentDirectional.bottomStart,
                               children: [
@@ -80,8 +81,7 @@ class ProductsWidget extends StatelessWidget {
                                     color:
                                         Theme.of(context).colorScheme.primary,
                                     padding: const EdgeInsets.symmetric(
-                                            horizontal: 5.0, vertical: 3.0)
-                                    ,
+                                        horizontal: 5.0, vertical: 3.0),
                                     child: Text(
                                       '- ${state.products[index].discount} %',
                                       style: Theme.of(context)
@@ -120,7 +120,6 @@ class ProductsWidget extends StatelessWidget {
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodySmall,
-
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                         const SizedBox(

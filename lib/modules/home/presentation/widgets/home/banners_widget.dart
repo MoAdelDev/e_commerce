@@ -9,7 +9,7 @@ import '../../../../../core/style/components/default_shimmer.dart';
 import '../../controller/home/home_state.dart';
 
 class BannersWidget extends StatelessWidget {
-  const BannersWidget({Key? key}) : super(key: key);
+  const BannersWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +28,14 @@ class BannersWidget extends StatelessWidget {
               items: state.banners
                   .map(
                     (e) => CachedNetworkImage(
-                  imageUrl: e.image,
-                  height: bannerHeight,
-                  fit: BoxFit.fill,
-                  placeholder: (context, url) => const DefaultShimmer(),
-                  errorWidget: (context, url, error) =>
-                  const DefaultShimmer(),
-                ),
-              )
+                      imageUrl: e.image,
+                      height: bannerHeight,
+                      fit: BoxFit.fill,
+                      placeholder: (context, url) => const DefaultShimmer(),
+                      errorWidget: (context, url, error) =>
+                          const DefaultShimmer(),
+                    ),
+                  )
                   .toList(),
               options: CarouselOptions(
                 height: bannerHeight,

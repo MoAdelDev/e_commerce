@@ -4,7 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class DefaultProgressIndicator extends StatelessWidget {
   final double size;
 
-  const DefaultProgressIndicator({Key? key, this.size = 30.0}) : super(key: key);
+  const DefaultProgressIndicator({super.key, this.size = 30.0});
 
   @override
   Widget build(BuildContext context) {

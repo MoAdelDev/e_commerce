@@ -23,11 +23,10 @@ class RegisterScreen extends StatelessWidget {
   final _phoneController = TextEditingController();
   final _nameController = TextEditingController();
 
-  RegisterScreen({Key? key}) : super(key: key);
+  RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider<RegisterBloc>(
       create: (context) => RegisterBloc(sl()),
       child: BlocBuilder<RegisterBloc, RegisterState>(
@@ -63,14 +62,19 @@ class RegisterScreen extends StatelessWidget {
                           milliseconds: 2000,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: MyApp.isDark ? AppColorLight.primaryColor.shade700 : AppColorLight.primaryColor.shade100,
+                              color: MyApp.isDark
+                                  ? AppColorLight.primaryColor.shade700
+                                  : AppColorLight.primaryColor.shade100,
                               borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(25),
                                 topRight: Radius.circular(25),
                               ),
-                              boxShadow:  [
+                              boxShadow: [
                                 BoxShadow(
-                                  color: Theme.of(context).colorScheme.background.withAlpha(50),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .background
+                                      .withAlpha(50),
                                   blurRadius: 25,
                                   spreadRadius: 0.5,
                                   offset: const Offset(0.6, 0.6),
@@ -78,7 +82,7 @@ class RegisterScreen extends StatelessWidget {
                               ],
                             ),
                             child: SingleChildScrollView(
-                              physics:  DefaultScrollPhysics.defaultPhysics(),
+                              physics: DefaultScrollPhysics.defaultPhysics(),
                               child: Padding(
                                 padding: const EdgeInsets.all(20.0),
                                 child: Form(
@@ -193,7 +197,9 @@ class RegisterScreen extends StatelessWidget {
                                             top: 8.0,
                                           ),
                                           child: Center(
-                                            child: DefaultProgressIndicator(size: 35,),
+                                            child: DefaultProgressIndicator(
+                                              size: 35,
+                                            ),
                                           ),
                                         ),
                                       ),

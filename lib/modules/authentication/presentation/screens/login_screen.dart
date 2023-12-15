@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,14 +63,19 @@ class LoginScreen extends StatelessWidget {
                           milliseconds: 2000,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: MyApp.isDark ? AppColorLight.primaryColor.shade700 : AppColorLight.primaryColor.shade100,
+                              color: MyApp.isDark
+                                  ? AppColorLight.primaryColor.shade700
+                                  : AppColorLight.primaryColor.shade100,
                               borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(25),
                                 topRight: Radius.circular(25),
                               ),
-                              boxShadow:  [
+                              boxShadow: [
                                 BoxShadow(
-                                  color: Theme.of(context).colorScheme.background.withAlpha(50),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .background
+                                      .withAlpha(50),
                                   blurRadius: 25,
                                   spreadRadius: 0.5,
                                   offset: const Offset(0.6, 0.6),
@@ -78,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                               ],
                             ),
                             child: SingleChildScrollView(
-                              physics:  DefaultScrollPhysics.defaultPhysics(),
+                              physics: DefaultScrollPhysics.defaultPhysics(),
                               child: Padding(
                                 padding: const EdgeInsets.all(20.0),
                                 child: Form(
@@ -98,7 +103,8 @@ class LoginScreen extends StatelessWidget {
                                         controller: _emailController,
                                         hintText: S.of(context).emailHintTitle,
                                         prefixIcon: Icons.email,
-                                        keyboardType: TextInputType.emailAddress,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
                                         errorMsg: S.of(context).emailHintTitle,
                                         textInputAction: TextInputAction.next,
                                       ),
@@ -109,7 +115,8 @@ class LoginScreen extends StatelessWidget {
                                         controller: _passwordController,
                                         keyboardType:
                                             TextInputType.visiblePassword,
-                                        hintText: S.of(context).passwordHintTitle,
+                                        hintText:
+                                            S.of(context).passwordHintTitle,
                                         prefixIcon: Icons.lock,
                                         obscureText: state.isPasswordHidden,
                                         suffixIcon: state.isPasswordHidden
@@ -124,7 +131,8 @@ class LoginScreen extends StatelessWidget {
                                           FocusManager.instance.primaryFocus
                                               ?.unfocus();
                                         },
-                                        errorMsg: S.of(context).passwordHintTitle,
+                                        errorMsg:
+                                            S.of(context).passwordHintTitle,
                                         textInputAction: TextInputAction.done,
                                       ),
                                       const SizedBox(
@@ -141,8 +149,12 @@ class LoginScreen extends StatelessWidget {
                                                 .textTheme
                                                 .bodyMedium
                                                 ?.copyWith(
-                                                    color: MyApp.isDark? Theme.of(context).colorScheme.onPrimary: AppColorLight
-                                                        .primaryColor,
+                                                    color: MyApp.isDark
+                                                        ? Theme.of(context)
+                                                            .colorScheme
+                                                            .onPrimary
+                                                        : AppColorLight
+                                                            .primaryColor,
                                                     fontFamily:
                                                         AppFonts.boldFont),
                                           ),
@@ -165,9 +177,12 @@ class LoginScreen extends StatelessWidget {
                                                   // validate and user login
                                                   if (_formKey.currentState!
                                                       .validate()) {
-                                                    context.read<LoginBloc>().add(
+                                                    context
+                                                        .read<LoginBloc>()
+                                                        .add(
                                                           LoginEvent(
-                                                            _emailController.text,
+                                                            _emailController
+                                                                .text,
                                                             _passwordController
                                                                 .text,
                                                             S
@@ -177,17 +192,24 @@ class LoginScreen extends StatelessWidget {
                                                         );
                                                   }
                                                 },
-                                                text: S.of(context).signInTitle),
+                                                text:
+                                                    S.of(context).signInTitle),
                                             const SizedBox(
                                               height: 5.0,
                                             ),
                                             Row(
                                               children: [
                                                 Text(
-                                                  S.of(context).registerQuestion,
+                                                  S
+                                                      .of(context)
+                                                      .registerQuestion,
                                                   style: TextStyle(
                                                     fontSize: 16.0,
-                                                    color: MyApp.isDark ? Theme.of(context).colorScheme.onPrimary: Colors.grey[700],
+                                                    color: MyApp.isDark
+                                                        ? Theme.of(context)
+                                                            .colorScheme
+                                                            .onPrimary
+                                                        : Colors.grey[700],
                                                   ),
                                                 ),
                                                 TextButton(
@@ -199,8 +221,13 @@ class LoginScreen extends StatelessWidget {
                                                         ?.copyWith(
                                                           fontFamily:
                                                               AppFonts.boldFont,
-                                                          color: MyApp.isDark ? Theme.of(context).colorScheme.error: AppColorLight
-                                                              .primaryColor,
+                                                          color: MyApp.isDark
+                                                              ? Theme.of(
+                                                                      context)
+                                                                  .colorScheme
+                                                                  .error
+                                                              : AppColorLight
+                                                                  .primaryColor,
                                                         ),
                                                   ),
                                                   onPressed: () {
@@ -219,7 +246,9 @@ class LoginScreen extends StatelessWidget {
                                             top: 8.0,
                                           ),
                                           child: Center(
-                                            child: DefaultProgressIndicator(size: 35.0,),
+                                            child: DefaultProgressIndicator(
+                                              size: 35.0,
+                                            ),
                                           ),
                                         ),
                                       ),

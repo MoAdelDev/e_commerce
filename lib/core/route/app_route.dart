@@ -35,7 +35,7 @@ class AppRoute {
         );
       case RouteConst.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => const HomeScreen(),
         );
       case RouteConst.productDetailsScreen:
         var args = settings.arguments as ScreenArgs;

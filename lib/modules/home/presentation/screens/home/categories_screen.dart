@@ -11,7 +11,7 @@ import '../../controller/home/home_bloc.dart';
 import '../../controller/home/home_state.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({Key? key}) : super(key: key);
+  const CategoriesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,9 @@ class CategoriesScreen extends StatelessWidget {
                                 .textTheme
                                 .titleSmall
                                 ?.copyWith(
-                                    color: Theme.of(context).colorScheme.onBackground),
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground),
                           ),
                         ),
                         Padding(

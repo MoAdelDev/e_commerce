@@ -14,7 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../generated/l10n.dart';
 
 class CartsScreen extends StatelessWidget {
-  const CartsScreen({Key? key}) : super(key: key);
+  const CartsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,8 @@ class CartsScreen extends StatelessWidget {
                         state.cart.totalPrice.toStringAsFixed(2).toString(),
                         state.cart.products,
                       );
-                      Navigator.pushNamed(context, RouteConst.orderConfirmationScreen,
+                      Navigator.pushNamed(
+                          context, RouteConst.orderConfirmationScreen,
                           arguments: args);
                     },
                     text:

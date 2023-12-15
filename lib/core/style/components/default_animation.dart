@@ -9,11 +9,11 @@ class DefaultAnimation extends StatelessWidget {
   final int milliseconds;
 
   const DefaultAnimation({
-    Key? key,
+    super.key,
     this.milliseconds = 2000,
     required this.child,
     required this.animationDirection,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

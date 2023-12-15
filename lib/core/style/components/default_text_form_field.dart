@@ -17,7 +17,7 @@ class DefaultTextFormField extends StatelessWidget {
   final TextInputAction textInputAction;
 
   const DefaultTextFormField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     required this.prefixIcon,
@@ -30,7 +30,7 @@ class DefaultTextFormField extends StatelessWidget {
     this.onChange,
     this.onSubmit,
     required this.textInputAction,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

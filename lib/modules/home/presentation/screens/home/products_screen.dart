@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 
 class ProductsScreen extends StatelessWidget {
-  const ProductsScreen({Key? key}) : super(key: key);
+  const ProductsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +26,12 @@ class ProductsScreen extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   color: Theme.of(context).colorScheme.primary,
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 10.0, vertical: 5.0),
                   child: Text(
                     S.of(context).productsTitle,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary),
                   ),
                 ),
                 const SizedBox(
