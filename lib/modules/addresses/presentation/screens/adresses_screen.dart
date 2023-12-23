@@ -54,9 +54,24 @@ class AddressesScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: DefaultButton(
-                          onPressed: () => Navigator.pushNamed(
-                              context, RouteConst.addOrUpdateAddressScreen),
-                          text: S.of(context).addNewAddress),
+                        onPressed: () {
+                          ScreenArgs screenArgs =
+                              ScreenArgs.toAddAndEditAddressScreen(
+                            0,
+                            '',
+                            '',
+                            '',
+                            '',
+                            '',
+                          );
+                          Navigator.pushNamed(
+                            context,
+                            RouteConst.addOrUpdateAddressScreen,
+                            arguments: screenArgs,
+                          );
+                        },
+                        text: S.of(context).addNewAddress,
+                      ),
                     ),
                   ],
                 ),
