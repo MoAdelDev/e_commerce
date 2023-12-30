@@ -1,4 +1,5 @@
 class RouteConst {
+  static const String onBoardingScreen = '/onboarding';
   static const String loginScreen = '/login';
   static const String registerScreen = '/register';
   static const String homeScreen = '/home';

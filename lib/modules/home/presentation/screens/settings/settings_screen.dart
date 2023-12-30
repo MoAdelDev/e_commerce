@@ -13,6 +13,7 @@ import 'package:e_commerce_app/modules/home/presentation/controller/home/home_st
 import 'package:e_commerce_app/modules/home/presentation/widgets/settings_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -63,7 +64,7 @@ class SettingsScreen extends StatelessWidget {
                                 ),
                               ),
                               placeholder: (context, url) => const CircularProgressIndicator(),
-                              errorWidget: (context, url, error) => const Icon(Icons.error),
+                              errorWidget: (context, url, error) => SvgPicture.asset('assets/images/person.svg'),
                             ),
                           ),
                         ),

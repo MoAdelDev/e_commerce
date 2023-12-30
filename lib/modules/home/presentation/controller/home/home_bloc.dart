@@ -154,7 +154,7 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
   FutureOr<void> _changeFavorite(
       HomeChangeFavoriteEvent event, Emitter<HomeState> emit) async {
     MyApp.favoriteMap[event.productId] = !MyApp.favoriteMap[event.productId]!;
-    emit(state.copyWith(favoritesState: RequestState.loading));
+    emit(state.copyWith(favoriteState: RequestState.loading));
     final result = await homeChangeFavoriteUseCase(productId: event.productId);
     result.fold((error) {
       MyApp.favoriteMap[event.productId] = !MyApp.favoriteMap[event.productId]!;
@@ -164,7 +164,7 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
           favoriteError: error.message,
         ),
       );
-    }, (favoriteMessage) {
+    },(favoriteMessage) {
       emit(
         state.copyWith(
           favoriteMessage: favoriteMessage,
