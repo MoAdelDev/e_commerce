@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
@@ -14,8 +15,6 @@ import 'package:e_commerce_app/modules/home/presentation/controller/home/home_ev
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../main.dart';
 import '../../../domain/usecases/change_favorite_usecase.dart';
 import '../../../domain/usecases/get_carts_usecase.dart';
 import '../../../domain/usecases/get_favorites_usecase.dart';
@@ -80,9 +79,9 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
         favoritesData.addAll(
           {product.id: product.inFavorites},
         );
-        MyApp.productCartQuantity.addAll({product.id: 0});
+        AppData.productCartQuantity.addAll({product.id: 0});
       }
-      MyApp.favoriteMap = favoritesData;
+      AppData.favoriteMap = favoritesData;
       add(const HomeGetCartsEvent());
       emit(
         state.copyWith(
@@ -103,7 +102,7 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
                 userError: error.message,
               ),
             ), (userData) {
-      MyApp.user = userData;
+      AppData.user = userData;
       emit(
         state.copyWith(
           user: userData,
@@ -153,11 +152,11 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
 
   FutureOr<void> _changeFavorite(
       HomeChangeFavoriteEvent event, Emitter<HomeState> emit) async {
-    MyApp.favoriteMap[event.productId] = !MyApp.favoriteMap[event.productId]!;
+    AppData.favoriteMap[event.productId] = !AppData.favoriteMap[event.productId]!;
     emit(state.copyWith(favoriteState: RequestState.loading));
     final result = await homeChangeFavoriteUseCase(productId: event.productId);
     result.fold((error) {
-      MyApp.favoriteMap[event.productId] = !MyApp.favoriteMap[event.productId]!;
+      AppData.favoriteMap[event.productId] = !AppData.favoriteMap[event.productId]!;
       emit(
         state.copyWith(
           favoriteState: RequestState.error,
@@ -190,7 +189,7 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
         (e) => emit(state.copyWith(
             cartsState: RequestState.error, cartsError: e.message)), (carts) {
       for (var cart in carts.products) {
-        MyApp.productCartQuantity.addAll({cart.productId: cart.quantity});
+        AppData.productCartQuantity.addAll({cart.productId: cart.quantity});
       }
       emit(state.copyWith(
           carts: carts.products, cartsState: RequestState.success));
@@ -203,7 +202,7 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
     result.fold((error) {
       showToast(msg: error.message, requestState: RequestState.error);
     }, (_) {
-      MyApp.language = event.language;
+      AppData.language = event.language;
       add(HomeGetBannersEvent());
       add(HomeGetProductsEvent());
       add(HomeGetCategoriesEvent());
@@ -218,7 +217,7 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
     result.fold((error) {
       showToast(msg: error.message, requestState: RequestState.error);
     }, (_) {
-      MyApp.isDark = event.isDark;
+      AppData.isDark = event.isDark;
       emit(state.copyWith(isDark: event.isDark));
     });
   }

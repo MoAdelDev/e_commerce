@@ -9,6 +9,7 @@ import 'package:e_commerce_app/modules/addresses/presentation/controller/address
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/data/local/data.dart';
 import '../../../../main.dart';
 
 class AddressWidget extends StatelessWidget {
@@ -24,7 +25,7 @@ class AddressWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           20.0,
         ),
-        color: MyApp.isDark ? Colors.grey[800] : Colors.grey[200],
+        color: AppData.isDark ? Colors.grey[800] : Colors.grey[200],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +61,7 @@ class AddressWidget extends StatelessWidget {
           Row(
             children: [
               Text(
-                MyApp.user?.phone ?? '',
+                AppData.user?.phone ?? '',
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const Spacer(),

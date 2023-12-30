@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
@@ -66,10 +66,10 @@ class ProductDetailsBloc
     }, (cartMessage) {
       if (cartMessage == 'Added Successfully' ||
           cartMessage == 'تمت الإضافة بنجاح') {
-        MyApp.productCartQuantity[event.productId] = 1;
+        AppData.productCartQuantity[event.productId] = 1;
       } else if (cartMessage == 'تم الحذف بنجاح' ||
           cartMessage == 'Deleted Successfully') {
-        MyApp.productCartQuantity[event.productId] = 0;
+        AppData.productCartQuantity[event.productId] = 0;
       }
       emit(state.copyWith(addProductToCartState: RequestState.success));
       showToast(msg: cartMessage, requestState: RequestState.success);

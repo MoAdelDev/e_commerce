@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/cart.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/delete_product_from_carts_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/get_carts_usecase.dart';
@@ -68,7 +68,7 @@ class CartBloc extends Bloc<CartBaseEvent, CartState> {
       showToast(msg: e.message, requestState: RequestState.error);
     }, (cartMessage) {
       add(CartGetProductsCartEvent());
-      MyApp.productCartQuantity[event.productId] = event.quantity;
+      AppData.productCartQuantity[event.productId] = event.quantity;
       emit(state.copyWith(
         updateCartState: cartMessage,
         updateState: RequestState.success,
@@ -89,7 +89,7 @@ class CartBloc extends Bloc<CartBaseEvent, CartState> {
       showToast(msg: e.message, requestState: RequestState.error);
     }, (deleteMEssage) {
       add(CartGetProductsCartEvent());
-      MyApp.productCartQuantity[event.productId] = 0;
+      AppData.productCartQuantity[event.productId] = 0;
       emit(state.copyWith(
           deleteState: RequestState.error, deleteCartState: deleteMEssage));
       showToast(msg: deleteMEssage, requestState: RequestState.success);

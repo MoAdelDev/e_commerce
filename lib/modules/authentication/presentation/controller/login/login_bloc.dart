@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
 import 'package:e_commerce_app/main.dart';
@@ -34,8 +35,8 @@ class LoginBloc extends Bloc<LoginBaseEvent, LoginState> {
             loginState: RequestState.error, loginError: error.message),
       );
     }, (userData) {
-      MyApp.user = userData;
-      CacheHelper.saveString(key: 'token', value: MyApp.user?.token ?? '');
+      AppData.user = userData;
+      CacheHelper.saveString(key: 'token', value: AppData.user?.token ?? '');
       showToast(
         msg: event.loginSuccess,
         requestState: RequestState.success,

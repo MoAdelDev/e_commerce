@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
 import 'package:e_commerce_app/main.dart';
@@ -17,7 +18,7 @@ class DioHelper {
     try {
       dio.options = BaseOptions(
         headers: {
-          'lang': MyApp.language == Language.arabic.name ? 'ar' : 'en',
+          'lang': AppData.language == Language.arabic.name ? 'ar' : 'en',
           'Authorization': token,
           'Content-Type': 'application/json',
         },
@@ -52,7 +53,7 @@ class DioHelper {
     try {
       dio.options = BaseOptions(
         headers: {
-          'lang': MyApp.language == Language.arabic.name ? 'ar' : 'en',
+          'lang': AppData.language == Language.arabic.name ? 'ar' : 'en',
           'Authorization': token,
           'Content-Type': 'application/json',
         },
@@ -87,7 +88,7 @@ class DioHelper {
     try {
       dio.options = BaseOptions(
         headers: {
-          'lang': MyApp.language == Language.arabic.name ? 'ar' : 'en',
+          'lang': AppData.language == Language.arabic.name ? 'ar' : 'en',
           'Authorization': token,
           'Content-Type': 'application/json',
         },
@@ -122,7 +123,7 @@ class DioHelper {
     try {
       dio.options = BaseOptions(
         headers: {
-          'lang': MyApp.language == Language.arabic.name? 'ar' : 'en',
+          'lang': AppData.language == Language.arabic.name? 'ar' : 'en',
           'Authorization': token,
           'Content-Type': 'application/json',
         },

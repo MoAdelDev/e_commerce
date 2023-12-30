@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/main.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/category_details/category_details_bloc.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class CategoryAddProductToCardWidget extends StatelessWidget {
                 .add(CategoryDetailsChangeCartEvent(product.id));
           },
           icon: Icon(
-            MyApp.productCartQuantity[product.id] != 0
+            AppData.productCartQuantity[product.id] != 0
                 ? Icons.shopping_cart
                 : Icons.shopping_cart_outlined,
             color: Theme.of(context).colorScheme.primary,

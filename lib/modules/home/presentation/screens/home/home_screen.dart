@@ -1,8 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_bloc.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_event.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_state.dart';
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Theme.of(context).colorScheme.background,
             appBar: AppBar(
               title: Text(
-                MyApp.language == Language.arabic.name
+                AppData.language == Language.arabic.name
                     ? state.arabicTitles[currentIndex]
                     : state.englishTitles[currentIndex],
               ),

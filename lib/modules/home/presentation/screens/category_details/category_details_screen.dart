@@ -1,9 +1,9 @@
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/services/service_locator.dart';
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/category_details/category_details_bloc.dart';
 import 'package:e_commerce_app/modules/home/presentation/widgets/category_details/category_product_widget.dart';
@@ -32,8 +32,8 @@ class CategoryDetailsScreen extends StatelessWidget {
           child: BlocBuilder<CategoryDetailsBloc, CategoryDetailsState>(
             builder: (context, state) {
               if (state.productsState != RequestState.success &&
-                  MyApp.favoriteMap.isEmpty &&
-                  MyApp.productCartQuantity.isEmpty) {
+                  AppData.favoriteMap.isEmpty &&
+                  AppData.productCartQuantity.isEmpty) {
                 return const Center(
                   child: DefaultProgressIndicator(
                     size: 70.0,

@@ -74,7 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "itemsTitle": MessageLookupByLibrary.simpleMessage("Items"),
         "languageTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "loadingDataErrorTitle": MessageLookupByLibrary.simpleMessage(
-            "Failed to load data, try again"),
+            "Failed to load data.dart, try again"),
         "loginSuccessMsg": MessageLookupByLibrary.simpleMessage(
             "you have been logged in successfully"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("LOGIN"),

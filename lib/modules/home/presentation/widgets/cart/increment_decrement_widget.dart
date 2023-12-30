@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/cart.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/cart/cart_bloc.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/style/colors.dart';
 import '../../../../../core/style/components/default_progress_indicator.dart';
 import '../../../../../core/utils/enums.dart';
-import '../../../../../main.dart';
 
 class IncrementAndDecrementWidget extends StatelessWidget {
   final CartProduct product;
@@ -24,7 +24,7 @@ class IncrementAndDecrementWidget extends StatelessWidget {
               height: 30.0,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,
-                borderRadius: MyApp.language == Language.arabic.name
+                borderRadius: AppData.language == Language.arabic.name
                     ? const BorderRadius.only(
                         topRight: Radius.circular(10.0),
                         bottomRight: Radius.circular(10.0),
@@ -84,7 +84,7 @@ class IncrementAndDecrementWidget extends StatelessWidget {
               height: 30.0,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,
-                borderRadius: MyApp.language == Language.arabic.name
+                borderRadius: AppData.language == Language.arabic.name
                     ? const BorderRadius.only(
                         topLeft: Radius.circular(10.0),
                         bottomLeft: Radius.circular(10.0),

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/style/components/default_material_button.dart';
@@ -6,7 +7,6 @@ import 'package:e_commerce_app/core/style/components/default_progress_indicator.
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
 import 'package:e_commerce_app/core/style/fonts.dart';
 import 'package:e_commerce_app/generated/l10n.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_bloc.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_event.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_state.dart';
@@ -22,7 +22,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        if (MyApp.user == null) {
+        if (AppData.user == null) {
           return Container(
             color: Theme.of(context).colorScheme.background,
             width: double.infinity,
@@ -53,7 +53,7 @@ class SettingsScreen extends StatelessWidget {
                             clipBehavior: Clip.antiAlias,
                             borderRadius: BorderRadius.circular(40.0),
                             child: CachedNetworkImage(
-                              imageUrl: MyApp.user?.image??'',
+                              imageUrl: AppData.user?.image??'',
                               imageBuilder: (context, imageProvider) => Container(
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
@@ -75,7 +75,7 @@ class SettingsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              MyApp.user?.name ?? '',
+                              AppData.user?.name ?? '',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
@@ -85,7 +85,7 @@ class SettingsScreen extends StatelessWidget {
                               height: 3.0,
                             ),
                             Text(
-                              MyApp.user?.email ?? '',
+                              AppData.user?.email ?? '',
                               style: Theme.of(context).textTheme.bodySmall,
                             )
                           ],

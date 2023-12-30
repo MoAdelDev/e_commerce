@@ -1,6 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -62,7 +62,7 @@ class RegisterScreen extends StatelessWidget {
                           milliseconds: 2000,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: MyApp.isDark
+                              color: AppData.isDark
                                   ? AppColorLight.primaryColor.shade700
                                   : AppColorLight.primaryColor.shade100,
                               borderRadius: const BorderRadius.only(

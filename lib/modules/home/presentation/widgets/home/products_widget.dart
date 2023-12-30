@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/style/components/default_animation.dart';
@@ -154,7 +154,7 @@ class ProductsWidget extends StatelessWidget {
                                           );
                                     },
                                     icon: Icon(
-                                      MyApp.favoriteMap[
+                                      AppData.favoriteMap[
                                               state.products[index].id]!
                                           ? Icons.favorite
                                           : Icons.favorite_border,

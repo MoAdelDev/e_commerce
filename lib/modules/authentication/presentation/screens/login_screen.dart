@@ -1,11 +1,11 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
 import 'package:e_commerce_app/core/style/components/default_animation.dart';
 import 'package:e_commerce_app/core/style/fonts.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -63,7 +63,7 @@ class LoginScreen extends StatelessWidget {
                           milliseconds: 2000,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: MyApp.isDark
+                              color: AppData.isDark
                                   ? AppColorLight.primaryColor.shade700
                                   : AppColorLight.primaryColor.shade100,
                               borderRadius: const BorderRadius.only(
@@ -180,7 +180,7 @@ class LoginScreen extends StatelessWidget {
                                                       .registerQuestion,
                                                   style: TextStyle(
                                                     fontSize: 16.0,
-                                                    color: MyApp.isDark
+                                                    color: AppData.isDark
                                                         ? Theme.of(context)
                                                             .colorScheme
                                                             .onPrimary
@@ -196,7 +196,7 @@ class LoginScreen extends StatelessWidget {
                                                         ?.copyWith(
                                                           fontFamily:
                                                               AppFonts.boldFont,
-                                                          color: MyApp.isDark
+                                                          color: AppData.isDark
                                                               ? Theme.of(
                                                                       context)
                                                                   .colorScheme

@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/route/route_string.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/addresses/domain/entities/address.dart';
 import 'package:e_commerce_app/modules/orders/domain/usecases/get_addresses_in_orders_usecase.dart';
 import 'package:e_commerce_app/modules/orders/domain/usecases/validate_promo_codes_usecase.dart';
@@ -96,8 +96,8 @@ class OrderConfirmationBloc extends Bloc<BaseOrderConfirmationEvent, OrderConfir
         ),
       );
     }, (message) {
-      MyApp.productCartQuantity.forEach((key, value) {
-        MyApp.productCartQuantity[key] = 0;
+      AppData.productCartQuantity.forEach((key, value) {
+        AppData.productCartQuantity[key] = 0;
       });
       showToast(msg: message, requestState: RequestState.success);
       emit(

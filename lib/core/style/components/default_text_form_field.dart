@@ -1,5 +1,5 @@
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/style/colors.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 
 class DefaultTextFormField extends StatelessWidget {
@@ -48,26 +48,26 @@ class DefaultTextFormField extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
               borderSide: BorderSide.none),
-          fillColor: MyApp.isDark
+          fillColor: AppData.isDark
               ? AppColorDark.primaryColor.shade500
               : AppColorLight.primaryColor.shade100,
           filled: true,
           hintText: hintText,
           hintStyle: TextStyle(
               fontSize: 14.0,
-              color: MyApp.isDark
+              color: AppData.isDark
                   ? Theme.of(context).colorScheme.onPrimary
                   : Colors.grey[700]),
           prefixIcon: Icon(
             prefixIcon,
-            color: MyApp.isDark
+            color: AppData.isDark
                 ? Theme.of(context).colorScheme.onPrimary
                 : Colors.grey[700],
           ),
           suffixIcon: IconButton(
             icon: Icon(suffixIcon),
             onPressed: onSuffixIcon,
-            color: MyApp.isDark
+            color: AppData.isDark
                 ? Theme.of(context).colorScheme.onPrimary
                 : Colors.grey[700],
           ),

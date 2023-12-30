@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
+
+import '../../data/local/data.dart';
 
 class DefaultAnimatedText extends StatelessWidget {
   final String text;
@@ -14,7 +15,7 @@ class DefaultAnimatedText extends StatelessWidget {
         ColorizeAnimatedText(
           text,
           textStyle: textStyle!,
-          colors: MyApp.isDark ?  [
+          colors: AppData.isDark ?  [
           Theme.of(context).colorScheme.primary,
             Theme.of(context).colorScheme.primaryContainer,
             Theme.of(context).colorScheme.secondary,

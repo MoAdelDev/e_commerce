@@ -1,8 +1,8 @@
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/style/fonts.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/generated/l10n.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:flutter/material.dart';
 
 class SettingsItemWidget extends StatelessWidget {
@@ -59,7 +59,7 @@ class SettingsItemWidget extends StatelessWidget {
             const Spacer(),
             if (isLanguage ?? false)
               Text(
-                MyApp.language == Language.arabic.name
+                AppData.language == Language.arabic.name
                     ? S.of(context).arabicTitleTitle
                     : S.of(context).englishTitle,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -69,7 +69,7 @@ class SettingsItemWidget extends StatelessWidget {
               ),
             if (isNightMode ?? false)
               Text(
-                MyApp.isDark ? S.of(context).onTitle : S.of(context).offTitle,
+                AppData.isDark ? S.of(context).onTitle : S.of(context).offTitle,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Colors.grey,
                       fontFamily: AppFonts.boldFont,

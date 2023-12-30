@@ -1,5 +1,5 @@
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/generated/l10n.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_bloc.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_event.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_state.dart';
@@ -15,7 +15,7 @@ class NightModeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        int selectedNightMode = MyApp.isDark ? 1 : 2;
+        int selectedNightMode = AppData.isDark ? 1 : 2;
         return Scaffold(
           appBar: AppBar(
             title: Text(S.of(context).nightModeTitle),

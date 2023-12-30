@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/add_product_to_cart_usecase.dart';
 import 'package:e_commerce_app/modules/home/domain/usecases/change_favorite_usecase.dart';
@@ -60,7 +60,7 @@ class CategoryDetailsBloc
         ),
       );
     }, (favoriteMessage) {
-      MyApp.favoriteMap[event.productId] = !MyApp.favoriteMap[event.productId]!;
+      AppData.favoriteMap[event.productId] = !AppData.favoriteMap[event.productId]!;
       emit(state.copyWith(
           favoriteMessage: favoriteMessage,
           favoriteState: RequestState.success));
@@ -77,10 +77,10 @@ class CategoryDetailsBloc
       emit(state.copyWith(
           cartState: RequestState.error, cartError: error.message));
     }, (cartMessage) {
-      if (MyApp.productCartQuantity[event.productId] != 0) {
-        MyApp.productCartQuantity[event.productId] = 0;
+      if (AppData.productCartQuantity[event.productId] != 0) {
+        AppData.productCartQuantity[event.productId] = 0;
       } else {
-        MyApp.productCartQuantity[event.productId] = 1;
+        AppData.productCartQuantity[event.productId] = 1;
       }
 
       emit(state.copyWith(

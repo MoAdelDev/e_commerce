@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/route/screen_args.dart';
 import 'package:e_commerce_app/core/style/colors.dart';
 import 'package:e_commerce_app/core/style/components/default_animated_text.dart';
@@ -238,7 +239,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   const SizedBox(
                     height: 10.0,
                   ),
-                  if (MyApp.productCartQuantity[state.product?.id] == 0)
+                  if (AppData.productCartQuantity[state.product?.id] == 0)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: ConditionalBuilder(
@@ -254,7 +255,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         fallback: (context) => const DefaultProgressIndicator(),
                       ),
                     ),
-                  if (MyApp.productCartQuantity[state.product?.id] != 0)
+                  if (AppData.productCartQuantity[state.product?.id] != 0)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: ConditionalBuilder(

@@ -201,10 +201,10 @@ class S {
     );
   }
 
-  /// `Failed to load data, try again`
+  /// `Failed to load data.dart, try again`
   String get loadingDataErrorTitle {
     return Intl.message(
-      'Failed to load data, try again',
+      'Failed to load data.dart, try again',
       name: 'loadingDataErrorTitle',
       desc: '',
       args: [],

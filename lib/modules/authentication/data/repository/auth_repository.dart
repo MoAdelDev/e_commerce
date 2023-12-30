@@ -17,6 +17,7 @@ class AuthRepository extends BaseAuthenticationRepository {
   Future<Either<Failure, UserModel>> loginUser(Login login) async {
     try {
       final result = await baseRemoteDataSource.loginUser(login);
+
       return Right(result);
     } on ServerException catch (failure) {
       return Left(

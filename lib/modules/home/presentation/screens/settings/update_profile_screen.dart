@@ -1,10 +1,10 @@
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/style/components/default_material_button.dart';
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
 import 'package:e_commerce_app/core/style/components/default_text_form_field.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/generated/l10n.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_event.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_state.dart';
 import 'package:flutter/material.dart';
@@ -19,11 +19,11 @@ class UpdateProfileScreen extends StatefulWidget {
 }
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
-  final _nameController = TextEditingController(text: MyApp.user?.name);
+  final _nameController = TextEditingController(text: AppData.user?.name);
 
-  final _emailController = TextEditingController(text: MyApp.user?.email);
+  final _emailController = TextEditingController(text: AppData.user?.email);
 
-  final _phoneController = TextEditingController(text: MyApp.user?.phone);
+  final _phoneController = TextEditingController(text: AppData.user?.phone);
 
   final _passwordController = TextEditingController();
 

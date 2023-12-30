@@ -1,7 +1,5 @@
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../main.dart';
-
 class OrderDividerWidget extends StatelessWidget {
   const OrderDividerWidget({super.key});
 
@@ -14,7 +12,7 @@ class OrderDividerWidget extends StatelessWidget {
       child: Divider(
         height: 3.0,
         thickness: 1.0,
-        color: MyApp.isDark ? Colors.grey[900] : Colors.grey[300],
+        color: AppData.isDark ? Colors.grey[900] : Colors.grey[300],
       ),
     );
   }

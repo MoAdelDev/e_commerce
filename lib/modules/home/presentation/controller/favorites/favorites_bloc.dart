@@ -1,6 +1,6 @@
 import 'dart:async';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/enums.dart';
@@ -53,7 +53,7 @@ class FavoritesBloc extends Bloc<FavoritesBaseEvent, FavoritesState> {
         ),
       );
     }, (message) {
-      MyApp.favoriteMap[event.productId] = false;
+      AppData.favoriteMap[event.productId] = false;
       add(FavoritesGetEvent());
       showToast(msg: message, requestState: RequestState.success);
       emit(

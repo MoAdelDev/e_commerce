@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/main.dart';
+import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/modules/home/domain/entities/product.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/category_details/category_details_bloc.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class CategoryAddProductToFavoritesWidget extends StatelessWidget {
                 );
           },
           icon: Icon(
-            MyApp.favoriteMap[product.id] ?? false
+            AppData.favoriteMap[product.id] ?? false
                 ? Icons.favorite
                 : Icons.favorite_border,
             color: Theme.of(context).colorScheme.primary,
