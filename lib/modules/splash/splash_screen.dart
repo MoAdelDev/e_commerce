@@ -19,14 +19,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     if (kDebugMode) {
       print('token: ${CacheHelper.getString(key: 'token')}');
     }
 
     Timer.periodic(const Duration(milliseconds: 2000), (timer) {
-      if(mounted){
+      if (mounted) {
         if (token == '') {
           Navigator.pushNamedAndRemoveUntil(
               context, RouteConst.onBoardingScreen, (route) => false);

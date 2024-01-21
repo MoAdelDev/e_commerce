@@ -3,6 +3,7 @@ import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/addresses/presentation/controller/addresses_bloc.dart';
+import 'package:e_commerce_app/modules/checkout/presentation/screens/payment_details_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_bloc.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_event.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_state.dart';
@@ -23,14 +24,10 @@ void main() async {
 
   ServiceLocator().init();
 
-
-
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
-
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -71,7 +68,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: AppData.isDark ? darkTheme(context) : lightTheme(context),
-            home: const SplashScreen(),
+            home: const PayemtDetailsScreen(),
             onGenerateRoute: (settings) =>
                 AppRoute.getInstance().generateRouter(settings),
             locale: AppData.language == Language.arabic.name

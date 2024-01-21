@@ -9,7 +9,6 @@ import 'package:e_commerce_app/core/style/components/default_material_button.dar
 import 'package:e_commerce_app/core/style/components/default_progress_indicator.dart';
 import 'package:e_commerce_app/core/style/components/default_scroll_physics.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/product_details/product_details_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -61,6 +61,7 @@ dependencies:
   geolocator: ^10.0.1
   url_launcher: ^6.1.14
   gap: ^3.0.1
+  flutter_credit_card: ^4.0.1
 
 
 

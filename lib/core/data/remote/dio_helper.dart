@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
-import 'package:e_commerce_app/main.dart';
 import '../../error/error_message_model.dart';
 import '../../error/server_exception.dart';
 
@@ -65,9 +64,7 @@ class DioHelper {
       );
       return await dio.post(path, data: data);
     } catch (e) {
-      showToast(
-          msg: e.toString(),
-          requestState: RequestState.error);
+      showToast(msg: e.toString(), requestState: RequestState.error);
 
       throw ServerException(
         ErrorMessageModel.fromJson(
@@ -123,7 +120,7 @@ class DioHelper {
     try {
       dio.options = BaseOptions(
         headers: {
-          'lang': AppData.language == Language.arabic.name? 'ar' : 'en',
+          'lang': AppData.language == Language.arabic.name ? 'ar' : 'en',
           'Authorization': token,
           'Content-Type': 'application/json',
         },

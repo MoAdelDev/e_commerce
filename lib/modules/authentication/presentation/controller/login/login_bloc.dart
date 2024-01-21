@@ -3,7 +3,6 @@ import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/core/utils/toasts.dart';
-import 'package:e_commerce_app/main.dart';
 import 'package:e_commerce_app/modules/authentication/domain/entities/login.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
