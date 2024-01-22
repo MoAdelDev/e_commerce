@@ -35,27 +35,25 @@ class IncrementAndDecrementWidget extends StatelessWidget {
                       ),
               ),
               child: MaterialButton(
-                onPressed:isLoading(state)
+                onPressed: isLoading(state)
                     ? null
                     : () {
-                        if( product.quantity == 1 ) {
+                        if (product.quantity == 1) {
                           context.read<CartBloc>().add(
-                            CartDeleteProductFromCartEvent(
-                              product.id,
-                              product.productId,
-                            ),
-                          );
-                        }
-                        else{
+                                CartDeleteProductFromCartEvent(
+                                  product.id,
+                                  product.productId,
+                                ),
+                              );
+                        } else {
                           context.read<CartBloc>().add(
-                            CartUpdateProductsCartEvent(
-                              product.id,
-                              product.quantity - 1,
-                              product.productId,
-                            ),
-                          );
+                                CartUpdateProductsCartEvent(
+                                  product.id,
+                                  product.quantity - 1,
+                                  product.productId,
+                                ),
+                              );
                         }
-
                       },
                 child: Text(
                   '-',

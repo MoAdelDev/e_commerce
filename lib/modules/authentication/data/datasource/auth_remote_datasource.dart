@@ -1,7 +1,10 @@
+import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
 import 'package:e_commerce_app/core/error/server_exception.dart';
 import 'package:e_commerce_app/core/network/api_constance.dart';
 import 'package:e_commerce_app/core/error/error_message_model.dart';
+import 'package:e_commerce_app/core/services/api_service.dart';
+import 'package:e_commerce_app/core/services/stripe_service.dart';
 
 import '../../domain/entities/login.dart';
 import '../../domain/entities/register.dart';
@@ -21,6 +24,9 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
       data: login.toJson(),
     );
     if (result.data['status']) {
+      final String customerId =
+          await StripeService(ApiService()).createCustomerId();
+      await CacheHelper.saveString(key: 'customer_id', value: customerId);
       return UserModel.fromJson(result.data['data']);
     } else {
       throw ServerException(ErrorMessageModel.fromJson(result.data));
@@ -34,6 +40,9 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
       data: register.toJson(),
     );
     if (result.data['status']) {
+      final String customerId =
+          await StripeService(ApiService()).createCustomerId();
+      await CacheHelper.saveString(key: 'customer_id', value: customerId);
       return UserModel.fromJson(result.data['data']);
     }
     throw ServerException(ErrorMessageModel.fromJson(result.data));

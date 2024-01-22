@@ -32,5 +32,4 @@ class Address extends Equatable {
         latitude,
         longitude,
       ];
-
 }

@@ -66,11 +66,13 @@ class HomeUpdateProfileEvent extends BaseHomeEvent {
   final String password;
   final BuildContext context;
 
-  const HomeUpdateProfileEvent(this.name,
-      this.email,
-      this.phone,
-      this.password,
-      this.context,);
+  const HomeUpdateProfileEvent(
+    this.name,
+    this.email,
+    this.phone,
+    this.password,
+    this.context,
+  );
 
   @override
   List<Object> get props => [name, email, phone, password, context];

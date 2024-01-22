@@ -46,6 +46,5 @@ abstract class BaseHomeRepository {
 
   Future<Either<Failure, String>> updateProfile({required Register register});
 
-  Future<Either<Failure, List<Search>>> searchProducts(
-      {required String query});
+  Future<Either<Failure, List<Search>>> searchProducts({required String query});
 }

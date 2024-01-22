@@ -7,7 +7,6 @@ class DeleteAddressUseCase {
 
   const DeleteAddressUseCase(this.baseAddressRepository);
 
-  Future<Either<Failure, String>> call(
-          {required int addressId}) async =>
+  Future<Either<Failure, String>> call({required int addressId}) async =>
       await baseAddressRepository.deleteAddress(addressId: addressId);
 }

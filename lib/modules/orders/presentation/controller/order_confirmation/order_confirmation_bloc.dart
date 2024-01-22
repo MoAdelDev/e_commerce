@@ -17,45 +17,45 @@ part 'order_confirmation_event.dart';
 
 part 'order_confirmation_state.dart';
 
-class OrderConfirmationBloc extends Bloc<BaseOrderConfirmationEvent, OrderConfirmationState> {
+class OrderConfirmationBloc
+    extends Bloc<BaseOrderConfirmationEvent, OrderConfirmationState> {
   final GetAddressesInOrdersUseCase getAddressesInOrderUseCase;
   final ValidatePromoCodesUseCase validatePromoCodesUseCase;
   final AddOrderUseCase addOrderUseCase;
 
-  OrderConfirmationBloc(this.getAddressesInOrderUseCase, this.validatePromoCodesUseCase,
-      this.addOrderUseCase)
+  OrderConfirmationBloc(this.getAddressesInOrderUseCase,
+      this.validatePromoCodesUseCase, this.addOrderUseCase)
       : super(const OrderConfirmationState()) {
     on<OrderConfirmationValidatePromoCodesEvent>(_validatePromoCode);
     on<OrderConfirmationStateGetAddressesEvent>(_getAddresses);
     on<OrderConfirmationChangeAddressEvent>(_changeAddress);
     on<OrderConfirmationAddOrderEvent>(_addOrder);
+    on<OrderConfirmationChangePayemntMethodEvent>(_changePaymentMethod);
   }
 
-  FutureOr<void> _getAddresses(
-      OrderConfirmationStateGetAddressesEvent event, Emitter<OrderConfirmationState> emit) async {
+  FutureOr<void> _getAddresses(OrderConfirmationStateGetAddressesEvent event,
+      Emitter<OrderConfirmationState> emit) async {
     emit(state.copyWith(addressesState: RequestState.loading));
     final result = await getAddressesInOrderUseCase();
     result.fold(
-      (error) => emit(
+        (error) => emit(
+              state.copyWith(
+                addressesState: RequestState.error,
+                addressesError: error.message,
+              ),
+            ), (addresses) {
+      emit(
         state.copyWith(
-          addressesState: RequestState.error,
-          addressesError: error.message,
-        ),
-      ),
-      (addresses) {
-        emit(
-          state.copyWith(
             addressesState: RequestState.success,
             addresses: addresses,
-            addressId: addresses.isNotEmpty ? addresses[0].id : 0
-          ),
-        );
-      }
-    );
+            addressId: addresses.isNotEmpty ? addresses[0].id : 0),
+      );
+    });
   }
 
   FutureOr<void> _validatePromoCode(
-      OrderConfirmationValidatePromoCodesEvent event, Emitter<OrderConfirmationState> emit) async {
+      OrderConfirmationValidatePromoCodesEvent event,
+      Emitter<OrderConfirmationState> emit) async {
     emit(state.copyWith(validatePromoCodesState: RequestState.loading));
     final result = await validatePromoCodesUseCase(code: event.code);
     result.fold((error) {
@@ -77,16 +77,19 @@ class OrderConfirmationBloc extends Bloc<BaseOrderConfirmationEvent, OrderConfir
     });
   }
 
-  FutureOr<void> _changeAddress(
-      OrderConfirmationChangeAddressEvent event, Emitter<OrderConfirmationState> emit) {
+  FutureOr<void> _changeAddress(OrderConfirmationChangeAddressEvent event,
+      Emitter<OrderConfirmationState> emit) {
     emit(state.copyWith(
         addressId: event.addressId, addressSelected: event.addressSelected));
   }
 
-  FutureOr<void> _addOrder(
-      OrderConfirmationAddOrderEvent event, Emitter<OrderConfirmationState> emit) async {
+  FutureOr<void> _addOrder(OrderConfirmationAddOrderEvent event,
+      Emitter<OrderConfirmationState> emit) async {
     emit(state.copyWith(addOrderState: RequestState.loading));
-    final result = await addOrderUseCase(addressId: event.addressId);
+    final result = await addOrderUseCase(
+      addressId: event.addressId,
+      isPaymentMethod: event.isPaymentMethod,
+    );
     result.fold((error) {
       showToast(msg: error.message, requestState: RequestState.error);
       emit(
@@ -109,5 +112,13 @@ class OrderConfirmationBloc extends Bloc<BaseOrderConfirmationEvent, OrderConfir
       Navigator.pushNamedAndRemoveUntil(
           event.context, RouteConst.homeScreen, (route) => false);
     });
+  }
+
+  FutureOr<void> _changePaymentMethod(
+      OrderConfirmationChangePayemntMethodEvent event,
+      Emitter<OrderConfirmationState> emit) {
+    emit(state.copyWith(
+      paymentSelected: event.paymentSelected,
+    ));
   }
 }

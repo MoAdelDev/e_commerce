@@ -15,7 +15,8 @@ class LanguageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        int selectedLanguage = AppData.language == Language.english.name ? 1 : 2;
+        int selectedLanguage =
+            AppData.language == Language.english.name ? 1 : 2;
         return Scaffold(
           appBar: AppBar(
             title: Text(S.of(context).languageTitle),

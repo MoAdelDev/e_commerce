@@ -51,56 +51,55 @@ class OrderAddressesWidget extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: Card(
-                color: Theme.of(context).colorScheme.surface,
-                elevation: 3.0,
-                child: Column(
-                  children: List.generate(state.addresses.length, (index) {
-                    Address address = state.addresses[index];
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Row(
-                        children: [
-                          Radio(
-                            value: index,
-                            groupValue: state.addressSelected,
-                            onChanged: (value) {
-                              context.read<OrderConfirmationBloc>().add(
-                                  OrderConfirmationChangeAddressEvent(
-                                      addressId: address.id,
-                                      addressSelected: value ?? 0));
-                            },
-                          ),
-                          const SizedBox(
-                            width: 5.0,
-                          ),
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  address.name,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium
-                                      ?.copyWith(
-                                    fontFamily: AppFonts.boldFont,
-                                  ),
-                                ),
-                                Text(
-                                  address.details,
-                                  style:
-                                  Theme.of(context).textTheme.bodySmall,
-                                ),
-                              ],
+                  color: Theme.of(context).colorScheme.surface,
+                  elevation: 3.0,
+                  child: Column(
+                    children: List.generate(state.addresses.length, (index) {
+                      Address address = state.addresses[index];
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: Row(
+                          children: [
+                            Radio(
+                              value: index,
+                              groupValue: state.addressSelected,
+                              onChanged: (value) {
+                                context.read<OrderConfirmationBloc>().add(
+                                    OrderConfirmationChangeAddressEvent(
+                                        addressId: address.id,
+                                        addressSelected: value ?? 0));
+                              },
                             ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-                )
-              ),
+                            const SizedBox(
+                              width: 5.0,
+                            ),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    address.name,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium
+                                        ?.copyWith(
+                                          fontFamily: AppFonts.boldFont,
+                                        ),
+                                  ),
+                                  Text(
+                                    address.details,
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
+                  )),
             ),
           ],
         );

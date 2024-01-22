@@ -16,6 +16,8 @@ class OrderConfirmationState extends Equatable {
   final int addressId;
   final int addressSelected;
 
+  final int paymentSelected;
+
   const OrderConfirmationState({
     this.validatePromoCodesMsg = '',
     this.validatePromoCodesState = RequestState.nothing,
@@ -28,6 +30,7 @@ class OrderConfirmationState extends Equatable {
     this.addOrderMsg = '',
     this.addOrderState = RequestState.nothing,
     this.addOrderError = '',
+    this.paymentSelected = 0,
   });
 
   OrderConfirmationState copyWith({
@@ -39,6 +42,7 @@ class OrderConfirmationState extends Equatable {
     String? addressesError,
     int? addressId,
     int? addressSelected,
+    int? paymentSelected,
     String? addOrderMsg,
     RequestState? addOrderState,
     String? addOrderError,
@@ -55,6 +59,7 @@ class OrderConfirmationState extends Equatable {
         addressesError: addressesError ?? this.addressesError,
         addressId: addressId ?? this.addressId,
         addressSelected: addressSelected ?? this.addressSelected,
+        paymentSelected: paymentSelected ?? this.paymentSelected,
         addOrderMsg: addOrderMsg ?? this.addOrderMsg,
         addOrderState: addOrderState ?? this.addOrderState,
         addOrderError: addOrderError ?? this.addOrderError,
@@ -73,5 +78,6 @@ class OrderConfirmationState extends Equatable {
         addOrderError,
         addressId,
         addressSelected,
+        paymentSelected,
       ];
 }

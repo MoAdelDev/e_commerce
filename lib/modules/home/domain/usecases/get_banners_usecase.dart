@@ -8,5 +8,6 @@ class GetBannersUseCase {
 
   GetBannersUseCase(this.homeBaseRepository);
 
-  Future<Either<Failure, List<BannerEntity>>> call() async => await homeBaseRepository.getBanners();
+  Future<Either<Failure, List<BannerEntity>>> call() async =>
+      await homeBaseRepository.getBanners();
 }

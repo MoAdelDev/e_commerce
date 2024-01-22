@@ -152,18 +152,20 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
 
   FutureOr<void> _changeFavorite(
       HomeChangeFavoriteEvent event, Emitter<HomeState> emit) async {
-    AppData.favoriteMap[event.productId] = !AppData.favoriteMap[event.productId]!;
+    AppData.favoriteMap[event.productId] =
+        !AppData.favoriteMap[event.productId]!;
     emit(state.copyWith(favoriteState: RequestState.loading));
     final result = await homeChangeFavoriteUseCase(productId: event.productId);
     result.fold((error) {
-      AppData.favoriteMap[event.productId] = !AppData.favoriteMap[event.productId]!;
+      AppData.favoriteMap[event.productId] =
+          !AppData.favoriteMap[event.productId]!;
       emit(
         state.copyWith(
           favoriteState: RequestState.error,
           favoriteError: error.message,
         ),
       );
-    },(favoriteMessage) {
+    }, (favoriteMessage) {
       emit(
         state.copyWith(
           favoriteMessage: favoriteMessage,
@@ -251,10 +253,13 @@ class HomeBloc extends Bloc<BaseHomeEvent, HomeState> {
     final result = await updateProfileUseCase(register: register);
     result.fold((error) {
       showToast(msg: error.message, requestState: RequestState.error);
-      emit(state.copyWith(updateProfileError: error.message, updateProfileState: RequestState.error));
+      emit(state.copyWith(
+          updateProfileError: error.message,
+          updateProfileState: RequestState.error));
     }, (message) {
       add(HomeGetUserEvent());
-      emit(state.copyWith(updateProfileMsg: message, updateProfileState: RequestState.success));
+      emit(state.copyWith(
+          updateProfileMsg: message, updateProfileState: RequestState.success));
       showToast(msg: message, requestState: RequestState.success);
       Navigator.pop(event.context);
     });

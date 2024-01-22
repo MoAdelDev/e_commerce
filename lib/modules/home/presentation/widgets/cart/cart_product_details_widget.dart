@@ -18,8 +18,7 @@ class CartProductDetailsWidget extends StatelessWidget {
           width: 100.0,
           child: CachedNetworkImage(
             imageUrl: product.image,
-            errorWidget: (context, url, error) =>
-            const DefaultShimmer(),
+            errorWidget: (context, url, error) => const DefaultShimmer(),
             placeholder: (context, url) => const DefaultShimmer(),
           ),
         ),
@@ -28,8 +27,7 @@ class CartProductDetailsWidget extends StatelessWidget {
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: 8.0, horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -45,8 +43,7 @@ class CartProductDetailsWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text('EGP ${product.price.toString()}',
-                        style:
-                        Theme.of(context).textTheme.bodySmall),
+                        style: Theme.of(context).textTheme.bodySmall),
                     const SizedBox(
                       width: 5.0,
                     ),

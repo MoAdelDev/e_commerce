@@ -17,9 +17,7 @@ class ProductsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
-      listener: (context, state) {
-
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         if (state.productsState != RequestState.success &&
             state.cartsState != RequestState.success) {
@@ -158,7 +156,8 @@ class ProductsWidget extends StatelessWidget {
                                               state.products[index].id]!
                                           ? Icons.favorite
                                           : Icons.favorite_border,
-                                      color: Theme.of(context).colorScheme.primary,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
                                 ],

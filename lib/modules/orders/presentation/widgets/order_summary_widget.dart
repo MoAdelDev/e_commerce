@@ -117,12 +117,11 @@ class _OrderSummaryWidgetState extends State<OrderSummaryWidget> {
                               keyboardType: TextInputType.text,
                               textInputAction: TextInputAction.done,
                               onChange: (value) {
-                                if(value.isNotEmpty) {
+                                if (value.isNotEmpty) {
                                   setState(() {
                                     isButtonClickable = true;
                                   });
-                                }
-                                else{
+                                } else {
                                   setState(() {
                                     isButtonClickable = false;
                                   });
@@ -133,29 +132,43 @@ class _OrderSummaryWidgetState extends State<OrderSummaryWidget> {
                           const SizedBox(
                             width: 5.0,
                           ),
-                          BlocBuilder<OrderConfirmationBloc, OrderConfirmationState>(
+                          BlocBuilder<OrderConfirmationBloc,
+                              OrderConfirmationState>(
                             builder: (context, state) {
-                              if(state.validatePromoCodesState == RequestState.loading){
-                                return const Center(child: DefaultProgressIndicator(size: 40.0,),);
+                              if (state.validatePromoCodesState ==
+                                  RequestState.loading) {
+                                return const Center(
+                                  child: DefaultProgressIndicator(
+                                    size: 40.0,
+                                  ),
+                                );
                               }
                               return TextButton(
-                                onPressed: isButtonClickable ? () {
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                  if(_promoCodeController.text.isNotEmpty) {
-                                    context.read<OrderConfirmationBloc>().add(
-                                        OrderConfirmationValidatePromoCodesEvent(
-                                          _promoCodeController.text,
-                                        ),
-                                      );
-                                  }
-                                } : null,
+                                onPressed: isButtonClickable
+                                    ? () {
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                        if (_promoCodeController
+                                            .text.isNotEmpty) {
+                                          context
+                                              .read<OrderConfirmationBloc>()
+                                              .add(
+                                                OrderConfirmationValidatePromoCodesEvent(
+                                                  _promoCodeController.text,
+                                                ),
+                                              );
+                                        }
+                                      }
+                                    : null,
                                 child: Text(
                                   S.of(context).applyTitle,
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyLarge
                                       ?.copyWith(
-                                          color: isButtonClickable ? AppColorDark.primaryColor : Colors.grey,
+                                          color: isButtonClickable
+                                              ? AppColorDark.primaryColor
+                                              : Colors.grey,
                                           fontFamily: AppFonts.boldFont),
                                 ),
                               );

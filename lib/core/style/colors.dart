@@ -16,15 +16,14 @@ class AppColorLight {
   static const Color onErrorColor = Color(0xffFFFFFF);
 }
 
-
 class AppColorDark {
   static MaterialColor primaryColor =
-  MaterialColorGenerator.from(const Color(0xff4e5ae8));
+      MaterialColorGenerator.from(const Color(0xff4e5ae8));
   static const Color primaryVariantColor = Color(0xffB200ED);
   static const Color secondaryColor = Color(0xffFF6600);
   static const Color secondaryVariantColor = Color(0xffe05A00);
-  static  Color backgroundColor = Colors.grey.shade900;
-  static  Color surfaceColor = const Color(0xff212121);
+  static Color backgroundColor = Colors.grey.shade900;
+  static Color surfaceColor = const Color(0xff212121);
   static const Color errorColor = Color(0xffD50000);
   static const Color onPrimaryColor = Color(0xffFFFFFF);
   static const Color onSecondaryColor = Color(0xffFFFFFF);

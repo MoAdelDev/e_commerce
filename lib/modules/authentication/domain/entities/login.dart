@@ -8,7 +8,6 @@ class Login extends Equatable {
 
   Map<String, dynamic> toJson() => {'email': email, 'password': password};
 
-
   @override
   List<Object> get props => [email, password];
 }

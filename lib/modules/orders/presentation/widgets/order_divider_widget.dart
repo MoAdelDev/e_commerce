@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:flutter/material.dart';
+
 class OrderDividerWidget extends StatelessWidget {
   const OrderDividerWidget({super.key});
 

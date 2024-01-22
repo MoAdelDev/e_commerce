@@ -7,5 +7,6 @@ class SignOutUseCase {
 
   SignOutUseCase(this.baseHomeRepository);
 
-  Future<Either<Failure, String>> call() async => await baseHomeRepository.signOut();
+  Future<Either<Failure, String>> call() async =>
+      await baseHomeRepository.signOut();
 }

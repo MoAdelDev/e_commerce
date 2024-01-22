@@ -9,8 +9,8 @@ class OrderDetails extends Equatable {
   final Address address;
   final List<OrderProduct> products;
 
-  const OrderDetails(this.id, this.total, this.date, this.status, this.address,
-      this.products);
+  const OrderDetails(
+      this.id, this.total, this.date, this.status, this.address, this.products);
 
   @override
   List<Object> get props => [id, total, date, status, address, products];

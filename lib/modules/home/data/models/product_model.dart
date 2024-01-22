@@ -10,7 +10,8 @@ class ProductModel extends Product {
     super.name,
     super.inFavorites,
     super.inCart,
-    super.images, super.description,
+    super.images,
+    super.description,
   );
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(

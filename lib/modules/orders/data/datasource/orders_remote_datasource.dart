@@ -12,14 +12,14 @@ abstract class BaseOrdersRemoteDataSource {
 
   Future<List<AddressModel>> getAddresses();
 
-  Future<String> addOrder({required int addressId});
+  Future<String> addOrder(
+      {required int addressId, required bool isPaymentMethod});
 
   Future<List<OrderModel>> getOrders();
 
   Future<OrderDetailsModel> getOrderDetails({required int orderId});
 
   Future<String> cancelOrder({required int orderId});
-
 }
 
 class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
@@ -57,14 +57,15 @@ class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
   }
 
   @override
-  Future<String> addOrder({required int addressId}) async {
+  Future<String> addOrder(
+      {required int addressId, required bool isPaymentMethod}) async {
     String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.postData(
       path: ApiConstance.ordersUrl,
       token: token,
       data: {
         'address_id': addressId,
-        'payment_method': 1,
+        'payment_method': isPaymentMethod ? 2 : 1,
         'use_points': false,
       },
     );
@@ -94,7 +95,7 @@ class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
   }
 
   @override
-  Future<OrderDetailsModel> getOrderDetails({required int orderId}) async{
+  Future<OrderDetailsModel> getOrderDetails({required int orderId}) async {
     String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.getData(
       path: '${ApiConstance.ordersUrl}/$orderId',
@@ -108,7 +109,7 @@ class OrdersRemoteDataSource extends BaseOrdersRemoteDataSource {
   }
 
   @override
-  Future<String> cancelOrder({required int orderId}) async{
+  Future<String> cancelOrder({required int orderId}) async {
     String? token = CacheHelper.getString(key: 'token');
     final result = await DioHelper.getData(
       path: '${ApiConstance.ordersUrl}/$orderId/cancel',

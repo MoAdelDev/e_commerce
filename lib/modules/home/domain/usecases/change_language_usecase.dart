@@ -7,5 +7,6 @@ class ChangeLanguageUseCase {
 
   ChangeLanguageUseCase(this.baseHomeRepository);
 
-  Future<Either<Failure, void>> call({required String language}) async => await baseHomeRepository.changeLanguage(language: language);
+  Future<Either<Failure, void>> call({required String language}) async =>
+      await baseHomeRepository.changeLanguage(language: language);
 }

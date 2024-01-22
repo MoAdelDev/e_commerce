@@ -188,19 +188,18 @@ class AddOrEditAddressScreen extends StatelessWidget {
                                             context,
                                           ),
                                         );
-                                  }
-                                  else{
+                                  } else {
                                     context.read<AddressesBloc>().add(
-                                      AddressesUpdateEvent(
-                                        screenArgs.addressId,
-                                        _fullNameController.text,
-                                        _addressController.text,
-                                        _noteController.text,
-                                        _cityController.text,
-                                        _regionController.text,
-                                        context,
-                                      ),
-                                    );
+                                          AddressesUpdateEvent(
+                                            screenArgs.addressId,
+                                            _fullNameController.text,
+                                            _addressController.text,
+                                            _noteController.text,
+                                            _cityController.text,
+                                            _regionController.text,
+                                            context,
+                                          ),
+                                        );
                                   }
                                 }
                               },

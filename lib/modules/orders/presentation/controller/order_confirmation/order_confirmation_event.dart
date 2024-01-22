@@ -4,14 +4,16 @@ abstract class BaseOrderConfirmationEvent extends Equatable {
   const BaseOrderConfirmationEvent();
 }
 
-class OrderConfirmationStateGetAddressesEvent extends BaseOrderConfirmationEvent {
+class OrderConfirmationStateGetAddressesEvent
+    extends BaseOrderConfirmationEvent {
   const OrderConfirmationStateGetAddressesEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class OrderConfirmationValidatePromoCodesEvent extends BaseOrderConfirmationEvent {
+class OrderConfirmationValidatePromoCodesEvent
+    extends BaseOrderConfirmationEvent {
   final String code;
 
   const OrderConfirmationValidatePromoCodesEvent(this.code);
@@ -34,8 +36,10 @@ class OrderConfirmationChangeAddressEvent extends BaseOrderConfirmationEvent {
 class OrderConfirmationAddOrderEvent extends BaseOrderConfirmationEvent {
   final int addressId;
   final BuildContext context;
+  final bool isPaymentMethod;
 
   const OrderConfirmationAddOrderEvent({
+    required this.isPaymentMethod,
     required this.addressId,
     required this.context,
   });
@@ -45,4 +49,13 @@ class OrderConfirmationAddOrderEvent extends BaseOrderConfirmationEvent {
         addressId,
         context,
       ];
+}
+
+class OrderConfirmationChangePayemntMethodEvent
+    extends BaseOrderConfirmationEvent {
+  final int paymentSelected;
+
+  const OrderConfirmationChangePayemntMethodEvent(this.paymentSelected);
+  @override
+  List<Object?> get props => [];
 }

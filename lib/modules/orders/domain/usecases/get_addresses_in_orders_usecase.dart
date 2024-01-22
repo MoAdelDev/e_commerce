@@ -9,5 +9,6 @@ class GetAddressesInOrdersUseCase {
 
   const GetAddressesInOrdersUseCase(this.baseOrdersRepository);
 
-  Future<Either<Failure, List<Address>>> call() async => await baseOrdersRepository.getAddresses();
+  Future<Either<Failure, List<Address>>> call() async =>
+      await baseOrdersRepository.getAddresses();
 }

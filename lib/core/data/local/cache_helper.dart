@@ -8,11 +8,9 @@ class CacheHelper {
     sharedPreferences = await SharedPreferences.getInstance();
     if (!sharedPreferences.containsKey('token')) {
       saveString(key: 'token', value: '');
-    }
-    else if(!sharedPreferences.containsKey('language')) {
+    } else if (!sharedPreferences.containsKey('language')) {
       saveString(key: 'language', value: Language.english.name);
-    }
-    else if(!sharedPreferences.containsKey('isDark')) {
+    } else if (!sharedPreferences.containsKey('isDark')) {
       saveBool(key: 'isDark', value: false);
     }
   }

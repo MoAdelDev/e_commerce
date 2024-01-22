@@ -54,8 +54,7 @@ class OrderProductsWidget extends StatelessWidget {
                               return Row(
                                 children: [
                                   CachedNetworkImage(
-                                    imageUrl:
-                                        args.products[index].image,
+                                    imageUrl: args.products[index].image,
                                     errorWidget: (context, url, error) =>
                                         const DefaultShimmer(),
                                     placeholder: (context, url) =>

@@ -9,7 +9,10 @@ class OrderTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text.toUpperCase(),
-      style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontFamily: AppFonts.boldFont, color: Colors.grey[600]),
+      style: Theme.of(context)
+          .textTheme
+          .bodyMedium
+          ?.copyWith(fontFamily: AppFonts.boldFont, color: Colors.grey[600]),
     );
   }
 }

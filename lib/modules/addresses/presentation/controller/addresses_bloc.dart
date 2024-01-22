@@ -24,31 +24,32 @@ class AddressesBloc extends Bloc<AddressesEvent, AddressesState> {
   final DeleteAddressUseCase deleteAddressUseCase;
   final UpdateAddressUseCase updateAddressUseCase;
 
-  AddressesBloc(this.getAddressesUseCase,
-      this.addAddressUseCase,
-      this.deleteAddressUseCase,
-      this.updateAddressUseCase,) : super(const AddressesState()) {
+  AddressesBloc(
+    this.getAddressesUseCase,
+    this.addAddressUseCase,
+    this.deleteAddressUseCase,
+    this.updateAddressUseCase,
+  ) : super(const AddressesState()) {
     on<AddressesGetEvent>(_getAddresses);
     on<AddressesAddEvent>(_addAddress);
     on<AddressesDeleteEvent>(_deleteAddress);
     on<AddressesUpdateEvent>(_updateAddress);
   }
 
-  FutureOr<void> _getAddresses(AddressesGetEvent event,
-      Emitter<AddressesState> emit) async {
+  FutureOr<void> _getAddresses(
+      AddressesGetEvent event, Emitter<AddressesState> emit) async {
     final result = await getAddressesUseCase();
     result.fold(
-            (error) =>
-            emit(state.copyWith(
-                addressesState: RequestState.error,
-                addressesError: error.message)), (addresses) {
+        (error) => emit(state.copyWith(
+            addressesState: RequestState.error,
+            addressesError: error.message)), (addresses) {
       emit(state.copyWith(
           addresses: addresses, addressesState: RequestState.success));
     });
   }
 
-  FutureOr<void> _addAddress(AddressesAddEvent event,
-      Emitter<AddressesState> emit) async {
+  FutureOr<void> _addAddress(
+      AddressesAddEvent event, Emitter<AddressesState> emit) async {
     LocationPermission permission;
     permission = await Geolocator.requestPermission();
     if (permission == LocationPermission.always ||
@@ -87,8 +88,8 @@ class AddressesBloc extends Bloc<AddressesEvent, AddressesState> {
     }
   }
 
-  FutureOr<void> _deleteAddress(AddressesDeleteEvent event,
-      Emitter<AddressesState> emit) async {
+  FutureOr<void> _deleteAddress(
+      AddressesDeleteEvent event, Emitter<AddressesState> emit) async {
     emit(state.copyWith(deleteAddressState: RequestState.loading));
     final result = await deleteAddressUseCase(addressId: event.addressId);
 
@@ -106,8 +107,8 @@ class AddressesBloc extends Bloc<AddressesEvent, AddressesState> {
     });
   }
 
-  FutureOr<void> _updateAddress(AddressesUpdateEvent event,
-      Emitter<AddressesState> emit) async {
+  FutureOr<void> _updateAddress(
+      AddressesUpdateEvent event, Emitter<AddressesState> emit) async {
     LocationPermission permission;
     permission = await Geolocator.requestPermission();
     if (permission == LocationPermission.always ||

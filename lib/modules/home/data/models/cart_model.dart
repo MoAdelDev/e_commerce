@@ -5,8 +5,9 @@ class CartProductModel extends Cart {
     super.products,
     super.totalPrice,
   );
-  
-  factory CartProductModel.fromJson(Map<String, dynamic> json) => CartProductModel(
+
+  factory CartProductModel.fromJson(Map<String, dynamic> json) =>
+      CartProductModel(
         List.from((json['cart_items'] as List)
             .map((e) => ProductCartModel.fromJson(e))),
         json['total'],

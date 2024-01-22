@@ -188,8 +188,7 @@ class HomeState extends Equatable {
       );
 
   @override
-  List<Object> get props =>
-      [
+  List<Object> get props => [
         currentIndex,
         screens,
         items,

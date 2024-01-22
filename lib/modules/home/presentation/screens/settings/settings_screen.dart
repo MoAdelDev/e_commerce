@@ -53,18 +53,21 @@ class SettingsScreen extends StatelessWidget {
                             clipBehavior: Clip.antiAlias,
                             borderRadius: BorderRadius.circular(40.0),
                             child: CachedNetworkImage(
-                              imageUrl: AppData.user?.image??'',
-                              imageBuilder: (context, imageProvider) => Container(
+                              imageUrl: AppData.user?.image ?? '',
+                              imageBuilder: (context, imageProvider) =>
+                                  Container(
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: imageProvider,
                                       fit: BoxFit.cover,
-                                      colorFilter:
-                                      const ColorFilter.mode(Colors.red, BlendMode.colorBurn)),
+                                      colorFilter: const ColorFilter.mode(
+                                          Colors.red, BlendMode.colorBurn)),
                                 ),
                               ),
-                              placeholder: (context, url) => const CircularProgressIndicator(),
-                              errorWidget: (context, url, error) => SvgPicture.asset('assets/images/person.svg'),
+                              placeholder: (context, url) =>
+                                  const CircularProgressIndicator(),
+                              errorWidget: (context, url, error) =>
+                                  SvgPicture.asset('assets/images/person.svg'),
                             ),
                           ),
                         ),

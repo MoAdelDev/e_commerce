@@ -10,14 +10,12 @@ abstract class BaseOrdersRepository {
 
   Future<Either<Failure, List<Address>>> getAddresses();
 
-  Future<Either<Failure, String>> addOrder({required int addressId});
+  Future<Either<Failure, String>> addOrder(
+      {required int addressId, required bool isPaymentMethod});
 
   Future<Either<Failure, List<order.Order>>> getOrders();
 
   Future<Either<Failure, OrderDetails>> getOrderDetails({required int orderId});
 
   Future<Either<Failure, String>> cancelOrder({required int orderId});
-
-
-
 }

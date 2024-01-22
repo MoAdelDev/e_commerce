@@ -11,6 +11,6 @@ abstract class BaseAddressRepository {
 
   Future<Either<Failure, String>> deleteAddress({required int addressId});
 
-  Future<Either<Failure, String>> updateAddress({required AddressModel addressModel});
-
+  Future<Either<Failure, String>> updateAddress(
+      {required AddressModel addressModel});
 }

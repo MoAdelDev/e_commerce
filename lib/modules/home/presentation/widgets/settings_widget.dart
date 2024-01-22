@@ -35,14 +35,18 @@ class SettingsItemWidget extends StatelessWidget {
               width: 40.0,
               height: 40.0,
               decoration: BoxDecoration(
-                color: textColor == null ? AppColorLight.primaryColor.shade100 : AppColorLight.errorColor.withAlpha(50),
+                color: textColor == null
+                    ? AppColorLight.primaryColor.shade100
+                    : AppColorLight.errorColor.withAlpha(50),
                 borderRadius: const BorderRadius.all(
                   Radius.circular(10.0),
                 ),
               ),
               child: Icon(
                 icon,
-                color: textColor == null ? AppColorLight.primaryColor : AppColorLight.errorColor,
+                color: textColor == null
+                    ? AppColorLight.primaryColor
+                    : AppColorLight.errorColor,
                 size: 30.0,
               ),
             ),
@@ -78,7 +82,7 @@ class SettingsItemWidget extends StatelessWidget {
             const SizedBox(
               width: 10.0,
             ),
-             Icon(
+            Icon(
               Icons.arrow_forward_ios,
               color: Theme.of(context).colorScheme.onBackground,
             )

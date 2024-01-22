@@ -8,6 +8,8 @@ class AddOrderUseCase {
 
   const AddOrderUseCase(this.baseOrdersRepository);
 
-  Future<Either<Failure, String>> call({required int addressId}) async =>
-      await baseOrdersRepository.addOrder(addressId: addressId);
+  Future<Either<Failure, String>> call(
+          {required int addressId, required bool isPaymentMethod}) async =>
+      await baseOrdersRepository.addOrder(
+          addressId: addressId, isPaymentMethod: isPaymentMethod);
 }

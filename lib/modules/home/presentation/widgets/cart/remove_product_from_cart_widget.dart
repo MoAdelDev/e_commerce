@@ -11,38 +11,37 @@ class RemoveProductFromCartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(
-  builder: (context, state) {
-    return MaterialButton(
-      onPressed: () {
-        // remove product from cart
-        context.read<CartBloc>().add(
-          CartDeleteProductFromCartEvent(
-              product.id, product.productId),
+      builder: (context, state) {
+        return MaterialButton(
+          onPressed: () {
+            // remove product from cart
+            context.read<CartBloc>().add(
+                  CartDeleteProductFromCartEvent(product.id, product.productId),
+                );
+          },
+          color: Theme.of(context).colorScheme.background,
+          elevation: 0,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.delete,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              const SizedBox(
+                width: 10.0,
+              ),
+              Text(
+                S.of(context).removeTitle,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              )
+            ],
+          ),
         );
       },
-      color: Theme.of(context).colorScheme.background,
-      elevation: 0,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            Icons.delete,
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          const SizedBox(
-            width: 10.0,
-          ),
-          Text(
-            S.of(context).removeTitle,
-            style: TextStyle(
-              fontSize: 16.0,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-          )
-        ],
-      ),
     );
-  },
-);
   }
 }

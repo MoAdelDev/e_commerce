@@ -11,5 +11,4 @@ class SearchProductsEvent extends BaseSearchEvent {
 
   @override
   List<Object> get props => [query];
-
 }

@@ -60,7 +60,8 @@ class CategoryDetailsBloc
         ),
       );
     }, (favoriteMessage) {
-      AppData.favoriteMap[event.productId] = !AppData.favoriteMap[event.productId]!;
+      AppData.favoriteMap[event.productId] =
+          !AppData.favoriteMap[event.productId]!;
       emit(state.copyWith(
           favoriteMessage: favoriteMessage,
           favoriteState: RequestState.success));

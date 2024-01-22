@@ -1,16 +1,18 @@
 import 'package:e_commerce_app/core/data/local/cache_helper.dart';
 import 'package:e_commerce_app/core/data/local/data.dart';
 import 'package:e_commerce_app/core/data/remote/dio_helper.dart';
+import 'package:e_commerce_app/core/network/api_keys.dart';
 import 'package:e_commerce_app/core/utils/enums.dart';
 import 'package:e_commerce_app/modules/addresses/presentation/controller/addresses_bloc.dart';
-import 'package:e_commerce_app/modules/checkout/presentation/screens/payment_details_screen.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_bloc.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_event.dart';
 import 'package:e_commerce_app/modules/home/presentation/controller/home/home_state.dart';
+import 'package:e_commerce_app/modules/orders/presentation/controller/order_confirmation/order_confirmation_bloc.dart';
 import 'package:e_commerce_app/modules/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'core/route/app_route.dart';
 import 'core/services/service_locator.dart';
 import 'core/style/themes.dart';
@@ -23,6 +25,8 @@ void main() async {
   await DioHelper.init();
 
   ServiceLocator().init();
+
+  Stripe.publishableKey = ApiKeys.publishedKey;
 
   runApp(const MyApp());
 }
@@ -62,13 +66,20 @@ class MyApp extends StatelessWidget {
             sl(),
           )..add(const AddressesGetEvent()),
         ),
+        BlocProvider(
+          create: (context) => OrderConfirmationBloc(
+            sl(),
+            sl(),
+            sl(),
+          ),
+        )
       ],
       child: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: AppData.isDark ? darkTheme(context) : lightTheme(context),
-            home: const PayemtDetailsScreen(),
+            home: const SplashScreen(),
             onGenerateRoute: (settings) =>
                 AppRoute.getInstance().generateRouter(settings),
             locale: AppData.language == Language.arabic.name

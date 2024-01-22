@@ -9,9 +9,9 @@ class Favorite extends Equatable {
   final String name;
   final String image;
 
-  const Favorite(this.id, this.productId, this.price, this.oldPrice, this.discount, this.name, this.image);
+  const Favorite(this.id, this.productId, this.price, this.oldPrice,
+      this.discount, this.name, this.image);
 
   @override
   List<Object> get props => [id, productId];
-
 }

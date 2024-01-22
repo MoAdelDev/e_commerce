@@ -36,10 +36,11 @@ class OrdersRepository extends BaseOrdersRepository {
   }
 
   @override
-  Future<Either<Failure, String>> addOrder({required int addressId}) async {
+  Future<Either<Failure, String>> addOrder(
+      {required int addressId, required bool isPaymentMethod}) async {
     try {
-      final result =
-          await baseOrdersRemoteDataSource.addOrder(addressId: addressId);
+      final result = await baseOrdersRemoteDataSource.addOrder(
+          addressId: addressId, isPaymentMethod: isPaymentMethod);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.errorMessageModel.errorMessage));
